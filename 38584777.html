@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>Flex TextInput 动态判断输入内容</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/38584777.html" rel="bookmark"
+           title="Permalink to Flex TextInput 动态判断输入内容">Flex TextInput 动态判断输入内容</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-08-15T14:30:18+00:00">
+                Published: 五 15 八月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/38584777 </p>
+<p>Flex TextInput 动态判断输入内容</p>
+<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+    <span class="p">&lt;</span><span class="nt">s:Application</span> <span class="na">xmlns:fx</span><span class="o">=</span><span class="s">&quot;http://ns.adobe.com/mxml/2009&quot;</span> 
+                   <span class="na">xmlns:s</span><span class="o">=</span><span class="s">&quot;library://ns.adobe.com/flex/spark&quot;</span> 
+                   <span class="na">xmlns:mx</span><span class="o">=</span><span class="s">&quot;library://ns.adobe.com/flex/mx&quot;</span> <span class="na">minWidth</span><span class="o">=</span><span class="s">&quot;955&quot;</span> <span class="na">minHeight</span><span class="o">=</span><span class="s">&quot;600&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">fx:Script</span><span class="p">&gt;</span>
+            <span class="cp">&lt;![CDATA[</span>
+<span class="cp">                import spark.events.TextOperationEvent;</span>
+<span class="cp">                [Bindable]</span>
+<span class="cp">                private var errorStr:String = &quot;&quot;;</span>
+<span class="cp">                protected function numInput_changeHandler(event:TextOperationEvent):void</span>
+<span class="cp">                {</span>
+<span class="cp">                    var exp:RegExp= /[\d，,]/g;</span>
+
+<span class="cp">                    var inputText:String = numInput.text+&#39;&#39;;</span>
+<span class="cp">                    if(inputText==&#39;&#39;){</span>
+<span class="cp">                        return;</span>
+<span class="cp">                    }</span>
+<span class="cp">                    if(inputText.match(/[，,]$/)){</span>
+<span class="cp">                        inputText = inputText.substring(0,inputText.length-1);</span>
+<span class="cp">                    }</span>
+<span class="cp">                    var temp:String = inputText.replace(exp,&#39;&#39;);</span>
+<span class="cp">                    var isRight:Boolean = true;</span>
+<span class="cp">                    if(temp==&#39;&#39;){</span>
+<span class="cp">                        var arr:Array = inputText.split(/[，,]/);</span>
+<span class="cp">                        for(var i:int =0;i&lt;arr.length;i++){</span>
+<span class="cp">                            var oneNum:String = arr[i];</span>
+<span class="cp">                            if(oneNum==null || (oneNum+&#39;&#39;)== &#39;&#39;){</span>
+<span class="cp">                                isRight = false;                        </span>
+<span class="cp">                            }</span>
+<span class="cp">                        }</span>
+<span class="cp">                    }else{</span>
+<span class="cp">                        isRight = false;</span>
+<span class="cp">                    }</span>
+<span class="cp">                    if(isRight){</span>
+<span class="cp">                        numInput.setStyle(&#39;borderColor&#39;,&#39;black&#39;);</span>
+<span class="cp">                        alarmLabel.visible = false;</span>
+<span class="cp">                    }else{</span>
+<span class="cp">                        numInput.setStyle(&#39;borderColor&#39;,&#39;0xFF0000&#39;);</span>
+<span class="cp">                        alarmLabel.visible = true;</span>
+<span class="cp">                    }</span>
+<span class="cp">                }</span>
+<span class="cp">            ]]&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">fx:Script</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">fx:Declarations</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">fx:Declarations</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">s:HGroup</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;30&quot;</span> <span class="na">horizontalAlign</span><span class="o">=</span><span class="s">&quot;left&quot;</span> <span class="na">paddingLeft</span><span class="o">=</span><span class="s">&quot;5&quot;</span>
+                  <span class="na">paddingRight</span><span class="o">=</span><span class="s">&quot;5&quot;</span> <span class="na">verticalAlign</span><span class="o">=</span><span class="s">&quot;middle&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">s:Label</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;60&quot;</span> <span class="na">text</span><span class="o">=</span><span class="s">&quot;号码：&quot;</span> <span class="na">textAlign</span><span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">/&gt;</span>          
+            <span class="p">&lt;</span><span class="nt">s:TextInput</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;numInput&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span> <span class="na">change</span><span class="o">=</span><span class="s">&quot;numInput_changeHandler(event)&quot;</span>
+                         <span class="na">errorString</span><span class="o">=</span><span class="s">&quot;{errorStr}&quot;</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">s:Spacer</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;16&quot;</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">s:Label</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;alarmLabel&quot;</span> <span class="na">visible</span><span class="o">=</span><span class="s">&quot;false&quot;</span> <span class="na">color</span><span class="o">=</span><span class="s">&quot;0xFF0000&quot;</span> <span class="na">text</span><span class="o">=</span><span class="s">&quot;只允许输入数字以“，”隔开&quot;</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">s:HGroup</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">s:Application</span><span class="p">&gt;</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>python插入记录cursor.lastrowid值为0的情况</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/51200656.html" rel="bookmark"
+           title="Permalink to python插入记录cursor.lastrowid值为0的情况">python插入记录cursor.lastrowid值为0的情况</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-04-20T14:49:35+00:00">
+                Published: 三 20 四月 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/51200656 </p>
+<p>python向mysql插入数据后，可以根据根据cursor.lastrowid获取所插入数据的主键id值。</p>
+<p>最近遇到有一个插入语句执行后，cursor.lastrowid获取到的值为0的情况。</p>
+<p>经过测试发现，被插入的表的id必须是AUTO_INCREMENT，cursor.lastrowid才能获取到id值。因为插入的业务数据的id是我们自己生成的，table的id没有设置成AUTO_INCREMENT，修改为AUTO_INCREMENT后，问题解决。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

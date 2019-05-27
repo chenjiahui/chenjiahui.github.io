@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>BugManager’s Blog - hadoop</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/47962803.html">hadoop学习笔记之Map-Reduce</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-08-25T00:04:59+00:00">
+                Published: 二 25 八月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/hadoop.html">hadoop</a> </p>
+</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/47962803 </p>
+<p>Map-Reduce的工作机制：<br>
+a、编写好一个Map-Reduce程序，运行作业程序。<br>
+b、JobClient向JobTracker申请一个作业ID，<br>
+c、JobClient将作业所需要的资源，复制到HDFS系统中。<br>
+d、c、JobClient提交作业<br>
+e、JobTracker初始化作业。<br>
+f、JobTracker向nameNode询问，决定这些任务在哪些机器上跑。<br>
+有关的数据在哪些文件里，这些文件保存在哪些节点的数据块中。<br>
+(程序要和所要运行的作业资源在一起)<br>
+根据taskTracker与JobTracker之间的心跳，知道哪些task可以参与到本次作业中来。<br>
+如：taskTracker必须是活着的，Tracker中是否有其他作业在做。<br>
+确定哪些taskTracker<br>
+g、taskTracker和JobTracker保持心跳，以确定taskTracker是否正常。<br>
+h、taskTracker从HDFS中将相关代码、资源等获取到本地。<br>
+i、架设java虚拟机<br>
+j、开始工作。<br>
+k、taskTracker将结果写入本地硬盘（这个是中间结果不写入HDFS）</p>
+<p>任务执行优化<br>
+a、推测式执行：当jobTracker发现有任务拖后腿了，就会额外启动相应的备份任务。当哪个先执行完了，就将另一个kill掉<br>
+缺点：当问题产生的原因是因为代码问题，而不是机器性能问题时，这种机制反而会使得集群的性能下降。<br>
+解决方案：可以在mapred-site.xml中配置关闭推测式执行。<br>
+b、重用JVM<br>
+java之所以慢，最大的原因是JVM启动慢，为了避免反复启动多个JVM，可以配置单个JVM运行的最大任务数。<br>
+c、忽略模式<br>
+有的时候，节点的数据损坏了（hadoop中错误是常态）。任务在读取数据失败2次后，会把数据位置告诉jobtracker,jobtracker在重新启动该任<br>
+务并且在遇到所记录的坏数据时直接跳过。此配置默认是关闭的。用SkipBadRecord打开。</p>
+<p>错误处理机制：硬件故障<br>
+a、硬件故障是只jobtracker故障或者tasktracker故障。<br>
+b、jobtracker是单点的，若发生单点故障则hadoop无法处理。选择稳定的系统作为jobtracker.<br>
+c、jobtracker通过心跳（周期1分钟）信号了解tasktracker是否发生故障或者负载过高。<br>
+d、jobtracker将发生故障的tasktracker从任务节点中移除。<br>
+e、若故障节点移除时，有map任务正在执行并且没有完成，则jobtracker会要求其他节点重新执行未完成的map任务。<br>
+f、若故障节点移除时，有reduce任务正在执行并且没有完成，则jobtracker会要求其他节点继续（不是重新执行，为什么呢？）执行未完成的reduce任务。</p>
+<p>错误处理机制：任务失败<br>
+a、由于代码层面出现故障，如死循环等。<br>
+b、jvm自动退出，向tasktracker进程发送错误信息，并将错误信息写入日志。<br>
+c、tasktracker在监听到任务退出，或者长时间没有收到信息时，则会判定该任务失败。将任务计数-1，并通过心跳信号告知jbtracker任务失败。<br>
+d、jobtracker会将失败的任务重新放入调度队列中重新分配执行，任务也有可能被分配给原来错误的那个节点执行。<br>
+e、如果某个任务失败次数超过一定值（默认4次，怎么设置？），则该任务将不再被执行，同时此次作业宣告失败。  </p>
+<p>﻿﻿</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46997303.html" rel="bookmark"
+                           title="Permalink to hadoop学习笔记之HDFS">hadoop学习笔记之HDFS</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-07-22T07:33:37+00:00">
+                Published: 三 22 七月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/hadoop.html">hadoop</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46997303 </p>
+<p>HDFS：Hadoop Distributed File System 分布式文件系统，其操作方式与linux相似，使用指令之前要在前面加上dfs。（注意：hdfs没有当前目录的概念，不能使用cd命令）</p>
+<p>常规操作命令：</p>
+<div class="highlight"><pre><span></span>     dfs -put ../hello hello
+     dfs -ls
+     dfs -get hello ./mypath/hello
+     dfs -rmr hello
+     dfs -cat part-r-00000 //打开文件，查看内容
+     dfsadmin -report //hdfs的信息情况
+</pre></div>
+
+
+<p>客户端如何从HDFS上 <strong>获取文件</strong> 呢？以获取文件名为“hello …</p>
+                <a class="readmore" href="/46997303.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

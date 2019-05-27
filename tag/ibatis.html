@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>BugManager’s Blog - ibatis</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/0002.html">ibatis中#和$的区别</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-03-26T20:20:08+00:00">
+                Published: 三 26 三月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/ibatis.html">ibatis</a> </p>
+</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/22181467 </p>
+<div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">SYS_ROAD_LINE_INFO</span> <span class="k">where</span> <span class="n">ROAD_LINE_NO</span> <span class="k">in</span> <span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">)</span>
+</pre></div>
+
+
+<p>$中间的变量就是直接替换成值的</p>
+<p>#会根据变量的类型来进行替换</p>
+<p>比如articleTitle的类型是string, 值是"标题"的时候</p>
+<p>\$articleTitle$ = 标题</p>
+<p>#articleTitle# = '标题</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/22181667.html" rel="bookmark"
+                           title="Permalink to Ibatis学习笔记">Ibatis学习笔记</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-26T15:22:22+00:00">
+                Published: 三 26 三月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/ibatis.html">ibatis</a> </p>
+</footer><!-- /.post-info -->                <p><strong>Ibatis 学习笔记</strong></p>
+<p>最近学习了ibatis连接数据库</p>
+<p><strong>搭建 iBatis开发环境：</strong></p>
+<p>仅仅需要两个包：数据库驱动包，和ibatis包。</p>
+<p>三个配置文件：数据库连接属性文件、总配置文件、实体的映射文件（Map文件）。</p>
+<p><strong>数据库连接属性文件： jdbc.properties</strong></p>
+<p>内容如下： __</p>
+<div class="highlight"><pre><span></span><span class="n">jdbc</span><span class="p">.</span><span class="n">driverClassName</span><span class="o">=</span><span class="n">com</span><span class="p">.</span><span class="n">mysql</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">Driver</span>
+<span class="n">jdbc</span><span class="p">.</span><span class="n">url</span><span class="o">=</span><span class="n">jdbc</span><span class="p">:</span><span class="n">mysql</span><span class="p">:</span><span class="o">//</span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="p">:</span><span class="mi">3306</span><span class="o">/</span><span class="n">test</span><span class="o">?</span><span class="n">autoReconnect</span><span class="o">=</span><span class="k">true</span><span class="o">&amp;</span><span class="n">useUnicode</span><span class="o">=</span><span class="k">true</span><span class="o">&amp;</span><span class="n">characterEncoding</span><span class="o">=</span><span class="n">utf8</span>
+<span class="n">jdbc</span><span class="p">.</span><span class="n">username</span><span class="o">=</span><span class="n">test</span>
+<span class="n">jdbc</span><span class="p">.</span><span class="n">password</span><span class="o">=</span><span class="n">test123</span>
+</pre></div>
+
+
+<p><strong>总配置文件， SqlMapConfig.xml</strong></p>
+<p>内容如下：</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml …</span></pre></div>
+                <a class="readmore" href="/22181667.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

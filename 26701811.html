@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>利用StringBuffer实现字符串反转</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li class="active"><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/26701811.html" rel="bookmark"
+           title="Permalink to 利用StringBuffer实现字符串反转">利用StringBuffer实现字符串反转</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-05-23T14:23:02+00:00">
+                Published: 五 23 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/26701811 </p>
+<p>利用StringBuffer实现字符串反转</p>
+<div class="highlight"><pre><span></span>    <span class="kn">package</span> <span class="nn">com.cjh.test</span><span class="o">;</span>
+    <span class="cm">/**</span>
+<span class="cm">     * @author chenjiahui</span>
+<span class="cm">     * 2014年5月23日 下午2:21:45</span>
+<span class="cm">     * </span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReverseString</span> <span class="o">{</span>
+
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;12345&quot;</span><span class="o">;</span>
+      <span class="n">StringBuffer</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+      <span class="n">str</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">reverse</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span><span class="c1">//54321</span>
+     <span class="o">}</span>
+    <span class="o">}</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

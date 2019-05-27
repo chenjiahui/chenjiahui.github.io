@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>tornado_mysql的pool使用事务的方法。</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/56009091.html" rel="bookmark"
+           title="Permalink to tornado_mysql的pool使用事务的方法。">tornado_mysql的pool使用事务的方法。</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-02-20T10:52:26+00:00">
+                Published: 一 20 二月 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/56009091 </p>
+<div class="highlight"><pre><span></span><span class="c1">#/usr/bin/env python</span>
+<span class="c1">#coding=utf-8</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Created on 2017-02-20</span>
+
+<span class="sd">@Author: Bug管理员</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tornado_mysql</span> <span class="kn">import</span> <span class="n">pools</span>
+
+<span class="n">data_time</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+<span class="k">def</span> <span class="nf">create_pool</span><span class="p">():</span>
+    <span class="k">print</span> <span class="n">DB_CONN</span><span class="o">.</span><span class="n">PORT</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_USER</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_PASSWORD</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">DBNAME</span>
+    <span class="n">pool_db</span> <span class="o">=</span> <span class="n">pools</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">IP</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">PORT</span><span class="p">),</span> <span class="n">user</span><span class="o">=</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_USER</span><span class="p">,</span>
+             <span class="n">passwd</span><span class="o">=</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_PASSWORD</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">DBNAME</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="s1">&#39;utf8mb4&#39;</span><span class="p">),</span>
+        <span class="n">max_idle_connections</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">max_recycle_sec</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">max_open_connections</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">pool_db</span>
+
+<span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">create_pool</span><span class="p">()</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;insert into temple_text(words)values(99999)&#39;</span><span class="p">,())</span>
+        <span class="k">print</span> <span class="n">cur</span><span class="o">.</span><span class="n">_executed</span>
+        <span class="c1">#sleep(100)</span>
+        <span class="c1">#yield cur.execute(&#39;insert into test(id,abc)values(99999)&#39;,())</span>
+        <span class="k">yield</span> <span class="n">cur</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span><span class="n">e</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">cur</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+        <span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">current</span><span class="p">()</span><span class="o">.</span><span class="n">run_sync</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span><span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

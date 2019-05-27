@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>mysql利用atlas进行读写分离时，一直走主库的问题</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/47665585.html" rel="bookmark"
+           title="Permalink to mysql利用atlas进行读写分离时，一直走主库的问题">mysql利用atlas进行读写分离时，一直走主库的问题</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-08-14T18:05:43+00:00">
+                Published: 五 14 八月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+<p>tags: <a href="/tag/shu-ju-ku.html">数据库</a> <a href="/tag/mysql.html">MySQL</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/47665585 </p>
+<p>项目中，利用atlas对mysql数据库进行了读写分离。</p>
+<p>当时配置了去从库读数据。</p>
+<p>当用数据库工具连接代理测试时，一切正常。</p>
+<p>当在项目中使用框架mybatis连数据库时，却都直接去主库读写数据了。  </p>
+<p>自己写个main方法 用jdbc连接也是正常的。一用mybatis框架就不正常了，难道atlas对mybatis不支持吗？</p>
+<p>于是各种百度，谷歌。。。</p>
+<p>最后发现原因：如果有事务存在的话，atlas就强制走主库。而这个方法类上偏偏添加了事务@Transactional  </p>
+<p>解决办法在方法上加上@Transactional(propagation=Propagation.NOT_SUPPORTED)即可。  </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

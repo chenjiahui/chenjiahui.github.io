@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>BugManager’s Blog - MySQL</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/89741820.html">数据库与分区、分表、分库</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-05-01T23:48:10+00:00">
+                Published: 三 01 五月 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+<p>tags: <a href="/tag/shu-ju-ku.html">数据库</a> <a href="/tag/mysql.html">MySQL</a> </p>
+</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/89741820 </p>
+<p>分区：（应用层感知不到变化）</p>
+<p>将把一张表的数据根据分区逻辑均衡分摊到多个存储介质中。在逻辑上看还是只有一张表，但实际被分成了N个物理块。分区类型有（range、list、hash、key）。</p>
+<p>主要解决单表数据量过大，读写数据、修改数据时重建索引效率等问题。</p>
+<p>一般当一张表的查询，在优化后，查询速度仍比较慢时，就需要选择合适的业务字段进行分区。</p>
+<p>相对分表，几乎无工作量。应用端一般无需修改代码。</p>
+<p>分表：mycat、tidb</p>
+<p>把一张表按一定规则，拆分成N张表的过程。分横向拆分和纵向拆分。</p>
+<p>横向拆分：</p>
+<p>将一张表中的不同数据字段，拆分到2张或者多张表中。一般横向拆分的情况有：表字段过多，字段内容过大（如text，blob等），不经常使用等。</p>
+<p>纵向拆分：</p>
+<p>将数据打散到多张结构相同的表中存储。</p>
+<p>如流水表，我们选择以用户id取余分表。因为在业务上流水只和用户相关，选择根据用户id取余分表很合适。</p>
+<p>需求：查看当天或者某段时间的充值总量，消费总量等：</p>
+<p>运营系统的需求，对查询时效性要求不是很高，我们采用先再每张表中查数据，将查询出的数据放入临时表中，最后在临时表中查询最终数据。（其实，早期我们的做法是单独做了张运营表，各个分表的数据，在运营表中都有汇总。这种方式，在数据量逐渐增大后，查询也越来越慢。）</p>
+<p>分库：</p>
+<p>分库，一般是根据业务耦合性，将关联度低的不同表存储在不同的数据库中。（比如，流水库，视频库）</p>
+<p>分库后，不同库之间不能进行关联查询，可以通过字段冗余进行解决。如果冗余无法满足需求，也可以考虑将小表数据，全表冗余到该分库中。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/48738377.html" rel="bookmark"
+                           title="Permalink to 数据库存储手机emoji表情">数据库存储手机emoji表情</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-25T21:10:08+00:00">
+                Published: 五 25 九月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+<p>tags: <a href="/tag/shu-ju-ku.html">数据库</a> <a href="/tag/mysql.html">MySQL</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/48738377 </p>
+<p>最近在开发手机APP应用，用户的评论是可以添加表情的。<br>
+由于的第一次做这方面的东西，在评论表中评论内容用utf8存表情，发现是乱码。  </p>
+<p>查原因，说的<a href="http://baike.baidu.com/item/emoji">emoji</a>的表情，需要将数据库编码格式改成utf8mb4。<br>
+确定了升级方案后，将表情存成utf8mb4，测试。然而，发现并没什么用，依然是乱码。  </p>
+<p>再查资料。网上有人也碰到这个问题，解决方式和我一样，设置成utf8mb4，有的解决了，有的没有解决。解决不聊的，有人通过把数据存成了2进制来解决，有的自己把表情根据自己定义的字典转换后存入数据库。<br>
+这样就增加了许多浪费。  </p>
+<p>因为有同事以前在postgresql上保存成功过。继续找原因，主要还是考虑编码方向，原来连接数据库时，还是用的utf8，改为utf8mb4后，成功解决。 </p>
+                <a class="readmore" href="/48738377.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/48163833.html" rel="bookmark"
+                           title="Permalink to mysql类似rownum查询">mysql类似rownum查询</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-01T21:22:38+00:00">
+                Published: 二 01 九月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+<p>tags: <a href="/tag/shu-ju-ku.html">数据库</a> <a href="/tag/mysql.html">MySQL</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/48163833 </p>
+<p>mysql 查询某一用户的排名，由于mysql没有rownum，查询排名就比较麻烦了，所以记录下</p>
+<div class="highlight"><pre><span></span>    <span class="k">SELECT</span> <span class="nf">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">AS</span> <span class="n">rank_num</span><span class="err">，</span>
+      <span class="k">FROM</span> <span class="n">tab_game_rank</span>
+     <span class="k">WHERE</span> <span class="n">pnumber</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">pnumber</span>
+                         <span class="k">FROM</span> <span class="n">tab_game_rank</span>
+                        <span class="k">WHERE</span> <span class="n">uid</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<p>rank_num 排名</p>
+<p>pnumber 排名字段</p>
+<p>uid 用户id</p>
+                <a class="readmore" href="/48163833.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/47859581.html" rel="bookmark"
+                           title="Permalink to python中的mysql数据库like模糊查询">python中的mysql数据库like模糊查询</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-08-22T15:10:51+00:00">
+                Published: 六 22 八月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/mysql.html">mysql</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/47859581 </p>
+<p>最近工作在使用python语言开发项目，工作中遇到了一个python连接mysql的like查询。</p>
+<p>由于%在python中三个特殊的符号，如%s，%d分别代表了字符串占位符和数字占位符。</p>
+<p>大家知道，mysql的模糊查询也需要用到%。</p>
+<p>我们有一张test表，要对name字段进行模糊查询，预期的sql如下：</p>
+<div class="highlight"><pre><span></span>    <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">test</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%abc%&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>那么python中怎么写呢？ </p>
+<div class="highlight"><pre><span></span>    <span class="k">sql</span> <span class="o">=</span> <span class="s2">&quot;select * from test where name like &#39;%%%%%s%%%%&#39;&quot;</span>
+    <span class="k">sql</span> <span class="o">=</span> <span class="k">sql</span> <span class="o">%</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>  <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;white-space:pre&quot;</span><span class="o">&gt;</span>  <span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="c1">#此处进行第一次转义</span>
+    <span class="n">print</span> <span class="k">sql …</span></pre></div>
+                <a class="readmore" href="/47859581.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/47665585.html" rel="bookmark"
+                           title="Permalink to mysql利用atlas进行读写分离时，一直走主库的问题">mysql利用atlas进行读写分离时，一直走主库的问题</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-08-14T18:05:43+00:00">
+                Published: 五 14 八月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+<p>tags: <a href="/tag/shu-ju-ku.html">数据库</a> <a href="/tag/mysql.html">MySQL</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/47665585 </p>
+<p>项目中，利用atlas对mysql数据库进行了读写分离。</p>
+<p>当时配置了去从库读数据。</p>
+<p>当用数据库工具连接代理测试时，一切正常。</p>
+<p>当在项目中使用框架mybatis连数据库时，却都直接去主库读写数据了。  </p>
+<p>自己写个main方法 用jdbc连接也是正常的。一用mybatis框架就不正常了，难道atlas对mybatis不支持吗？</p>
+<p>于是各种百度，谷歌。。。</p>
+<p>最后发现原因：如果有事务存在的话，atlas就强制走主库。而这个方法类上偏偏添加了事务@Transactional  </p>
+<p>解决办法在方法上加上@Transactional(propagation=Propagation.NOT_SUPPORTED)即可。  </p>
+                <a class="readmore" href="/47665585.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

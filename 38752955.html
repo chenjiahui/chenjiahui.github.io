@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>java split | （竖线）</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li class="active"><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/38752955.html" rel="bookmark"
+           title="Permalink to java split | （竖线）">java split | （竖线）</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-08-22T11:11:34+00:00">
+                Published: 五 22 八月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/38752955 </p>
+<p>java split | （竖线）</p>
+<p>在java中,有一个字符串"866|10|1824261|214|",需要根据“|”截取。</p>
+<p>而直接用split("|");是不行的。</p>
+<p>原因是竖线 | 在正则中是特殊字符，需要转义，也就是split(“|”);</p>
+<p>但实际在java中使用时，\又是java的特殊字符，需要转义，最终变成了split("\|");</p>
+<div class="highlight"><pre><span></span><span class="nv">public</span> <span class="nv">static</span> <span class="nv">void</span> <span class="nv">main</span><span class="ss">(</span><span class="nv">String</span>[] <span class="nv">args</span><span class="ss">)</span> {
+        <span class="nv">String</span> <span class="nv">line</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">866|10|1824261|214|</span><span class="s2">&quot;</span><span class="c1">;</span>
+        <span class="nv">String</span>[] <span class="nv">cells</span> <span class="o">=</span> <span class="nv">line</span>.<span class="nv">split</span><span class="ss">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s">|</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+
+        <span class="k">for</span><span class="ss">(</span><span class="nv">int</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;cells.length;i++){</span>
+            <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="nv">cells</span>[<span class="nv">i</span>]<span class="ss">)</span><span class="c1">;</span>
+        }
+    }
+</pre></div>
+
+
+<p>输出结果：</p>
+<p>866<br>
+10<br>
+1824261<br>
+214  </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

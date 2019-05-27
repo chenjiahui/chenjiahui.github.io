@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>BugManager’s Blog - 前端</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li class="active"><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/50311589.html">APP端webview自动播放视频</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-12-15T10:46:56+00:00">
+                Published: 二 15 十二月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> </p>
+</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/50311589 </p>
+<p>昨天碰到一需求，需要写一个html5页面，要求支持打开自动播放视频。</p>
+<p>ok，要支持自动播放，设置<video>的autoplay="autoplay"就可以了吧。</p>
+<p>测试发现只有在浏览器中是正常播放了，android和ios都没有播放。</p>
+<p>换了种写法：</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span> <span class="n">onload</span><span class="o">=</span><span class="ss">&quot;playVideo();&quot;</span><span class="o">&gt;</span>
+
+
+<span class="k">function</span> <span class="n">playVideo</span><span class="p">()</span><span class="err">{</span>
+    <span class="n">var</span> <span class="n">video</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">getElementById</span><span class="p">(</span><span class="ss">&quot;alt-player-ios&quot;</span><span class="p">);</span> 
+    <span class="n">video</span><span class="p">.</span><span class="n">play</span><span class="p">();</span> 
+<span class="err">}</span>
+</pre></div>
+
+
+<p>android的webview中可以自动播放了。（android以前设置过允许执行javascript，如果大家不能自动播放的话可能需要设置这个）。 </p>
+<p>ios需要添加webview的属性设置：</p>
+<div class="highlight"><pre><span></span><span class="n">_webView</span><span class="p">.</span><span class="n">mediaPlaybackRequiresUserAction</span> <span class="o">=</span> <span class="k">NO</span><span class="p">;</span>
+</pre></div>
+
+
+<p>ok，能自动播放了。 </p>
+<p>如果希望自动播放时不要全屏，那么嗨需要设置下面的属性：</p>
+<div class="highlight"><pre><span></span><span class="n">_webView</span><span class="p">.</span><span class="n">allowsInlineMediaPlayback</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
+</pre></div>
+
+
+<p>参考资料：</p>
+<p>http://my.oschina.net/u/2340880/blog/469916  </p>
+<p>http://www.xuanfengge.com/html5-video-play.html  </p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/50311479.html" rel="bookmark"
+                           title="Permalink to APP端webview自动播放视频">APP端webview自动播放视频</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-15T10:26:11+00:00">
+                Published: 二 15 十二月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> <a href="/tag/html.html">html</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/50311479 </p>
+<p>今天想等网页加载好后动态计算某个div宽高和位置。<br>
+起初用的是下面这种方式：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span><span class="p">(</span><span class="k">function</span><span class="p">()</span><span class="err">{</span>
+    <span class="n">doAdapter</span><span class="p">();</span>
+<span class="err">}</span><span class="p">)</span>
+
+<span class="err">$</span><span class="p">(</span><span class="n">document</span><span class="p">).</span><span class="n">ready</span><span class="p">(</span><span class="k">function</span><span class="p">()</span><span class="err">{</span>
+    <span class="n">doAdapter</span><span class="p">();</span>
+<span class="err">}</span><span class="p">);</span>
+</pre></div>
+
+
+<p>这东西不是很靠谱啊（当然它也有它的优点，在这里用就不靠谱了），这个不是一定等页面的图片全部加载完成才触发的。<br>
+它在DOM就绪后就触发了，而此时，dom元素所关联的内容可能还没有加载完毕。<br>
+比如图片的宽、高，图片的父容器的宽、高此时就不一定有值。<br>
+后来改成了 </p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span> <span class="n">onload</span><span class="o">=</span><span class="ss">&quot;doAdapter();&quot;</span><span class="o">&gt;</span>
+
+
+
+
+
+
+<span class="err">$</span><span class="p">(</span><span class="n">window</span><span class="p">).</span><span class="k">load</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="err">{</span>
+        <span class="n">doAdapter</span><span class="p">();</span>
+<span class="err">}</span><span class="p">);</span>
+</pre></div>
+
+
+<p>必须等待网页中所有的内容加载完毕后 ( 包括图片 ) 才能执行  </p>
+<p>效果就好了。</p>
+<p>借用网友的一张图：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20151215102455828?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">  </p>
+                <a class="readmore" href="/50311479.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/49180767.html" rel="bookmark"
+                           title="Permalink to html根据宽的百分比设置高">html根据宽的百分比设置高</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-10-16T16:55:05+00:00">
+                Published: 五 16 十月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/html.html">html</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/49180767 </p>
+<p>最近在团队中开发了一部分html页面</p>
+<p>有一个功能点，需要在一行展示三张图片，每张图片拉伸成正方形。</p>
+<p>对于图片的宽设置为33%就可以了，但是怎么让高度根据宽度变化呢？最初想到的是在页面生成后使用js来获取图片宽，再根据这个获取的宽设置图片的高。</p>
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>$<span class="ss">(</span><span class="nv">function</span><span class="ss">()</span>{
+    <span class="nv">var</span> <span class="nv">imgs</span><span class="o">=</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">.view_img</span><span class="s1">&#39;</span><span class="ss">)</span>
+    <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;imgs.length;i++){</span>
+        <span class="nv">imgs</span>[<span class="nv">i</span>].<span class="nv">style</span>.<span class="nv">height</span><span class="o">=</span><span class="nv">imgs</span>[<span class="nv">i</span>].<span class="nv">offsetWidth</span><span class="o">+</span><span class="s1">&#39;</span><span class="s">px</span><span class="s1">&#39;</span><span class="c1">;</span>
+    }
+}<span class="ss">)</span>
+</pre></div>
+
+
+<p>在手机web中，不拉伸页面大小其实这样做是可以了的。</p>
+<p>但是如果在pc段的页面中查看，拉伸下页面，图片的高度是不会跟着宽度变化的。</p>
+<p>查看了点资料，原来直接使用css样式也是可以做到宽按父组件的百分比设置，高根据宽的百分比设置的。</p>
+<p>代码如下 …</p>
+                <a class="readmore" href="/49180767.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/47907585.html" rel="bookmark"
+                           title="Permalink to 让bootstrap的carousel支持滑动滚屏">让bootstrap的carousel支持滑动滚屏</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-08-23T17:45:02+00:00">
+                Published: 日 23 八月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/47907585 </p>
+<p>原始的轮播组件，并不支持滑动滚屏：</p>
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;white-space:pre&quot;</span><span class="p">&gt;</span>  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;carousel-generic&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;carousel slide&quot;</span>
+                <span class="na">data-ride</span><span class="o">=</span><span class="s">&quot;carousel&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">ol</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;carousel-indicators&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;#carousel-generic&quot;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+                        <span class="na">class</span><span class="o">=</span><span class="s">&quot;active&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;#carousel-generic&quot;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&quot;1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;#carousel-generic …</span></pre></div>
+                <a class="readmore" href="/47907585.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46443723.html" rel="bookmark"
+                           title="Permalink to Flex上传文件">Flex上传文件</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-10T16:40:57+00:00">
+                Published: 三 10 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> <a href="/tag/flex.html">Flex</a> <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46443723 </p>
+<p>前几天写了一篇<a href="http://blog.csdn.net/i_chenjiahui/article/details/46349259">jsp页面利用ajaxFileUpload上传文件</a>，现在把flex上传页面也分享出来：</p>
+<p>前台页面</p>
+<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+    <span class="nt">&lt;s:HGroup</span> <span class="na">xmlns:fx=</span><span class="s">&quot;&lt;a target=_blank href=&quot;</span><span class="err">http://ns.adobe.com/mxml/2009&quot;</span><span class="nt">&gt;</span>http://ns.adobe.com/mxml/2009<span class="nt">&lt;/a&gt;</span>&quot;
+        xmlns:s=&quot;library://ns.adobe.com/flex/spark …</pre></div>
+                <a class="readmore" href="/46443723.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46425607.html" rel="bookmark"
+                           title="Permalink to easyui动态表头 && 动态添加tabs">easyui动态表头 && 动态添加tabs</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-09T13:05:22+00:00">
+                Published: 二 09 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/easyui.html">easyui</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46425607 </p>
+<p>今天在实现一个业务的时候，需要根据后台业务数据生成多个tab页，并且每个tab页中表格的表头需要根据数据动态生成。</p>
+<p>后台返回的数据格式如下：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150609131129904?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>实现方法如下：</p>
+<div class="highlight"><pre><span></span><span class="o">//</span>$<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span><span class="o">//</span>弹窗
+<span class="o">//</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#compareResTabs</span><span class="s1">&#39;</span><span class="ss">)</span><span class="o">//</span>弹窗内的<span class="nv">tab</span>页面
+<span class="nv">success</span>: <span class="nv">function</span><span class="ss">(</span><span class="nb">result</span><span class="ss">)</span> {
+ <span class="k">if</span><span class="ss">(</span><span class="nb">result</span>.<span class="nv">length</span><span class="o">==</span><span class="mi">0</span><span class="ss">)</span>{
+  <span class="nv">alert</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">无比对结果</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;</span>
+ }<span class="k">else</span>{
+  $<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span>.<span class="nv">window</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">open</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;//弹窗需要先打开，不然表格内容初始化不出来。</span>
+  <span class="o">//</span>循环创建<span class="nv">tab</span>
+  <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;result.length;i++){</span>
+   <span class="nv">var</span> <span class="nv">oneScene</span> <span class="o">=</span> <span class="nb">result …</span></pre></div>
+                <a class="readmore" href="/46425607.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46406863.html" rel="bookmark"
+                           title="Permalink to Flex根据数据，动态生成表格">Flex根据数据，动态生成表格</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-08T01:11:16+00:00">
+                Published: 一 08 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46406863 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。<img alt="微笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/smile.gif"></p>
+<p>在项目开发中，有这样的场景：前台页面的表格列需要通过查询的数据来生成。</p>
+<div class="highlight"><pre><span></span><span class="nv">public</span> <span class="nv">Map</span> <span class="nv">myMethod</span><span class="ss">()</span> {
+    <span class="o">//</span>此处省略部分代码，主要功能就是封装好表格数据和表头信息。  
+    <span class="nv">Map</span> <span class="nv">resM</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">HashMap</span><span class="ss">()</span><span class="c1">;</span>
+    <span class="nv">resM</span>.<span class="nv">put</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">head</span><span class="s2">&quot;</span>, <span class="nv">headNameList</span><span class="ss">)</span><span class="c1">;</span>
+    <span class="nv">resM</span>.<span class="nv">put</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">data</span><span class="s2">&quot;</span>, <span class="nv">dataList</span><span class="ss">)</span><span class="c1">;</span>
+    <span class="k">return</span> <span class="nv">resM</span><span class="c1">;</span>
+}
+</pre></div>
+
+
+<p>前台：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spark.components.gridClasses.GridColumn</span><span class="p">;</span>
+
+    <span class="n">protected</span> <span class="n">function</span> <span class="n">vgroup1_creationCompleteHandler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span><span class="n">FlexEvent</span><span class="p">):</span><span class="n">void</span>
+    <span class="p">{</span>
+        <span class="o">//</span> <span class="n">TODO …</span></pre></div>
+                <a class="readmore" href="/46406863.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46349259.html" rel="bookmark"
+                           title="Permalink to jsp借助了ajaxfileupload实现上传文件">jsp借助了ajaxfileupload实现上传文件</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-03T17:56:34+00:00">
+                Published: 三 03 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46349259 </p>
+<p>以往我用的上传文件都是Flex写的，最近html页面需要上传页面功能。</p>
+<p>相比之下，比flex还是要麻烦一些，问题也多一些。这里记录下：</p>
+<p>ajax上传文件，我用到了<a href="http://download.csdn.net/detail/nicky9470/8768957">ajaxfileupload.js</a>修正版。</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nv">form</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">addAttaForm</span><span class="s2">&quot;</span> <span class="nv">enctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">multipart/form-data</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">&gt;</span>请选择要上传的文件：<span class="o">&lt;/</span><span class="nv">label</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">file</span><span class="s2">&quot;</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="nv">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">button …</span></pre></div>
+                <a class="readmore" href="/46349259.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/45726553.html" rel="bookmark"
+                           title="Permalink to easyui动态生成页面元素时，easyui样式失效问题">easyui动态生成页面元素时，easyui样式失效问题</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-05-14T21:38:51+00:00">
+                Published: 四 14 五月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/jquery-easyui.html">jquery-easyui</a> <a href="/tag/easyui.html">easyui</a> <a href="/tag/javascript.html">javascript</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45726553 </p>
+<p>﻿﻿</p>
+<p>在前台页面动态生成easyui页面元素时，有时会发现，easyui的样式出不来，甚至页面不是想要的效果。</p>
+<p>多数原因是在页面加载完时执行的$(function(){}方法中动态生成元素。</p>
+<p>而调用$(function(){}方法时，页面已经渲染完毕，导致通过代码动态加载的元素，不会被自动渲染。</p>
+<p>解决方法：</p>
+<p>在加载完元素后，渲染组件即可：</p>
+<div class="highlight"><pre><span></span>      <span class="nx">$</span><span class="p">.</span><span class="nx">parser</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;#configTable&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>﻿﻿</p>
+                <a class="readmore" href="/45726553.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

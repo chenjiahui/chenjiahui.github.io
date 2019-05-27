@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>BugManager’s Blog - 运维</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li class="active"><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/23168327.html">Windows平台端口被占用处理</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-06-09T00:04:36+00:00">
+                Published: 二 09 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/yun-wei.html">运维</a>.</p>
+<p>tags: <a href="/tag/yun-wei.html">运维</a> </p>
+</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/23168327 </p>
+<p>端口查看&amp;关闭进程及Kill使用  </p>
+<p>1、Windows平台 <br>
+在windows命令行窗口下执行： <br>
+1.查看所有的端口占用情况 <br>
+C:>netstat -ano   </p>
+<p>协议 本地地址 外部地址 状态 PID <br>
+TCP 127.0.0.1:1434 0.0.0.0:0 LISTENING 3236 <br>
+TCP 127.0.0.1:5679 0.0.0.0:0 LISTENING 4168 <br>
+TCP 127.0.0.1:7438 0.0.0.0:0 LISTENING 4168 <br>
+TCP 127.0.0.1:8015 0.0.0.0:0 LISTENING 1456 <br>
+TCP 192.168.3.230:139 0.0.0.0:0 LISTENING 4 <br>
+TCP 192.168.3.230:1957 220.181.31.225:443 ESTABLISHED 3068 <br>
+TCP 192.168.3.230:2020 183.62.96.189:1522 ESTABLISHED 1456 <br>
+TCP 192.168.3.230:2927 117.79.91.18:80 ESTABLISHED 4732 <br>
+TCP 192.168.3.230:2929 117.79.91.18:80 ESTABLISHED 4732 <br>
+TCP 192.168.3.230:2930 117.79.91.18:80 ESTABLISHED 4732 <br>
+TCP 192.168.3.230:2931 117.79.91.18:80 ESTABLISHED 4732   </p>
+<p>2.查看指定端口的占用情况 <br>
+C:>netstat -aon|findstr "9050" <br>
+协议 本地地址 外部地址 状态 PID <br>
+TCP 127.0.0.1:9050 0.0.0.0:0 LISTENING 2016 <br>
+P: 看到了吗，端口被进程号为2016的进程占用，继续执行下面命令： （也可以去任务管理器中查看pid对应的进程） <br>
+3.查看PID对应的进程 <br>
+C:>tasklist|findstr "2016" <br>
+映像名称 PID 会话名 会话# 内存使用 <br>
+========================= ======== ================ <br>
+tor.exe 2016 Console 0 16,064 K   </p>
+<p>P:很清楚吧，tor占用了你的端口。   </p>
+<p>4.结束该进程(在某些情况下不适用)，如今天碰到的情况是java.exe占用了端口。在服务器上布置了多个tomcat, 不能盲目的将java.exe删除。但通过上一步可以知道对应的占用端口的那个java.exe的pid是多少。只需</p>
+<p>要在任务管理器中找到改pid删除即可。<br>
+C:>taskkill /f /t /im tor.exe</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

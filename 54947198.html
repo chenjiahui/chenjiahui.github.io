@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>JAVA生成总和及个数确定的一组随机数(抢红包)</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li class="active"><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/54947198.html" rel="bookmark"
+           title="Permalink to JAVA生成总和及个数确定的一组随机数(抢红包)">JAVA生成总和及个数确定的一组随机数(抢红包)</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-02-09T15:11:03+00:00">
+                Published: 四 09 二月 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/54947198 </p>
+<p>许久未碰java，写的有点拙。</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="p">;</span>
+<span class="o">/**</span>
+ <span class="o">*</span> 
+ <span class="o">*</span> <span class="nd">@author</span> <span class="n">chenjiahui</span>
+ <span class="o">*</span> <span class="nd">@2017</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">09</span>
+ <span class="o">*</span>
+ <span class="o">*/</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">Test</span> <span class="p">{</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">splitRedPacket</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1500</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;*****************&quot;</span><span class="p">);</span>
+        <span class="n">splitRedPacket</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="o">/**</span>
+     <span class="o">*</span> 
+     <span class="o">*</span> <span class="nd">@param</span> <span class="n">total</span>
+     <span class="o">*</span>            <span class="err">总金额</span>
+     <span class="o">*</span> <span class="nd">@param</span> <span class="n">splitCount</span>
+     <span class="o">*</span>            <span class="err">个数</span>
+     <span class="o">*</span> <span class="nd">@param</span> <span class="nb">min</span>
+     <span class="o">*</span>            <span class="err">最小金额</span>
+     <span class="o">*</span> <span class="nd">@param</span> <span class="nb">max</span>
+     <span class="o">*</span>            <span class="err">最大金额</span>
+     <span class="o">*/</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">splitRedPacket</span><span class="p">(</span><span class="nb">int</span> <span class="n">total</span><span class="p">,</span> <span class="nb">int</span> <span class="n">splitCount</span><span class="p">,</span> <span class="nb">int</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">int</span> <span class="nb">max</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;总金额：    &quot;</span> <span class="o">+</span> <span class="n">total</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;个数： &quot;</span> <span class="o">+</span> <span class="n">splitCount</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;最小金额：   &quot;</span> <span class="o">+</span> <span class="nb">min</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;最大金额：   &quot;</span> <span class="o">+</span> <span class="nb">max</span><span class="p">);</span>
+
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">al</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="n">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Random</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">((</span><span class="n">splitCount</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="o">//</span> <span class="err">奇数个红包，需要单独将其中一个红包先生成，以保证后续算法拆分份数为偶数。</span>
+            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;红包个数&quot;</span> <span class="o">+</span> <span class="n">splitCount</span> <span class="o">+</span> <span class="s2">&quot;是奇数，单独生成一个红包&quot;</span><span class="p">);</span>
+            <span class="nb">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="n">do</span> <span class="p">{</span>
+                <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextInt</span><span class="p">(</span><span class="nb">max</span><span class="p">);</span>
+                <span class="o">//</span> <span class="n">num</span> <span class="o">=</span> <span class="p">(</span><span class="n">total</span> <span class="o">-</span> <span class="n">num</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">splitCount</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">num</span><span class="p">;</span> <span class="o">//</span>
+                <span class="o">//</span> <span class="err">将后面算法拆分时的余数加入到这个随机值中。</span>
+                <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;单个的随机红包为：&quot;</span> <span class="o">+</span> <span class="n">num</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;=</span> <span class="nb">max</span> <span class="o">||</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="nb">min</span><span class="p">);</span>
+
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">40000</span> <span class="o">-</span> <span class="n">num</span><span class="p">;</span>
+            <span class="n">al</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nb">int</span> <span class="n">couples</span> <span class="o">=</span> <span class="n">splitCount</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nb">int</span> <span class="n">perCoupleSum</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="n">couples</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">((</span><span class="n">splitCount</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;处理后剩余的金额为：&quot;</span> <span class="o">+</span> <span class="n">total</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;将&quot;</span> <span class="o">+</span> <span class="n">total</span> <span class="o">+</span> <span class="s2">&quot;元拆分为&quot;</span> <span class="o">+</span> <span class="n">couples</span> <span class="o">+</span> <span class="s2">&quot;对金额，每对总额：&quot;</span> <span class="o">+</span> <span class="n">perCoupleSum</span><span class="p">);</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">couples</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Boolean</span> <span class="n">finish</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+            <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="n">do</span> <span class="p">{</span>
+                <span class="n">num1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextInt</span><span class="p">(</span><span class="nb">max</span><span class="p">);</span>
+                <span class="n">num2</span> <span class="o">=</span> <span class="n">perCoupleSum</span> <span class="o">-</span> <span class="n">num1</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="err">!</span><span class="n">al</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">num1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="err">!</span><span class="n">al</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">num2</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">num1</span> <span class="o">=</span> <span class="p">(</span><span class="n">total</span> <span class="o">-</span> <span class="n">couples</span> <span class="o">*</span> <span class="n">perCoupleSum</span><span class="p">)</span> <span class="o">+</span> <span class="n">num1</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">num1</span> <span class="o">&lt;</span> <span class="nb">min</span> <span class="o">||</span> <span class="n">num1</span> <span class="o">&gt;</span> <span class="nb">max</span> <span class="o">||</span> <span class="n">num2</span> <span class="o">&lt;</span> <span class="nb">min</span> <span class="o">||</span> <span class="n">num2</span> <span class="o">&gt;</span> <span class="nb">max</span><span class="p">);</span>
+            <span class="n">al</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num1</span><span class="p">);</span>
+            <span class="n">al</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num2</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nb">int</span> <span class="n">check_num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">Integer</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="n">al</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">new</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="n">public</span> <span class="nb">int</span> <span class="n">compare</span><span class="p">(</span><span class="n">Integer</span> <span class="n">o1</span><span class="p">,</span> <span class="n">Integer</span> <span class="n">o2</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">Integer</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">Arrays</span><span class="o">.</span><span class="n">toString</span><span class="p">(</span><span class="n">al</span><span class="o">.</span><span class="n">toArray</span><span class="p">()));</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">x</span> <span class="p">:</span> <span class="n">al</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">check_num</span> <span class="o">=</span> <span class="n">check_num</span> <span class="o">+</span> <span class="n">x</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;验证总和：&quot;</span> <span class="o">+</span> <span class="n">check_num</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

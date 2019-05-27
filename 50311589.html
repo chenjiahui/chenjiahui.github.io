@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>APP端webview自动播放视频</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li class="active"><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/50311589.html" rel="bookmark"
+           title="Permalink to APP端webview自动播放视频">APP端webview自动播放视频</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-15T10:46:56+00:00">
+                Published: 二 15 十二月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/50311589 </p>
+<p>昨天碰到一需求，需要写一个html5页面，要求支持打开自动播放视频。</p>
+<p>ok，要支持自动播放，设置<video>的autoplay="autoplay"就可以了吧。</p>
+<p>测试发现只有在浏览器中是正常播放了，android和ios都没有播放。</p>
+<p>换了种写法：</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span> <span class="n">onload</span><span class="o">=</span><span class="ss">&quot;playVideo();&quot;</span><span class="o">&gt;</span>
+
+
+<span class="k">function</span> <span class="n">playVideo</span><span class="p">()</span><span class="err">{</span>
+    <span class="n">var</span> <span class="n">video</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">getElementById</span><span class="p">(</span><span class="ss">&quot;alt-player-ios&quot;</span><span class="p">);</span> 
+    <span class="n">video</span><span class="p">.</span><span class="n">play</span><span class="p">();</span> 
+<span class="err">}</span>
+</pre></div>
+
+
+<p>android的webview中可以自动播放了。（android以前设置过允许执行javascript，如果大家不能自动播放的话可能需要设置这个）。 </p>
+<p>ios需要添加webview的属性设置：</p>
+<div class="highlight"><pre><span></span><span class="n">_webView</span><span class="p">.</span><span class="n">mediaPlaybackRequiresUserAction</span> <span class="o">=</span> <span class="k">NO</span><span class="p">;</span>
+</pre></div>
+
+
+<p>ok，能自动播放了。 </p>
+<p>如果希望自动播放时不要全屏，那么嗨需要设置下面的属性：</p>
+<div class="highlight"><pre><span></span><span class="n">_webView</span><span class="p">.</span><span class="n">allowsInlineMediaPlayback</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
+</pre></div>
+
+
+<p>参考资料：</p>
+<p>http://my.oschina.net/u/2340880/blog/469916  </p>
+<p>http://www.xuanfengge.com/html5-video-play.html  </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

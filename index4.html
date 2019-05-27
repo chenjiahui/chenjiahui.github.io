@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>BugManager’s Blog</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46997303.html" rel="bookmark"
+                           title="Permalink to hadoop学习笔记之HDFS">hadoop学习笔记之HDFS</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-07-22T07:33:37+00:00">
+                Published: 三 22 七月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/hadoop.html">hadoop</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46997303 </p>
+<p>HDFS：Hadoop Distributed File System 分布式文件系统，其操作方式与linux相似，使用指令之前要在前面加上dfs。（注意：hdfs没有当前目录的概念，不能使用cd命令）</p>
+<p>常规操作命令：</p>
+<div class="highlight"><pre><span></span>     dfs -put ../hello hello
+     dfs -ls
+     dfs -get hello ./mypath/hello
+     dfs -rmr hello
+     dfs -cat part-r-00000 //打开文件，查看内容
+     dfsadmin -report //hdfs的信息情况
+</pre></div>
+
+
+<p>客户端如何从HDFS上 <strong>获取文件</strong> 呢？以获取文件名为“hello …</p>
+                <a class="readmore" href="/46997303.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/20150616225821.html" rel="bookmark"
+                           title="Permalink to Flex列排序">Flex列排序</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-16T22:58:21+00:00">
+                Published: 二 16 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">format</span><span class="o">:</span><span class="nx">DateFormatter</span><span class="o">=</span><span class="k">new</span> <span class="nx">DateFormatter</span><span class="p">();</span>
+<span class="nx">format</span><span class="p">.</span><span class="nx">formatString</span><span class="o">=</span><span class="s2">&quot;YYYY-MM-DD JJ:NN:SS&quot;</span> 
+<span class="nx">format</span><span class="p">.</span><span class="nx">error</span> <span class="o">=</span> <span class="s2">&quot;日期转换时出错&quot;</span><span class="p">;</span>
+<span class="k">for</span> <span class="nx">each</span><span class="p">(</span><span class="kd">var</span> <span class="nx">o</span><span class="o">:</span><span class="nb">Object</span> <span class="k">in</span> <span class="nx">ac</span><span class="p">){</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">sender_time2</span> <span class="o">=</span> <span class="nx">o</span><span class="p">.</span><span class="nx">org_sender_time</span><span class="p">;</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">receive_time2</span> <span class="o">=</span> <span class="nx">o</span><span class="p">.</span><span class="nx">org_receive_time</span><span class="p">;</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">org_sender_time</span> <span class="o">=</span> <span class="nx">format</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">org_sender_time</span><span class="p">);</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">org_receive_time</span> <span class="o">=</span> <span class="nx">format</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">org_receive_time</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="kr">private</span> <span class="kd">function</span> <span class="nx">subtractionDay</span><span class="p">(</span><span class="nx">day</span><span class="o">:</span><span class="kr">int</span><span class="p">,</span> <span class="nx">mydate</span><span class="o">:</span><span class="nb">Date</span><span class="p">)</span><span class="o">:</span><span class="nb">Date</span> 
+<span class="p">{</span> 
+    <span class="kd">var …</span></pre></div>
+                <a class="readmore" href="/20150616225821.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46412397.html" rel="bookmark"
+                           title="Permalink to Flex列排序">Flex列排序</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-13T19:56:27+00:00">
+                Published: 六 13 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <p>第一种：new一个sort，指定排序字段，然后赋给AdvancedDataGrid数据源的sort属性</p>
+<div class="highlight"><pre><span></span><span class="k">var</span> <span class="nx">sort</span><span class="o">:</span><span class="nx">Sort</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mx</span><span class="p">.</span><span class="nx">collections</span><span class="p">.</span><span class="nx">Sort</span><span class="p">();</span>    
+<span class="nx">sort</span><span class="p">.</span><span class="nx">fields</span> <span class="o">=</span> <span class="p">[</span><span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;device_type&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)</span><span class="o">,</span>
+<span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;company&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)</span><span class="o">,</span>
+<span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;dist&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)</span><span class="o">,</span>
+<span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;device_name_sort&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)];</span>
+
+<span class="nx">adv1</span><span class="p">.</span><span class="nx">dataProvider</span><span class="p">.</span><span class="nx">sort</span><span class="o">=</span><span class="nx">sort</span><span class="o">;</span>
+<span class="nx">adv1</span><span class="p">.</span><span class="nx">dataProvider</span><span class="p">.</span><span class="nx">refresh</span><span class="p">();</span>
+</pre></div>
+
+
+<p>第二种：如果你的数据源是array，则使用array的sortOn方法，指定排序字段，如下：</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">children</span> <span class="nx">as</span> <span class="nb">Array</span><span class="p">).</span><span class="nx">sortOn …</span></pre></div>
+                <a class="readmore" href="/46412397.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46409997.html" rel="bookmark"
+                           title="Permalink to Flex自定义进度条样式">Flex自定义进度条样式</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-10T21:41:56+00:00">
+                Published: 三 10 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <p>flex页面在加载图片时，图片可能是圆角的，拉伸会导致圆角变形，这时就要用到九宫格拉伸：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;s:Image</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span> <span class="na">height=</span><span class="s">&quot;100%&quot;</span>
+         <span class="na">source=</span><span class="s">&quot;@Embed(source=&#39;assets/images/index/panelBg2.PNG&#39;,</span>
+<span class="s">         scaleGridTop=40,scaleGridBottom=350,scaleGridLeft=7,scaleGridRight=525)&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>这样就只会拉伸4个点所限定的内部区域 外部的像素大小不变</p>
+                <a class="readmore" href="/46409997.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46443723.html" rel="bookmark"
+                           title="Permalink to Flex上传文件">Flex上传文件</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-10T16:40:57+00:00">
+                Published: 三 10 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> <a href="/tag/flex.html">Flex</a> <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46443723 </p>
+<p>前几天写了一篇<a href="http://blog.csdn.net/i_chenjiahui/article/details/46349259">jsp页面利用ajaxFileUpload上传文件</a>，现在把flex上传页面也分享出来：</p>
+<p>前台页面</p>
+<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+    <span class="nt">&lt;s:HGroup</span> <span class="na">xmlns:fx=</span><span class="s">&quot;&lt;a target=_blank href=&quot;</span><span class="err">http://ns.adobe.com/mxml/2009&quot;</span><span class="nt">&gt;</span>http://ns.adobe.com/mxml/2009<span class="nt">&lt;/a&gt;</span>&quot;
+        xmlns:s=&quot;library://ns.adobe.com/flex/spark …</pre></div>
+                <a class="readmore" href="/46443723.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46406770.html" rel="bookmark"
+                           title="Permalink to Flex自定义进度条样式">Flex自定义进度条样式</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-09T22:15:19+00:00">
+                Published: 二 09 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <p>CustomProgressBar.mxml</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;s:GridItemRenderer</span> <span class="na">xmlns:fx=</span><span class="s">&quot;http://ns.adobe.com/mxml/2009&quot;</span> 
+                    <span class="na">xmlns:s=</span><span class="s">&quot;library://ns.adobe.com/flex/spark&quot;</span> 
+                    <span class="na">xmlns:mx=</span><span class="s">&quot;library://ns.adobe.com/flex/mx&quot;</span> <span class="na">clipAndEnableScrolling=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;fx:Script&gt;</span>
+        <span class="cp">&lt;![CDATA[</span>
+<span class="cp">            import mx.skins.spark.ProgressBarSkin;</span>
+<span class="cp">            [Bindable]</span>
+<span class="cp">            [Embed(source=&quot;/assets/daihecha/green …</span></pre></div>
+                <a class="readmore" href="/46406770.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46425607.html" rel="bookmark"
+                           title="Permalink to easyui动态表头 && 动态添加tabs">easyui动态表头 && 动态添加tabs</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-09T13:05:22+00:00">
+                Published: 二 09 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/easyui.html">easyui</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46425607 </p>
+<p>今天在实现一个业务的时候，需要根据后台业务数据生成多个tab页，并且每个tab页中表格的表头需要根据数据动态生成。</p>
+<p>后台返回的数据格式如下：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150609131129904?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>实现方法如下：</p>
+<div class="highlight"><pre><span></span><span class="o">//</span>$<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span><span class="o">//</span>弹窗
+<span class="o">//</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#compareResTabs</span><span class="s1">&#39;</span><span class="ss">)</span><span class="o">//</span>弹窗内的<span class="nv">tab</span>页面
+<span class="nv">success</span>: <span class="nv">function</span><span class="ss">(</span><span class="nb">result</span><span class="ss">)</span> {
+ <span class="k">if</span><span class="ss">(</span><span class="nb">result</span>.<span class="nv">length</span><span class="o">==</span><span class="mi">0</span><span class="ss">)</span>{
+  <span class="nv">alert</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">无比对结果</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;</span>
+ }<span class="k">else</span>{
+  $<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span>.<span class="nv">window</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">open</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;//弹窗需要先打开，不然表格内容初始化不出来。</span>
+  <span class="o">//</span>循环创建<span class="nv">tab</span>
+  <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;result.length;i++){</span>
+   <span class="nv">var</span> <span class="nv">oneScene</span> <span class="o">=</span> <span class="nb">result …</span></pre></div>
+                <a class="readmore" href="/46425607.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46406772.html" rel="bookmark"
+                           title="Permalink to Flex_抛自定义事件">Flex_抛自定义事件</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-09T00:16:25+00:00">
+                Published: 二 09 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">function</span> <span class="nx">getCount</span><span class="p">(</span><span class="nx">o</span><span class="o">:</span><span class="nb">Object</span><span class="p">)</span><span class="o">:</span><span class="nb">int</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nx">sum</span><span class="o">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">children</span><span class="p">){</span>
+        <span class="k">for</span> <span class="k">each</span><span class="p">(</span><span class="k">var</span> <span class="nx">object</span><span class="o">:</span><span class="nb">Object</span> <span class="k">in</span> <span class="nx">o</span><span class="p">.</span><span class="nx">children</span><span class="p">){</span>
+            <span class="nx">sum</span> <span class="o">+=</span><span class="p">(</span><span class="nx">getCount</span><span class="p">(</span><span class="nx">object</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">sum</span><span class="o">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nx">sum</span> <span class="o">++;</span>
+        <span class="k">return</span> <span class="nx">sum</span><span class="o">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+                <a class="readmore" href="/46406772.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/23168327.html" rel="bookmark"
+                           title="Permalink to Windows平台端口被占用处理">Windows平台端口被占用处理</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-09T00:04:36+00:00">
+                Published: 二 09 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/yun-wei.html">运维</a>.</p>
+<p>tags: <a href="/tag/yun-wei.html">运维</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/23168327 </p>
+<p>端口查看&amp;关闭进程及Kill使用  </p>
+<p>1、Windows平台 <br>
+在windows命令行窗口下执行： <br>
+1.查看所有的端口占用情况 <br>
+C:>netstat -ano   </p>
+<p>协议 本地地址 外部地址 状态 PID <br>
+TCP 127.0.0.1:1434 0.0.0.0:0 LISTENING 3236 <br>
+TCP 127.0.0.1:5679 0.0.0.0:0 …</p>
+                <a class="readmore" href="/23168327.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46419465.html" rel="bookmark"
+                           title="Permalink to 集群负载均衡算法原理">集群负载均衡算法原理</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-08T23:05:17+00:00">
+                Published: 一 08 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/ji-qun.html">集群</a>.</p>
+<p>tags: <a href="/tag/ji-qun.html">集群</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46419465 </p>
+<p>最近打算往互联网方向发展，研究了下集群的负载均衡。其实早就应该去了解学习了。如有理解不到位的地方，还望各大神指出。</p>
+<p>负载均衡算法是集群在调度时，选择具体调度和分发方式的逻辑。</p>
+<p>目前流行和常用的算法有：轮询算法，Hash算法，Session，最小连接数，最大空闲等。</p>
+<p>1、轮询算法：</p>
+<p>实现方式：把每一次的用户请求，按顺序循环分配给集群内部的一台服务器。优点是算法简洁，无状态。</p>
+<p>2、权重轮询算法</p>
+<p>由于服务器的处理能力不同，可以再给服务器加权。也就是权重轮询算法。</p>
+<p>3、Hash算法</p>
+<p>一般就是将请求中的某项数据做hash运算，然后根据集群的服务器总数n取模，根据取模后的值分配服务器。</p>
+<p>一般可以根据请求时间，请求来源的ip等来做散列运算。</p>
+<p>java中哈希值的算法：</p>
+<div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="ss">&quot;hello&quot;</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">s …</span></pre></div>
+                <a class="readmore" href="/46419465.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/index3.html">&laquo;</a>
+    Page 4 / 7
+        <a href="/index5.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

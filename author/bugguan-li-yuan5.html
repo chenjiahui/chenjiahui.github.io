@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>BugManager’s Blog - Bug管理员</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46406927.html" rel="bookmark"
+                           title="Permalink to 获得当前用户的ip">获得当前用户的ip</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-08T01:21:14+00:00">
+                Published: 一 08 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46406927 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。
+<img alt="微笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/smile.gif"></p>
+<p>java获取当前用户的ip</p>
+<div class="highlight"><pre><span></span>    <span class="n">String</span> <span class="n">modify_user_ip</span> <span class="o">=</span> <span class="o">((</span><span class="n">ServletRequestAttributes</span><span class="o">)</span> <span class="o">(</span><span class="n">RequestContextHolder</span>
+                        <span class="o">.</span><span class="na">getRequestAttributes</span><span class="o">())).</span><span class="na">getRequest</span><span class="o">().</span><span class="na">getRemoteAddr</span><span class="o">();</span>
+</pre></div>
+
+
+<p>﻿﻿</p>
+                <a class="readmore" href="/46406927.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46406863.html" rel="bookmark"
+                           title="Permalink to Flex根据数据，动态生成表格">Flex根据数据，动态生成表格</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-08T01:11:16+00:00">
+                Published: 一 08 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46406863 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。<img alt="微笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/smile.gif"></p>
+<p>在项目开发中，有这样的场景：前台页面的表格列需要通过查询的数据来生成。</p>
+<div class="highlight"><pre><span></span><span class="nv">public</span> <span class="nv">Map</span> <span class="nv">myMethod</span><span class="ss">()</span> {
+    <span class="o">//</span>此处省略部分代码，主要功能就是封装好表格数据和表头信息。  
+    <span class="nv">Map</span> <span class="nv">resM</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">HashMap</span><span class="ss">()</span><span class="c1">;</span>
+    <span class="nv">resM</span>.<span class="nv">put</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">head</span><span class="s2">&quot;</span>, <span class="nv">headNameList</span><span class="ss">)</span><span class="c1">;</span>
+    <span class="nv">resM</span>.<span class="nv">put</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">data</span><span class="s2">&quot;</span>, <span class="nv">dataList</span><span class="ss">)</span><span class="c1">;</span>
+    <span class="k">return</span> <span class="nv">resM</span><span class="c1">;</span>
+}
+</pre></div>
+
+
+<p>前台：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spark.components.gridClasses.GridColumn</span><span class="p">;</span>
+
+    <span class="n">protected</span> <span class="n">function</span> <span class="n">vgroup1_creationCompleteHandler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span><span class="n">FlexEvent</span><span class="p">):</span><span class="n">void</span>
+    <span class="p">{</span>
+        <span class="o">//</span> <span class="n">TODO …</span></pre></div>
+                <a class="readmore" href="/46406863.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46406773.html" rel="bookmark"
+                           title="Permalink to Flex_抛自定义事件">Flex_抛自定义事件</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-08T00:56:12+00:00">
+                Published: 一 08 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46406773 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。!</p>
+<p>flex_抛自定义事件</p>
+<div class="highlight"><pre><span></span>    <span class="k">for</span> <span class="k">each</span><span class="p">(</span><span class="k">var</span> <span class="nx">nc</span><span class="o">:</span><span class="nx">HBox</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="nx">superTabnav</span><span class="p">.</span><span class="nx">getChildren</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">nc</span><span class="p">.</span><span class="nx">id</span><span class="o">==</span><span class="nx">ncId</span><span class="p">){</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">superTabnav</span><span class="p">.</span><span class="nx">selectedChild</span><span class="o">=</span><span class="nx">nc</span><span class="o">;</span>
+            <span class="k">var</span> <span class="nx">uiComponent</span><span class="o">:</span><span class="nx">UIComponent</span> <span class="o">=</span> <span class="nx">nc</span><span class="p">.</span><span class="nx">getChildAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="nx">as</span> <span class="nx">UIComponent</span><span class="o">;</span>
+            <span class="nx">uiComponent</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="k">new</span> <span class="nb">Event</span><span class="p">(</span><span class="s2">&quot;showRef&quot;</span><span class="p">));</span><span class="c1">//抛事件</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">workorderlist</span><span class="p">.</span><span class="nx">currentListItem …</span></pre></div>
+                <a class="readmore" href="/46406773.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46406745.html" rel="bookmark"
+                           title="Permalink to Flex给组件添加滚动条">Flex给组件添加滚动条</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-08T00:54:53+00:00">
+                Published: 一 08 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46406745 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，</p>
+<p>在flex前台，有时会出现页面撑出付组件，而不出现滚动条的情况。（时间过去很久了，具体的场景记不起来了。）</p>
+<p>可以再外面加一层Scroller 解决。</p>
+<div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">s:Scroller</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;100%&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">s:Group</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">mx:Grid</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;grid&quot;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">borderColor</span><span class="o">=</span><span class="s">&quot;#E6E6E6&quot;</span> <span class="na">borderStyle</span><span class="o">=</span><span class="s">&quot;none&quot;</span> <span class="na">horizontalGap</span><span class="o">=</span><span class="s">&quot;-1&quot;</span>
+                         <span class="na">verticalGap</span><span class="o">=</span><span class="s">&quot;-1&quot;</span> <span class="p">&gt;</span>
+
+                <span class="p">&lt;/</span><span class="nt">mx:Grid</span><span class="p">&gt;</span>      
+            <span class="p">&lt;/</span><span class="nt">s:Group</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">s:Scroller</span><span class="p">&gt;</span>
+</pre></div>
+                <a class="readmore" href="/46406745.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46406725.html" rel="bookmark"
+                           title="Permalink to flex_进度条样式">flex_进度条样式</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-08T00:46:26+00:00">
+                Published: 一 08 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46406725 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。<img alt="微笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/smile.gif"></p>
+<p>一共4个文件：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150608004825249?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>JinDuTiaoItem.mxml：</p>
+<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+    <span class="nt">&lt;s:GridItemRenderer</span> <span class="na">xmlns:fx=</span><span class="s">&quot;http://ns.adobe.com/mxml/2009&quot;</span> 
+                        <span class="na">xmlns:s=</span><span class="s">&quot;library://ns.adobe.com/flex/spark&quot;</span> 
+                        <span class="na">xmlns:mx=</span><span class="s">&quot;library://ns.adobe.com/flex/mx …</span></pre></div>
+                <a class="readmore" href="/46406725.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46349259.html" rel="bookmark"
+                           title="Permalink to jsp借助了ajaxfileupload实现上传文件">jsp借助了ajaxfileupload实现上传文件</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-03T17:56:34+00:00">
+                Published: 三 03 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46349259 </p>
+<p>以往我用的上传文件都是Flex写的，最近html页面需要上传页面功能。</p>
+<p>相比之下，比flex还是要麻烦一些，问题也多一些。这里记录下：</p>
+<p>ajax上传文件，我用到了<a href="http://download.csdn.net/detail/nicky9470/8768957">ajaxfileupload.js</a>修正版。</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nv">form</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">addAttaForm</span><span class="s2">&quot;</span> <span class="nv">enctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">multipart/form-data</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">&gt;</span>请选择要上传的文件：<span class="o">&lt;/</span><span class="nv">label</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">file</span><span class="s2">&quot;</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="nv">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">button …</span></pre></div>
+                <a class="readmore" href="/46349259.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/45844141.html" rel="bookmark"
+                           title="Permalink to activiti的组任务开发">activiti的组任务开发</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-05-19T14:09:53+00:00">
+                Published: 二 19 五月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/activiti.html">activiti</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45844141 </p>
+<p>在工作中使用到了将任务派发给用户组处理，第一次使用，查了点资料，写了个demo。</p>
+<p>首先，查看数据库中关于用户、用户组的表结构：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150519141150125?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>可以看出来，用户、用户组相关的表其实与其他的activiti表无关联。我们可以使用自己的一套用户、用户组管理，而且官方也是建议使用自己的用户用户组权限管理的。</p>
+<p>怎么使用自己的用户、用户组管理以后会在另写一篇，这里就不介绍了。</p>
+<p>首先我们创建一个测试用的bpmn</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150519141718989?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>如上图中，我们对Group Task节点，添加了两个用户组：groupB和GroupC。注意，要用英文逗号。</p>
+<p>在用户表，用户组表，关系表中插入用户、用户组，以及关联信息。</p>
+<p>用户表：act_id_user</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150519142436460?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
+<p>用户组表：act_id_group</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150519142620403?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
+<p>关系表：act_id_membership</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150519142936219?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
+<p>将流程定义跑到Group Task节点，查询用户组任务。</p>
+<div class="highlight"><pre><span></span><span class="nv">List …</span></pre></div>
+                <a class="readmore" href="/45844141.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/46400887.html" rel="bookmark"
+                           title="Permalink to JDK自带工具jps，jstat，jmap，jconsole使用">JDK自带工具jps，jstat，jmap，jconsole使用</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-05-19T14:09:53+00:00">
+                Published: 二 19 五月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46400887 </p>
+<p><strong>jps</strong></p>
+<p>与ps命令类似：</p>
+<div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">ef</span><span class="o">|</span><span class="n">grep</span> <span class="n">java</span>
+</pre></div>
+
+
+<p>用来显示本地的java进程，查看本地运行着几个java应用，并显示进程号。</p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w">   </span><span class="o">//</span><span class="n">只显示进程号</span><span class="w"></span>
+<span class="mi">23813</span><span class="w"> </span><span class="n">Jps</span><span class="w"></span>
+<span class="mi">710</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
+<span class="mi">792</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
+
+
+<span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w">    </span><span class="o">//</span><span class="n">显示jvm参数</span><span class="w"></span>
+<span class="mi">23852</span><span class="w"> </span><span class="n">Jps</span><span class="w"> </span><span class="o">-</span><span class="n">Denv</span><span class="p">.</span><span class="k">class</span><span class="p">.</span><span class="k">path</span><span class="o">=</span><span class="p">.</span><span class="err">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.6.0</span><span class="n">_21</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dt</span><span class="p">.</span><span class="nl">jar</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1 …</span></pre></div>
+                <a class="readmore" href="/46400887.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/45726553.html" rel="bookmark"
+                           title="Permalink to easyui动态生成页面元素时，easyui样式失效问题">easyui动态生成页面元素时，easyui样式失效问题</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-05-14T21:38:51+00:00">
+                Published: 四 14 五月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/jquery-easyui.html">jquery-easyui</a> <a href="/tag/easyui.html">easyui</a> <a href="/tag/javascript.html">javascript</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45726553 </p>
+<p>﻿﻿</p>
+<p>在前台页面动态生成easyui页面元素时，有时会发现，easyui的样式出不来，甚至页面不是想要的效果。</p>
+<p>多数原因是在页面加载完时执行的$(function(){}方法中动态生成元素。</p>
+<p>而调用$(function(){}方法时，页面已经渲染完毕，导致通过代码动态加载的元素，不会被自动渲染。</p>
+<p>解决方法：</p>
+<p>在加载完元素后，渲染组件即可：</p>
+<div class="highlight"><pre><span></span>      <span class="nx">$</span><span class="p">.</span><span class="nx">parser</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;#configTable&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>﻿﻿</p>
+                <a class="readmore" href="/45726553.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/45668341.html" rel="bookmark"
+                           title="Permalink to maven下载flex依赖的jar包失败，解决办法">maven下载flex依赖的jar包失败，解决办法</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-05-12T13:30:26+00:00">
+                Published: 二 12 五月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/maven.html">maven</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45668341 </p>
+<p>在开发过程中，有的时候会碰到个别jar包在maven仓库中未提供的情况。比如flex相关的一些jar包。</p>
+<p>如果自己公司没有私服，则可以通过自己下载jar包放在项目中，如：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150512133452830?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>再在pom.xml中添加本地依赖：</p>
+<div class="highlight"><pre><span></span> <span class="nt">&lt;dependency&gt;</span> 
+      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
+      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
+      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
+      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
+      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/blazeds-common-4.0.0.14931.jar<span class="nt">&lt;/systemPath&gt;</span> 
+  <span class="nt">&lt;/dependency&gt;</span>
+  <span class="nt">&lt;dependency&gt;</span> 
+      <span class="nt">&lt;groupId …</span></pre></div>
+                <a class="readmore" href="/45668341.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/author/bugguan-li-yuan4.html">&laquo;</a>
+    Page 5 / 7
+        <a href="/author/bugguan-li-yuan6.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

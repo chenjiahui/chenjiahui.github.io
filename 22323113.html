@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>【code】java_方法执行sql返回一个key</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li class="active"><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/22323113.html" rel="bookmark"
+           title="Permalink to 【code】java_方法执行sql返回一个key">【code】java_方法执行sql返回一个key</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-27T21:51:24+00:00">
+                Published: 四 27 三月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/22323113 </p>
+<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/22323113">http://blog.csdn.net/i_chenjiahui/article/details/22323113</a></p>
+<p>在开发中遇到了将一条数据插入到数据库的同时，又需要获得这个条数据的所自动生成的key值的场景。</p>
+<div class="highlight"><pre><span></span><span class="k">Map</span> <span class="k">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="p">();</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;order_id&quot;</span><span class="p">,</span> <span class="n">orderId</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;scene_id&quot;</span><span class="p">,</span> <span class="n">senceId</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;device_type&quot;</span><span class="p">,</span> <span class="n">deviceType</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;device_company&quot;</span><span class="p">,</span> <span class="n">company</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;redo_info&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;state&quot;</span><span class="p">,</span> <span class="ss">&quot;当前&quot;</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;order_flow_node_record_id&quot;</span><span class="p">,</span> <span class="n">order_flow_node_record_id</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;check_type&quot;</span><span class="p">,</span> <span class="n">check_type</span><span class="p">);</span>
+
+   <span class="n">this</span><span class="p">.</span><span class="n">simplejdbcinsert</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleJdbcInsert</span><span class="p">(</span><span class="n">jdbcTemplate</span><span class="p">)</span>
+   <span class="p">.</span><span class="n">withTableName</span><span class="p">(</span><span class="ss">&quot;test_table&quot;</span><span class="p">)</span>
+   <span class="p">.</span><span class="n">usingColumns</span><span class="p">(</span><span class="ss">&quot;order_id&quot;</span><span class="p">,</span> <span class="ss">&quot;scene_id&quot;</span><span class="p">,</span> <span class="ss">&quot;device_type&quot;</span><span class="p">,</span>
+       <span class="ss">&quot;device_company&quot;</span><span class="p">,</span> <span class="ss">&quot;redo_info&quot;</span><span class="p">,</span> <span class="ss">&quot;state&quot;</span><span class="p">,</span>
+       <span class="ss">&quot;order_flow_node_record_id&quot;</span><span class="p">,</span> <span class="ss">&quot;check_type&quot;</span><span class="p">)</span>
+   <span class="p">.</span><span class="n">usingGeneratedKeyColumns</span><span class="p">(</span><span class="ss">&quot;id&quot;</span><span class="p">);</span>
+   <span class="nb">Number</span> <span class="n">newKey</span> <span class="o">=</span>  <span class="n">simplejdbcinsert</span>
+   <span class="p">.</span><span class="n">executeAndReturnKey</span><span class="p">(</span><span class="k">map</span><span class="p">);</span>
+   <span class="nb">int</span> <span class="n">newId</span> <span class="o">=</span> <span class="n">newKey</span><span class="p">.</span><span class="n">intValue</span><span class="p">();</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>Flex DataGrid行自定义颜色</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/22393821.html" rel="bookmark"
+           title="Permalink to Flex DataGrid行自定义颜色">Flex DataGrid行自定义颜色</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-28T13:26:41+00:00">
+                Published: 五 28 三月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->      <p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/22393821">http://blog.csdn.net/i_chenjiahui/article/details/22393821</a></p>
+<p>以前在Flex开发中用到了表格要自定义行颜色的情况。</p>
+<p><img alt="" src="https://img-blog.csdn.net/20140328132526203?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
+<div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">ActionScript</span> <span class="nb">file</span> 
+ <span class="o">*</span> <span class="nd">@author</span> <span class="n">chenjiahui</span>
+ <span class="o">*/</span> 
+<span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">xxx</span><span class="o">.</span><span class="n">dm</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">jsjhcNew</span>
+<span class="p">{</span>
+ <span class="kn">import</span> <span class="nn">flash.display.Sprite</span><span class="p">;</span>
+
+ <span class="kn">import</span> <span class="nn">mx.controls.AdvancedDataGrid</span><span class="p">;</span>
+
+ <span class="n">public</span> <span class="k">class</span> <span class="nc">RowColorAdvancedDataGrid</span> <span class="n">extends</span> <span class="n">AdvancedDataGrid</span>
+ <span class="p">{</span>
+  <span class="n">public</span> <span class="n">function</span> <span class="n">RowColorAdvancedDataGrid</span><span class="p">()</span>
+  <span class="p">{</span>
+   <span class="nb">super</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="n">override</span> <span class="n">protected</span> <span class="n">function</span> <span class="n">drawRowBackground</span><span class="p">(</span>
+   <span class="n">s</span><span class="p">:</span><span class="n">Sprite</span><span class="p">,</span> <span class="n">rowIndex</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">Number</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span><span class="n">Number</span><span class="p">,</span> 
+   <span class="n">color</span><span class="p">:</span><span class="n">uint</span><span class="p">,</span> <span class="n">dataIndex</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span><span class="n">void</span>
+  <span class="p">{</span>
+   <span class="n">var</span> <span class="n">item</span><span class="p">:</span><span class="n">Object</span><span class="p">;</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">dataIndex</span> <span class="o">&lt;</span><span class="n">dataProvider</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+   <span class="p">{</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">dataProvider</span><span class="p">[</span><span class="n">dataIndex</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">error_msg</span> <span class="o">!=</span> <span class="n">null</span> <span class="o">&amp;&amp;</span> <span class="n">item</span><span class="o">.</span><span class="n">error_msg</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">){</span>
+     <span class="n">color</span> <span class="o">=</span> <span class="mh">0xffcccc</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">less_count</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+     <span class="n">color</span> <span class="o">=</span> <span class="mh">0xffe3e3</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">error_count</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+     <span class="n">color</span> <span class="o">=</span> <span class="mh">0xffe3e3</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">more_count</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+     <span class="n">color</span> <span class="o">=</span> <span class="mh">0xffe3e3</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">redundant_count</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+     <span class="n">color</span> <span class="o">=</span> <span class="mh">0xf4ed73</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">barbarism_count</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+     <span class="n">color</span> <span class="o">=</span> <span class="mh">0xf4ed73</span><span class="p">;</span>
+    <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="nb">super</span><span class="o">.</span><span class="n">drawRowBackground</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">rowIndex</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">dataIndex</span><span class="p">);</span>
+  <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

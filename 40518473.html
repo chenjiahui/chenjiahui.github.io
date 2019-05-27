@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li class="active"><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/40518473.html" rel="bookmark"
+           title="Permalink to jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法">jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-10-27T23:41:38+00:00">
+                Published: 一 27 十月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/jquery-easyui.html">jquery-easyui</a> <a href="/tag/easyui.html">easyui</a> <a href="/tag/javascript.html">javascript</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/40518473 </p>
+<p><strong>﻿﻿jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</strong></p>
+<p>工作中用到一个具有多选功能的easyui-datagrid在处理cell的点击事件时，不允许被选中行的需求。</p>
+<p>如下图，点击“查看”时，只是为了查看详细信息，并不是需要选择行。</p>
+<p><img alt="" src="https://img-blog.csdn.net/20141027234702859?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>完成这个需求，其实只需要将datagrid的checkOnSelect属性设置为false就可以了。</p>
+<p>然而，当设置该属性后，新的问题就随之出现了。</p>
+<p><img alt="" src="https://img-blog.csdn.net/20141027234813312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>目前的办法是使用以下代码去除高亮： （本来是打算处理成checkbox选中的行高亮显示，奈何刚开始使用easyui功力不够）  </p>
+<div class="highlight"><pre><span></span><span class="n">onSelect</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="n">rowData</span><span class="o">){</span>
+ <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectRow&#39;</span><span class="o">,</span><span class="n">rowIndex</span><span class="o">);</span>
+<span class="o">},</span>
+<span class="n">onCheckAll</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rows</span><span class="o">){</span>
+ <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectAll&#39;</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>使用以上代码之后，要获取到checkbox选中的所以行数据，则使用以下代码：</p>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">checkedItems</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="p">).</span><span class="n">datagrid</span><span class="p">(</span><span class="s1">&#39;getChecked&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>开始上面这行代码一直只返回一行数据，后来仔细再看了下，这行代码使用也是有前提的，就是必须指定idField。</p>
+<p>若以后想到办法做到checkbox选中的行高亮显示，会继续补充。</p>
+<p>﻿﻿</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

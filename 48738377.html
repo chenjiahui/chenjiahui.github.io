@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>数据库存储手机emoji表情</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li class="active"><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/48738377.html" rel="bookmark"
+           title="Permalink to 数据库存储手机emoji表情">数据库存储手机emoji表情</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-25T21:10:08+00:00">
+                Published: 五 25 九月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
+<p>tags: <a href="/tag/shu-ju-ku.html">数据库</a> <a href="/tag/mysql.html">MySQL</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/48738377 </p>
+<p>最近在开发手机APP应用，用户的评论是可以添加表情的。<br>
+由于的第一次做这方面的东西，在评论表中评论内容用utf8存表情，发现是乱码。  </p>
+<p>查原因，说的<a href="http://baike.baidu.com/item/emoji">emoji</a>的表情，需要将数据库编码格式改成utf8mb4。<br>
+确定了升级方案后，将表情存成utf8mb4，测试。然而，发现并没什么用，依然是乱码。  </p>
+<p>再查资料。网上有人也碰到这个问题，解决方式和我一样，设置成utf8mb4，有的解决了，有的没有解决。解决不聊的，有人通过把数据存成了2进制来解决，有的自己把表情根据自己定义的字典转换后存入数据库。<br>
+这样就增加了许多浪费。  </p>
+<p>因为有同事以前在postgresql上保存成功过。继续找原因，主要还是考虑编码方向，原来连接数据库时，还是用的utf8，改为utf8mb4后，成功解决。 </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

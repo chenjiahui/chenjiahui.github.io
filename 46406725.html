@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>flex_进度条样式</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/46406725.html" rel="bookmark"
+           title="Permalink to flex_进度条样式">flex_进度条样式</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-08T00:46:26+00:00">
+                Published: 一 08 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/flex.html">Flex</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46406725 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。<img alt="微笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/smile.gif"></p>
+<p>一共4个文件：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150608004825249?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>JinDuTiaoItem.mxml：</p>
+<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+    <span class="nt">&lt;s:GridItemRenderer</span> <span class="na">xmlns:fx=</span><span class="s">&quot;http://ns.adobe.com/mxml/2009&quot;</span> 
+                        <span class="na">xmlns:s=</span><span class="s">&quot;library://ns.adobe.com/flex/spark&quot;</span> 
+                        <span class="na">xmlns:mx=</span><span class="s">&quot;library://ns.adobe.com/flex/mx&quot;</span> <span class="na">clipAndEnableScrolling=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;fx:Script&gt;</span>
+            <span class="cp">&lt;![CDATA[</span>
+<span class="cp">                import mx.skins.spark.ProgressBarSkin;</span>
+<span class="cp">                [Bindable]</span>
+<span class="cp">                [Embed(source=&quot;/assets/daihecha/46.png&quot;)]//绿色</span>
+<span class="cp">                private var barColor:Class;</span>
+
+<span class="cp">                [Embed(source=&quot;/assets/daihecha/45.png&quot;)]//红色</span>
+<span class="cp">                private var redBarImage:Class;</span>
+
+<span class="cp">                [Embed(source=&quot;/assets/daihecha/46.png&quot;)]//绿色</span>
+<span class="cp">                private var greenBarImage:Class;</span>
+
+<span class="cp">                override public function set data(v:Object):void{</span>
+<span class="cp">                    super.data = v;</span>
+<span class="cp">                    //pb.setProgress(5,10);</span>
+<span class="cp">                    pb.percentHeight= 50 ;</span>
+<span class="cp">                    /*</span>
+<span class="cp">                    * 根据不同的状态设置样式</span>
+<span class="cp">                    */</span>
+<span class="cp">                    if(v){</span>
+<span class="cp">                        pb.setProgress(v.finish,v.total);</span>
+<span class="cp">                        if(data.status==&#39;出错&#39; ){</span>
+<span class="cp">                            barColor=redBarImage;</span>
+<span class="cp">                        }else{</span>
+<span class="cp">                            barColor=greenBarImage;</span>
+<span class="cp">                        }</span>
+<span class="cp">                        var num:Number = (v.finish*100/v.total);</span>
+<span class="cp">                        pb.label = num.toFixed(1)  + &#39;%&#39;;</span>
+<span class="cp">                    }</span>
+
+<span class="cp">                }</span>
+
+
+<span class="cp">            ]]&gt;</span>
+        <span class="nt">&lt;/fx:Script&gt;</span>
+        <span class="nt">&lt;mx:ProgressBar</span> <span class="na">id=</span><span class="s">&quot;pb&quot;</span> <span class="na">label=</span><span class="s">&quot;&quot;</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span> <span class="na">height=</span><span class="s">&quot;100%&quot;</span> <span class="na">mode=</span><span class="s">&quot;manual&quot;</span> <span class="na">labelPlacement=</span><span class="s">&quot;center&quot;</span>
+                        <span class="na">indeterminate=</span><span class="s">&quot;false&quot;</span> <span class="na">barSkin=</span><span class="s">&quot;{barColor}&quot;</span>
+                        <span class="na">trackSkin=</span><span class="s">&quot;com.uniware.dm.module.daihecha.ProgressBarSkinWhite&quot;</span>
+                        <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/s:GridItemRenderer&gt;</span>
+</pre></div>
+
+
+<p>ProgressBarSkinWhite.mxml：</p>
+<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+
+    <span class="c">&lt;!--</span>
+
+<span class="c">    ADOBE SYSTEMS INCORPORATED</span>
+<span class="c">    Copyright 2008 Adobe Systems Incorporated</span>
+<span class="c">    All Rights Reserved.</span>
+
+<span class="c">    NOTICE: Adobe permits you to use, modify, and distribute this file</span>
+<span class="c">    in accordance with the terms of the license agreement accompanying it.</span>
+
+<span class="c">    --&gt;</span>
+
+    <span class="c">&lt;!--- The Spark skin class for the MX ProgressBar component. </span>
+
+<span class="c">    @see mx.controls.ProgressBar</span>
+
+<span class="c">    @langversion 3.0</span>
+<span class="c">    @playerversion Flash 10</span>
+<span class="c">    @playerversion AIR 1.5</span>
+<span class="c">    @productversion Flex 4</span>
+<span class="c">    --&gt;</span>
+    <span class="nt">&lt;s:SparkSkin</span> <span class="na">xmlns:fx=</span><span class="s">&quot;http://ns.adobe.com/mxml/2009&quot;</span> <span class="na">xmlns:s=</span><span class="s">&quot;library://ns.adobe.com/flex/spark&quot;</span> <span class="nt">&gt;</span>
+
+        <span class="nt">&lt;fx:Script&gt;</span>
+            /**
+             * @private
+             */
+            override protected function initializationComplete():void
+            {
+                useChromeColor = true;
+                super.initializationComplete();
+            }
+        <span class="nt">&lt;/fx:Script&gt;</span>
+
+        <span class="c">&lt;!-- layer 1: fill --&gt;</span>
+        <span class="nt">&lt;s:Rect</span> <span class="na">left=</span><span class="s">&quot;2&quot;</span> <span class="na">right=</span><span class="s">&quot;2&quot;</span> <span class="na">top=</span><span class="s">&quot;2&quot;</span> <span class="na">bottom=</span><span class="s">&quot;2&quot;</span> <span class="nt">&gt;</span>
+            <span class="nt">&lt;s:fill&gt;</span>
+                <span class="nt">&lt;s:LinearGradient</span> <span class="na">rotation=</span><span class="s">&quot;90&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;s:GradientEntry</span> <span class="na">color=</span><span class="s">&quot;0xFFFFFF&quot;</span> 
+                                     <span class="na">alpha=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;s:GradientEntry</span> <span class="na">color=</span><span class="s">&quot;#cedbef&quot;</span> 
+                                     <span class="na">alpha=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;/s:LinearGradient&gt;</span>
+            <span class="nt">&lt;/s:fill&gt;</span>
+        <span class="nt">&lt;/s:Rect&gt;</span>
+
+        <span class="c">&lt;!-- layer 2: border --&gt;</span>
+        <span class="nt">&lt;s:Rect</span> <span class="na">left=</span><span class="s">&quot;2&quot;</span> <span class="na">right=</span><span class="s">&quot;2&quot;</span> <span class="na">top=</span><span class="s">&quot;2&quot;</span> <span class="na">bottom=</span><span class="s">&quot;2&quot;</span> <span class="nt">&gt;</span>
+            <span class="nt">&lt;s:stroke&gt;</span>
+                <span class="nt">&lt;s:LinearGradientStroke</span> <span class="na">rotation=</span><span class="s">&quot;90&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;s:GradientEntry</span> <span class="na">color=</span><span class="s">&quot;0xFFFFFF&quot;</span> 
+                                     <span class="na">alpha=</span><span class="s">&quot;.9&quot;</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;s:GradientEntry</span> <span class="na">color=</span><span class="s">&quot;0xFFFFFF&quot;</span> 
+                                     <span class="na">alpha=</span><span class="s">&quot;0.5&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/s:LinearGradientStroke&gt;</span>
+            <span class="nt">&lt;/s:stroke&gt;</span>
+        <span class="nt">&lt;/s:Rect&gt;</span>
+
+        <span class="c">&lt;!-- layer 3: right edge --&gt;</span>
+        <span class="nt">&lt;s:Rect</span> <span class="na">right=</span><span class="s">&quot;1&quot;</span> <span class="na">top=</span><span class="s">&quot;2&quot;</span> <span class="na">bottom=</span><span class="s">&quot;2&quot;</span> <span class="na">width=</span><span class="s">&quot;1&quot;</span> <span class="nt">&gt;</span>
+            <span class="nt">&lt;s:fill&gt;</span>
+                <span class="nt">&lt;s:SolidColor</span> <span class="na">color=</span><span class="s">&quot;0x000000&quot;</span> <span class="na">alpha=</span><span class="s">&quot;0.55&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/s:fill&gt;</span>
+        <span class="nt">&lt;/s:Rect&gt;</span>
+
+    <span class="nt">&lt;/s:SparkSkin&gt;</span>
+</pre></div>
+
+
+<p>﻿﻿</p>
+<p>﻿﻿</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

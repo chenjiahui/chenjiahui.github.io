@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>BugManager’s Blog - java</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li class="active"><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/38752955.html" rel="bookmark"
+                           title="Permalink to java split | （竖线）">java split | （竖线）</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-08-22T11:11:34+00:00">
+                Published: 五 22 八月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/38752955 </p>
+<p>java split | （竖线）</p>
+<p>在java中,有一个字符串"866|10|1824261|214|",需要根据“|”截取。</p>
+<p>而直接用split("|");是不行的。</p>
+<p>原因是竖线 | 在正则中是特殊字符，需要转义，也就是split(“|”);</p>
+<p>但实际在java中使用时，\又是java的特殊字符，需要转义，最终变成了split("\|");</p>
+<div class="highlight"><pre><span></span><span class="nv">public</span> <span class="nv">static</span> <span class="nv">void</span> <span class="nv">main</span><span class="ss">(</span><span class="nv">String</span>[] <span class="nv">args</span><span class="ss">)</span> {
+        <span class="nv">String</span> <span class="nv">line</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">866|10|1824261|214|</span><span class="s2">&quot;</span><span class="c1">;</span>
+        <span class="nv">String</span>[] <span class="nv">cells</span> <span class="o">=</span> <span class="nv">line</span>.<span class="nv">split</span><span class="ss">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s">|</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+
+        <span class="k">for</span><span class="ss">(</span><span class="nv">int …</span></pre></div>
+                <a class="readmore" href="/38752955.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/38302601.html" rel="bookmark"
+                           title="Permalink to ip格式判断、地址段分析、掩码计算工具类">ip格式判断、地址段分析、掩码计算工具类</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-30T16:22:20+00:00">
+                Published: 三 30 七月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/38302601 </p>
+<div class="highlight"><pre><span></span>    <span class="kn">package</span> <span class="nn">com.cjh.ip.utils</span><span class="o">;</span>
+
+    <span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+    <span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+    <span class="kn">import</span> <span class="nn">java.util.regex.Pattern</span><span class="o">;</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * @author cjh </span>
+<span class="cm">     * 2014年7月28日 上午10:38:39</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">IPUtil</span> <span class="o">{</span>
+        <span class="cm">/**</span>
+<span class="cm">         * 计算IP地址段，并返回Map:{&quot;startIp&quot;: startIp,&quot;endIp&quot;: endIp}</span>
+<span class="cm">         * @param ip</span>
+<span class="cm">         * @param mask</span>
+<span class="cm">         * @return Map …</span></pre></div>
+                <a class="readmore" href="/38302601.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/26701811.html" rel="bookmark"
+                           title="Permalink to 利用StringBuffer实现字符串反转">利用StringBuffer实现字符串反转</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-05-23T14:23:02+00:00">
+                Published: 五 23 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/26701811 </p>
+<p>利用StringBuffer实现字符串反转</p>
+<div class="highlight"><pre><span></span>    <span class="kn">package</span> <span class="nn">com.cjh.test</span><span class="o">;</span>
+    <span class="cm">/**</span>
+<span class="cm">     * @author chenjiahui</span>
+<span class="cm">     * 2014年5月23日 下午2:21:45</span>
+<span class="cm">     * </span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReverseString</span> <span class="o">{</span>
+
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;12345&quot;</span><span class="o">;</span>
+      <span class="n">StringBuffer</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+      <span class="n">str</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">reverse</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span><span class="c1">//54321</span>
+     <span class="o">}</span>
+    <span class="o">}</span>
+</pre></div>
+                <a class="readmore" href="/26701811.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/25888827.html" rel="bookmark"
+                           title="Permalink to java调用js脚本，以及js脚本调用java方法">java调用js脚本，以及js脚本调用java方法</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-05-15T14:21:46+00:00">
+                Published: 四 15 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/25888827 </p>
+<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/25888827">http://blog.csdn.net/i_chenjiahui/article/details/25888827</a></p>
+<p>Test.java</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.script.Invocable</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.script …</span></pre></div>
+                <a class="readmore" href="/25888827.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/25695365.html" rel="bookmark"
+                           title="Permalink to 查看指定端口，关闭进程及Kill使用">查看指定端口，关闭进程及Kill使用</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-05-13T11:51:43+00:00">
+                Published: 二 13 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/flex.html">Flex</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/25695365 </p>
+<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/25695365">http://blog.csdn.net/i_chenjiahui/article/details/25695365</a></p>
+<p>1、Windows平台 <br>
+在windows命令行窗口下执行： <br>
+1.查看所有的端口占用情况 <br>
+netstat -ano</p>
+<p><img alt="" src="https://img-blog.csdn.net/20140513110937796?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
+<p>2.查看指定端口的占用情况 <br>
+netstat -aon|findstr "8109"</p>
+<p>C:\Users\Administrator&gt;netstat -aon|findstr "8109"<br>
+TCP 0.0.0.0:8109 0.0.0.0 …</p>
+                <a class="readmore" href="/25695365.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/25553607.html" rel="bookmark"
+                           title="Permalink to maven找jar包方法">maven找jar包方法</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-05-11T20:23:08+00:00">
+                Published: 日 11 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>进入 <a href="http://search.maven.org">http://search.maven.org</a>，</p>
+<p>在搜索栏中查找所需要的jar包,如图：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20140511172225875"></p>
+<p><img alt="" src="https://img-blog.csdn.net/20140511172239656"></p>
+                <a class="readmore" href="/25553607.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/24512669.html" rel="bookmark"
+                           title="Permalink to eclipse设置${user}">eclipse设置${user}</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-04-26T08:45:11+00:00">
+                Published: 六 26 四月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/eclipse.html">eclipse</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/24512669 </p>
+<h3>设置eclipse中的${user}</h3>
+<p>eclipse中想要在创建java文件的时候显示@author "自己的名字"，</p>
+<p>在window -&gt; preference -&gt; java -&gt; code typle -&gt; code template -&gt; Code -&gt; New Java files ，点击Edit ，加入如下代码即可：</p>
+<p>/<em><em><br>
+</em> @author ${user} //创建者名字<br>
+</em> ${date} ${time} //创建时间<br>
+<em> <br>
+</em>/</p>
+<p>应用修改，这时，你会发现新建的java文件中@author 后面是administrator（windows系统的用户字）,解决方法如下。</p>
+<p>需要设置${user}变量</p>
+<p>打开eclipse目录下的eclipse.ini文件，添加上一行。</p>
+<p>-Duser.name …</p>
+                <a class="readmore" href="/24512669.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/22323113.html" rel="bookmark"
+                           title="Permalink to 【code】java_方法执行sql返回一个key">【code】java_方法执行sql返回一个key</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-27T21:51:24+00:00">
+                Published: 四 27 三月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/22323113 </p>
+<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/22323113">http://blog.csdn.net/i_chenjiahui/article/details/22323113</a></p>
+<p>在开发中遇到了将一条数据插入到数据库的同时，又需要获得这个条数据的所自动生成的key值的场景。</p>
+<div class="highlight"><pre><span></span><span class="k">Map</span> <span class="k">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="p">();</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;order_id&quot;</span><span class="p">,</span> <span class="n">orderId</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;scene_id&quot;</span><span class="p">,</span> <span class="n">senceId</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;device_type&quot;</span><span class="p">,</span> <span class="n">deviceType</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;device_company&quot;</span><span class="p">,</span> <span class="n">company</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;redo_info&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;state&quot;</span><span class="p">,</span> <span class="ss">&quot;当前 …</span></pre></div>
+                <a class="readmore" href="/22323113.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/0002.html" rel="bookmark"
+                           title="Permalink to ibatis中#和$的区别">ibatis中#和$的区别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-26T20:20:08+00:00">
+                Published: 三 26 三月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/ibatis.html">ibatis</a> </p>
+</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/22181467 </p>
+<div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">SYS_ROAD_LINE_INFO</span> <span class="k">where</span> <span class="n">ROAD_LINE_NO</span> <span class="k">in</span> <span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">)</span>
+</pre></div>
+
+
+<p>$中间的变量就是直接替换成值的</p>
+<p>#会根据变量的类型来进行替换</p>
+<p>比如articleTitle的类型是string, 值是"标题"的时候</p>
+<p>\$articleTitle$ = 标题</p>
+<p>#articleTitle# = '标题</p>
+                <a class="readmore" href="/0002.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/22181667.html" rel="bookmark"
+                           title="Permalink to Ibatis学习笔记">Ibatis学习笔记</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-26T15:22:22+00:00">
+                Published: 三 26 三月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/ibatis.html">ibatis</a> </p>
+</footer><!-- /.post-info -->                <p><strong>Ibatis 学习笔记</strong></p>
+<p>最近学习了ibatis连接数据库</p>
+<p><strong>搭建 iBatis开发环境：</strong></p>
+<p>仅仅需要两个包：数据库驱动包，和ibatis包。</p>
+<p>三个配置文件：数据库连接属性文件、总配置文件、实体的映射文件（Map文件）。</p>
+<p><strong>数据库连接属性文件： jdbc.properties</strong></p>
+<p>内容如下： __</p>
+<div class="highlight"><pre><span></span><span class="n">jdbc</span><span class="p">.</span><span class="n">driverClassName</span><span class="o">=</span><span class="n">com</span><span class="p">.</span><span class="n">mysql</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">Driver</span>
+<span class="n">jdbc</span><span class="p">.</span><span class="n">url</span><span class="o">=</span><span class="n">jdbc</span><span class="p">:</span><span class="n">mysql</span><span class="p">:</span><span class="o">//</span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="p">:</span><span class="mi">3306</span><span class="o">/</span><span class="n">test</span><span class="o">?</span><span class="n">autoReconnect</span><span class="o">=</span><span class="k">true</span><span class="o">&amp;</span><span class="n">useUnicode</span><span class="o">=</span><span class="k">true</span><span class="o">&amp;</span><span class="n">characterEncoding</span><span class="o">=</span><span class="n">utf8</span>
+<span class="n">jdbc</span><span class="p">.</span><span class="n">username</span><span class="o">=</span><span class="n">test</span>
+<span class="n">jdbc</span><span class="p">.</span><span class="n">password</span><span class="o">=</span><span class="n">test123</span>
+</pre></div>
+
+
+<p><strong>总配置文件， SqlMapConfig.xml</strong></p>
+<p>内容如下：</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml …</span></pre></div>
+                <a class="readmore" href="/22181667.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="/category/java.html">&laquo;</a>
+    Page 2 / 2
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

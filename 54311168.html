@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>python过滤unicode控制字符</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/54311168.html" rel="bookmark"
+           title="Permalink to python过滤unicode控制字符">python过滤unicode控制字符</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-01-10T10:37:17+00:00">
+                Published: 二 10 一月 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/54311168 </p>
+<p>昨天晚上平台被个别用户利用了一个漏洞：</p>
+<p>原理：<a href="http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html">https://www.zhihu.com/question/43621727</a></p>
+<p><a href="http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html">http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html</a></p>
+<p>在浏览器上执行测试代码：</p>
+<div class="highlight"><pre><span></span>data:text/html;charset=utf8,<span class="nt">&lt;script&gt;</span>document.write(&#39;陈佳慧&#39;+String.fromCharCode(8238)+&#39;送了一座海岛&#39;.split(&#39;&#39;).reverse().join(&#39;&#39;)+String.fromCharCode(8237))<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+
+<p>复制生成的文字，取app上修改昵称。 </p>
+<p>效果：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20170110103946073?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">  </p>
+<p>虽然说没有影响到业务数据，但是这样的漏洞如上面介绍的那样还是有一些风险的，对于其他用户也有困扰。</p>
+<p>写了一个过滤函数。</p>
+<div class="highlight"><pre><span></span><span class="nv">def</span> <span class="nv">nick_name_filter</span><span class="ss">(</span><span class="nv">nick_name</span><span class="ss">)</span>:
+    <span class="k">return</span> <span class="nv">nick_name</span>.<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8206</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8207</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8205</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8204</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8234</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8237</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8238</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8236</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8302</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8303</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8299</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8298</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8301</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">8300</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">30</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span> \
+        .<span class="nv">replace</span><span class="ss">(</span><span class="nv">unichr</span><span class="ss">(</span><span class="mi">31</span><span class="ss">)</span>.<span class="nv">encode</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">utf-8</span><span class="s1">&#39;</span><span class="ss">)</span>, <span class="s1">&#39;&#39;</span><span class="ss">)</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

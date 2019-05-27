@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>python中的mysql数据库like模糊查询</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/47859581.html" rel="bookmark"
+           title="Permalink to python中的mysql数据库like模糊查询">python中的mysql数据库like模糊查询</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-08-22T15:10:51+00:00">
+                Published: 六 22 八月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/mysql.html">mysql</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/47859581 </p>
+<p>最近工作在使用python语言开发项目，工作中遇到了一个python连接mysql的like查询。</p>
+<p>由于%在python中三个特殊的符号，如%s，%d分别代表了字符串占位符和数字占位符。</p>
+<p>大家知道，mysql的模糊查询也需要用到%。</p>
+<p>我们有一张test表，要对name字段进行模糊查询，预期的sql如下：</p>
+<div class="highlight"><pre><span></span>    <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">test</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%abc%&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>那么python中怎么写呢？ </p>
+<div class="highlight"><pre><span></span>    <span class="k">sql</span> <span class="o">=</span> <span class="s2">&quot;select * from test where name like &#39;%%%%%s%%%%&#39;&quot;</span>
+    <span class="k">sql</span> <span class="o">=</span> <span class="k">sql</span> <span class="o">%</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>  <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;white-space:pre&quot;</span><span class="o">&gt;</span>  <span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="c1">#此处进行第一次转义</span>
+    <span class="n">print</span> <span class="k">sql</span>  <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;white-space:pre&quot;</span><span class="o">&gt;</span>       <span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="c1">#A</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">yield</span> <span class="n">self</span><span class="p">.</span><span class="n">pool</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span> <span class="p">())</span>   <span class="c1">#B &lt;span style=&quot;font-family: Arial, Helvetica, sans-serif;&quot;&gt;#此处会进行第二次转义&lt;/span&gt;</span>
+</pre></div>
+
+
+<p>A处打印的sql： </p>
+<div class="highlight"><pre><span></span>    <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">test</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%%abc%%&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>B处执行的sql会进行第二次转义，实际执行的sql就为我们所预期的：  </p>
+<div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">test</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%abc%&#39;</span><span class="p">;</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

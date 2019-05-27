@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>python解决sql注入以及特殊字符</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li class="active"><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/48378017.html" rel="bookmark"
+           title="Permalink to python解决sql注入以及特殊字符">python解决sql注入以及特殊字符</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-11T21:01:44+00:00">
+                Published: 五 11 九月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/python.html">python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/48378017 </p>
+<p>python往数据库插入数据，</p>
+<p>基础做法是：</p>
+<div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">=</span><span class="n">db</span><span class="p">.</span><span class="k">cursor</span><span class="p">()</span>
+<span class="k">sql</span> <span class="o">=</span> <span class="ss">&quot;INSERT INTO test2(cid, author, content) VALUES (1, &#39;1&#39;, &#39;aa&#39;)&quot;</span>
+<span class="n">cur</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,())</span>
+</pre></div>
+
+
+<p>也可以这样：</p>
+<div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">=</span><span class="n">db</span><span class="p">.</span><span class="k">cursor</span><span class="p">()</span>
+<span class="k">sql</span> <span class="o">=</span> <span class="ss">&quot;INSERT INTO test2(cid, author, content) VALUES (%s, &#39;%s&#39;, &#39;%s&#39;)&quot;</span>
+<span class="k">sql</span><span class="o">=</span><span class="k">sql</span><span class="o">%</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;bb&#39;</span><span class="p">)</span>
+<span class="n">cur</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,())</span>
+</pre></div>
+
+
+<p>但是当含有特殊一点的字符时就有问题了，比如单引号，%等，甚至会被sql注入。 </p>
+<p>和其他语言一样，python也他的方法来解决sql注入。</p>
+<div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">=</span><span class="n">db</span><span class="p">.</span><span class="k">cursor</span><span class="p">()</span>
+<span class="k">sql</span> <span class="o">=</span> <span class="ss">&quot;INSERT INTO test2(cid, author, content) VALUES (%s, %s, %s)&quot;</span>
+<span class="n">cur</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;c%c&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>注意，后面2个%s的前后单引号去掉了。</p>
+<p>结果如下：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150911210526894?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

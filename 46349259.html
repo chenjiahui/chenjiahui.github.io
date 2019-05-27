@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>jsp借助了ajaxfileupload实现上传文件</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li class="active"><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/46349259.html" rel="bookmark"
+           title="Permalink to jsp借助了ajaxfileupload实现上传文件">jsp借助了ajaxfileupload实现上传文件</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-06-03T17:56:34+00:00">
+                Published: 三 03 六月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/qian-duan.html">前端</a>.</p>
+<p>tags: <a href="/tag/qian-duan.html">前端</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46349259 </p>
+<p>以往我用的上传文件都是Flex写的，最近html页面需要上传页面功能。</p>
+<p>相比之下，比flex还是要麻烦一些，问题也多一些。这里记录下：</p>
+<p>ajax上传文件，我用到了<a href="http://download.csdn.net/detail/nicky9470/8768957">ajaxfileupload.js</a>修正版。</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nv">form</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">addAttaForm</span><span class="s2">&quot;</span> <span class="nv">enctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">multipart/form-data</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">&gt;</span>请选择要上传的文件：<span class="o">&lt;/</span><span class="nv">label</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">file</span><span class="s2">&quot;</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="nv">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">button</span><span class="s2">&quot;</span> <span class="nv">onclick</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">uploadShouGongFiles()</span><span class="s2">&quot;</span> <span class="nv">value</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">Upload</span><span class="s2">&quot;</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="nv">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nv">form</span><span class="o">&gt;</span>
+
+
+
+
+
+$.<span class="nv">ajaxFileUpload</span><span class="ss">(</span>{
+       <span class="nv">url</span>: <span class="nv">url</span>, <span class="o">//</span>用于文件上传的服务器端请求地址
+       <span class="nv">secureuri</span>: <span class="nv">false</span>, <span class="o">//</span>是否需要安全协议，一般设置为<span class="nv">false</span>
+       <span class="nv">fileElementId</span>: <span class="s1">&#39;</span><span class="s">fileUpload</span><span class="s1">&#39;</span>, <span class="o">//</span>文件上传域的<span class="nv">ID</span>
+       <span class="nv">dataType</span>: <span class="s1">&#39;</span><span class="s">text</span><span class="s1">&#39;</span>, <span class="o">//</span>返回值类型 一般设置为<span class="nv">json</span>
+       <span class="nv">data</span>:{},<span class="o">//</span>其他需要传的参数
+       <span class="nv">success</span>: <span class="nv">function</span> <span class="ss">(</span><span class="nv">data</span>, <span class="nv">status</span><span class="ss">)</span>
+       {
+
+       },
+       <span class="nv">error</span>: <span class="nv">function</span> <span class="ss">(</span><span class="nv">data</span>, <span class="nv">status</span>, <span class="nv">e</span><span class="ss">)</span>
+       {
+
+       }
+
+}<span class="ss">)</span><span class="c1">;</span>
+</pre></div>
+
+
+<p>后台:</p>
+<div class="highlight"><pre><span></span>        @<span class="nv">RequestMapping</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">/upLoadFile</span><span class="s2">&quot;</span><span class="ss">)</span>
+    <span class="nv">public</span> <span class="nv">String</span> <span class="nv">upLoadFile</span><span class="ss">(</span><span class="nv">HttpServletRequest</span> <span class="nv">request</span><span class="ss">)</span> {
+
+        <span class="nv">MultipartHttpServletRequest</span> <span class="nv">multipartRequest</span> <span class="o">=</span> <span class="ss">(</span><span class="nv">MultipartHttpServletRequest</span><span class="ss">)</span> <span class="nv">request</span><span class="c1">;</span>
+        <span class="nv">MultipartFile</span> <span class="nv">file</span> <span class="o">=</span> <span class="nv">multipartRequest</span>.<span class="nv">getFile</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">fileToUpload</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+        <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="nv">file</span>.<span class="nv">getOriginalFilename</span><span class="ss">())</span><span class="c1">;</span>
+        <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="nv">file</span>.<span class="nv">getName</span><span class="ss">())</span><span class="c1">;</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="c1">;</span>
+    }
+</pre></div>
+
+
+<p>﻿﻿</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

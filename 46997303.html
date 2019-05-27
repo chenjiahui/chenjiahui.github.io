@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>hadoop学习笔记之HDFS</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li class="active"><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/46997303.html" rel="bookmark"
+           title="Permalink to hadoop学习笔记之HDFS">hadoop学习笔记之HDFS</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-07-22T07:33:37+00:00">
+                Published: 三 22 七月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/hadoop.html">hadoop</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46997303 </p>
+<p>HDFS：Hadoop Distributed File System 分布式文件系统，其操作方式与linux相似，使用指令之前要在前面加上dfs。（注意：hdfs没有当前目录的概念，不能使用cd命令）</p>
+<p>常规操作命令：</p>
+<div class="highlight"><pre><span></span>     dfs -put ../hello hello
+     dfs -ls
+     dfs -get hello ./mypath/hello
+     dfs -rmr hello
+     dfs -cat part-r-00000 //打开文件，查看内容
+     dfsadmin -report //hdfs的信息情况
+</pre></div>
+
+
+<p>客户端如何从HDFS上 <strong>获取文件</strong> 呢？以获取文件名为“hello”的文件为例：</p>
+<p>客户端向nameNode发起请求，询问“hello”文件的位置信息。</p>
+<p>namenode将查询出的位置信息列表清单返回给客户端。</p>
+<p>客户端根据清单去连接目标dataNode，获取文件、数据。</p>
+<p>有趣的是：HDFS集群的出错是常态的，也是正常的。因此，HDFS会做冗余数据，冗余份数可以在hdfs-site.xml文件中设置复制因子来指定副本数量，一般3份。</p>
+<p>HDFS在复制冗余因子时，使用到了机架感知和心跳机制：</p>
+<p><strong>机架感知：</strong> 以3份副本为例：一般在本机架存放一个副本，其他机架存放一个副本。</p>
+<p><strong>心跳机制：</strong> nameNode与dataNode之间周期性的接收心跳信号，对于没有按时发送心跳的dataNode会被标记为宕机，踢出Hadoop集群。hadoop会在系统不太繁忙时，重新复制缺少的副本。</p>
+<p><strong>回收站</strong></p>
+<p>当删除一个文件时，物理上并没有被真正删除，这个文件块是可以被快速恢复的。回收站的文件经过一段时间后，文件会被永久删除。这个时间段是可配置的。 <strong>注意：</strong> 回收站使用前需要先打开。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

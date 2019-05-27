@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>java调用js脚本，以及js脚本调用java方法</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li class="active"><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/25888827.html" rel="bookmark"
+           title="Permalink to java调用js脚本，以及js脚本调用java方法">java调用js脚本，以及js脚本调用java方法</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-05-15T14:21:46+00:00">
+                Published: 四 15 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/25888827 </p>
+<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/25888827">http://blog.csdn.net/i_chenjiahui/article/details/25888827</a></p>
+<p>Test.java</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.script.Invocable</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.script.ScriptEngine</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.script.ScriptEngineManager</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.script.ScriptException</span><span class="p">;</span>
+
+<span class="o">/**</span>
+ <span class="o">*</span> 
+ <span class="o">*</span> <span class="nd">@author</span> <span class="n">chenjiahui</span>
+ <span class="o">*</span>
+ <span class="o">*/</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">Test</span> <span class="p">{</span>
+
+    <span class="o">/**</span>
+     <span class="o">*</span> <span class="nd">@param</span> <span class="n">args</span>
+     <span class="o">*</span> <span class="nd">@throws</span> <span class="n">IOException</span> 
+     <span class="o">*</span> <span class="nd">@throws</span> <span class="n">ScriptException</span> 
+     <span class="o">*/</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ScriptException</span><span class="p">,</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">TODO</span> <span class="n">Auto</span><span class="o">-</span><span class="n">generated</span> <span class="n">method</span> <span class="n">stub</span>
+            <span class="n">ScriptEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ScriptEngineManager</span><span class="p">()</span><span class="o">.</span><span class="n">getEngineByExtension</span><span class="p">(</span><span class="s2">&quot;js&quot;</span><span class="p">);</span> 
+            <span class="n">engine</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">loadAFileToStringDE2</span><span class="p">());</span>
+            <span class="n">Invocable</span> <span class="n">inv</span> <span class="o">=</span> <span class="p">(</span><span class="n">Invocable</span><span class="p">)</span> <span class="n">engine</span><span class="p">;</span>      
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="o">//</span><span class="n">invokeFunction</span><span class="p">()</span><span class="err">中的第一个参数就是被调用的脚本程序中的函数，第二个参数是传递给被调用函数的参数；</span>  
+                <span class="n">engine</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;chenjiahui&quot;</span><span class="p">);</span>
+                <span class="n">String</span><span class="o">.</span><span class="n">valueOf</span><span class="p">(</span><span class="n">inv</span><span class="o">.</span><span class="n">invokeFunction</span><span class="p">(</span><span class="s2">&quot;myfunction&quot;</span><span class="p">,</span><span class="s2">&quot;研发部&quot;</span><span class="p">));</span>
+            <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">NoSuchMethodException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+            <span class="p">}</span>
+
+    <span class="p">}</span>
+
+    <span class="n">private</span> <span class="n">static</span> <span class="n">String</span> <span class="n">loadAFileToStringDE2</span><span class="p">()</span> <span class="n">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="n">File</span> <span class="n">f</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s2">&quot;src/com/cjh/js/test/test.js&quot;</span><span class="p">);</span>
+        <span class="n">InputStream</span> <span class="ow">is</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="ow">is</span> <span class="o">=</span> <span class="n">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+            <span class="nb">long</span> <span class="n">contentLength</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">length</span><span class="p">();</span>
+            <span class="n">byte</span><span class="p">[]</span> <span class="n">ba</span> <span class="o">=</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[(</span><span class="nb">int</span><span class="p">)</span> <span class="n">contentLength</span><span class="p">];</span>
+            <span class="ow">is</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ba</span><span class="p">);</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">new</span> <span class="n">String</span><span class="p">(</span><span class="n">ba</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="ow">is</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="ow">is</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+                <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="ne">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+<span class="o">//</span>      <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">ret</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>test.js</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @author chenjiahui</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">myfunction</span><span class="p">(</span><span class="n">department</span><span class="p">)</span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s1">&#39;name:&#39;</span><span class="o">+</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s1">&#39;department:&#39;</span><span class="o">+</span><span class="n">department</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="o">//</span><span class="n">调用java类</span><span class="w"></span>
+<span class="w">    </span><span class="nf">var</span><span class="w"> </span><span class="n">userClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="n">cjh</span><span class="p">.</span><span class="n">js</span><span class="p">.</span><span class="n">test</span><span class="p">.</span><span class="k">User</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="n">userClass</span><span class="p">.</span><span class="n">getUserInfo</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">department</span><span class="p">));</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div>
+
+
+<p>User.java</p>
+<div class="highlight"><pre><span></span><span class="nv">package</span> <span class="nv">com</span>.<span class="nv">cjh</span>.<span class="nv">js</span>.<span class="nv">test</span><span class="c1">;</span>
+<span class="cm">/**</span>
+<span class="cm"> * @author Administrator</span>
+<span class="cm"> * 2014年5月15日 上午10:30:05</span>
+<span class="cm"> * </span>
+<span class="cm"> */</span>
+<span class="nv">public</span> <span class="nv">class</span> <span class="nv">User</span> {
+
+    <span class="nv">public</span> <span class="nv">String</span> <span class="nv">getUserInfo</span><span class="ss">(</span><span class="nv">String</span> <span class="nv">name</span>,<span class="nv">String</span> <span class="nv">department</span><span class="ss">)</span>{
+        <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">查询:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">department</span><span class="o">+</span><span class="s2">&quot;</span><span class="s">部门中名字为</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">name</span><span class="o">+</span><span class="s2">&quot;</span><span class="s">的员工信息</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="s">他是个好员工！</span><span class="s2">&quot;</span><span class="c1">;</span>
+    }
+}
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

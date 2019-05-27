@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>activiti表单设置节点的默认变量</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">BugManager’s Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flex.html">Flex</a></li>
+                    <li class="active"><a href="/category/java.html">java</a></li>
+                    <li><a href="/category/ji-qun.html">集群</a></li>
+                    <li><a href="/category/linux.html">Linux</a></li>
+                    <li><a href="/category/other.html">other</a></li>
+                    <li><a href="/category/python.html">python</a></li>
+                    <li><a href="/category/qian-duan.html">前端</a></li>
+                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
+                    <li><a href="/category/yun-wei.html">运维</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/45502187.html" rel="bookmark"
+           title="Permalink to activiti表单设置节点的默认变量">activiti表单设置节点的默认变量</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-05-05T14:38:12+00:00">
+                Published: 二 05 五月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        </address>
+<p>In <a href="/category/java.html">java</a>.</p>
+<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/activiti.html">activiti</a> </p>
+</footer><!-- /.post-info -->      <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45502187 </p>
+<p>最近使用activiti，需求中需要用到表单设置节点的默认变量。源码如下：</p>
+<p>在bpmn文件中，选中节点，配置表单属性：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150507135724948?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>类型是enum的，可以下方设置可以选值，如下：</p>
+<p><img alt="" src="https://img-blog.csdn.net/20150507140143022?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
+<p>当流程走到该节点时使用下列代码获取表单信息：</p>
+<div class="highlight"><pre><span></span><span class="nv">ProcessEngine</span> <span class="nv">processEngine</span> <span class="o">=</span> <span class="nv">ProcessEngines</span>.<span class="nv">getDefaultProcessEngine</span><span class="ss">()</span><span class="c1">;</span>
+        <span class="nv">String</span> <span class="nv">taskId</span>  <span class="o">=</span> <span class="s2">&quot;</span><span class="s">1102</span><span class="s2">&quot;</span><span class="c1">;</span>
+        <span class="nv">String</span> <span class="nv">processDefinitionId</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">myProcess:2:904</span><span class="s2">&quot;</span><span class="c1">;</span>
+        <span class="nv">List</span><span class="o">&lt;</span><span class="nv">FormProperty</span><span class="o">&gt;</span> <span class="nv">list</span> <span class="o">=</span> <span class="nv">processEngine</span>.<span class="nv">getFormService</span><span class="ss">()</span>.<span class="nv">getTaskFormData</span><span class="ss">(</span><span class="nv">taskId</span><span class="ss">)</span>.<span class="nv">getFormProperties</span><span class="ss">()</span><span class="c1">;</span>
+
+        <span class="k">if</span><span class="ss">(</span><span class="nv">list</span><span class="o">!=</span><span class="nv">null</span> <span class="o">&amp;&amp;</span> <span class="nv">list</span>.<span class="nv">size</span><span class="ss">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="ss">)</span>{
+            <span class="k">for</span><span class="ss">(</span><span class="nv">FormProperty</span> <span class="nv">formProperty</span>:<span class="nv">list</span><span class="ss">)</span>{
+                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="nv">formProperty</span>.<span class="nv">getId</span><span class="ss">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="s">     </span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nv">formProperty</span>.<span class="nv">getName</span><span class="ss">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="s">      </span><span class="s2">&quot;</span> <span class="o">+</span><span class="nv">formProperty</span>.<span class="nv">getValue</span><span class="ss">())</span><span class="c1">;</span>
+            }
+        }
+</pre></div>
+
+
+<p>回显如下：</p>
+<p>a A 123 </p>
+<p>b B 2014-04-05 </p>
+<p>c C null</p>
+<p>根据官方5.16用户手册描述，表单支持的类型有以下几种：</p>
+<p><code>string (org.activiti.engine.impl.form.StringFormType)</code>long (org.activiti.engine.impl.form.LongFormType)<code>enum</code> (org.activiti.engine.impl.form.EnumFormType)<code>date</code> (org.activiti.engine.impl.form.DateFormType)<code>boolean</code> (org.activiti.engine.impl.form.BooleanFormType) </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="#">友情链接1</a></li>
+                            <li><a href="#">友情链接2</a></li>
+                            <li><a href="#">友情链接3</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
