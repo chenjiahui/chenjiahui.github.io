@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="一行代码写python"/>
+    <meta property="og:url" content="/2015/11/03/49619661.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/11/03/49619661.html" />
+
+    <title>一行代码写python | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li class="active"><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/11/03/49619661.html" rel="bookmark"
+             title="Permalink to 一行代码写python">一行代码写python</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/python.html">python</a>
+
+    on 2015-11-03
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/49619661 </p>
+<p>1、一行代码更新python数组中对象属性满足某一值的元素</p>
+<div class="highlight"><pre><span></span>    <span class="n">arr</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}]</span>
+    <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
+    <span class="k">print</span> <span class="n">arr</span>
+</pre></div>
+
+
+<p>输出： </p>
+<div class="highlight"><pre><span></span>    <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]</span>
+</pre></div>
+
+
+<p>2、求10000以内的质数 </p>
+<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>    
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="p">[</span> <span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span>   <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="k">if</span> <span class="mi">0</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="n">p</span><span class="o">%</span> <span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="p">]</span>
+</pre></div>
+
+
+<p>输出（以N=100为例）：</p>
+<div class="highlight"><pre><span></span>    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">97</span><span class="p">]</span>
+</pre></div>
+
+
+<p>3、元素为对象的数组排序</p>
+<div class="highlight"><pre><span></span>    <span class="n">arr</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}]</span>
+    <span class="n">arr2</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">),</span><span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+
+<p>输出： </p>
+<div class="highlight"><pre><span></span>    <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}]</span>
+</pre></div>
+
+
+<p>4、获取某目录下特定类型的文件</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="k">def</span> <span class="nf">get_file_paths</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">file_suffix</span><span class="p">):</span>
+    <span class="n">sub_num</span> <span class="o">=</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">file_suffix</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">and</span> <span class="n">p</span><span class="p">[</span><span class="n">sub_num</span><span class="p">:]</span><span class="o">==</span><span class="n">file_suffix</span><span class="p">)</span>
+</pre></div>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

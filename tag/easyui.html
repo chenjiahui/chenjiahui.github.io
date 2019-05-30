@@ -1,194 +1,163 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-        <meta charset="utf-8" />
-        <title>BugManager’s Blog - easyui</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="BugManager’s Blog - easyui"/>
+    <meta property="og:url" content="/tag/easyui.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="website"/>
+
+    <link rel="canonical" href="/tag/easyui.html" />
+
+    <title>BugManager’s Blog - easyui | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">BugManager’s Blog </a></h1>
-                <nav><ul>
-                    <li><a href="/category/flex.html">Flex</a></li>
-                    <li><a href="/category/java.html">java</a></li>
-                    <li><a href="/category/ji-qun.html">集群</a></li>
-                    <li><a href="/category/linux.html">Linux</a></li>
-                    <li><a href="/category/other.html">other</a></li>
-                    <li><a href="/category/python.html">python</a></li>
-                    <li><a href="/category/qian-duan.html">前端</a></li>
-                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
-                    <li><a href="/category/yun-wei.html">运维</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/46425607.html">easyui动态表头 && 动态添加tabs</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-06-09T13:05:22+00:00">
-                Published: 二 09 六月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/qian-duan.html">前端</a>.</p>
-<p>tags: <a href="/tag/easyui.html">easyui</a> </p>
-</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46425607 </p>
-<p>今天在实现一个业务的时候，需要根据后台业务数据生成多个tab页，并且每个tab页中表格的表头需要根据数据动态生成。</p>
-<p>后台返回的数据格式如下：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150609131129904?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>实现方法如下：</p>
-<div class="highlight"><pre><span></span><span class="o">//</span>$<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span><span class="o">//</span>弹窗
-<span class="o">//</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#compareResTabs</span><span class="s1">&#39;</span><span class="ss">)</span><span class="o">//</span>弹窗内的<span class="nv">tab</span>页面
-<span class="nv">success</span>: <span class="nv">function</span><span class="ss">(</span><span class="nb">result</span><span class="ss">)</span> {
- <span class="k">if</span><span class="ss">(</span><span class="nb">result</span>.<span class="nv">length</span><span class="o">==</span><span class="mi">0</span><span class="ss">)</span>{
-  <span class="nv">alert</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">无比对结果</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;</span>
- }<span class="k">else</span>{
-  $<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span>.<span class="nv">window</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">open</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;//弹窗需要先打开，不然表格内容初始化不出来。</span>
-  <span class="o">//</span>循环创建<span class="nv">tab</span>
-  <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;result.length;i++){</span>
-   <span class="nv">var</span> <span class="nv">oneScene</span> <span class="o">=</span> <span class="nb">result</span>[<span class="nv">i</span>]<span class="c1">;</span>
-   
-   <span class="nv">var</span> <span class="nv">content</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">&lt;div title=&quot;</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">oneScene</span>.<span class="nv">scene_name</span><span class="o">+</span><span class="s1">&#39;</span><span class="s">&quot; style=&quot;padding: 10px&quot;&gt;&lt;table id=&quot;dg</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">i</span><span class="o">+</span><span class="s1">&#39;</span><span class="s">&quot;&gt;&lt;/table&gt;&lt;/div&gt;</span><span class="s1">&#39;</span><span class="c1">;</span>
-   
-   $<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#compareResTabs</span><span class="s1">&#39;</span><span class="ss">)</span>.<span class="nv">tabs</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">add</span><span class="s1">&#39;</span>,{
-    <span class="nv">title</span> : <span class="nv">oneScene</span>.<span class="nv">scene_name</span>,
-    <span class="nv">content</span>:<span class="nv">content</span>
-   }<span class="ss">)</span><span class="c1">;</span>
- 
-   <span class="nv">var</span> <span class="nv">header</span> <span class="o">=</span> <span class="nv">oneScene</span>.<span class="nv">header</span><span class="c1">;</span>
-   <span class="nv">var</span> <span class="nv">columns</span> <span class="o">=</span> []<span class="c1">;</span>
-   <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">j</span><span class="o">=</span><span class="mi">0</span><span class="c1">;j&lt;header.length;j++){</span>
-    <span class="nv">columns</span>.<span class="nv">push</span><span class="ss">(</span>{
-     <span class="nv">field</span>:<span class="nv">header</span>[<span class="nv">j</span>],
-     <span class="nv">title</span>:<span class="nv">header</span>[<span class="nv">j</span>],
-     <span class="nv">width</span>:<span class="mi">100</span>,
-     <span class="nv">align</span>:<span class="s1">&#39;</span><span class="s">center</span><span class="s1">&#39;</span>
-    }<span class="ss">)</span><span class="c1">;</span>
-   }
-   
-   $<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#dg</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">i</span><span class="ss">)</span>.<span class="nv">datagrid</span><span class="ss">(</span>{<span class="nv">columns</span> : [<span class="nv">columns</span>]}<span class="ss">)</span><span class="c1">;</span>
-   $<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#dg</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">i</span><span class="ss">)</span>.<span class="nv">datagrid</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">loadData</span><span class="s1">&#39;</span>,<span class="nv">oneScene</span>.<span class="nv">data</span><span class="ss">)</span><span class="c1">;</span>
-   
-   <span class="o">//</span>$.<span class="nv">parser</span>.<span class="nv">parse</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">compareResTabs</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">i</span><span class="ss">)</span><span class="c1">;</span>
-   <span class="o">//</span>$.<span class="nv">parser</span>.<span class="nv">parse</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">#dg</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">i</span><span class="ss">)</span><span class="c1">;</span>
-  }
- }
- <span class="nv">parent</span>.$.<span class="nv">messager</span>.<span class="nv">progress</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">close</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;</span>
-}
-</pre></div>
-
-
-<p>﻿﻿</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/45726553.html" rel="bookmark"
-                           title="Permalink to easyui动态生成页面元素时，easyui样式失效问题">easyui动态生成页面元素时，easyui样式失效问题</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-05-14T21:38:51+00:00">
-                Published: 四 14 五月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/qian-duan.html">前端</a>.</p>
-<p>tags: <a href="/tag/jquery-easyui.html">jquery-easyui</a> <a href="/tag/easyui.html">easyui</a> <a href="/tag/javascript.html">javascript</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45726553 </p>
-<p>﻿﻿</p>
-<p>在前台页面动态生成easyui页面元素时，有时会发现，easyui的样式出不来，甚至页面不是想要的效果。</p>
-<p>多数原因是在页面加载完时执行的$(function(){}方法中动态生成元素。</p>
-<p>而调用$(function(){}方法时，页面已经渲染完毕，导致通过代码动态加载的元素，不会被自动渲染。</p>
-<p>解决方法：</p>
-<p>在加载完元素后，渲染组件即可：</p>
-<div class="highlight"><pre><span></span>      <span class="nx">$</span><span class="p">.</span><span class="nx">parser</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;#configTable&#39;</span><span class="p">);</span>
-</pre></div>
-
-
-<p>﻿﻿</p>
-                <a class="readmore" href="/45726553.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/40518473.html" rel="bookmark"
-                           title="Permalink to jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法">jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-10-27T23:41:38+00:00">
-                Published: 一 27 十月 2014
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/jquery-easyui.html">jquery-easyui</a> <a href="/tag/easyui.html">easyui</a> <a href="/tag/javascript.html">javascript</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/40518473 </p>
-<p><strong>﻿﻿jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</strong></p>
-<p>工作中用到一个具有多选功能的easyui-datagrid在处理cell的点击事件时，不允许被选中行的需求。</p>
-<p>如下图，点击“查看”时，只是为了查看详细信息，并不是需要选择行。</p>
-<p><img alt="" src="https://img-blog.csdn.net/20141027234702859?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>完成这个需求，其实只需要将datagrid的checkOnSelect属性设置为false就可以了。</p>
-<p>然而，当设置该属性后，新的问题就随之出现了。</p>
-<p><img alt="" src="https://img-blog.csdn.net/20141027234813312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>目前的办法是使用以下代码去除高亮： （本来是打算处理成checkbox选中的行高亮显示，奈何刚开始使用easyui功力不够）  </p>
-<div class="highlight"><pre><span></span><span class="n">onSelect</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="n">rowData</span><span class="o">){</span>
- <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectRow&#39;</span><span class="o">,</span><span class="n">rowIndex</span><span class="o">);</span>
-<span class="o">},</span>
-<span class="n">onCheckAll</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rows</span><span class="o">){</span>
- <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectAll&#39;</span><span class="o">);</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p>使用以上代码之后，要获取到checkbox选中的所以行数据，则使用以下代码：</p>
-<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">checkedItems</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#datagrid2 …</span></pre></div>
-                <a class="readmore" href="/40518473.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="#">友情链接1</a></li>
-                            <li><a href="#">友情链接2</a></li>
-                            <li><a href="#">友情链接3</a></li>
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
                         </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
-                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span9">
+    <section>
+    <h1>Articles tagged with "easyui"</h1>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2015</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 6月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                09
+                </div>
+            <div class="span10">
+                <a href="/2015/06/09/46425607.html">easyui动态表头 && 动态添加tabs</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 5月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                14
+                </div>
+            <div class="span10">
+                <a href="/2015/05/14/45726553.html">easyui动态生成页面元素时，easyui样式失效问题</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2014</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month">10月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                27
+                </div>
+            <div class="span10">
+                <a href="/2014/10/27/40518473.html">jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="span3">
+    <section id="sidebar">
+            <div>
+                <h2>Browse content by</h2>
+                <ul class="fa-ul">
+                <li><a href="/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
+                </ul>
+            </div><!-- /.browse -->
+            <div>
+                <h2>LINKS</h2>
+                <ul>
+                    <li><a href="#">友情链接1</a></li>
+                    <li><a href="#">友情链接2</a></li>
+                    <li><a href="#">友情链接3</a></li>
+                </ul>
+            </div><!-- /.Links -->
+            <div>
+                <h2>SOCIAL</h2>
+                <ul>
+                    <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                    <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                </ul>
+            </div><!-- /.social -->
+<!-- /.Tags -->
+    </section><!-- /#sidebar -->
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

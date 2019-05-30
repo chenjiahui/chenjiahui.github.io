@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="hadoop学习笔记之HDFS"/>
+    <meta property="og:url" content="/2015/07/22/46997303.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/07/22/46997303.html" />
+
+    <title>hadoop学习笔记之HDFS | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li class="active"><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/07/22/46997303.html" rel="bookmark"
+             title="Permalink to hadoop学习笔记之HDFS">hadoop学习笔记之HDFS</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/java.html">java</a>
+
+    on 2015-07-22
+
+        |
+        tags:         <a href="/tag/java.html">java</a>
+        <a href="/tag/hadoop.html">hadoop</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46997303 </p>
+<p>HDFS：Hadoop Distributed File System 分布式文件系统，其操作方式与linux相似，使用指令之前要在前面加上dfs。（注意：hdfs没有当前目录的概念，不能使用cd命令）</p>
+<p>常规操作命令：</p>
+<div class="highlight"><pre><span></span>     dfs -put ../hello hello
+     dfs -ls
+     dfs -get hello ./mypath/hello
+     dfs -rmr hello
+     dfs -cat part-r-00000 //打开文件，查看内容
+     dfsadmin -report //hdfs的信息情况
+</pre></div>
+
+
+<p>客户端如何从HDFS上 <strong>获取文件</strong> 呢？以获取文件名为“hello”的文件为例：</p>
+<p>客户端向nameNode发起请求，询问“hello”文件的位置信息。</p>
+<p>namenode将查询出的位置信息列表清单返回给客户端。</p>
+<p>客户端根据清单去连接目标dataNode，获取文件、数据。</p>
+<p>有趣的是：HDFS集群的出错是常态的，也是正常的。因此，HDFS会做冗余数据，冗余份数可以在hdfs-site.xml文件中设置复制因子来指定副本数量，一般3份。</p>
+<p>HDFS在复制冗余因子时，使用到了机架感知和心跳机制：</p>
+<p><strong>机架感知：</strong> 以3份副本为例：一般在本机架存放一个副本，其他机架存放一个副本。</p>
+<p><strong>心跳机制：</strong> nameNode与dataNode之间周期性的接收心跳信号，对于没有按时发送心跳的dataNode会被标记为宕机，踢出Hadoop集群。hadoop会在系统不太繁忙时，重新复制缺少的副本。</p>
+<p><strong>回收站</strong></p>
+<p>当删除一个文件时，物理上并没有被真正删除，这个文件块是可以被快速恢复的。回收站的文件经过一段时间后，文件会被永久删除。这个时间段是可配置的。 <strong>注意：</strong> 回收站使用前需要先打开。</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

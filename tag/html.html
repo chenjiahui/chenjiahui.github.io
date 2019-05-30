@@ -1,146 +1,146 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-        <meta charset="utf-8" />
-        <title>BugManager’s Blog - html</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="BugManager’s Blog - html"/>
+    <meta property="og:url" content="/tag/html.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="website"/>
+
+    <link rel="canonical" href="/tag/html.html" />
+
+    <title>BugManager’s Blog - html | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">BugManager’s Blog </a></h1>
-                <nav><ul>
-                    <li><a href="/category/flex.html">Flex</a></li>
-                    <li><a href="/category/java.html">java</a></li>
-                    <li><a href="/category/ji-qun.html">集群</a></li>
-                    <li><a href="/category/linux.html">Linux</a></li>
-                    <li><a href="/category/other.html">other</a></li>
-                    <li><a href="/category/python.html">python</a></li>
-                    <li><a href="/category/qian-duan.html">前端</a></li>
-                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
-                    <li><a href="/category/yun-wei.html">运维</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/50311479.html">APP端webview自动播放视频</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-12-15T10:26:11+00:00">
-                Published: 二 15 十二月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/qian-duan.html">前端</a>.</p>
-<p>tags: <a href="/tag/qian-duan.html">前端</a> <a href="/tag/html.html">html</a> </p>
-</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/50311479 </p>
-<p>今天想等网页加载好后动态计算某个div宽高和位置。<br>
-起初用的是下面这种方式：</p>
-<div class="highlight"><pre><span></span><span class="err">$</span><span class="p">(</span><span class="k">function</span><span class="p">()</span><span class="err">{</span>
-    <span class="n">doAdapter</span><span class="p">();</span>
-<span class="err">}</span><span class="p">)</span>
-
-<span class="err">$</span><span class="p">(</span><span class="n">document</span><span class="p">).</span><span class="n">ready</span><span class="p">(</span><span class="k">function</span><span class="p">()</span><span class="err">{</span>
-    <span class="n">doAdapter</span><span class="p">();</span>
-<span class="err">}</span><span class="p">);</span>
-</pre></div>
-
-
-<p>这东西不是很靠谱啊（当然它也有它的优点，在这里用就不靠谱了），这个不是一定等页面的图片全部加载完成才触发的。<br>
-它在DOM就绪后就触发了，而此时，dom元素所关联的内容可能还没有加载完毕。<br>
-比如图片的宽、高，图片的父容器的宽、高此时就不一定有值。<br>
-后来改成了 </p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span> <span class="n">onload</span><span class="o">=</span><span class="ss">&quot;doAdapter();&quot;</span><span class="o">&gt;</span>
-
-
-
-
-
-
-<span class="err">$</span><span class="p">(</span><span class="n">window</span><span class="p">).</span><span class="k">load</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="err">{</span>
-        <span class="n">doAdapter</span><span class="p">();</span>
-<span class="err">}</span><span class="p">);</span>
-</pre></div>
-
-
-<p>必须等待网页中所有的内容加载完毕后 ( 包括图片 ) 才能执行  </p>
-<p>效果就好了。</p>
-<p>借用网友的一张图：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20151215102455828?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">  </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/49180767.html" rel="bookmark"
-                           title="Permalink to html根据宽的百分比设置高">html根据宽的百分比设置高</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-10-16T16:55:05+00:00">
-                Published: 五 16 十月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/qian-duan.html">前端</a>.</p>
-<p>tags: <a href="/tag/html.html">html</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/49180767 </p>
-<p>最近在团队中开发了一部分html页面</p>
-<p>有一个功能点，需要在一行展示三张图片，每张图片拉伸成正方形。</p>
-<p>对于图片的宽设置为33%就可以了，但是怎么让高度根据宽度变化呢？最初想到的是在页面生成后使用js来获取图片宽，再根据这个获取的宽设置图片的高。</p>
-<p>代码如下：</p>
-<div class="highlight"><pre><span></span>$<span class="ss">(</span><span class="nv">function</span><span class="ss">()</span>{
-    <span class="nv">var</span> <span class="nv">imgs</span><span class="o">=</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">.view_img</span><span class="s1">&#39;</span><span class="ss">)</span>
-    <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;imgs.length;i++){</span>
-        <span class="nv">imgs</span>[<span class="nv">i</span>].<span class="nv">style</span>.<span class="nv">height</span><span class="o">=</span><span class="nv">imgs</span>[<span class="nv">i</span>].<span class="nv">offsetWidth</span><span class="o">+</span><span class="s1">&#39;</span><span class="s">px</span><span class="s1">&#39;</span><span class="c1">;</span>
-    }
-}<span class="ss">)</span>
-</pre></div>
-
-
-<p>在手机web中，不拉伸页面大小其实这样做是可以了的。</p>
-<p>但是如果在pc段的页面中查看，拉伸下页面，图片的高度是不会跟着宽度变化的。</p>
-<p>查看了点资料，原来直接使用css样式也是可以做到宽按父组件的百分比设置，高根据宽的百分比设置的。</p>
-<p>代码如下 …</p>
-                <a class="readmore" href="/49180767.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="#">友情链接1</a></li>
-                            <li><a href="#">友情链接2</a></li>
-                            <li><a href="#">友情链接3</a></li>
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
                         </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
-                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span9">
+    <section>
+    <h1>Articles tagged with "html"</h1>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month">12月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                16
+                </div>
+            <div class="span10">
+                <a href="/2015/12/16/50311479.html">onload和ready的区别</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month">10月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                16
+                </div>
+            <div class="span10">
+                <a href="/2015/10/16/49180767.html">html根据宽的百分比设置高</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="span3">
+    <section id="sidebar">
+            <div>
+                <h2>Browse content by</h2>
+                <ul class="fa-ul">
+                <li><a href="/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
+                </ul>
+            </div><!-- /.browse -->
+            <div>
+                <h2>LINKS</h2>
+                <ul>
+                    <li><a href="#">友情链接1</a></li>
+                    <li><a href="#">友情链接2</a></li>
+                    <li><a href="#">友情链接3</a></li>
+                </ul>
+            </div><!-- /.Links -->
+            <div>
+                <h2>SOCIAL</h2>
+                <ul>
+                    <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                    <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                </ul>
+            </div><!-- /.social -->
+<!-- /.Tags -->
+    </section><!-- /#sidebar -->
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

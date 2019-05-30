@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="easyui动态表头 && 动态添加tabs"/>
+    <meta property="og:url" content="/2015/06/09/46425607.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/06/09/46425607.html" />
+
+    <title>easyui动态表头 && 动态添加tabs | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li class="active"><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/06/09/46425607.html" rel="bookmark"
+             title="Permalink to easyui动态表头 && 动态添加tabs">easyui动态表头 && 动态添加tabs</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/qian-duan.html">前端</a>
+
+    on 2015-06-09
+
+        |
+        tags:         <a href="/tag/easyui.html">easyui</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46425607 </p>
+<p>今天在实现一个业务的时候，需要根据后台业务数据生成多个tab页，并且每个tab页中表格的表头需要根据数据动态生成。</p>
+<p>后台返回的数据格式如下：</p>
+<p><img alt="image" src="../../../images/20150609131129904.png"></p>
+<p>实现方法如下：</p>
+<div class="highlight"><pre><span></span><span class="o">//</span>$<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span><span class="o">//</span>弹窗
+<span class="o">//</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#compareResTabs</span><span class="s1">&#39;</span><span class="ss">)</span><span class="o">//</span>弹窗内的<span class="nv">tab</span>页面
+<span class="nv">success</span>: <span class="nv">function</span><span class="ss">(</span><span class="nb">result</span><span class="ss">)</span> {
+ <span class="k">if</span><span class="ss">(</span><span class="nb">result</span>.<span class="nv">length</span><span class="o">==</span><span class="mi">0</span><span class="ss">)</span>{
+  <span class="nv">alert</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">无比对结果</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;</span>
+ }<span class="k">else</span>{
+  $<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span>.<span class="nv">window</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">open</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;//弹窗需要先打开，不然表格内容初始化不出来。</span>
+  <span class="o">//</span>循环创建<span class="nv">tab</span>
+  <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;result.length;i++){</span>
+   <span class="nv">var</span> <span class="nv">oneScene</span> <span class="o">=</span> <span class="nb">result</span>[<span class="nv">i</span>]<span class="c1">;</span>
+   
+   <span class="nv">var</span> <span class="nv">content</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">&lt;div title=&quot;</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">oneScene</span>.<span class="nv">scene_name</span><span class="o">+</span><span class="s1">&#39;</span><span class="s">&quot; style=&quot;padding: 10px&quot;&gt;&lt;table id=&quot;dg</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">i</span><span class="o">+</span><span class="s1">&#39;</span><span class="s">&quot;&gt;&lt;/table&gt;&lt;/div&gt;</span><span class="s1">&#39;</span><span class="c1">;</span>
+   
+   $<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#compareResTabs</span><span class="s1">&#39;</span><span class="ss">)</span>.<span class="nv">tabs</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">add</span><span class="s1">&#39;</span>,{
+    <span class="nv">title</span> : <span class="nv">oneScene</span>.<span class="nv">scene_name</span>,
+    <span class="nv">content</span>:<span class="nv">content</span>
+   }<span class="ss">)</span><span class="c1">;</span>
+ 
+   <span class="nv">var</span> <span class="nv">header</span> <span class="o">=</span> <span class="nv">oneScene</span>.<span class="nv">header</span><span class="c1">;</span>
+   <span class="nv">var</span> <span class="nv">columns</span> <span class="o">=</span> []<span class="c1">;</span>
+   <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">j</span><span class="o">=</span><span class="mi">0</span><span class="c1">;j&lt;header.length;j++){</span>
+    <span class="nv">columns</span>.<span class="nv">push</span><span class="ss">(</span>{
+     <span class="nv">field</span>:<span class="nv">header</span>[<span class="nv">j</span>],
+     <span class="nv">title</span>:<span class="nv">header</span>[<span class="nv">j</span>],
+     <span class="nv">width</span>:<span class="mi">100</span>,
+     <span class="nv">align</span>:<span class="s1">&#39;</span><span class="s">center</span><span class="s1">&#39;</span>
+    }<span class="ss">)</span><span class="c1">;</span>
+   }
+   
+   $<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#dg</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">i</span><span class="ss">)</span>.<span class="nv">datagrid</span><span class="ss">(</span>{<span class="nv">columns</span> : [<span class="nv">columns</span>]}<span class="ss">)</span><span class="c1">;</span>
+   $<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#dg</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">i</span><span class="ss">)</span>.<span class="nv">datagrid</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">loadData</span><span class="s1">&#39;</span>,<span class="nv">oneScene</span>.<span class="nv">data</span><span class="ss">)</span><span class="c1">;</span>
+   
+   <span class="o">//</span>$.<span class="nv">parser</span>.<span class="nv">parse</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">compareResTabs</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">i</span><span class="ss">)</span><span class="c1">;</span>
+   <span class="o">//</span>$.<span class="nv">parser</span>.<span class="nv">parse</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">#dg</span><span class="s1">&#39;</span><span class="o">+</span><span class="nv">i</span><span class="ss">)</span><span class="c1">;</span>
+  }
+ }
+ <span class="nv">parent</span>.$.<span class="nv">messager</span>.<span class="nv">progress</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">close</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;</span>
+}
+</pre></div>
+
+
+<p>﻿﻿</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

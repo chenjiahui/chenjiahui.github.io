@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="python将对象写入文件，以及从文件中读取对象"/>
+    <meta property="og:url" content="/2015/09/08/48296437.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/09/08/48296437.html" />
+
+    <title>python将对象写入文件，以及从文件中读取对象 | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li class="active"><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/09/08/48296437.html" rel="bookmark"
+             title="Permalink to python将对象写入文件，以及从文件中读取对象">python将对象写入文件，以及从文件中读取对象</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/python.html">python</a>
+
+    on 2015-09-08
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48296437 </p>
+<p>写入文件代码：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">shelve</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">test.dat&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="o">=</span><span class="p">{}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;123456&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key2&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;eeeeee&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key3&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;ABCDEF&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dataKey</span> <span class="o">=</span> <span class="s2">&quot;mydata&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="p">[</span><span class="n">dataKey</span><span class="p">]</span><span class="o">=</span><span class="n">data</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>可以看到在D盘生成了一个test.dat的文件</p>
+<p><img alt="image" src="../../../images/20150908205313782.png">  </p>
+<p>读取数据代码： </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">shelve</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">test.dat&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dataKey</span> <span class="o">=</span> <span class="s2">&quot;mydata&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">file</span><span class="p">[</span><span class="n">dataKey</span><span class="p">]</span>
+<span class="p">{</span><span class="s1">&#39;key3&#39;</span><span class="p">:</span> <span class="s1">&#39;ABCDEF&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="s1">&#39;eeeeee&#39;</span><span class="p">,</span> <span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="s1">&#39;123456&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,224 +1,174 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-        <meta charset="utf-8" />
-        <title>BugManager’s Blog - linux</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="BugManager’s Blog - linux"/>
+    <meta property="og:url" content="/tag/linux.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="website"/>
+
+    <link rel="canonical" href="/tag/linux.html" />
+
+    <title>BugManager’s Blog - linux | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">BugManager’s Blog </a></h1>
-                <nav><ul>
-                    <li><a href="/category/flex.html">Flex</a></li>
-                    <li><a href="/category/java.html">java</a></li>
-                    <li><a href="/category/ji-qun.html">集群</a></li>
-                    <li><a href="/category/linux.html">Linux</a></li>
-                    <li><a href="/category/other.html">other</a></li>
-                    <li><a href="/category/python.html">python</a></li>
-                    <li><a href="/category/qian-duan.html">前端</a></li>
-                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
-                    <li><a href="/category/yun-wei.html">运维</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/89435093.html">ubuntu安装redis-server报错解决</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2019-04-21T17:02:53+00:00">
-                Published: 日 21 四月 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/linux.html">Linux</a>.</p>
-<p>tags: <a href="/tag/linux.html">linux</a> <a href="/tag/yun-wei.html">运维</a> </p>
-</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/89435093 </p>
-<p>今天在ubuntu上使用apt-get安装redis-server。报如下错误：</p>
-<div class="highlight"><pre><span></span><span class="k">Do</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">to</span> <span class="k">continue</span>? [<span class="nv">Y</span><span class="o">/</span><span class="nv">n</span>] <span class="nv">Y</span>
-<span class="nv">Setting</span> <span class="nv">up</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span> <span class="ss">(</span><span class="mi">5</span>:<span class="mi">4</span>.<span class="mi">0</span>.<span class="mi">9</span><span class="o">-</span><span class="mi">1</span><span class="ss">)</span> ...
-<span class="nv">Job</span> <span class="k">for</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span>.<span class="nv">service</span> <span class="nv">failed</span> <span class="nv">because</span> <span class="nv">a</span> <span class="nb">timeout</span> <span class="nv">was</span> <span class="nv">exceeded</span>.
-<span class="nv">See</span> <span class="s2">&quot;</span><span class="s">systemctl status redis-server.service</span><span class="s2">&quot;</span> <span class="nv">and</span> <span class="s2">&quot;</span><span class="s">journalctl -xe</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="nv">details</span>.
-<span class="nv">invoke</span><span class="o">-</span><span class="nv">rc</span>.<span class="nv">d</span>: <span class="nv">initscript</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span>, <span class="nv">action</span> <span class="s2">&quot;</span><span class="s">start</span><span class="s2">&quot;</span> <span class="nv">failed</span>.
-● <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span>.<span class="nv">service</span> <span class="o">-</span> <span class="nv">Advanced</span> <span class="nv">key</span><span class="o">-</span><span class="nv">value</span> <span class="nv">store</span>
-   <span class="nv">Loaded</span>: <span class="nv">loaded</span> <span class="ss">(</span><span class="o">/</span><span class="nv">lib</span><span class="o">/</span><span class="nv">systemd</span><span class="o">/</span><span class="nv">system</span><span class="o">/</span><span class="nv">redis</span><span class="o">-</span><span class="nv">server</span>.<span class="nv">service</span><span class="c1">; disabled; vendor preset: enabled)</span>
-   <span class="nv">Active</span>: <span class="nv">activating</span> <span class="ss">(</span><span class="nv">auto</span><span class="o">-</span><span class="nv">restart</span><span class="ss">)</span> <span class="ss">(</span><span class="nb">Result</span>: <span class="nb">timeout</span><span class="ss">)</span> <span class="nv">since</span> <span class="nv">Sun</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">03</span> <span class="mi">12</span>:<span class="mi">47</span>:<span class="mi">34</span> <span class="nv">EDT</span><span class="c1">; 14ms ago</span>
-     <span class="nv">Docs</span>: <span class="nv">http</span>:<span class="o">//</span><span class="nv">redis</span>.<span class="nv">io</span><span class="o">/</span><span class="nv">documentation</span>,
-           <span class="nv">man</span>:<span class="nv">redis</span><span class="o">-</span><span class="nv">server</span><span class="ss">(</span><span class="mi">1</span><span class="ss">)</span>
-  <span class="nv">Process</span>: <span class="mi">2156</span> <span class="nv">ExecStart</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">redis</span><span class="o">-</span><span class="nv">server</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">redis</span><span class="o">/</span><span class="nv">redis</span>.<span class="nv">conf</span> <span class="ss">(</span><span class="nv">code</span><span class="o">=</span><span class="nv">exited</span>, <span class="nv">status</span><span class="o">=</span><span class="mi">0</span><span class="o">/</span><span class="nv">SUCCESS</span><span class="ss">)</span>
-<span class="nv">dpkg</span>: <span class="nv">error</span> <span class="nv">processing</span> <span class="nv">package</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span> <span class="ss">(</span><span class="o">--</span><span class="nv">configure</span><span class="ss">)</span>:
- <span class="nv">installed</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span> <span class="nv">package</span> <span class="nv">post</span><span class="o">-</span><span class="nv">installation</span> <span class="nv">script</span> <span class="nv">subprocess</span> <span class="nv">returned</span> <span class="nv">error</span> <span class="k">exit</span> <span class="nv">status</span> <span class="mi">1</span>
-<span class="nv">dpkg</span>: <span class="nv">dependency</span> <span class="nv">problems</span> <span class="nv">prevent</span> <span class="nv">configuration</span> <span class="nv">of</span> <span class="nv">redis</span>:
- <span class="nv">redis</span> <span class="nv">depends</span> <span class="nv">on</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span> <span class="ss">(</span><span class="o">&lt;&lt;</span> <span class="mi">5</span>:<span class="mi">4</span>.<span class="mi">0</span>.<span class="mi">9</span><span class="o">-</span><span class="mi">1</span>.<span class="mi">1</span><span class="o">~</span><span class="ss">)</span><span class="c1">; however:</span>
-  <span class="nv">Package</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span> <span class="nv">is</span> <span class="nv">not</span> <span class="nv">configured</span> <span class="nv">yet</span>.
- <span class="nv">redis</span> <span class="nv">depends</span> <span class="nv">on</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span> <span class="ss">(</span><span class="o">&gt;=</span> <span class="mi">5</span>:<span class="mi">4</span>.<span class="mi">0</span>.<span class="mi">9</span><span class="o">-</span><span class="mi">1</span><span class="ss">)</span><span class="c1">; however:</span>
-  <span class="nv">Package</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span> <span class="nv">is</span> <span class="nv">not</span> <span class="nv">configured</span> <span class="nv">yet</span>.
-
-<span class="nv">dpkg</span>: <span class="nv">error</span> <span class="nv">processing</span> <span class="nv">package</span> <span class="nv">redis</span> <span class="ss">(</span><span class="o">--</span><span class="nv">configure</span><span class="ss">)</span>:
- <span class="nv">dependency</span> <span class="nv">problems</span> <span class="o">-</span> <span class="nv">leaving</span> <span class="nv">unconfigured</span>
-<span class="nv">No</span> <span class="nv">apport</span> <span class="nv">report</span> <span class="nv">written</span> <span class="nv">because</span> <span class="nv">the</span> <span class="nv">error</span> <span class="nv">message</span> <span class="nv">indicates</span> <span class="nv">its</span> <span class="nv">a</span> <span class="nv">followup</span> <span class="nv">error</span> <span class="nv">from</span> <span class="nv">a</span> <span class="nv">previous</span> <span class="nv">failure</span>.
-                                                                                                          <span class="nv">Errors</span> <span class="nv">were</span> <span class="nv">encountered</span> <span class="k">while</span> <span class="nv">processing</span>:
- <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span>
- <span class="nv">redis</span>
-<span class="nv">E</span>: <span class="nv">Sub</span><span class="o">-</span><span class="nv">process</span> <span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">dpkg</span> <span class="nv">returned</span> <span class="nv">an</span> <span class="nv">error</span> <span class="nv">code</span> <span class="ss">(</span><span class="mi">1</span><span class="ss">)</span>
-</pre></div>
-
-
-<p>后来发现是系统禁用了ipv6的原因。</p>
-<p>解决方法:</p>
-<p>取消禁用ipv6，修改/proc/sys/net/ipv6/conf/eth0/disable_ipv6的状态即可。</p>
-<p>也可以作永久取消处理</p>
-<div class="highlight"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysctl</span><span class="p">.</span><span class="n">conf</span>
-
-<span class="o">#</span><span class="n">net</span><span class="p">.</span><span class="n">ipv6</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="k">all</span><span class="p">.</span><span class="n">disable_ipv6</span> <span class="o">=</span> <span class="mi">1</span>  <span class="o">#</span><span class="err">注释这条。</span>
-<span class="n">net</span><span class="p">.</span><span class="n">ipv6</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">eth0</span><span class="p">.</span><span class="n">disable_ipv6</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">net</span><span class="p">.</span><span class="n">ipv6</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">lo</span><span class="p">.</span><span class="n">disable_ipv6</span> <span class="o">=</span> <span class="mi">1</span>
-</pre></div>
-
-
-<p>保存完毕，执行下面的命令使其生效。</p>
-<div class="highlight"><pre><span></span><span class="n">sysctl</span> <span class="o">-</span><span class="n">p</span>
-</pre></div>
-
-
-<p>重新安装redis-server，OK。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/88760377.html" rel="bookmark"
-                           title="Permalink to Homebrew禁用自动更新">Homebrew禁用自动更新</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2019-03-23T14:21:30+00:00">
-                Published: 六 23 三月 2019
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/linux.html">Linux</a>.</p>
-<p>tags: <a href="/tag/linux.html">linux</a> <a href="/tag/yun-wei.html">运维</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/88760377 </p>
-<p>上午，同事在安装新环境，听他吐槽说Homebrew每次使用都要先去更新，很少麻烦。</p>
-<p>其实Homebrew是可以取消自动更新的。</p>
-<p>如果在安装插件时，想跳过自动更新，在使用前，设置一下环境变量即可</p>
-<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">HOMEBREW_NO_AUTO_UPDATE</span><span class="o">=</span><span class="k">true</span>
-</pre></div>
-
-
-<p>如果不想要每次安装都去设置环境变量，也可以配置在（~/.bash_profile）中，将上面的命令追加在后面即可。</p>
-<p>那下次想要更新brew了怎么办？可以通过命令主动更新：</p>
-<div class="highlight"><pre><span></span><span class="n">brew</span> <span class="k">update</span>
-</pre></div>
-                <a class="readmore" href="/88760377.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/48830593.html" rel="bookmark"
-                           title="Permalink to linux使用crontab设置定时任务">linux使用crontab设置定时任务</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-09-30T17:23:45+00:00">
-                Published: 三 30 九月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/linux.html">Linux</a>.</p>
-<p>tags: <a href="/tag/linux.html">linux</a> <a href="/tag/yun-wei.html">运维</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/48830593 </p>
-<p>因最近工作中需要定时执行一段代码来跑批生成一些统计数据。</p>
-<p>最近刚好接触python，又了解到可以使用linux的crontab来执行定时任务。类似于windows的任务计划程序。</p>
-<p>那么怎么使用呢？</p>
-<p>首先要确定linux是否安装了crontab</p>
-<p>可以使用which crontab来查看。  </p>
-<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@cjh ~</span><span class="o">]</span><span class="n">#which</span><span class="w"> </span><span class="n">crontab</span><span class="w"></span>
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="nl">which</span><span class="p">:</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">crontab</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.7.0</span><span class="n">_45</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.7.0</span><span class="n">_45</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="nl">bin …</span></pre></div>
-                <a class="readmore" href="/48830593.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/47440683.html" rel="bookmark"
-                           title="Permalink to linux模糊查询文件并删除">linux模糊查询文件并删除</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-08-12T10:47:22+00:00">
-                Published: 三 12 八月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/linux.html">Linux</a>.</p>
-<p>tags: <a href="/tag/linux.html">linux</a> <a href="/tag/yun-wei.html">运维</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/47440683 </p>
-<p>因为工作用到定时删除3天前的日志文件文件，就写了段脚本。</p>
-<p>发现其中还是有几小点坑人之处。记录一下</p>
-<p>命令：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
-
-find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="se">\;</span>//删除log目录下第2级目录中3天前的*.log文件echo <span class="s2">&quot;delete execute successfully&quot;</span>!   
-<span class="nb">echo</span> <span class="s2">&quot;delete execute successfully&quot;</span>!
-</pre></div>
-</td></tr></table>
-
-<p>1、结尾的分号要也斜线转义，因为";"在不同版本的linux中会有不同的意义。<br>
-2、{}与\;之间必须有空格。<br>
-测试如下：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150812103843201?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>保存文件后，会发现没有权限执行，需要修改权限 …</p>
-                <a class="readmore" href="/47440683.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="#">友情链接1</a></li>
-                            <li><a href="#">友情链接2</a></li>
-                            <li><a href="#">友情链接3</a></li>
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
                         </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
-                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span9">
+    <section>
+    <h1>Articles tagged with "linux"</h1>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2019</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 4月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                21
+                </div>
+            <div class="span10">
+                <a href="/2019/04/21/89435093.html">ubuntu安装redis-server报错解决</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 3月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                23
+                </div>
+            <div class="span10">
+                <a href="/2019/03/23/88760377.html">Homebrew禁用自动更新</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2015</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 9月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                30
+                </div>
+            <div class="span10">
+                <a href="/2015/09/30/48830593.html">linux使用crontab设置定时任务</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 8月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                12
+                </div>
+            <div class="span10">
+                <a href="/2015/08/12/47440683.html">linux模糊查询文件并删除</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="span3">
+    <section id="sidebar">
+            <div>
+                <h2>Browse content by</h2>
+                <ul class="fa-ul">
+                <li><a href="/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
+                </ul>
+            </div><!-- /.browse -->
+            <div>
+                <h2>LINKS</h2>
+                <ul>
+                    <li><a href="#">友情链接1</a></li>
+                    <li><a href="#">友情链接2</a></li>
+                    <li><a href="#">友情链接3</a></li>
+                </ul>
+            </div><!-- /.Links -->
+            <div>
+                <h2>SOCIAL</h2>
+                <ul>
+                    <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                    <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                </ul>
+            </div><!-- /.social -->
+<!-- /.Tags -->
+    </section><!-- /#sidebar -->
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

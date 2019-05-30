@@ -1,41 +1,99 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-        <meta charset="utf-8" />
-        <title>BugManager’s Blog</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="BugManager’s Blog"/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="website"/>
+
+    <link rel="canonical" href="" />
+
+    <title>BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">BugManager’s Blog </a></h1>
-                <nav><ul>
-                    <li><a href="/category/flex.html">Flex</a></li>
-                    <li><a href="/category/java.html">java</a></li>
-                    <li><a href="/category/ji-qun.html">集群</a></li>
-                    <li><a href="/category/linux.html">Linux</a></li>
-                    <li><a href="/category/other.html">other</a></li>
-                    <li><a href="/category/python.html">python</a></li>
-                    <li><a href="/category/qian-duan.html">前端</a></li>
-                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
-                    <li><a href="/category/yun-wei.html">运维</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/89741820.html">数据库与分区、分表、分库</a></h1>
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span9">
+                <section>
+                    <ol id="posts-list" class="hfeed" start="9">
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2019/05/01/89741820.html" rel="bookmark" title="Permalink to 数据库与分区、分表、分库">
+                                       数据库与分区、分表、分库
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2019-05-01T23:48:10+00:00">
-                Published: 三 01 五月 2019
-        </abbr>
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/shu-ju-ku.html">数据库</a>.</p>
-<p>tags: <a href="/tag/shu-ju-ku.html">数据库</a> <a href="/tag/mysql.html">MySQL</a> </p>
-</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/89741820 </p>
+    in <a href="/category/shu-ju-ku.html">数据库</a>
+
+    on 2019-05-01
+
+        |
+        tags:         <a href="/tag/shu-ju-ku.html">数据库</a>
+        <a href="/tag/mysql.html">MySQL</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/89741820 </p>
 <p>分区：（应用层感知不到变化）</p>
 <p>将把一张表的数据根据分区逻辑均衡分摊到多个存储介质中。在逻辑上看还是只有一张表，但实际被分成了N个物理块。分区类型有（range、list、hash、key）。</p>
 <p>主要解决单表数据量过大，读写数据、修改数据时重建索引效率等问题。</p>
@@ -47,63 +105,81 @@
 <p>将一张表中的不同数据字段，拆分到2张或者多张表中。一般横向拆分的情况有：表字段过多，字段内容过大（如text，blob等），不经常使用等。</p>
 <p>纵向拆分：</p>
 <p>将数据打散到多张结构相同的表中存储。</p>
-<p>如流水表，我们选择以用户id取余分表。因为在业务上流水只和用户相关，选择根据用户id取余分表很合适。</p>
-<p>需求：查看当天或者某段时间的充值总量，消费总量等：</p>
-<p>运营系统的需求，对查询时效性要求不是很高，我们采用先再每张表中查数据，将查询出的数据放入临时表中，最后在临时表中查询最终数据。（其实，早期我们的做法是单独做了张运营表，各个分表的数据，在运营表中都有汇总。这种方式，在数据量逐渐增大后，查询也越来越慢。）</p>
-<p>分库：</p>
-<p>分库，一般是根据业务耦合性，将关联度低的不同表存储在不同的数据库中。（比如，流水库，视频库）</p>
-<p>分库后，不同库之间不能进行关联查询，可以通过字段冗余进行解决。如果冗余无法满足需求，也可以考虑将小表数据，全表冗余到该分库中。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/89435093.html" rel="bookmark"
-                           title="Permalink to ubuntu安装redis-server报错解决">ubuntu安装redis-server报错解决</a></h1>
-                </header>
-
-                <div class="entry-content">
+<p>如流水表，我们选择以用户id取余分表 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2019/05/01/89741820.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2019/04/21/89435093.html" rel="bookmark" title="Permalink to ubuntu安装redis-server报错解决">
+                                       ubuntu安装redis-server报错解决
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2019-04-21T17:02:53+00:00">
-                Published: 日 21 四月 2019
-        </abbr>
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/linux.html">Linux</a>.</p>
-<p>tags: <a href="/tag/linux.html">linux</a> <a href="/tag/yun-wei.html">运维</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/89435093 </p>
+    in <a href="/category/yun-wei.html">运维</a>
+
+    on 2019-04-21
+
+        |
+        tags:         <a href="/tag/linux.html">linux</a>
+        <a href="/tag/yun-wei.html">运维</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/89435093 </p>
 <p>今天在ubuntu上使用apt-get安装redis-server。报如下错误：</p>
-<div class="highlight"><pre><span></span><span class="k">Do</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">to</span> <span class="k">continue</span>? [<span class="nv">Y</span><span class="o">/</span><span class="nv">n</span>] <span class="nv">Y</span>
-<span class="nv">Setting</span> <span class="nv">up</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span> <span class="ss">(</span><span class="mi">5</span>:<span class="mi">4</span>.<span class="mi">0</span>.<span class="mi">9</span><span class="o">-</span><span class="mi">1</span><span class="ss">)</span> ...
-<span class="nv">Job</span> <span class="k">for</span> <span class="nv">redis</span><span class="o">-</span><span class="nv">server</span>.<span class="nv">service</span> <span class="nv">failed</span> <span class="nv">because</span> <span class="nv">a</span> <span class="nb">timeout</span> <span class="nv">was</span> <span class="nv">exceeded</span>.
-<span class="nv">See</span> <span class="s2">&quot;</span><span class="s">systemctl status redis-server.service</span><span class="s2">&quot;</span> <span class="nv">and</span> <span class="s2">&quot;</span><span class="s">journalctl -xe</span><span class="s2">&quot;</span> <span class="k">for …</span></pre></div>
-                <a class="readmore" href="/89435093.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/88760377.html" rel="bookmark"
-                           title="Permalink to Homebrew禁用自动更新">Homebrew禁用自动更新</a></h1>
-                </header>
-
-                <div class="entry-content">
+<div class="highlight"><pre><span></span>Do you want to <span class="k">continue</span>? <span class="o">[</span>Y/n<span class="o">]</span> Y
+Setting up redis-server <span class="o">(</span><span class="m">5</span>:4.0.9-1<span class="o">)</span> ...
+Job <span class="k">for</span> redis-server.service failed because a timeout was exceeded.
+See <span class="s2">&quot;systemctl status redis-server.service&quot;</span> and <span class="s2">&quot;journalctl -xe&quot;</span> <span class="k">for</span> details.
+invoke-rc.d …</pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2019/04/21/89435093.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2019/03/23/88760377.html" rel="bookmark" title="Permalink to Homebrew禁用自动更新">
+                                       Homebrew禁用自动更新
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2019-03-23T14:21:30+00:00">
-                Published: 六 23 三月 2019
-        </abbr>
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/linux.html">Linux</a>.</p>
-<p>tags: <a href="/tag/linux.html">linux</a> <a href="/tag/yun-wei.html">运维</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/88760377 </p>
+    in <a href="/category/yun-wei.html">运维</a>
+
+    on 2019-03-23
+
+        |
+        tags:         <a href="/tag/linux.html">linux</a>
+        <a href="/tag/yun-wei.html">运维</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/88760377 </p>
 <p>上午，同事在安装新环境，听他吐槽说Homebrew每次使用都要先去更新，很少麻烦。</p>
 <p>其实Homebrew是可以取消自动更新的。</p>
 <p>如果在安装插件时，想跳过自动更新，在使用前，设置一下环境变量即可</p>
@@ -115,28 +191,84 @@
 <p>那下次想要更新brew了怎么办？可以通过命令主动更新：</p>
 <div class="highlight"><pre><span></span><span class="n">brew</span> <span class="k">update</span>
 </pre></div>
-                <a class="readmore" href="/88760377.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/65627740.html" rel="bookmark"
-                           title="Permalink to python使用代码对redis的key进行集中管理">python使用代码对redis的key进行集中管理</a></h1>
-                </header>
-
-                <div class="entry-content">
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2019/03/23/88760377.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2018/05/28/20180528212707.html" rel="bookmark" title="Permalink to HTTP请求中GET和POST的区别">
+                                       HTTP请求中GET和POST的区别
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2017-03-24T10:37:56+00:00">
-                Published: 五 24 三月 2017
-        </abbr>
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/65627740 </p>
+    in <a href="/category/other.html">other</a>
+
+    on 2018-05-28
+
+        |
+        tags:         <a href="/tag/http.html">http</a>
+        <a href="/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>1、很显然，报文方法名不同，一个是GET，一个是POST。</p>
+<p>2、请求携带参数的方式不同<br>
+GET参数常规的是跟在请求的url后面，以?开始，参数间以&amp;隔开，数据被直观的展现在URL上。如：https://www.baidu.com/s?ie=UTF-8&amp;wd=test<br>
+POST参数一般是放在请求体entity-body中，传输给目标服务器，数据在URL中不可见。</p>
+<p>3、请求时，携带的参数大小限制不同<br>
+GET请求的URL传参有大小限制<br>
+POST请求理论上是没有大小限制的，但实际情况是，各类应用服务器都对请求大小做了限制。因为过大请求包，会增加服务器解析时间。甚至会被人恶意请求超大的数据包。<br>
+Tomcat：  </p>
+<div class="highlight"><pre><span></span>    <span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">&quot;8080&quot;</span> <span class="na">protocol=</span><span class="s">&quot;HTTP/1.1&quot;</span>
+               <span class="na">connectionTimeout=</span><span class="s">&quot;20000&quot;</span>
+               <span class="na">redirectPort=</span><span class="s">&quot;8443&quot;</span>
+               <span class="na">maxPostSize=</span><span class="s">&quot;-1 …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2018/05/28/20180528212707.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2017/03/24/65627740.html" rel="bookmark" title="Permalink to python使用代码对redis的key进行集中管理">
+                                       python使用代码对redis的key进行集中管理
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/python.html">python</a>
+
+    on 2017-03-24
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/65627740 </p>
 <p>平时工作中会经常用到一些全局的常量，如redis的key值命名等。</p>
 <p>可能会出现不同开发人员使用同一个key，导致缓存被覆盖等情况。</p>
 <p>针对这种情况，可以使用如下的方式，实现一个简单的集中管理。</p>
@@ -160,28 +292,39 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def …</span></pre></div>
-                <a class="readmore" href="/65627740.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/56009091.html" rel="bookmark"
-                           title="Permalink to tornado_mysql的pool使用事务的方法。">tornado_mysql的pool使用事务的方法。</a></h1>
-                </header>
-
-                <div class="entry-content">
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2017/03/24/65627740.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2017/02/20/56009091.html" rel="bookmark" title="Permalink to tornado_mysql的pool使用事务的方法。">
+                                       tornado_mysql的pool使用事务的方法。
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2017-02-20T10:52:26+00:00">
-                Published: 一 20 二月 2017
-        </abbr>
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/56009091 </p>
+    in <a href="/category/python.html">python</a>
+
+    on 2017-02-20
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/56009091 </p>
 <div class="highlight"><pre><span></span><span class="c1">#/usr/bin/env python</span>
 <span class="c1">#coding=utf-8</span>
 
@@ -201,28 +344,39 @@
     <span class="k">print</span> <span class="n">DB_CONN</span><span class="o">.</span><span class="n">PORT</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_USER</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_PASSWORD</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">DBNAME</span>
     <span class="n">pool_db</span> <span class="o">=</span> <span class="n">pools</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span>
         <span class="nb">dict</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">DB_CONN …</span></pre></div>
-                <a class="readmore" href="/56009091.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/54947198.html" rel="bookmark"
-                           title="Permalink to JAVA生成总和及个数确定的一组随机数(抢红包)">JAVA生成总和及个数确定的一组随机数(抢红包)</a></h1>
-                </header>
-
-                <div class="entry-content">
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2017/02/20/56009091.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2017/02/09/54947198.html" rel="bookmark" title="Permalink to JAVA生成总和及个数确定的一组随机数(抢红包)">
+                                       JAVA生成总和及个数确定的一组随机数(抢红包)
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2017-02-09T15:11:03+00:00">
-                Published: 四 09 二月 2017
-        </abbr>
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/54947198 </p>
+    in <a href="/category/java.html">java</a>
+
+    on 2017-02-09
+
+        |
+        tags:         <a href="/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/54947198 </p>
 <p>许久未碰java，写的有点拙。</p>
 <div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
 
@@ -242,28 +396,39 @@
     <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
 
         <span class="n">splitRedPacket</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">41 …</span></pre></div>
-                <a class="readmore" href="/54947198.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/54311168.html" rel="bookmark"
-                           title="Permalink to python过滤unicode控制字符">python过滤unicode控制字符</a></h1>
-                </header>
-
-                <div class="entry-content">
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2017/02/09/54947198.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2017/01/10/54311168.html" rel="bookmark" title="Permalink to python过滤unicode控制字符">
+                                       python过滤unicode控制字符
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2017-01-10T10:37:17+00:00">
-                Published: 二 10 一月 2017
-        </abbr>
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/54311168 </p>
+    in <a href="/category/python.html">python</a>
+
+    on 2017-01-10
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/54311168 </p>
 <p>昨天晚上平台被个别用户利用了一个漏洞：</p>
 <p>原理：<a href="http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html">https://www.zhihu.com/question/43621727</a></p>
 <p><a href="http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html">http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html</a></p>
@@ -273,138 +438,160 @@
 
 
 <p>复制生成的文字，取app上修改昵称 …</p>
-                <a class="readmore" href="/54311168.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/52141391.html" rel="bookmark"
-                           title="Permalink to 截取带emoji表情的utf8字符串">截取带emoji表情的utf8字符串</a></h1>
-                </header>
-
-                <div class="entry-content">
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2017/01/10/54311168.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2016/10/30/h5-ios.html" rel="bookmark" title="Permalink to h5与iOS交互">
+                                       h5与iOS交互
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2016-08-07T11:03:21+00:00">
-                Published: 日 07 八月 2016
-        </abbr>
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/52141391 </p>
-<p>好久没有写博客了，当然这个锅得甩给忙碌的工作<img alt="偷笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/titter.gif"></p>
+    in <a href="/category/qian-duan.html">前端</a>
+
+    on 2016-10-30
+
+        |
+        tags:         <a href="/tag/qian-duan.html">前端</a>
+        <a href="/tag/ios.html">ios</a>
+        <a href="/tag/android.html">android</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p><strong>iOS</strong></p>
+<div class="highlight"><pre><span></span><span class="n">_bridge</span> <span class="o">=</span> <span class="p">[</span><span class="n">WebViewJavascriptBridge</span> <span class="nl">bridgeForWebView</span><span class="p">:</span><span class="n">_webView</span> <span class="nl">webViewDelegate</span><span class="p">:</span><span class="nb">self</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// NSLog(@&quot;ObjC received message from JS: %@&quot;, data);</span>
+        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response for message from ObjC&quot;</span><span class="p">);</span>
+    <span class="p">}];</span>
+    <span class="p">[</span><span class="n">_bridge</span> <span class="nl">registerHandler</span><span class="p">:</span><span class="s">@&quot;testObjcCallback&quot;</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// NSLog(@&quot;testObjcCallback2222 called: %@&quot;, data);</span>
+        <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">navigationController</span> <span class="nl">popViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response from testObjcCallback&quot;</span><span class="p">);</span>
+    <span class="p">}];</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">buttonClicked:</span><span class="p">(</span><span class="bp">UIButton</span><span class="o">*</span><span class="p">)</span><span class="nv">sender</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">_bridge …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2016/10/30/h5-ios.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2016/08/07/52141391.html" rel="bookmark" title="Permalink to 截取带emoji表情的utf8字符串">
+                                       截取带emoji表情的utf8字符串
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/python.html">python</a>
+
+    on 2016-08-07
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/52141391 </p>
+<p>好久没有写博客了，当然这个锅得甩给忙碌的工作!🤭😁</p>
 <p>最近工作中又一次碰到了关于emoji表情的问题：需求要求将用户输入的一段内容，截取8个长度作为标题。app端简单的对内容substr了一下。</p>
-<p>然而当在一些特殊情况下，就会出现截取后最后一位乱码的情况。比如内容为：“明天要发奖金啦<img alt="得意" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/proud.gif"><img alt="羡慕" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/envy.gif">”，按预期截取后应该是：“明天要发奖金啦<img alt="得意" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/proud.gif">”；而实际上截取的结果是：“明天要发奖金啦？”，最后一位是个乱码，看来奖金发不成了。</p>
+<p>然而当在一些特殊情况下，就会出现截取后最后一位乱码的情况。比如内容为：“明天要发奖金啦🏅😁😍”，按预期截取后应该是：“明天要发奖金啦🏅”；而实际上截取的结果是：“明天要发奖金啦□”，最后一位是个乱码，看来奖金发不成了。</p>
 <p>要细说起编码，那就是一篇很长的论文了，不了解的同学可以度娘、谷哥一下。</p>
 <p>这里主要说说utf8编码：</p>
 <p>UTF-8是一种变长字节编码方式。对于某一个字符的UTF-8编码，如果只有一个字节则其最高二进制位为0；如果是多字节，其第一个字节从最高位开始，连续的二进制位值为1的个数决定了其编码的位数，其余各字节均以10开头。  </p>
-<h1>1-byte格式: 0xxxxxxx</h1>
-<h1>2-byte格式: 110xxxxx 10xxxxxx</h1>
-<h1>3-byte格式: 1110xxxx 10xxxxxx 10xxxxxx</h1>
-<h1>4-byte格式: 11110xxx …</h1>
-                <a class="readmore" href="/52141391.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/51752189.html" rel="bookmark"
-                           title="Permalink to python判断输入的内容是否是emoji表情">python判断输入的内容是否是emoji表情</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-06-24T13:52:05+00:00">
-                Published: 五 24 六月 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/51752189 </p>
-<p>python判断输入的内容是否是emoji表情：</p>
-<div class="highlight"><pre><span></span><span class="s2">&quot;&quot;&quot;</span>
-@描述           根据传入的<span class="nv">content</span>，判断是否是<span class="nv">emoji</span>字符。
-@<span class="k">return</span>         <span class="nv">True</span>是<span class="nv">emoji</span>，<span class="nv">False</span>不是<span class="nv">True</span>是<span class="nv">emoji</span>。
-<span class="s2">&quot;&quot;&quot;</span>
-@<span class="nv">staticmethod</span>
-<span class="nv">def</span> <span class="nv">isEmoji</span><span class="ss">(</span><span class="nv">content</span><span class="ss">)</span>:
-    <span class="k">if</span> <span class="nv">not</span> <span class="nv">content</span>:
-        <span class="k">return</span> <span class="nv">False</span>
-    <span class="k">if</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F600</span><span class="s2">&quot;</span> <span class="o">&lt;=</span> <span class="nv">content</span> <span class="nv">and</span> <span class="nv">content</span> <span class="o">&lt;=</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F64F</span><span class="s2">&quot;</span>:
-        <span class="k">return</span> <span class="nv">True</span>
-    <span class="nv">elif</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F300</span><span class="s2">&quot;</span> <span class="o">&lt;=</span> <span class="nv">content …</span></pre></div>
-                <a class="readmore" href="/51752189.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/51751032.html" rel="bookmark"
-                           title="Permalink to python调用存储过程，获取返回值">python调用存储过程，获取返回值</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-06-24T11:03:58+00:00">
-                Published: 五 24 六月 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/51751032 </p>
-<p>python调用存储过程，获取返回值</p>
-<div class="highlight"><pre><span></span><span class="k">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;&quot;&quot;</span>
-<span class="ss">    call pro_test(%s,@tt);</span>
-<span class="ss">    select @tt as pro_out</span>
-<span class="ss">&quot;&quot;&quot;</span><span class="w"></span>
-<span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="n">yield</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">pool</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;test&quot;</span><span class="p">))</span><span class="w"></span>
-<span class="n">res</span><span class="p">,</span><span class="k">old</span><span class="o">=</span><span class="n">dbInterface</span><span class="p">.</span><span class="n">getone</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span><span class="n">o</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="n">pro_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">old</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="ss">&quot;pro_out&quot;</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-                <a class="readmore" href="/51751032.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
+<p>#1-byte格式: 0xxxxxxx<br>
+#2-byte格式: 110xxxxx 10xxxxxx<br>
+#3-byte格式: 1110xxxx 10xxxxxx 10xxxxxx<br>
+#4-byte格式: 11110xxx …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2016/08/07/52141391.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 7
         <a href="/index2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="#">友情链接1</a></li>
-                            <li><a href="#">友情链接2</a></li>
-                            <li><a href="#">友情链接3</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+</div>
+<div class="span3">
+    <section id="sidebar">
+            <div>
+                <h2>Browse content by</h2>
+                <ul class="fa-ul">
+                <li><a href="/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
-                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
-                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+                </ul>
+            </div><!-- /.browse -->
+            <div>
+                <h2>LINKS</h2>
+                <ul>
+                    <li><a href="#">友情链接1</a></li>
+                    <li><a href="#">友情链接2</a></li>
+                    <li><a href="#">友情链接3</a></li>
+                </ul>
+            </div><!-- /.Links -->
+            <div>
+                <h2>SOCIAL</h2>
+                <ul>
+                    <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                    <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                </ul>
+            </div><!-- /.social -->
+<!-- /.Tags -->
+    </section><!-- /#sidebar -->
+</div>
+            </div>
+        </div>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

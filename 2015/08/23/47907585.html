@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="让bootstrap的carousel支持滑动滚屏"/>
+    <meta property="og:url" content="/2015/08/23/47907585.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/08/23/47907585.html" />
+
+    <title>让bootstrap的carousel支持滑动滚屏 | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li class="active"><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/08/23/47907585.html" rel="bookmark"
+             title="Permalink to 让bootstrap的carousel支持滑动滚屏">让bootstrap的carousel支持滑动滚屏</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/qian-duan.html">前端</a>
+
+    on 2015-08-23
+
+        |
+        tags:         <a href="/tag/qian-duan.html">前端</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/47907585 </p>
+<p>原始的轮播组件，并不支持滑动滚屏：</p>
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;white-space:pre&quot;</span><span class="p">&gt;</span>  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;carousel-generic&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;carousel slide&quot;</span>
+                <span class="na">data-ride</span><span class="o">=</span><span class="s">&quot;carousel&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">ol</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;carousel-indicators&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;#carousel-generic&quot;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+                        <span class="na">class</span><span class="o">=</span><span class="s">&quot;active&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;#carousel-generic&quot;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&quot;1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;#carousel-generic&quot;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&quot;2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;carousel-inner&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;text-align: center&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item active&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;First slide&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;img/slide/1.png&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">img</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Second slide&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;img/slide/2.png&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">img</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Third slide&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;img/slide/3.png&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">img</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+                <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;left carousel-control&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#carousel-generic&quot;</span>
+                    <span class="na">data-slide</span><span class="o">=</span><span class="s">&quot;prev&quot;</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">span</span>
+                    <span class="na">class</span><span class="o">=</span><span class="s">&quot;glyphicon glyphicon-chevron-left&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;right carousel-control&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#carousel-generic&quot;</span>
+                    <span class="na">data-slide</span><span class="o">=</span><span class="s">&quot;next&quot;</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">span</span>
+                    <span class="na">class</span><span class="o">=</span><span class="s">&quot;glyphicon glyphicon-chevron-right&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>上面的方式，可以通过点击左右两边的箭头触发切换，但无法滑动切换。当然，自动切换还是可以的。 </p>
+<p>解决上述问题，方法其实也较多，比较方便的是使用hammer。</p>
+<p>在此之前，需要下载<a href="http://hammerjs.github.io/">hammer.min.js</a>，<a href="https://github.com/EightMedia/jquery.hammer.js">jquery.hammer.js</a>.。</p>
+<p>下载不了的可以在我的资源里下载<a href="http://download.csdn.net/detail/nicky9470/9038579">hammer.zip</a></p>
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">--</span><span class="err">!</span> <span class="na">js</span><span class="err">顺序</span> <span class="na">--</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/jquery.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/bootstrap.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/hammer/hammer.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/hammer/jquery.hammer.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+
+    //有需求的可以把左右箭头注释掉
+    $(&#39;#carousel-generic&#39;).hammer().on(&#39;swipeleft&#39;, function(){
+        $(this).carousel(&#39;next&#39;);
+    });
+    $(&#39;#carousel-generic&#39;).hammer().on(&#39;swiperight&#39;, function(){
+        $(this).carousel(&#39;prev&#39;);
+    });
+</pre></div>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

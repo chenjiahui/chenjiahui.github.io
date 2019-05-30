@@ -1,99 +1,152 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-        <meta charset="utf-8" />
-        <title>BugManager’s Blog - Windows</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="BugManager’s Blog - Windows"/>
+    <meta property="og:url" content="/tag/windows.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="website"/>
+
+    <link rel="canonical" href="/tag/windows.html" />
+
+    <title>BugManager’s Blog - Windows | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">BugManager’s Blog </a></h1>
-                <nav><ul>
-                    <li><a href="/category/flex.html">Flex</a></li>
-                    <li><a href="/category/java.html">java</a></li>
-                    <li><a href="/category/ji-qun.html">集群</a></li>
-                    <li><a href="/category/linux.html">Linux</a></li>
-                    <li><a href="/category/other.html">other</a></li>
-                    <li><a href="/category/python.html">python</a></li>
-                    <li><a href="/category/qian-duan.html">前端</a></li>
-                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
-                    <li><a href="/category/yun-wei.html">运维</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/48830863.html">Window7下忘记MySQL ROOT密码</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-09-30T17:40:16+00:00">
-                Published: 三 30 九月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/linux.html">Linux</a>.</p>
-<p>tags: <a href="/tag/windows.html">Windows</a> <a href="/tag/yun-wei.html">运维</a> </p>
-</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/48830863 </p>
-<p>前端时间，因为太久没用，导致忘记了本地mysql的root密码。</p>
-<p>从网上找了点资料，一步一步的解决，并记录了下来。</p>
-<p>解决步骤如下：<br>
-1. 停止mysql 服务  </p>
-<div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">stop</span> <span class="n">mysql</span>
-</pre></div>
-
-
-<p>2. 以不检查权限的方式启动mysql </p>
-<div class="highlight"><pre><span></span><span class="n">mysqld</span> <span class="c1">--skip-grant-tables</span>
-</pre></div>
-
-
-<p>可以看到窗口光标在下一行的第一个位置闪烁，说明已经启动，不需要管。<br>
-3. 新建一个命令行窗口，启动mysql   </p>
-<div class="highlight"><pre><span></span><span class="n">mysql</span>
-</pre></div>
-
-
-<p>4. 修改ROOT密码  </p>
-<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span><span class="n">use</span> <span class="n">mysql</span>
-<span class="n">mysql</span><span class="o">&gt;</span><span class="k">update</span> <span class="k">user</span> <span class="k">set</span> <span class="n">password</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;cjh&#39;</span><span class="p">)</span> <span class="k">where</span> <span class="k">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
-<span class="n">mysql</span><span class="o">&gt;</span><span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span>
-</pre></div>
-
-
-<p>5. 看看任务管理器中是否有mysqld.exe进程，如果有，kill掉<br>
-6. 重启mysql，用设置新密码登陆  </p>
-<div class="highlight"><pre><span></span><span class="n">net</span> <span class="k">start</span> <span class="n">mysql</span>
-<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">pnew_password</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="#">友情链接1</a></li>
-                            <li><a href="#">友情链接2</a></li>
-                            <li><a href="#">友情链接3</a></li>
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
                         </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
-                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span9">
+    <section>
+    <h1>Articles tagged with "Windows"</h1>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2015</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 9月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                30
+                </div>
+            <div class="span10">
+                <a href="/2015/09/30/48830863.html">Window7下忘记MySQL ROOT密码</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2014</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 5月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                13
+                </div>
+            <div class="span10">
+                <a href="/2014/05/13/25695365.html">查看指定端口，关闭进程及Kill使用</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="span3">
+    <section id="sidebar">
+            <div>
+                <h2>Browse content by</h2>
+                <ul class="fa-ul">
+                <li><a href="/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
+                </ul>
+            </div><!-- /.browse -->
+            <div>
+                <h2>LINKS</h2>
+                <ul>
+                    <li><a href="#">友情链接1</a></li>
+                    <li><a href="#">友情链接2</a></li>
+                    <li><a href="#">友情链接3</a></li>
+                </ul>
+            </div><!-- /.Links -->
+            <div>
+                <h2>SOCIAL</h2>
+                <ul>
+                    <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                    <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                </ul>
+            </div><!-- /.social -->
+<!-- /.Tags -->
+    </section><!-- /#sidebar -->
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

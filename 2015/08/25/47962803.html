@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="hadoop学习笔记之Map-Reduce"/>
+    <meta property="og:url" content="/2015/08/25/47962803.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/08/25/47962803.html" />
+
+    <title>hadoop学习笔记之Map-Reduce | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li class="active"><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/08/25/47962803.html" rel="bookmark"
+             title="Permalink to hadoop学习笔记之Map-Reduce">hadoop学习笔记之Map-Reduce</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/java.html">java</a>
+
+    on 2015-08-25
+
+        |
+        tags:         <a href="/tag/java.html">java</a>
+        <a href="/tag/hadoop.html">hadoop</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/47962803 </p>
+<p>Map-Reduce的工作机制：<br>
+a、编写好一个Map-Reduce程序，运行作业程序。<br>
+b、JobClient向JobTracker申请一个作业ID，<br>
+c、JobClient将作业所需要的资源，复制到HDFS系统中。<br>
+d、c、JobClient提交作业<br>
+e、JobTracker初始化作业。<br>
+f、JobTracker向nameNode询问，决定这些任务在哪些机器上跑。<br>
+有关的数据在哪些文件里，这些文件保存在哪些节点的数据块中。<br>
+(程序要和所要运行的作业资源在一起)<br>
+根据taskTracker与JobTracker之间的心跳，知道哪些task可以参与到本次作业中来。<br>
+如：taskTracker必须是活着的，Tracker中是否有其他作业在做。<br>
+确定哪些taskTracker<br>
+g、taskTracker和JobTracker保持心跳，以确定taskTracker是否正常。<br>
+h、taskTracker从HDFS中将相关代码、资源等获取到本地。<br>
+i、架设java虚拟机<br>
+j、开始工作。<br>
+k、taskTracker将结果写入本地硬盘（这个是中间结果不写入HDFS）</p>
+<p>任务执行优化<br>
+a、推测式执行：当jobTracker发现有任务拖后腿了，就会额外启动相应的备份任务。当哪个先执行完了，就将另一个kill掉<br>
+缺点：当问题产生的原因是因为代码问题，而不是机器性能问题时，这种机制反而会使得集群的性能下降。<br>
+解决方案：可以在mapred-site.xml中配置关闭推测式执行。<br>
+b、重用JVM<br>
+java之所以慢，最大的原因是JVM启动慢，为了避免反复启动多个JVM，可以配置单个JVM运行的最大任务数。<br>
+c、忽略模式<br>
+有的时候，节点的数据损坏了（hadoop中错误是常态）。任务在读取数据失败2次后，会把数据位置告诉jobtracker,jobtracker在重新启动该任<br>
+务并且在遇到所记录的坏数据时直接跳过。此配置默认是关闭的。用SkipBadRecord打开。</p>
+<p>错误处理机制：硬件故障<br>
+a、硬件故障是只jobtracker故障或者tasktracker故障。<br>
+b、jobtracker是单点的，若发生单点故障则hadoop无法处理。选择稳定的系统作为jobtracker.<br>
+c、jobtracker通过心跳（周期1分钟）信号了解tasktracker是否发生故障或者负载过高。<br>
+d、jobtracker将发生故障的tasktracker从任务节点中移除。<br>
+e、若故障节点移除时，有map任务正在执行并且没有完成，则jobtracker会要求其他节点重新执行未完成的map任务。<br>
+f、若故障节点移除时，有reduce任务正在执行并且没有完成，则jobtracker会要求其他节点继续（不是重新执行，为什么呢？）执行未完成的reduce任务。</p>
+<p>错误处理机制：任务失败<br>
+a、由于代码层面出现故障，如死循环等。<br>
+b、jvm自动退出，向tasktracker进程发送错误信息，并将错误信息写入日志。<br>
+c、tasktracker在监听到任务退出，或者长时间没有收到信息时，则会判定该任务失败。将任务计数-1，并通过心跳信号告知jbtracker任务失败。<br>
+d、jobtracker会将失败的任务重新放入调度队列中重新分配执行，任务也有可能被分配给原来错误的那个节点执行。<br>
+e、如果某个任务失败次数超过一定值（默认4次，怎么设置？），则该任务将不再被执行，同时此次作业宣告失败。  </p>
+<p>﻿﻿</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

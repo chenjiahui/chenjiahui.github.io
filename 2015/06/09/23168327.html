@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="Windows平台端口被占用处理"/>
+    <meta property="og:url" content="/2015/06/09/23168327.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/06/09/23168327.html" />
+
+    <title>Windows平台端口被占用处理 | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li class="active"><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/06/09/23168327.html" rel="bookmark"
+             title="Permalink to Windows平台端口被占用处理">Windows平台端口被占用处理</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/yun-wei.html">运维</a>
+
+    on 2015-06-09
+
+        |
+        tags:         <a href="/tag/yun-wei.html">运维</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/23168327 </p>
+<p>端口查看&amp;关闭进程及Kill使用  </p>
+<p>1、Windows平台 <br>
+在windows命令行窗口下执行： <br>
+1.查看所有的端口占用情况 <br>
+C:>netstat -ano   </p>
+<p>协议 本地地址 外部地址 状态 PID <br>
+TCP 127.0.0.1:1434 0.0.0.0:0 LISTENING 3236 <br>
+TCP 127.0.0.1:5679 0.0.0.0:0 LISTENING 4168 <br>
+TCP 127.0.0.1:7438 0.0.0.0:0 LISTENING 4168 <br>
+TCP 127.0.0.1:8015 0.0.0.0:0 LISTENING 1456 <br>
+TCP 192.168.3.230:139 0.0.0.0:0 LISTENING 4 <br>
+TCP 192.168.3.230:1957 220.181.31.225:443 ESTABLISHED 3068 <br>
+TCP 192.168.3.230:2020 183.62.96.189:1522 ESTABLISHED 1456 <br>
+TCP 192.168.3.230:2927 117.79.91.18:80 ESTABLISHED 4732 <br>
+TCP 192.168.3.230:2929 117.79.91.18:80 ESTABLISHED 4732 <br>
+TCP 192.168.3.230:2930 117.79.91.18:80 ESTABLISHED 4732 <br>
+TCP 192.168.3.230:2931 117.79.91.18:80 ESTABLISHED 4732   </p>
+<p>2.查看指定端口的占用情况 <br>
+C:>netstat -aon|findstr "9050" <br>
+协议 本地地址 外部地址 状态 PID <br>
+TCP 127.0.0.1:9050 0.0.0.0:0 LISTENING 2016 <br>
+P: 看到了吗，端口被进程号为2016的进程占用，继续执行下面命令： （也可以去任务管理器中查看pid对应的进程） <br>
+3.查看PID对应的进程 <br>
+C:>tasklist|findstr "2016" <br>
+映像名称 PID 会话名 会话# 内存使用 <br>
+========================= ======== ================ <br>
+tor.exe 2016 Console 0 16,064 K   </p>
+<p>P:很清楚吧，tor占用了你的端口。   </p>
+<p>4.结束该进程(在某些情况下不适用)，如今天碰到的情况是java.exe占用了端口。在服务器上布置了多个tomcat, 不能盲目的将java.exe删除。但通过上一步可以知道对应的占用端口的那个java.exe的pid是多少。只需</p>
+<p>要在任务管理器中找到改pid删除即可。<br>
+C:>taskkill /f /t /im tor.exe</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

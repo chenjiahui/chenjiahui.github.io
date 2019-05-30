@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="JDK自带工具jps，jstat，jmap，jconsole使用"/>
+    <meta property="og:url" content="/2015/05/19/46400887.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/05/19/46400887.html" />
+
+    <title>JDK自带工具jps，jstat，jmap，jconsole使用 | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li class="active"><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/05/19/46400887.html" rel="bookmark"
+             title="Permalink to JDK自带工具jps，jstat，jmap，jconsole使用">JDK自带工具jps，jstat，jmap，jconsole使用</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/java.html">java</a>
+
+    on 2015-05-19
+
+        |
+        tags:         <a href="/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46400887 </p>
+<p><strong>jps</strong></p>
+<p>与ps命令类似：</p>
+<div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">ef</span><span class="o">|</span><span class="n">grep</span> <span class="n">java</span>
+</pre></div>
+
+
+<p>用来显示本地的java进程，查看本地运行着几个java应用，并显示进程号。</p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w">   </span><span class="o">//</span><span class="n">只显示进程号</span><span class="w"></span>
+<span class="mi">23813</span><span class="w"> </span><span class="n">Jps</span><span class="w"></span>
+<span class="mi">710</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
+<span class="mi">792</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
+
+
+<span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w">    </span><span class="o">//</span><span class="n">显示jvm参数</span><span class="w"></span>
+<span class="mi">23852</span><span class="w"> </span><span class="n">Jps</span><span class="w"> </span><span class="o">-</span><span class="n">Denv</span><span class="p">.</span><span class="k">class</span><span class="p">.</span><span class="k">path</span><span class="o">=</span><span class="p">.</span><span class="err">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.6.0</span><span class="n">_21</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dt</span><span class="p">.</span><span class="nl">jar</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.6.0</span><span class="n">_21</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">tools</span><span class="p">.</span><span class="n">jar</span><span class="w"> </span><span class="o">-</span><span class="n">Dapplication</span><span class="p">.</span><span class="n">home</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.6.0</span><span class="n">_21</span><span class="w"> </span><span class="o">-</span><span class="n">Xms8m</span><span class="w"></span>
+<span class="mi">710</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"> </span><span class="o">-</span><span class="n">Xms2048m</span><span class="w"> </span><span class="o">-</span><span class="n">Xmx2048m</span><span class="w"> </span><span class="o">-</span><span class="nl">XX</span><span class="p">:</span><span class="n">NewRatio</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="nl">XX</span><span class="p">:</span><span class="n">PermSize</span><span class="o">=</span><span class="mi">256</span><span class="n">M</span><span class="w"> </span><span class="o">-</span><span class="nl">XX</span><span class="p">:</span><span class="n">MaxPermSize</span><span class="o">=</span><span class="mi">512</span><span class="n">M</span><span class="w"> </span><span class="o">-</span><span class="n">Djava</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">logging</span><span class="p">.</span><span class="n">manager</span><span class="o">=</span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">juli</span><span class="p">.</span><span class="n">ClassLoaderLogManager</span><span class="w"> </span><span class="o">-</span><span class="n">Djava</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">logging</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="k">file</span><span class="o">=/</span><span class="n">root</span><span class="o">/</span><span class="n">zhusj</span><span class="o">/</span><span class="n">apache</span><span class="o">-</span><span class="n">tomcat</span><span class="o">-</span><span class="mf">6.0.18</span><span class="n">_1</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">logging</span><span class="p">.</span><span class="n">properties</span><span class="w"> </span><span class="o">-</span><span class="n">Dcom</span><span class="p">.</span><span class="n">sun</span><span class="p">.</span><span class="n">management</span><span class="p">.</span><span class="n">jmxremote</span><span class="p">.</span><span class="n">port</span><span class="o">=</span><span class="mi">8119</span><span class="w"> </span><span class="o">-</span><span class="n">Dcom</span><span class="p">.</span><span class="n">sun</span><span class="p">.</span><span class="n">management</span><span class="p">.</span><span class="n">jmxremote</span><span class="p">.</span><span class="n">authenticate</span><span class="o">=</span><span class="k">false</span><span class="w"> </span><span class="o">-</span><span class="n">Dcom</span><span class="p">.</span><span class="n">sun</span><span class="p">.</span><span class="n">management</span><span class="p">.</span><span class="n">jmxremote</span><span class="p">.</span><span class="n">ssl</span><span class="o">=</span><span class="k">false</span><span class="w"> </span><span class="o">-</span><span class="n">Djava</span><span class="p">.</span><span class="n">endorsed</span><span class="p">.</span><span class="n">dirs</span><span class="o">=/</span><span class="n">root</span><span class="o">/</span><span class="n">zhusj</span><span class="o">/</span><span class="n">apache</span><span class="o">-</span><span class="n">tomcat</span><span class="o">-</span><span class="mf">6.0.18</span><span class="n">_1</span><span class="o">/</span><span class="n">endorsed</span><span class="w"> </span><span class="o">-</span><span class="n">Dcatalina</span><span class="p">.</span><span class="n">base</span><span class="o">=/</span><span class="n">root</span><span class="o">/</span><span class="n">zhusj</span><span class="o">/</span><span class="n">apache</span><span class="o">-</span><span class="n">tomcat</span><span class="o">-</span><span class="mf">6.0.18</span><span class="n">_1</span><span class="w"> </span><span class="o">-</span><span class="n">Dcatalina</span><span class="p">.</span><span class="n">home</span><span class="o">=/</span><span class="n">root</span><span class="o">/</span><span class="n">zhusj</span><span class="o">/</span><span class="n">apache</span><span class="o">-</span><span class="n">tomcat</span><span class="o">-</span><span class="mf">6.0.18</span><span class="n">_1</span><span class="w"> </span><span class="o">-</span><span class="n">Djava</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">tmpdir</span><span class="o">=/</span><span class="n">root</span><span class="o">/</span><span class="n">zhusj</span><span class="o">/</span><span class="n">apache</span><span class="o">-</span><span class="n">tomcat</span><span class="o">-</span><span class="mf">6.0.18</span><span class="n">_1</span><span class="o">/</span><span class="n">temp</span><span class="w"></span>
+</pre></div>
+
+
+<p><strong>jstat</strong></p>
+<p>很强大的监视jvm内存工具，可用来查看堆内各个部分的使用量，以及加载类的数量。使用时，需指定java进程号。一般使用 -gcutil 查看gc情况。</p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jstat</span><span class="w"> </span><span class="o">-</span><span class="k">class</span><span class="w"> </span><span class="mi">710</span><span class="w">   </span><span class="o">//</span><span class="n">显示加载class的数量</span><span class="err">，</span><span class="n">及所占空间等信息</span><span class="w"></span>
+<span class="n">Loaded</span><span class="w">  </span><span class="n">Bytes</span><span class="w">  </span><span class="n">Unloaded</span><span class="w">  </span><span class="n">Bytes</span><span class="w">     </span><span class="nc">Time</span><span class="w">   </span>
+<span class="mi">11242</span><span class="w"> </span><span class="mf">24450.0</span><span class="w">       </span><span class="mi">41</span><span class="w">    </span><span class="mf">65.8</span><span class="w">      </span><span class="mf">30.25</span><span class="w"></span>
+
+
+
+
+
+<span class="n">jstat</span><span class="w"> </span><span class="o">-</span><span class="n">compiler</span><span class="w"> </span><span class="nl">pid</span><span class="p">:</span><span class="n">显示VM实时编译的数量等信息</span><span class="err">。</span><span class="w"></span>
+
+
+<span class="n">jstat</span><span class="w"> </span><span class="o">-</span><span class="n">gc</span><span class="w"> </span><span class="nl">pid</span><span class="p">:</span><span class="n">可以显示gc的信息</span><span class="err">，</span><span class="n">查看gc的次数及时间</span><span class="err">。</span><span class="n">其中最后五项</span><span class="err">，</span><span class="n">分别是young</span><span class="w"> </span><span class="n">gc的次数</span><span class="err">，</span><span class="n">young</span><span class="w"> </span><span class="n">gc的时间</span><span class="err">，</span><span class="k">full</span><span class="w"> </span><span class="n">gc的次数</span><span class="err">，</span><span class="k">full</span><span class="w"> </span><span class="n">gc的时间</span><span class="err">，</span><span class="n">gc的总时间</span><span class="err">。</span><span class="w"></span>
+<span class="n">jstat</span><span class="w"> </span><span class="o">-</span><span class="n">gccapacity</span><span class="w"> </span><span class="nl">pid</span><span class="p">:</span><span class="n">可以显示VM内存中三代</span><span class="err">（</span><span class="n">young</span><span class="p">,</span><span class="k">old</span><span class="p">,</span><span class="n">perm</span><span class="err">）</span><span class="n">对象的使用和占用大小</span><span class="err">，</span><span class="n">如</span><span class="err">：</span><span class="n">PGCMN显示的是最小perm的内存使用量</span><span class="err">，</span><span class="n">PGCMX显示的是perm的内存最大使用量</span><span class="err">，</span><span class="n">PGC是当前新生成的perm内存占用量</span><span class="err">，</span><span class="n">PC是但前perm内存占用量</span><span class="err">。</span><span class="w"></span>
+
+
+<span class="n">S0</span><span class="w">  </span><span class="err">—</span><span class="w"> </span><span class="n">Heap上的</span><span class="w"> </span><span class="n">Survivor</span><span class="w"> </span><span class="nf">space</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">区已使用空间的百分比</span><span class="w"></span>
+<span class="n">S1</span><span class="w">  </span><span class="err">—</span><span class="w"> </span><span class="n">Heap上的</span><span class="w"> </span><span class="n">Survivor</span><span class="w"> </span><span class="nf">space</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">区已使用空间的百分比</span><span class="w"></span>
+<span class="n">E</span><span class="w">   </span><span class="err">—</span><span class="w"> </span><span class="n">Heap上的</span><span class="w"> </span><span class="n">Eden</span><span class="w"> </span><span class="nf">space</span><span class="w"> </span><span class="n">区已使用空间的百分比</span><span class="w"></span>
+<span class="n">O</span><span class="w">   </span><span class="err">—</span><span class="w"> </span><span class="n">Heap上的</span><span class="w"> </span><span class="k">Old</span><span class="w"> </span><span class="nf">space</span><span class="w"> </span><span class="n">区已使用空间的百分比</span><span class="w"></span>
+<span class="n">P</span><span class="w">   </span><span class="err">—</span><span class="w"> </span><span class="n">Perm</span><span class="w"> </span><span class="nf">space</span><span class="w"> </span><span class="n">区已使用空间的百分比</span><span class="w"></span>
+<span class="n">YGC</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">从应用程序启动到采样时发生</span><span class="w"> </span><span class="n">Young</span><span class="w"> </span><span class="n">GC</span><span class="w"> </span><span class="n">的次数</span><span class="w"></span>
+<span class="n">YGCT</span><span class="err">–</span><span class="w"> </span><span class="n">从应用程序启动到采样时</span><span class="w"> </span><span class="n">Young</span><span class="w"> </span><span class="n">GC</span><span class="w"> </span><span class="n">所用的时间</span><span class="p">(</span><span class="n">单位秒</span><span class="p">)</span><span class="w"></span>
+<span class="n">FGC</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">从应用程序启动到采样时发生</span><span class="w"> </span><span class="k">Full</span><span class="w"> </span><span class="n">GC</span><span class="w"> </span><span class="n">的次数</span><span class="w"></span>
+<span class="n">FGCT</span><span class="err">–</span><span class="w"> </span><span class="n">从应用程序启动到采样时</span><span class="w"> </span><span class="k">Full</span><span class="w"> </span><span class="n">GC</span><span class="w"> </span><span class="n">所用的时间</span><span class="p">(</span><span class="n">单位秒</span><span class="p">)</span><span class="w"></span>
+<span class="n">GCT</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">从应用程序启动到采样时用于垃圾回收的总时间</span><span class="p">(</span><span class="n">单位秒</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+
+
+<p>jstat -compiler pid:显示VM实时编译的数量等信息。<br>
+jstat -gc pid:可以显示gc的信息，查看gc的次数及时间。其中最后五项，分别是young gc的次数，young gc的时间，full gc的次数，full gc的时间，gc的总时间。<br>
+jstat -gccapacity pid:可以显示VM内存中三代（young,old,perm）对象的使用和占用大小，如：PGCMN显示的是最小perm的内存使用量，PGCMX显示的是perm的内存最大使用量，PGC是当前新生成的perm内存占用量，PC是但前perm内存占用量。</p>
+<p>S0 — Heap上的 Survivor space 0 区已使用空间的百分比<br>
+S1 — Heap上的 Survivor space 1 区已使用空间的百分比<br>
+E — Heap上的 Eden space 区已使用空间的百分比<br>
+O — Heap上的 Old space 区已使用空间的百分比<br>
+P — Perm space 区已使用空间的百分比<br>
+YGC — 从应用程序启动到采样时发生 Young GC 的次数<br>
+YGCT– 从应用程序启动到采样时 Young GC 所用的时间(单位秒)<br>
+FGC — 从应用程序启动到采样时发生 Full GC 的次数<br>
+FGCT– 从应用程序启动到采样时 Full GC 所用的时间(单位秒)<br>
+GCT — 从应用程序启动到采样时用于垃圾回收的总时间(单位秒)</p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jstat</span><span class="w"> </span><span class="o">-</span><span class="n">gcutil</span><span class="w"> </span><span class="mi">710</span><span class="w">    </span><span class="o">//</span><span class="n">gc的统计信息</span><span class="w"></span>
+<span class="w">  </span><span class="n">S0</span><span class="w">     </span><span class="n">S1</span><span class="w">     </span><span class="n">E</span><span class="w">      </span><span class="n">O</span><span class="w">      </span><span class="n">P</span><span class="w">     </span><span class="n">YGC</span><span class="w">     </span><span class="n">YGCT</span><span class="w">    </span><span class="n">FGC</span><span class="w">    </span><span class="n">FGCT</span><span class="w">     </span><span class="n">GCT</span><span class="w"> </span>
+<span class="w">  </span><span class="mf">0.00</span><span class="w">  </span><span class="mf">15.69</span><span class="w">  </span><span class="mf">80.03</span><span class="w">  </span><span class="mf">38.70</span><span class="w">  </span><span class="mf">33.30</span><span class="w">    </span><span class="mi">123</span><span class="w">   </span><span class="mf">21.421</span><span class="w">     </span><span class="mi">1</span><span class="w">    </span><span class="mf">0.817</span><span class="w">   </span><span class="mf">22.238</span><span class="w"></span>
+<span class="o">[</span><span class="n">root@B1943 ~</span><span class="o">]</span><span class="n">#jstat</span><span class="w"> </span><span class="o">-</span><span class="n">gcutil</span><span class="w"> </span><span class="mi">710</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="mi">5</span><span class="w">    </span><span class="o">//</span><span class="n">每1000毫秒打印一次</span><span class="err">，</span><span class="n">共5次</span><span class="w"></span>
+</pre></div>
+
+
+<p><strong>jmap</strong></p>
+<p>可以输出某个java进程内存内对象的情况，甚至可以将VM 中的heap，以二进制输出成文本。</p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@B1943 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jmap</span><span class="w"> </span><span class="o">-</span><span class="n">histo</span><span class="w"> </span><span class="mi">710</span><span class="w"> </span><span class="o">&gt;</span><span class="n">mem</span><span class="p">.</span><span class="n">txt</span><span class="w">    </span><span class="o">//</span><span class="n">可使用文本对比工具对比出GC回收了哪些对象</span><span class="w"></span>
+<span class="n">该文件中内容如</span><span class="err">：</span><span class="w"></span>
+<span class="n">num</span><span class="w"> </span><span class="n">#instances</span><span class="w"> </span><span class="n">#bytes</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="o">&lt;</span><span class="n">pre</span><span class="w"> </span><span class="k">class</span><span class="o">=</span><span class="ss">&quot;plain&quot;</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="ss">&quot;code&quot;</span><span class="o">&gt;</span><span class="c1">----------------------------------------------</span>
+<span class="mi">4</span><span class="err">:</span><span class="w">  </span><span class="mi">1202692</span><span class="w">  </span><span class="mi">67350752</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">ObjectStreamClass</span><span class="err">$</span><span class="n">WeakClassKey</span><span class="w"></span>
+
+
+<span class="o">[</span><span class="n">root@B1943 ~</span><span class="o">]</span><span class="n">#jmap</span><span class="w"> </span><span class="o">-</span><span class="k">dump</span><span class="err">:</span><span class="nf">format</span><span class="o">=</span><span class="n">b</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="n">mem</span><span class="p">.</span><span class="n">bin</span><span class="w"> </span><span class="mi">710</span><span class="w">    </span><span class="o">//</span><span class="n">将该进程heap输出到mem</span><span class="p">.</span><span class="n">bin文件中</span><span class="err">，</span><span class="n">使用二进制形式</span><span class="err">。</span><span class="n">该文件可供其他分析工具使用</span><span class="err">，</span><span class="n">如eclipse</span><span class="w"> </span><span class="n">memory</span><span class="w"> </span><span class="n">analyser</span><span class="w"></span>
+<span class="o">//</span><span class="n">注</span><span class="err">：</span><span class="n">jmap使用的时候jvm是处在假死状态的</span><span class="err">，</span><span class="n">只能在服务瘫痪的时候为了解决问题来使用</span><span class="err">，</span><span class="n">否则会造成服务中断</span><span class="w"></span>
+</pre></div>
+
+
+<p><strong>jconsole、jvisualvm</strong></p>
+<p><a href="http://jiajun.iteye.com/blog/810150">http://jiajun.iteye.com/blog/810150</a></p>
+<p>个人认为 jvisualvm就是jconsole的升级版。可以监视、观察java程序的情况。</p>
+<p>也可以监视tomcat，这里记录下监视tomcat的方法。</p>
+<p>监视tomcat需要修改bin/catalina.sh文件：在 Execute The Requested Command前面加上如下配置</p>
+<div class="highlight"><pre><span></span><span class="n">CATALINA_OPTS</span><span class="o">=</span><span class="ss">&quot;-Dcom.sun.management.jmxremote.port=8799</span>
+<span class="ss">-Dcom.sun.management.jmxremote.authenticate=false</span>
+<span class="ss">-Dcom.sun.management.jmxremote.ssl=false&quot;</span>
+</pre></div>
+
+
+<p>重启tomcat后就可以被jvisualvm监视了。</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

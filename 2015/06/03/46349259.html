@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="jsp借助了ajaxfileupload实现上传文件"/>
+    <meta property="og:url" content="/2015/06/03/46349259.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/06/03/46349259.html" />
+
+    <title>jsp借助了ajaxfileupload实现上传文件 | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li class="active"><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/06/03/46349259.html" rel="bookmark"
+             title="Permalink to jsp借助了ajaxfileupload实现上传文件">jsp借助了ajaxfileupload实现上传文件</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/qian-duan.html">前端</a>
+
+    on 2015-06-03
+
+        |
+        tags:         <a href="/tag/qian-duan.html">前端</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46349259 </p>
+<p>以往我用的上传文件都是Flex写的，最近html页面需要上传页面功能。</p>
+<p>相比之下，比flex还是要麻烦一些，问题也多一些。这里记录下：</p>
+<p>ajax上传文件，我用到了<a href="http://download.csdn.net/detail/nicky9470/8768957">ajaxfileupload.js</a>修正版。</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nv">form</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">addAttaForm</span><span class="s2">&quot;</span> <span class="nv">enctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">multipart/form-data</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">&gt;</span>请选择要上传的文件：<span class="o">&lt;/</span><span class="nv">label</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">file</span><span class="s2">&quot;</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="nv">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">button</span><span class="s2">&quot;</span> <span class="nv">onclick</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">uploadShouGongFiles()</span><span class="s2">&quot;</span> <span class="nv">value</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">Upload</span><span class="s2">&quot;</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="nv">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nv">form</span><span class="o">&gt;</span>
+
+
+
+
+
+$.<span class="nv">ajaxFileUpload</span><span class="ss">(</span>{
+       <span class="nv">url</span>: <span class="nv">url</span>, <span class="o">//</span>用于文件上传的服务器端请求地址
+       <span class="nv">secureuri</span>: <span class="nv">false</span>, <span class="o">//</span>是否需要安全协议，一般设置为<span class="nv">false</span>
+       <span class="nv">fileElementId</span>: <span class="s1">&#39;</span><span class="s">fileUpload</span><span class="s1">&#39;</span>, <span class="o">//</span>文件上传域的<span class="nv">ID</span>
+       <span class="nv">dataType</span>: <span class="s1">&#39;</span><span class="s">text</span><span class="s1">&#39;</span>, <span class="o">//</span>返回值类型 一般设置为<span class="nv">json</span>
+       <span class="nv">data</span>:{},<span class="o">//</span>其他需要传的参数
+       <span class="nv">success</span>: <span class="nv">function</span> <span class="ss">(</span><span class="nv">data</span>, <span class="nv">status</span><span class="ss">)</span>
+       {
+
+       },
+       <span class="nv">error</span>: <span class="nv">function</span> <span class="ss">(</span><span class="nv">data</span>, <span class="nv">status</span>, <span class="nv">e</span><span class="ss">)</span>
+       {
+
+       }
+
+}<span class="ss">)</span><span class="c1">;</span>
+</pre></div>
+
+
+<p>后台:</p>
+<div class="highlight"><pre><span></span>        @<span class="nv">RequestMapping</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">/upLoadFile</span><span class="s2">&quot;</span><span class="ss">)</span>
+    <span class="nv">public</span> <span class="nv">String</span> <span class="nv">upLoadFile</span><span class="ss">(</span><span class="nv">HttpServletRequest</span> <span class="nv">request</span><span class="ss">)</span> {
+
+        <span class="nv">MultipartHttpServletRequest</span> <span class="nv">multipartRequest</span> <span class="o">=</span> <span class="ss">(</span><span class="nv">MultipartHttpServletRequest</span><span class="ss">)</span> <span class="nv">request</span><span class="c1">;</span>
+        <span class="nv">MultipartFile</span> <span class="nv">file</span> <span class="o">=</span> <span class="nv">multipartRequest</span>.<span class="nv">getFile</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">fileToUpload</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+        <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="nv">file</span>.<span class="nv">getOriginalFilename</span><span class="ss">())</span><span class="c1">;</span>
+        <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="nv">file</span>.<span class="nv">getName</span><span class="ss">())</span><span class="c1">;</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="c1">;</span>
+    }
+</pre></div>
+
+
+<p>﻿﻿</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

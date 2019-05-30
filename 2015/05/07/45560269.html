@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="activiti实现任务超时，创建job不执行的原因"/>
+    <meta property="og:url" content="/2015/05/07/45560269.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/05/07/45560269.html" />
+
+    <title>activiti实现任务超时，创建job不执行的原因 | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li class="active"><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/05/07/45560269.html" rel="bookmark"
+             title="Permalink to activiti实现任务超时，创建job不执行的原因">activiti实现任务超时，创建job不执行的原因</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/java.html">java</a>
+
+    on 2015-05-07
+
+        |
+        tags:         <a href="/tag/java.html">java</a>
+        <a href="/tag/activiti.html">activiti</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45560269 </p>
+<p>最近刚开始上手activiti，发现在使用定时任务时，创建了定时job，缺一直不执行。</p>
+<p>情况如下：</p>
+<p>首先通过配置定时器穿件一个定时任务，设置超时时间60秒</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;boundaryEvent</span> <span class="na">id=</span><span class="s">&quot;boundarytimer1&quot;</span> <span class="na">name=</span><span class="s">&quot;Timer&quot;</span> <span class="na">attachedToRef=</span><span class="s">&quot;任务1&quot;</span> <span class="na">cancelActivity=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;timerEventDefinition&gt;</span>
+          <span class="nt">&lt;timeDuration&gt;</span>PT60S<span class="nt">&lt;/timeDuration&gt;</span>
+      <span class="nt">&lt;/timerEventDefinition&gt;</span>
+<span class="nt">&lt;/boundaryEvent&gt;</span>
+</pre></div>
+
+
+<p>当流程执行到该任务节点时，数据库中产生了一条job数据。其中字段DUEDATE_的值为当前时间60S后。</p>
+<p>但是时间过了60秒，job并没有按预期执行。</p>
+<p>翻看文档，发现Activiti的Job管理器，默认是关闭的，需要通过设置processEnginConfiguration中的<property name="jobExecutorActivate" value="false" />激活。</p>
+<p>配置后重新尝试上述步骤，job任然未执行。</p>
+<p>继续查看文档，发现是activiti与spring集成时，需要将activiti的引擎配置交由Spring来管理。</p>
+<p>将activiti.cfg.xml中的bean，processEnginConfiguration，重新配置。</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;processEngineConfiguration&quot;</span> <span class="na">class=</span><span class="s">&quot;org.activiti.spring.SpringProcessEngineConfiguration&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;dataSource&quot;</span> <span class="na">ref=</span><span class="s">&quot;dataSource&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;databaseSchemaUpdate&quot;</span> <span class="na">value=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;jobExecutorActivate&quot;</span> <span class="na">value=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;processEngine&quot;</span> <span class="na">class=</span><span class="s">&quot;org.activiti.spring.ProcessEngineFactoryBean&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;processEngineConfiguration&quot;</span> <span class="na">ref=</span><span class="s">&quot;processEngineConfiguration&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+</pre></div>
+
+
+<p>重启web容器，成功执行job，任务被认领。</p>
+<p><img alt="image" src="../../../images/20150507142704037.png">  </p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

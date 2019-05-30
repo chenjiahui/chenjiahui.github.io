@@ -1,424 +1,271 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-        <meta charset="utf-8" />
-        <title>BugManager’s Blog - python</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="BugManager’s Blog - python"/>
+    <meta property="og:url" content="/category/python.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="website"/>
+
+    <link rel="canonical" href="/category/python.html" />
+
+    <title>BugManager’s Blog - python</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">BugManager’s Blog </a></h1>
-                <nav><ul>
-                    <li><a href="/category/flex.html">Flex</a></li>
-                    <li><a href="/category/java.html">java</a></li>
-                    <li><a href="/category/ji-qun.html">集群</a></li>
-                    <li><a href="/category/linux.html">Linux</a></li>
-                    <li><a href="/category/other.html">other</a></li>
-                    <li class="active"><a href="/category/python.html">python</a></li>
-                    <li><a href="/category/qian-duan.html">前端</a></li>
-                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
-                    <li><a href="/category/yun-wei.html">运维</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/65627740.html">python使用代码对redis的key进行集中管理</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2017-03-24T10:37:56+00:00">
-                Published: 五 24 三月 2017
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/65627740 </p>
-<p>平时工作中会经常用到一些全局的常量，如redis的key值命名等。</p>
-<p>可能会出现不同开发人员使用同一个key，导致缓存被覆盖等情况。</p>
-<p>针对这种情况，可以使用如下的方式，实现一个简单的集中管理。</p>
-<div class="highlight"><pre><span></span><span class="c1"># /usr/bin/env python</span>
-<span class="c1"># coding=utf-8</span>
-
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Created on 2017-03-17</span>
-
-<span class="sd">    @Author: Bug管理员</span>
-<span class="sd">    @note: 为了便于管理，将redis涉及到的key统一由该类管理</span>
-<span class="sd">    @demo: 调用示例：RdbKeyUtil.index_media_key(1)</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="k">class</span> <span class="nc">RedisKeyUtil</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-
-    <span class="n">USER_KEY</span> <span class="o">=</span> <span class="s1">&#39;test_key:</span><span class="si">%s</span><span class="s1">&#39;</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">user_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uid</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">USER_KEY</span> <span class="o">%</span> <span class="n">uid</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="k">print</span> <span class="n">RdbKeyUtil</span><span class="o">.</span><span class="n">user_key</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/56009091.html" rel="bookmark"
-                           title="Permalink to tornado_mysql的pool使用事务的方法。">tornado_mysql的pool使用事务的方法。</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-02-20T10:52:26+00:00">
-                Published: 一 20 二月 2017
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/56009091 </p>
-<div class="highlight"><pre><span></span><span class="c1">#/usr/bin/env python</span>
-<span class="c1">#coding=utf-8</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Created on 2017-02-20</span>
-
-<span class="sd">@Author: Bug管理员</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tornado_mysql</span> <span class="kn">import</span> <span class="n">pools</span>
-
-<span class="n">data_time</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-
-<span class="k">def</span> <span class="nf">create_pool</span><span class="p">():</span>
-    <span class="k">print</span> <span class="n">DB_CONN</span><span class="o">.</span><span class="n">PORT</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_USER</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_PASSWORD</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">DBNAME</span>
-    <span class="n">pool_db</span> <span class="o">=</span> <span class="n">pools</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span>
-        <span class="nb">dict</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">DB_CONN …</span></pre></div>
-                <a class="readmore" href="/56009091.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/54311168.html" rel="bookmark"
-                           title="Permalink to python过滤unicode控制字符">python过滤unicode控制字符</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-01-10T10:37:17+00:00">
-                Published: 二 10 一月 2017
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/54311168 </p>
-<p>昨天晚上平台被个别用户利用了一个漏洞：</p>
-<p>原理：<a href="http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html">https://www.zhihu.com/question/43621727</a></p>
-<p><a href="http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html">http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html</a></p>
-<p>在浏览器上执行测试代码：</p>
-<div class="highlight"><pre><span></span>data:text/html;charset=utf8,<span class="nt">&lt;script&gt;</span>document.write(&#39;陈佳慧&#39;+String.fromCharCode(8238)+&#39;送了一座海岛&#39;.split(&#39;&#39;).reverse().join(&#39;&#39;)+String.fromCharCode(8237))<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-
-
-<p>复制生成的文字，取app上修改昵称 …</p>
-                <a class="readmore" href="/54311168.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/52141391.html" rel="bookmark"
-                           title="Permalink to 截取带emoji表情的utf8字符串">截取带emoji表情的utf8字符串</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-08-07T11:03:21+00:00">
-                Published: 日 07 八月 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/52141391 </p>
-<p>好久没有写博客了，当然这个锅得甩给忙碌的工作<img alt="偷笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/titter.gif"></p>
-<p>最近工作中又一次碰到了关于emoji表情的问题：需求要求将用户输入的一段内容，截取8个长度作为标题。app端简单的对内容substr了一下。</p>
-<p>然而当在一些特殊情况下，就会出现截取后最后一位乱码的情况。比如内容为：“明天要发奖金啦<img alt="得意" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/proud.gif"><img alt="羡慕" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/envy.gif">”，按预期截取后应该是：“明天要发奖金啦<img alt="得意" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/proud.gif">”；而实际上截取的结果是：“明天要发奖金啦？”，最后一位是个乱码，看来奖金发不成了。</p>
-<p>要细说起编码，那就是一篇很长的论文了，不了解的同学可以度娘、谷哥一下。</p>
-<p>这里主要说说utf8编码：</p>
-<p>UTF-8是一种变长字节编码方式。对于某一个字符的UTF-8编码，如果只有一个字节则其最高二进制位为0；如果是多字节，其第一个字节从最高位开始，连续的二进制位值为1的个数决定了其编码的位数，其余各字节均以10开头。  </p>
-<h1>1-byte格式: 0xxxxxxx</h1>
-<h1>2-byte格式: 110xxxxx 10xxxxxx</h1>
-<h1>3-byte格式: 1110xxxx 10xxxxxx 10xxxxxx</h1>
-<h1>4-byte格式: 11110xxx …</h1>
-                <a class="readmore" href="/52141391.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/51752189.html" rel="bookmark"
-                           title="Permalink to python判断输入的内容是否是emoji表情">python判断输入的内容是否是emoji表情</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-06-24T13:52:05+00:00">
-                Published: 五 24 六月 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/51752189 </p>
-<p>python判断输入的内容是否是emoji表情：</p>
-<div class="highlight"><pre><span></span><span class="s2">&quot;&quot;&quot;</span>
-@描述           根据传入的<span class="nv">content</span>，判断是否是<span class="nv">emoji</span>字符。
-@<span class="k">return</span>         <span class="nv">True</span>是<span class="nv">emoji</span>，<span class="nv">False</span>不是<span class="nv">True</span>是<span class="nv">emoji</span>。
-<span class="s2">&quot;&quot;&quot;</span>
-@<span class="nv">staticmethod</span>
-<span class="nv">def</span> <span class="nv">isEmoji</span><span class="ss">(</span><span class="nv">content</span><span class="ss">)</span>:
-    <span class="k">if</span> <span class="nv">not</span> <span class="nv">content</span>:
-        <span class="k">return</span> <span class="nv">False</span>
-    <span class="k">if</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F600</span><span class="s2">&quot;</span> <span class="o">&lt;=</span> <span class="nv">content</span> <span class="nv">and</span> <span class="nv">content</span> <span class="o">&lt;=</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F64F</span><span class="s2">&quot;</span>:
-        <span class="k">return</span> <span class="nv">True</span>
-    <span class="nv">elif</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F300</span><span class="s2">&quot;</span> <span class="o">&lt;=</span> <span class="nv">content …</span></pre></div>
-                <a class="readmore" href="/51752189.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/51751032.html" rel="bookmark"
-                           title="Permalink to python调用存储过程，获取返回值">python调用存储过程，获取返回值</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-06-24T11:03:58+00:00">
-                Published: 五 24 六月 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/51751032 </p>
-<p>python调用存储过程，获取返回值</p>
-<div class="highlight"><pre><span></span><span class="k">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;&quot;&quot;</span>
-<span class="ss">    call pro_test(%s,@tt);</span>
-<span class="ss">    select @tt as pro_out</span>
-<span class="ss">&quot;&quot;&quot;</span><span class="w"></span>
-<span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="n">yield</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">pool</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;test&quot;</span><span class="p">))</span><span class="w"></span>
-<span class="n">res</span><span class="p">,</span><span class="k">old</span><span class="o">=</span><span class="n">dbInterface</span><span class="p">.</span><span class="n">getone</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span><span class="n">o</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="n">pro_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">old</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="ss">&quot;pro_out&quot;</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-                <a class="readmore" href="/51751032.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/51200656.html" rel="bookmark"
-                           title="Permalink to python插入记录cursor.lastrowid值为0的情况">python插入记录cursor.lastrowid值为0的情况</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-04-20T14:49:35+00:00">
-                Published: 三 20 四月 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/51200656 </p>
-<p>python向mysql插入数据后，可以根据根据cursor.lastrowid获取所插入数据的主键id值。</p>
-<p>最近遇到有一个插入语句执行后，cursor.lastrowid获取到的值为0的情况。</p>
-<p>经过测试发现，被插入的表的id必须是AUTO_INCREMENT，cursor.lastrowid才能获取到id值。因为插入的业务数据的id是我们自己生成的，table的id没有设置成AUTO_INCREMENT，修改为AUTO_INCREMENT后，问题解决。</p>
-                <a class="readmore" href="/51200656.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/49619661.html" rel="bookmark"
-                           title="Permalink to 一行代码写python">一行代码写python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-11-03T17:55:10+00:00">
-                Published: 二 03 十一月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/49619661 </p>
-<p>1、一行代码更新python数组中对象属性满足某一值的元素</p>
-<div class="highlight"><pre><span></span>    <span class="n">arr</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}]</span>
-    <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
-    <span class="k">print</span> <span class="n">arr</span>
-</pre></div>
-
-
-<p>输出： </p>
-<div class="highlight"><pre><span></span>    <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;d …</span></pre></div>
-                <a class="readmore" href="/49619661.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/49619439.html" rel="bookmark"
-                           title="Permalink to python数组排序">python数组排序</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-11-03T17:47:31+00:00">
-                Published: 二 03 十一月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/49619439 </p>
-<p>简单排序：</p>
-<div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="n">sorted</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="n">print</span> <span class="n">arr</span>
-<span class="n">print</span> <span class="n">temp</span>
-</pre></div>
-
-
-<p>输出： </p>
-<div class="highlight"><pre><span></span><span class="k">[3, 4, 1]</span>
-<span class="k">[1, 3, 4]</span>
-</pre></div>
-
-
-<p>简单排序示例2： </p>
-<div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">arr2</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span> 
-<span class="n">print</span> <span class="n">arr</span>
-<span class="n">print</span> <span class="n">arr2</span>
-</pre></div>
-
-
-<p>输出： </p>
-<div class="highlight"><pre><span></span><span class="k">[1, 3, 4]</span>
-<span class="na">None</span>
-</pre></div>
-
-
-<p>正序排序： </p>
-<div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="err">{</span><span class="s1">&#39;a …</span></pre></div>
-                <a class="readmore" href="/49619439.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/48525073.html" rel="bookmark"
-                           title="Permalink to python生成一组随机数">python生成一组随机数</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-09-17T18:03:51+00:00">
-                Published: 四 17 九月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/python.html">python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/48525073 </p>
-<p>今天看到群里有人问到</p>
-<p>生成一个list,长度为1000，里面的元素是可以重复的随机数（范围0-10000）</p>
-<p>随即写了一个，</p>
-<div class="highlight"><pre><span></span>[<span class="k">random</span>.<span class="nv">randint</span><span class="ss">(</span><span class="mi">0</span>,<span class="mi">10000</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">1000</span><span class="ss">)</span>]
-</pre></div>
-
-
-<p>后来翻看资料发现，下面这样就可以了 </p>
-<div class="highlight"><pre><span></span>[<span class="k">random</span>.<span class="nv">randrange</span><span class="ss">(</span><span class="mi">10000</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">1000</span><span class="ss">)</span>]
-</pre></div>
-
-
-<p>翻看资料延伸的想了下生成不可重复的随机数。 </p>
-<div class="highlight"><pre><span></span><span class="k">random</span>.<span class="nv">sample</span><span class="ss">(</span>[<span class="nv">i</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">10000</span><span class="ss">)</span>],<span class="mi">1000</span><span class="ss">)</span>
-</pre></div>
-
-
-<p>再一次体会到了python的简洁。用java的话，得好几行代码了 </p>
-                <a class="readmore" href="/48525073.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 2
-        <a href="/category/python2.html">&raquo;</a>
-</p>
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="#">友情链接1</a></li>
-                            <li><a href="#">友情链接2</a></li>
-                            <li><a href="#">友情链接3</a></li>
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li class="active"><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
                         </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
-                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span9">
+    <section>
+    <h1>Articles in python</h1>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2017</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 3月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                24
+                </div>
+            <div class="span10">
+                <a href="/2017/03/24/65627740.html">python使用代码对redis的key进行集中管理</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 2月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                20
+                </div>
+            <div class="span10">
+                <a href="/2017/02/20/56009091.html">tornado_mysql的pool使用事务的方法。</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 1月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                10
+                </div>
+            <div class="span10">
+                <a href="/2017/01/10/54311168.html">python过滤unicode控制字符</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2016</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 8月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                07
+                </div>
+            <div class="span10">
+                <a href="/2016/08/07/52141391.html">截取带emoji表情的utf8字符串</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 6月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                24
+                </div>
+            <div class="span10">
+                <a href="/2016/06/24/51752189.html">python判断输入的内容是否是emoji表情</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset2 span10">
+                <a href="/2016/06/24/51751032.html">python调用存储过程，获取返回值</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 4月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                20
+                </div>
+            <div class="span10">
+                <a href="/2016/04/20/51200656.html">python插入记录cursor.lastrowid值为0的情况</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2015</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month">11月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                03
+                </div>
+            <div class="span10">
+                <a href="/2015/11/03/49619661.html">一行代码写python</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset2 span10">
+                <a href="/2015/11/03/49619439.html">python数组排序</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 9月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                17
+                </div>
+            <div class="span10">
+                <a href="/2015/09/17/48525073.html">python生成一组随机数</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                13
+                </div>
+            <div class="span10">
+                <a href="/2015/09/13/48415483.html">python的while语法中的else从句</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                11
+                </div>
+            <div class="span10">
+                <a href="/2015/09/11/48378017.html">python解决sql注入以及特殊字符</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                08
+                </div>
+            <div class="span10">
+                <a href="/2015/09/08/48296437.html">python将对象写入文件，以及从文件中读取对象</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset2 span10">
+                <a href="/2015/09/08/48295431.html">python随机数</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 8月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                22
+                </div>
+            <div class="span10">
+                <a href="/2015/08/22/47859581.html">python中的mysql数据库like模糊查询</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="span3">
+    <section id="sidebar">
+            <div>
+                <h2>Browse content by</h2>
+                <ul class="fa-ul">
+                <li><a href="/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
+                </ul>
+            </div><!-- /.browse -->
+            <div>
+                <h2>LINKS</h2>
+                <ul>
+                    <li><a href="#">友情链接1</a></li>
+                    <li><a href="#">友情链接2</a></li>
+                    <li><a href="#">友情链接3</a></li>
+                </ul>
+            </div><!-- /.Links -->
+            <div>
+                <h2>SOCIAL</h2>
+                <ul>
+                    <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                    <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                </ul>
+            </div><!-- /.social -->
+<!-- /.Tags -->
+    </section><!-- /#sidebar -->
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

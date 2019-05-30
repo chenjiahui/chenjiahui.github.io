@@ -1,214 +1,148 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-        <meta charset="utf-8" />
-        <title>BugManager’s Blog - activiti</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="BugManager’s Blog - activiti"/>
+    <meta property="og:url" content="/tag/activiti.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="website"/>
+
+    <link rel="canonical" href="/tag/activiti.html" />
+
+    <title>BugManager’s Blog - activiti | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">BugManager’s Blog </a></h1>
-                <nav><ul>
-                    <li><a href="/category/flex.html">Flex</a></li>
-                    <li><a href="/category/java.html">java</a></li>
-                    <li><a href="/category/ji-qun.html">集群</a></li>
-                    <li><a href="/category/linux.html">Linux</a></li>
-                    <li><a href="/category/other.html">other</a></li>
-                    <li><a href="/category/python.html">python</a></li>
-                    <li><a href="/category/qian-duan.html">前端</a></li>
-                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
-                    <li><a href="/category/yun-wei.html">运维</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/45844141.html">activiti的组任务开发</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-05-19T14:09:53+00:00">
-                Published: 二 19 五月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/activiti.html">activiti</a> </p>
-</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45844141 </p>
-<p>在工作中使用到了将任务派发给用户组处理，第一次使用，查了点资料，写了个demo。</p>
-<p>首先，查看数据库中关于用户、用户组的表结构：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150519141150125?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>可以看出来，用户、用户组相关的表其实与其他的activiti表无关联。我们可以使用自己的一套用户、用户组管理，而且官方也是建议使用自己的用户用户组权限管理的。</p>
-<p>怎么使用自己的用户、用户组管理以后会在另写一篇，这里就不介绍了。</p>
-<p>首先我们创建一个测试用的bpmn</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150519141718989?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>如上图中，我们对Group Task节点，添加了两个用户组：groupB和GroupC。注意，要用英文逗号。</p>
-<p>在用户表，用户组表，关系表中插入用户、用户组，以及关联信息。</p>
-<p>用户表：act_id_user</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150519142436460?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
-<p>用户组表：act_id_group</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150519142620403?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
-<p>关系表：act_id_membership</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150519142936219?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
-<p>将流程定义跑到Group Task节点，查询用户组任务。</p>
-<div class="highlight"><pre><span></span><span class="nv">List</span><span class="o">&lt;</span><span class="nv">String</span><span class="o">&gt;</span> <span class="nv">groupIds</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">ArrayList</span><span class="o">&lt;</span><span class="nv">String</span><span class="o">&gt;</span><span class="ss">()</span><span class="c1">;</span>
-        <span class="nv">groupIds</span>.<span class="nv">add</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">groupB</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
-        <span class="nv">groupIds</span>.<span class="nv">add</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">groupC</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
-<span class="o">//</span>      <span class="nv">List</span><span class="o">&lt;</span><span class="nv">Task</span><span class="o">&gt;</span> <span class="nv">list</span> <span class="o">=</span> <span class="nv">processEngine</span>.<span class="nv">getTaskService</span><span class="ss">()</span>
-<span class="o">//</span>              .<span class="nv">createTaskQuery</span><span class="ss">()</span>.
-<span class="o">//</span>              <span class="nv">taskCandidateGroup</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">groupB，groupC</span><span class="s2">&quot;</span><span class="ss">)</span><span class="o">//</span>在设置多个用户组时，使用了中文逗号，导致<span class="nv">activiti</span>解析时，认为是一个名字为“<span class="nv">groupB</span>，<span class="nv">groupC</span>”的组。 
-<span class="o">//</span>              .<span class="nv">list</span><span class="ss">()</span><span class="c1">;</span>
-        <span class="nv">List</span><span class="o">&lt;</span><span class="nv">Task</span><span class="o">&gt;</span> <span class="nv">list</span> <span class="o">=</span> <span class="nv">processEngine</span>.<span class="nv">getTaskService</span><span class="ss">()</span>.<span class="nv">createTaskQuery</span><span class="ss">()</span>.<span class="nv">taskCandidateGroupIn</span><span class="ss">(</span><span class="nv">groupIds</span><span class="ss">)</span>.<span class="nv">list</span><span class="ss">()</span><span class="c1">;</span>
-        <span class="k">if</span><span class="ss">(</span><span class="nv">list</span><span class="o">!=</span><span class="nv">null</span> <span class="o">&amp;&amp;</span> <span class="nv">list</span>.<span class="nv">size</span><span class="ss">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="ss">)</span>{
-            <span class="k">for</span><span class="ss">(</span><span class="nv">Task</span> <span class="nv">task</span>:<span class="nv">list</span><span class="ss">)</span>{
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">任务ID:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getId</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">任务名称:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getName</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">任务的创建时间:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getCreateTime</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">任务的办理人:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getAssignee</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">流程实例ID：</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getProcessInstanceId</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">执行对象ID:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getExecutionId</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">流程定义ID:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getProcessDefinitionId</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">########################################################</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
-            }
-        }
-</pre></div>
-
-
-<p>要效果好点，可以改成动态设置几个不同的任务组执行任务，再使用上述代码查询任务组任务。</p>
-<p>也可以使用以下代码查询用户的组任务：</p>
-<div class="highlight"><pre><span></span><span class="nv">String</span> <span class="nv">candidateUser</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">ee</span><span class="s2">&quot;</span><span class="c1">;</span>
-        <span class="nv">List</span><span class="o">&lt;</span><span class="nv">Task</span><span class="o">&gt;</span> <span class="nv">list</span> <span class="o">=</span> <span class="nv">processEngine</span>.<span class="nv">getTaskService</span><span class="ss">()</span><span class="o">//</span>与正在执行的任务管理相关的<span class="nv">Service</span>
-                        .<span class="nv">createTaskQuery</span><span class="ss">()</span><span class="o">//</span>创建任务查询对象
-                        <span class="cm">/**查询条件（where部分）*/</span>
-                        .<span class="nv">taskCandidateUser</span><span class="ss">(</span><span class="nv">candidateUser</span><span class="ss">)</span><span class="o">//</span>组任务的办理人查询
-                        <span class="cm">/**排序*/</span>
-                        .<span class="nv">orderByTaskCreateTime</span><span class="ss">()</span>.<span class="nv">asc</span><span class="ss">()</span><span class="o">//</span>使用创建时间的升序排列
-                        <span class="cm">/**返回结果集*/</span>
-                        .<span class="nv">list</span><span class="ss">()</span><span class="c1">;//返回列表</span>
-        <span class="k">if</span><span class="ss">(</span><span class="nv">list</span><span class="o">!=</span><span class="nv">null</span> <span class="o">&amp;&amp;</span> <span class="nv">list</span>.<span class="nv">size</span><span class="ss">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="ss">)</span>{
-            <span class="k">for</span><span class="ss">(</span><span class="nv">Task</span> <span class="nv">task</span>:<span class="nv">list</span><span class="ss">)</span>{
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">任务ID:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getId</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">任务名称:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getName</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">任务的创建时间:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getCreateTime</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">任务的办理人:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getAssignee</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">流程实例ID：</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getProcessInstanceId</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">执行对象ID:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getExecutionId</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">流程定义ID:</span><span class="s2">&quot;</span><span class="o">+</span><span class="nv">task</span>.<span class="nv">getProcessDefinitionId</span><span class="ss">())</span><span class="c1">;</span>
-                <span class="nv">System</span>.<span class="nv">out</span>.<span class="nv">println</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">########################################################</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
-            }
-        }
-</pre></div>
-
-
-<p>﻿﻿</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/45560269.html" rel="bookmark"
-                           title="Permalink to activiti实现任务超时，创建job不执行的原因">activiti实现任务超时，创建job不执行的原因</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-05-07T14:06:47+00:00">
-                Published: 四 07 五月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/activiti.html">activiti</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45560269 </p>
-<p>最近刚开始上手activiti，发现在使用定时任务时，创建了定时job，缺一直不执行。</p>
-<p>情况如下：</p>
-<p>首先通过配置定时器穿件一个定时任务，设置超时时间60秒</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;boundaryEvent</span> <span class="na">id=</span><span class="s">&quot;boundarytimer1&quot;</span> <span class="na">name=</span><span class="s">&quot;Timer&quot;</span> <span class="na">attachedToRef=</span><span class="s">&quot;任务1&quot;</span> <span class="na">cancelActivity=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;timerEventDefinition&gt;</span>
-          <span class="nt">&lt;timeDuration&gt;</span>PT60S<span class="nt">&lt;/timeDuration&gt;</span>
-      <span class="nt">&lt;/timerEventDefinition&gt;</span>
-<span class="nt">&lt;/boundaryEvent&gt;</span>
-</pre></div>
-
-
-<p>当流程执行到该任务节点时，数据库中产生了一条job数据。其中字段DUEDATE_的值为当前时间60S后。</p>
-<p>但是时间过了60秒，job并没有按预期执行。</p>
-<p>翻看文档，发现Activiti的Job管理器，默认是关闭的，需要通过设置processEnginConfiguration中的<property name="jobExecutorActivate" value="false" />激活。</p>
-<p>配置后重新尝试上述步骤，job任然未执行。</p>
-<p>继续查看文档，发现是activiti与spring集成时，需要将activiti的引擎配置交由Spring来管理。</p>
-<p>将activiti.cfg …</p>
-                <a class="readmore" href="/45560269.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/45502187.html" rel="bookmark"
-                           title="Permalink to activiti表单设置节点的默认变量">activiti表单设置节点的默认变量</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-05-05T14:38:12+00:00">
-                Published: 二 05 五月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/activiti.html">activiti</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45502187 </p>
-<p>最近使用activiti，需求中需要用到表单设置节点的默认变量。源码如下：</p>
-<p>在bpmn文件中，选中节点，配置表单属性：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150507135724948?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>类型是enum的，可以下方设置可以选值，如下：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150507140143022?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>当流程走到该节点时使用下列代码获取表单信息：</p>
-<div class="highlight"><pre><span></span><span class="nv">ProcessEngine</span> <span class="nv">processEngine</span> <span class="o">=</span> <span class="nv">ProcessEngines</span>.<span class="nv">getDefaultProcessEngine</span><span class="ss">()</span><span class="c1">;</span>
-        <span class="nv">String</span> <span class="nv">taskId</span>  <span class="o">=</span> <span class="s2">&quot;</span><span class="s">1102</span><span class="s2">&quot;</span><span class="c1">;</span>
-        <span class="nv">String</span> <span class="nv">processDefinitionId</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">myProcess:2:904</span><span class="s2">&quot;</span><span class="c1">;</span>
-        <span class="nv">List</span><span class="o">&lt;</span><span class="nv">FormProperty</span><span class="o">&gt;</span> <span class="nv">list</span> <span class="o">=</span> <span class="nv">processEngine</span>.<span class="nv">getFormService</span><span class="ss">()</span>.<span class="nv">getTaskFormData</span><span class="ss">(</span><span class="nv">taskId</span><span class="ss">)</span>.<span class="nv">getFormProperties</span><span class="ss">()</span><span class="c1">;</span>
-
-        <span class="k">if</span><span class="ss">(</span><span class="nv">list</span><span class="o">!=</span><span class="nv">null</span> <span class="o">&amp;&amp;</span> <span class="nv">list</span>.<span class="nv">size</span><span class="ss">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="ss">)</span>{
-            <span class="k">for</span><span class="ss">(</span><span class="nv">FormProperty</span> <span class="nv">formProperty …</span></pre></div>
-                <a class="readmore" href="/45502187.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="#">友情链接1</a></li>
-                            <li><a href="#">友情链接2</a></li>
-                            <li><a href="#">友情链接3</a></li>
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
                         </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
-                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span9">
+    <section>
+    <h1>Articles tagged with "activiti"</h1>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                19
+                </div>
+            <div class="span10">
+                <a href="/2015/05/19/45844141.html">activiti的组任务开发</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                07
+                </div>
+            <div class="span10">
+                <a href="/2015/05/07/45560269.html">activiti实现任务超时，创建job不执行的原因</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                05
+                </div>
+            <div class="span10">
+                <a href="/2015/05/05/45502187.html">activiti表单设置节点的默认变量</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="span3">
+    <section id="sidebar">
+            <div>
+                <h2>Browse content by</h2>
+                <ul class="fa-ul">
+                <li><a href="/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
+                </ul>
+            </div><!-- /.browse -->
+            <div>
+                <h2>LINKS</h2>
+                <ul>
+                    <li><a href="#">友情链接1</a></li>
+                    <li><a href="#">友情链接2</a></li>
+                    <li><a href="#">友情链接3</a></li>
+                </ul>
+            </div><!-- /.Links -->
+            <div>
+                <h2>SOCIAL</h2>
+                <ul>
+                    <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                    <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                </ul>
+            </div><!-- /.social -->
+<!-- /.Tags -->
+    </section><!-- /#sidebar -->
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

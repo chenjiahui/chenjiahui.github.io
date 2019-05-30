@@ -1,509 +1,301 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-        <meta charset="utf-8" />
-        <title>BugManager’s Blog - java</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="BugManager’s Blog - java"/>
+    <meta property="og:url" content="/category/java.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="website"/>
+
+    <link rel="canonical" href="/category/java.html" />
+
+    <title>BugManager’s Blog - java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">BugManager’s Blog </a></h1>
-                <nav><ul>
-                    <li><a href="/category/flex.html">Flex</a></li>
-                    <li class="active"><a href="/category/java.html">java</a></li>
-                    <li><a href="/category/ji-qun.html">集群</a></li>
-                    <li><a href="/category/linux.html">Linux</a></li>
-                    <li><a href="/category/other.html">other</a></li>
-                    <li><a href="/category/python.html">python</a></li>
-                    <li><a href="/category/qian-duan.html">前端</a></li>
-                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
-                    <li><a href="/category/yun-wei.html">运维</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/54947198.html">JAVA生成总和及个数确定的一组随机数(抢红包)</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2017-02-09T15:11:03+00:00">
-                Published: 四 09 二月 2017
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> </p>
-</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/54947198 </p>
-<p>许久未碰java，写的有点拙。</p>
-<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="p">;</span>
-<span class="o">/**</span>
- <span class="o">*</span> 
- <span class="o">*</span> <span class="nd">@author</span> <span class="n">chenjiahui</span>
- <span class="o">*</span> <span class="nd">@2017</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">09</span>
- <span class="o">*</span>
- <span class="o">*/</span>
-
-<span class="n">public</span> <span class="k">class</span> <span class="nc">Test</span> <span class="p">{</span>
-
-    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-
-        <span class="n">splitRedPacket</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1500</span><span class="p">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;*****************&quot;</span><span class="p">);</span>
-        <span class="n">splitRedPacket</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
-
-    <span class="p">}</span>
-
-    <span class="o">/**</span>
-     <span class="o">*</span> 
-     <span class="o">*</span> <span class="nd">@param</span> <span class="n">total</span>
-     <span class="o">*</span>            <span class="err">总金额</span>
-     <span class="o">*</span> <span class="nd">@param</span> <span class="n">splitCount</span>
-     <span class="o">*</span>            <span class="err">个数</span>
-     <span class="o">*</span> <span class="nd">@param</span> <span class="nb">min</span>
-     <span class="o">*</span>            <span class="err">最小金额</span>
-     <span class="o">*</span> <span class="nd">@param</span> <span class="nb">max</span>
-     <span class="o">*</span>            <span class="err">最大金额</span>
-     <span class="o">*/</span>
-    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">splitRedPacket</span><span class="p">(</span><span class="nb">int</span> <span class="n">total</span><span class="p">,</span> <span class="nb">int</span> <span class="n">splitCount</span><span class="p">,</span> <span class="nb">int</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">int</span> <span class="nb">max</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;总金额：    &quot;</span> <span class="o">+</span> <span class="n">total</span><span class="p">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;个数： &quot;</span> <span class="o">+</span> <span class="n">splitCount</span><span class="p">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;最小金额：   &quot;</span> <span class="o">+</span> <span class="nb">min</span><span class="p">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;最大金额：   &quot;</span> <span class="o">+</span> <span class="nb">max</span><span class="p">);</span>
-
-        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">al</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
-        <span class="n">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Random</span><span class="p">();</span>
-
-        <span class="k">if</span> <span class="p">((</span><span class="n">splitCount</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="o">//</span> <span class="err">奇数个红包，需要单独将其中一个红包先生成，以保证后续算法拆分份数为偶数。</span>
-            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;红包个数&quot;</span> <span class="o">+</span> <span class="n">splitCount</span> <span class="o">+</span> <span class="s2">&quot;是奇数，单独生成一个红包&quot;</span><span class="p">);</span>
-            <span class="nb">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="n">do</span> <span class="p">{</span>
-                <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextInt</span><span class="p">(</span><span class="nb">max</span><span class="p">);</span>
-                <span class="o">//</span> <span class="n">num</span> <span class="o">=</span> <span class="p">(</span><span class="n">total</span> <span class="o">-</span> <span class="n">num</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">splitCount</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">num</span><span class="p">;</span> <span class="o">//</span>
-                <span class="o">//</span> <span class="err">将后面算法拆分时的余数加入到这个随机值中。</span>
-                <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;单个的随机红包为：&quot;</span> <span class="o">+</span> <span class="n">num</span><span class="p">);</span>
-            <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;=</span> <span class="nb">max</span> <span class="o">||</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="nb">min</span><span class="p">);</span>
-
-            <span class="n">total</span> <span class="o">=</span> <span class="mi">40000</span> <span class="o">-</span> <span class="n">num</span><span class="p">;</span>
-            <span class="n">al</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nb">int</span> <span class="n">couples</span> <span class="o">=</span> <span class="n">splitCount</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="nb">int</span> <span class="n">perCoupleSum</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="n">couples</span><span class="p">;</span>
-
-        <span class="k">if</span> <span class="p">((</span><span class="n">splitCount</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;处理后剩余的金额为：&quot;</span> <span class="o">+</span> <span class="n">total</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;将&quot;</span> <span class="o">+</span> <span class="n">total</span> <span class="o">+</span> <span class="s2">&quot;元拆分为&quot;</span> <span class="o">+</span> <span class="n">couples</span> <span class="o">+</span> <span class="s2">&quot;对金额，每对总额：&quot;</span> <span class="o">+</span> <span class="n">perCoupleSum</span><span class="p">);</span>
-
-        <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">couples</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">Boolean</span> <span class="n">finish</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
-            <span class="nb">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="nb">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="n">do</span> <span class="p">{</span>
-                <span class="n">num1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">nextInt</span><span class="p">(</span><span class="nb">max</span><span class="p">);</span>
-                <span class="n">num2</span> <span class="o">=</span> <span class="n">perCoupleSum</span> <span class="o">-</span> <span class="n">num1</span><span class="p">;</span>
-                <span class="k">if</span> <span class="p">(</span><span class="err">!</span><span class="n">al</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">num1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="err">!</span><span class="n">al</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">num2</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="n">num1</span> <span class="o">=</span> <span class="p">(</span><span class="n">total</span> <span class="o">-</span> <span class="n">couples</span> <span class="o">*</span> <span class="n">perCoupleSum</span><span class="p">)</span> <span class="o">+</span> <span class="n">num1</span><span class="p">;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">num1</span> <span class="o">&lt;</span> <span class="nb">min</span> <span class="o">||</span> <span class="n">num1</span> <span class="o">&gt;</span> <span class="nb">max</span> <span class="o">||</span> <span class="n">num2</span> <span class="o">&lt;</span> <span class="nb">min</span> <span class="o">||</span> <span class="n">num2</span> <span class="o">&gt;</span> <span class="nb">max</span><span class="p">);</span>
-            <span class="n">al</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num1</span><span class="p">);</span>
-            <span class="n">al</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num2</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="nb">int</span> <span class="n">check_num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="n">Integer</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-        <span class="n">al</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">new</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nd">@Override</span>
-            <span class="n">public</span> <span class="nb">int</span> <span class="n">compare</span><span class="p">(</span><span class="n">Integer</span> <span class="n">o1</span><span class="p">,</span> <span class="n">Integer</span> <span class="n">o2</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="n">Integer</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">});</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">Arrays</span><span class="o">.</span><span class="n">toString</span><span class="p">(</span><span class="n">al</span><span class="o">.</span><span class="n">toArray</span><span class="p">()));</span>
-
-        <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">x</span> <span class="p">:</span> <span class="n">al</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">check_num</span> <span class="o">=</span> <span class="n">check_num</span> <span class="o">+</span> <span class="n">x</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;验证总和：&quot;</span> <span class="o">+</span> <span class="n">check_num</span><span class="p">);</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/47962803.html" rel="bookmark"
-                           title="Permalink to hadoop学习笔记之Map-Reduce">hadoop学习笔记之Map-Reduce</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-08-25T00:04:59+00:00">
-                Published: 二 25 八月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/hadoop.html">hadoop</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/47962803 </p>
-<p>Map-Reduce的工作机制：<br>
-a、编写好一个Map-Reduce程序，运行作业程序。<br>
-b、JobClient向JobTracker申请一个作业ID，<br>
-c、JobClient将作业所需要的资源，复制到HDFS系统中。<br>
-d、c、JobClient提交作业<br>
-e、JobTracker初始化作业。<br>
-f、JobTracker向nameNode询问，决定这些任务在哪些机器上跑。<br>
-有关的数据在哪些文件里，这些文件保存在哪些节点的数据块中。<br>
-(程序要和所要运行的作业资源在一起)<br>
-根据taskTracker与JobTracker之间的心跳，知道哪些task可以参与到本次作业中来。<br>
-如：taskTracker必须是活着的，Tracker中是否有其他作业在做。<br>
-确定哪些taskTracker<br>
-g、taskTracker和JobTracker保持心跳，以确定taskTracker是否正常。<br>
-h、taskTracker从HDFS中将相关代码、资源等获取到本地。<br>
-i、架设java虚拟机<br>
-j、开始工作。<br>
-k、taskTracker将结果写入本地硬盘（这个是中间结果不写入HDFS …</p>
-                <a class="readmore" href="/47962803.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/46997303.html" rel="bookmark"
-                           title="Permalink to hadoop学习笔记之HDFS">hadoop学习笔记之HDFS</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-07-22T07:33:37+00:00">
-                Published: 三 22 七月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/hadoop.html">hadoop</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46997303 </p>
-<p>HDFS：Hadoop Distributed File System 分布式文件系统，其操作方式与linux相似，使用指令之前要在前面加上dfs。（注意：hdfs没有当前目录的概念，不能使用cd命令）</p>
-<p>常规操作命令：</p>
-<div class="highlight"><pre><span></span>     dfs -put ../hello hello
-     dfs -ls
-     dfs -get hello ./mypath/hello
-     dfs -rmr hello
-     dfs -cat part-r-00000 //打开文件，查看内容
-     dfsadmin -report //hdfs的信息情况
-</pre></div>
-
-
-<p>客户端如何从HDFS上 <strong>获取文件</strong> 呢？以获取文件名为“hello …</p>
-                <a class="readmore" href="/46997303.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/46406927.html" rel="bookmark"
-                           title="Permalink to 获得当前用户的ip">获得当前用户的ip</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-06-08T01:21:14+00:00">
-                Published: 一 08 六月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46406927 </p>
-<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。
-<img alt="微笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/smile.gif"></p>
-<p>java获取当前用户的ip</p>
-<div class="highlight"><pre><span></span>    <span class="n">String</span> <span class="n">modify_user_ip</span> <span class="o">=</span> <span class="o">((</span><span class="n">ServletRequestAttributes</span><span class="o">)</span> <span class="o">(</span><span class="n">RequestContextHolder</span>
-                        <span class="o">.</span><span class="na">getRequestAttributes</span><span class="o">())).</span><span class="na">getRequest</span><span class="o">().</span><span class="na">getRemoteAddr</span><span class="o">();</span>
-</pre></div>
-
-
-<p>﻿﻿</p>
-                <a class="readmore" href="/46406927.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/45844141.html" rel="bookmark"
-                           title="Permalink to activiti的组任务开发">activiti的组任务开发</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-05-19T14:09:53+00:00">
-                Published: 二 19 五月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/activiti.html">activiti</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45844141 </p>
-<p>在工作中使用到了将任务派发给用户组处理，第一次使用，查了点资料，写了个demo。</p>
-<p>首先，查看数据库中关于用户、用户组的表结构：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150519141150125?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>可以看出来，用户、用户组相关的表其实与其他的activiti表无关联。我们可以使用自己的一套用户、用户组管理，而且官方也是建议使用自己的用户用户组权限管理的。</p>
-<p>怎么使用自己的用户、用户组管理以后会在另写一篇，这里就不介绍了。</p>
-<p>首先我们创建一个测试用的bpmn</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150519141718989?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>如上图中，我们对Group Task节点，添加了两个用户组：groupB和GroupC。注意，要用英文逗号。</p>
-<p>在用户表，用户组表，关系表中插入用户、用户组，以及关联信息。</p>
-<p>用户表：act_id_user</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150519142436460?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
-<p>用户组表：act_id_group</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150519142620403?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
-<p>关系表：act_id_membership</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150519142936219?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
-<p>将流程定义跑到Group Task节点，查询用户组任务。</p>
-<div class="highlight"><pre><span></span><span class="nv">List …</span></pre></div>
-                <a class="readmore" href="/45844141.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/46400887.html" rel="bookmark"
-                           title="Permalink to JDK自带工具jps，jstat，jmap，jconsole使用">JDK自带工具jps，jstat，jmap，jconsole使用</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-05-19T14:09:53+00:00">
-                Published: 二 19 五月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/46400887 </p>
-<p><strong>jps</strong></p>
-<p>与ps命令类似：</p>
-<div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">ef</span><span class="o">|</span><span class="n">grep</span> <span class="n">java</span>
-</pre></div>
-
-
-<p>用来显示本地的java进程，查看本地运行着几个java应用，并显示进程号。</p>
-<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w">   </span><span class="o">//</span><span class="n">只显示进程号</span><span class="w"></span>
-<span class="mi">23813</span><span class="w"> </span><span class="n">Jps</span><span class="w"></span>
-<span class="mi">710</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
-<span class="mi">792</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
-
-
-<span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w">    </span><span class="o">//</span><span class="n">显示jvm参数</span><span class="w"></span>
-<span class="mi">23852</span><span class="w"> </span><span class="n">Jps</span><span class="w"> </span><span class="o">-</span><span class="n">Denv</span><span class="p">.</span><span class="k">class</span><span class="p">.</span><span class="k">path</span><span class="o">=</span><span class="p">.</span><span class="err">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.6.0</span><span class="n">_21</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dt</span><span class="p">.</span><span class="nl">jar</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1 …</span></pre></div>
-                <a class="readmore" href="/46400887.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/45668341.html" rel="bookmark"
-                           title="Permalink to maven下载flex依赖的jar包失败，解决办法">maven下载flex依赖的jar包失败，解决办法</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-05-12T13:30:26+00:00">
-                Published: 二 12 五月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/maven.html">maven</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45668341 </p>
-<p>在开发过程中，有的时候会碰到个别jar包在maven仓库中未提供的情况。比如flex相关的一些jar包。</p>
-<p>如果自己公司没有私服，则可以通过自己下载jar包放在项目中，如：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150512133452830?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>再在pom.xml中添加本地依赖：</p>
-<div class="highlight"><pre><span></span> <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
-      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
-      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
-      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
-      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/blazeds-common-4.0.0.14931.jar<span class="nt">&lt;/systemPath&gt;</span> 
-  <span class="nt">&lt;/dependency&gt;</span>
-  <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId …</span></pre></div>
-                <a class="readmore" href="/45668341.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/45560269.html" rel="bookmark"
-                           title="Permalink to activiti实现任务超时，创建job不执行的原因">activiti实现任务超时，创建job不执行的原因</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-05-07T14:06:47+00:00">
-                Published: 四 07 五月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/activiti.html">activiti</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45560269 </p>
-<p>最近刚开始上手activiti，发现在使用定时任务时，创建了定时job，缺一直不执行。</p>
-<p>情况如下：</p>
-<p>首先通过配置定时器穿件一个定时任务，设置超时时间60秒</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;boundaryEvent</span> <span class="na">id=</span><span class="s">&quot;boundarytimer1&quot;</span> <span class="na">name=</span><span class="s">&quot;Timer&quot;</span> <span class="na">attachedToRef=</span><span class="s">&quot;任务1&quot;</span> <span class="na">cancelActivity=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;timerEventDefinition&gt;</span>
-          <span class="nt">&lt;timeDuration&gt;</span>PT60S<span class="nt">&lt;/timeDuration&gt;</span>
-      <span class="nt">&lt;/timerEventDefinition&gt;</span>
-<span class="nt">&lt;/boundaryEvent&gt;</span>
-</pre></div>
-
-
-<p>当流程执行到该任务节点时，数据库中产生了一条job数据。其中字段DUEDATE_的值为当前时间60S后。</p>
-<p>但是时间过了60秒，job并没有按预期执行。</p>
-<p>翻看文档，发现Activiti的Job管理器，默认是关闭的，需要通过设置processEnginConfiguration中的<property name="jobExecutorActivate" value="false" />激活。</p>
-<p>配置后重新尝试上述步骤，job任然未执行。</p>
-<p>继续查看文档，发现是activiti与spring集成时，需要将activiti的引擎配置交由Spring来管理。</p>
-<p>将activiti.cfg …</p>
-                <a class="readmore" href="/45560269.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/45502187.html" rel="bookmark"
-                           title="Permalink to activiti表单设置节点的默认变量">activiti表单设置节点的默认变量</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-05-05T14:38:12+00:00">
-                Published: 二 05 五月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/activiti.html">activiti</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45502187 </p>
-<p>最近使用activiti，需求中需要用到表单设置节点的默认变量。源码如下：</p>
-<p>在bpmn文件中，选中节点，配置表单属性：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150507135724948?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>类型是enum的，可以下方设置可以选值，如下：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150507140143022?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>当流程走到该节点时使用下列代码获取表单信息：</p>
-<div class="highlight"><pre><span></span><span class="nv">ProcessEngine</span> <span class="nv">processEngine</span> <span class="o">=</span> <span class="nv">ProcessEngines</span>.<span class="nv">getDefaultProcessEngine</span><span class="ss">()</span><span class="c1">;</span>
-        <span class="nv">String</span> <span class="nv">taskId</span>  <span class="o">=</span> <span class="s2">&quot;</span><span class="s">1102</span><span class="s2">&quot;</span><span class="c1">;</span>
-        <span class="nv">String</span> <span class="nv">processDefinitionId</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">myProcess:2:904</span><span class="s2">&quot;</span><span class="c1">;</span>
-        <span class="nv">List</span><span class="o">&lt;</span><span class="nv">FormProperty</span><span class="o">&gt;</span> <span class="nv">list</span> <span class="o">=</span> <span class="nv">processEngine</span>.<span class="nv">getFormService</span><span class="ss">()</span>.<span class="nv">getTaskFormData</span><span class="ss">(</span><span class="nv">taskId</span><span class="ss">)</span>.<span class="nv">getFormProperties</span><span class="ss">()</span><span class="c1">;</span>
-
-        <span class="k">if</span><span class="ss">(</span><span class="nv">list</span><span class="o">!=</span><span class="nv">null</span> <span class="o">&amp;&amp;</span> <span class="nv">list</span>.<span class="nv">size</span><span class="ss">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="ss">)</span>{
-            <span class="k">for</span><span class="ss">(</span><span class="nv">FormProperty</span> <span class="nv">formProperty …</span></pre></div>
-                <a class="readmore" href="/45502187.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/40518473.html" rel="bookmark"
-                           title="Permalink to jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法">jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-10-27T23:41:38+00:00">
-                Published: 一 27 十月 2014
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/jquery-easyui.html">jquery-easyui</a> <a href="/tag/easyui.html">easyui</a> <a href="/tag/javascript.html">javascript</a> </p>
-</footer><!-- /.post-info -->                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/40518473 </p>
-<p><strong>﻿﻿jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</strong></p>
-<p>工作中用到一个具有多选功能的easyui-datagrid在处理cell的点击事件时，不允许被选中行的需求。</p>
-<p>如下图，点击“查看”时，只是为了查看详细信息，并不是需要选择行。</p>
-<p><img alt="" src="https://img-blog.csdn.net/20141027234702859?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>完成这个需求，其实只需要将datagrid的checkOnSelect属性设置为false就可以了。</p>
-<p>然而，当设置该属性后，新的问题就随之出现了。</p>
-<p><img alt="" src="https://img-blog.csdn.net/20141027234813312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>目前的办法是使用以下代码去除高亮： （本来是打算处理成checkbox选中的行高亮显示，奈何刚开始使用easyui功力不够）  </p>
-<div class="highlight"><pre><span></span><span class="n">onSelect</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="n">rowData</span><span class="o">){</span>
- <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectRow&#39;</span><span class="o">,</span><span class="n">rowIndex</span><span class="o">);</span>
-<span class="o">},</span>
-<span class="n">onCheckAll</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rows</span><span class="o">){</span>
- <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectAll&#39;</span><span class="o">);</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p>使用以上代码之后，要获取到checkbox选中的所以行数据，则使用以下代码：</p>
-<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">checkedItems</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#datagrid2 …</span></pre></div>
-                <a class="readmore" href="/40518473.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 2
-        <a href="/category/java2.html">&raquo;</a>
-</p>
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="#">友情链接1</a></li>
-                            <li><a href="#">友情链接2</a></li>
-                            <li><a href="#">友情链接3</a></li>
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li class="active"><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
                         </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
-                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span9">
+    <section>
+    <h1>Articles in java</h1>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2017</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 2月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                09
+                </div>
+            <div class="span10">
+                <a href="/2017/02/09/54947198.html">JAVA生成总和及个数确定的一组随机数(抢红包)</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2015</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 8月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                25
+                </div>
+            <div class="span10">
+                <a href="/2015/08/25/47962803.html">hadoop学习笔记之Map-Reduce</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 7月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                22
+                </div>
+            <div class="span10">
+                <a href="/2015/07/22/46997303.html">hadoop学习笔记之HDFS</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 6月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                08
+                </div>
+            <div class="span10">
+                <a href="/2015/06/08/46406927.html">获得当前用户的ip</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 5月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                19
+                </div>
+            <div class="span10">
+                <a href="/2015/05/19/45844141.html">activiti的组任务开发</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset2 span10">
+                <a href="/2015/05/19/46400887.html">JDK自带工具jps，jstat，jmap，jconsole使用</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                12
+                </div>
+            <div class="span10">
+                <a href="/2015/05/12/45668341.html">maven下载flex依赖的jar包失败，解决办法</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                07
+                </div>
+            <div class="span10">
+                <a href="/2015/05/07/45560269.html">activiti实现任务超时，创建job不执行的原因</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                05
+                </div>
+            <div class="span10">
+                <a href="/2015/05/05/45502187.html">activiti表单设置节点的默认变量</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="span1 archive_year">2014</div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month">10月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                27
+                </div>
+            <div class="span10">
+                <a href="/2014/10/27/40518473.html">jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 8月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                22
+                </div>
+            <div class="span10">
+                <a href="/2014/08/22/38752955.html">java split | （竖线）</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 7月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                30
+                </div>
+            <div class="span10">
+                <a href="/2014/07/30/38302601.html">ip格式判断、地址段分析、掩码计算工具类</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 5月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                23
+                </div>
+            <div class="span10">
+                <a href="/2014/05/23/26701811.html">利用StringBuffer实现字符串反转</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                15
+                </div>
+            <div class="span10">
+                <a href="/2014/05/15/25888827.html">java调用js脚本，以及js脚本调用java方法</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                11
+                </div>
+            <div class="span10">
+                <a href="/2014/05/11/25553607.html">maven找jar包方法</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset1 span1 archive_month"> 3月</div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                27
+                </div>
+            <div class="span10">
+                <a href="/2014/03/27/22323113.html">【code】java_方法执行sql返回一个key</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+                <div class="offset1 span1 archive_day">
+                26
+                </div>
+            <div class="span10">
+                <a href="/2014/03/26/0002.html">ibatis中#和$的区别</a>
+            </div>
+        </div>
+        <div class="row-fluid archive_row">
+            <div class="offset2 span10">
+                <a href="/2014/03/26/22181667.html">Ibatis学习笔记</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="span3">
+    <section id="sidebar">
+            <div>
+                <h2>Browse content by</h2>
+                <ul class="fa-ul">
+                <li><a href="/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
+                </ul>
+            </div><!-- /.browse -->
+            <div>
+                <h2>LINKS</h2>
+                <ul>
+                    <li><a href="#">友情链接1</a></li>
+                    <li><a href="#">友情链接2</a></li>
+                    <li><a href="#">友情链接3</a></li>
+                </ul>
+            </div><!-- /.Links -->
+            <div>
+                <h2>SOCIAL</h2>
+                <ul>
+                    <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                    <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                </ul>
+            </div><!-- /.social -->
+<!-- /.Tags -->
+    </section><!-- /#sidebar -->
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

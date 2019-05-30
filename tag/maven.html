@@ -1,133 +1,129 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-        <meta charset="utf-8" />
-        <title>BugManager’s Blog - maven</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="BugManager’s Blog - maven"/>
+    <meta property="og:url" content="/tag/maven.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="website"/>
+
+    <link rel="canonical" href="/tag/maven.html" />
+
+    <title>BugManager’s Blog - maven | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">BugManager’s Blog </a></h1>
-                <nav><ul>
-                    <li><a href="/category/flex.html">Flex</a></li>
-                    <li><a href="/category/java.html">java</a></li>
-                    <li><a href="/category/ji-qun.html">集群</a></li>
-                    <li><a href="/category/linux.html">Linux</a></li>
-                    <li><a href="/category/other.html">other</a></li>
-                    <li><a href="/category/python.html">python</a></li>
-                    <li><a href="/category/qian-duan.html">前端</a></li>
-                    <li><a href="/category/shu-ju-ku.html">数据库</a></li>
-                    <li><a href="/category/yun-wei.html">运维</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/45668341.html">maven下载flex依赖的jar包失败，解决办法</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-05-12T13:30:26+00:00">
-                Published: 二 12 五月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-        </address>
-<p>In <a href="/category/java.html">java</a>.</p>
-<p>tags: <a href="/tag/java.html">java</a> <a href="/tag/maven.html">maven</a> </p>
-</footer><!-- /.post-info --><p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/nicky9470/article/details/45668341 </p>
-<p>在开发过程中，有的时候会碰到个别jar包在maven仓库中未提供的情况。比如flex相关的一些jar包。</p>
-<p>如果自己公司没有私服，则可以通过自己下载jar包放在项目中，如：</p>
-<p><img alt="" src="https://img-blog.csdn.net/20150512133452830?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaV9jaGVuamlhaHVp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></p>
-<p>再在pom.xml中添加本地依赖：</p>
-<div class="highlight"><pre><span></span> <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
-      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
-      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
-      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
-      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/blazeds-common-4.0.0.14931.jar<span class="nt">&lt;/systemPath&gt;</span> 
-  <span class="nt">&lt;/dependency&gt;</span>
-  <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
-      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
-      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
-      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
-      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/blazeds-proxy-4.0.0.14931.jar<span class="nt">&lt;/systemPath&gt;</span> 
-  <span class="nt">&lt;/dependency&gt;</span>
-  <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
-      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
-      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
-      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
-      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/commons-codec-1.2.jar<span class="nt">&lt;/systemPath&gt;</span> 
-  <span class="nt">&lt;/dependency&gt;</span>
-  <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
-      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
-      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
-      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
-      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/blazeds-remoting-4.0.0.14931.jar<span class="nt">&lt;/systemPath&gt;</span> 
-  <span class="nt">&lt;/dependency&gt;</span>
-  <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
-      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
-      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
-      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
-      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/cglib-nodep-2.1_3.jar<span class="nt">&lt;/systemPath&gt;</span> 
-  <span class="nt">&lt;/dependency&gt;</span>
-  <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
-      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
-      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
-      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
-      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/commons-httpclient-3.1.jar<span class="nt">&lt;/systemPath&gt;</span> 
-  <span class="nt">&lt;/dependency&gt;</span>
-  <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
-      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
-      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
-      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
-      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/blazeds-core-4.0.0.14931.jar<span class="nt">&lt;/systemPath&gt;</span> 
-  <span class="nt">&lt;/dependency&gt;</span>
-  <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
-      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
-      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
-      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
-      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/spring-flex-core-1.5.0.RELEASE.jar<span class="nt">&lt;/systemPath&gt;</span> 
-  <span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
-
-
-<p>问题解决。</p>
-<p>﻿﻿</p>                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="#">友情链接1</a></li>
-                            <li><a href="#">友情链接2</a></li>
-                            <li><a href="#">友情链接3</a></li>
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
                         </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
-                            <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span9">
+    <section>
+    <h1>Articles tagged with "maven"</h1>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+        <div class="row-fluid archive_row">
+            <div class="offset2 span10">
+                <a href="/2015/05/12/45668341.html">maven下载flex依赖的jar包失败，解决办法</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="span3">
+    <section id="sidebar">
+            <div>
+                <h2>Browse content by</h2>
+                <ul class="fa-ul">
+                <li><a href="/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
+                </ul>
+            </div><!-- /.browse -->
+            <div>
+                <h2>LINKS</h2>
+                <ul>
+                    <li><a href="#">友情链接1</a></li>
+                    <li><a href="#">友情链接2</a></li>
+                    <li><a href="#">友情链接3</a></li>
+                </ul>
+            </div><!-- /.Links -->
+            <div>
+                <h2>SOCIAL</h2>
+                <ul>
+                    <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
+                    <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                </ul>
+            </div><!-- /.social -->
+<!-- /.Tags -->
+    </section><!-- /#sidebar -->
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

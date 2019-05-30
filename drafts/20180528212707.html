@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="HTTP请求中GET和POST的区别"/>
+    <meta property="og:url" content="/drafts/20180528212707.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/drafts/20180528212707.html" />
+
+    <title>HTTP请求中GET和POST的区别 | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/artical.html">artical</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li class="active"><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/drafts/20180528212707.html" rel="bookmark"
+             title="Permalink to HTTP请求中GET和POST的区别">HTTP请求中GET和POST的区别</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/other.html">other</a>
+
+    on 2018-05-28
+
+        |
+        tags:         <a href="/tag/http.html">http</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>1、很显然，报文方法名不同，一个是GET，一个是POST。</p>
+<p>2、请求携带参数的方式不同<br>
+GET参数常规的是跟在请求的url后面，以?开始，参数间以&amp;隔开，数据被直观的展现在URL上。如：https://www.baidu.com/s?ie=UTF-8&amp;wd=test<br>
+POST参数一般是放在请求体entity-body中，传输给目标服务器，数据在URL中不可见。</p>
+<p>3、请求时，携带的参数大小限制不同<br>
+GET请求的URL传参有大小限制<br>
+POST请求理论上是没有大小限制的，但实际情况是，各类应用服务器都对请求大小做了限制。因为过大请求包，会增加服务器解析时间。甚至会被人恶意请求超大的数据包。<br>
+Tomcat：  </p>
+<div class="highlight"><pre><span></span>    <span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">&quot;8080&quot;</span> <span class="na">protocol=</span><span class="s">&quot;HTTP/1.1&quot;</span>
+               <span class="na">connectionTimeout=</span><span class="s">&quot;20000&quot;</span>
+               <span class="na">redirectPort=</span><span class="s">&quot;8443&quot;</span>
+               <span class="na">maxPostSize=</span><span class="s">&quot;-1&quot;</span>             <span class="err">指定POST方式请求的大小限制，不设置默认是2097152字节。(真实配置时删掉这个注释)</span>
+               <span class="na">maxHttpHeaderSize=</span><span class="s">&quot;-1&quot;</span>       <span class="err">HTTP请求和响应头的最大量，以字节为单位，默认值为4096字节(真实配置时删掉这个注释)</span>
+    <span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>nginx：  </p>
+<div class="highlight"><pre><span></span>    <span class="o">#</span><span class="err">在</span><span class="n">nginx</span><span class="p">.</span><span class="n">conf</span><span class="err">的</span><span class="n">http</span><span class="err">{}内设置：</span>
+    <span class="n">client_max_body_size</span> <span class="mi">10</span><span class="n">m</span><span class="p">;</span> <span class="o">#</span><span class="err">客户端请求服务器最大允许大小</span>
+</pre></div>
+
+
+<p>4、浏览器缓存<br>
+GET请求会被浏览器缓存<br>
+POST不会被浏览器缓存，除非主动开启。ps：在请求头中设置Cache-Control可开启。因为POST一般使用在更新数据，提交表单时，开启缓存那不就尴尬了吗╮(╯_╰)╭ 
+这个也是为什么，POST返回的状态码是200，而GET返回的状态码有时是200，有时是304。（304 即：服务端资源无变化，可使用缓存资源）</p>
+<p>5、对数据类型有限制，GET只支持ASCII字符。POST无限制。<br>
+GET的参数都是带在URL后面的，而URL是采用ASCII字符集进行编码的，所以如果URL中含有非ASCII字符集中的字符，那就需要对其进行编码。
+平时在浏览器的URL中包含中文时，比如https://www.baidu.com/s?ie=UTF-8&amp;wd=中文 ,就会被被浏览器编码为：https://www.baidu.com/s?ie=UTF-8&amp;wd=%E4%B8%AD%E6%96%87</p>
+<p>6、安全性方面<br>
+前面提到，GET方式请求，请求数据会拼接在url上，并且请求会被缓存，安全性方面较POST要差。</p>
+<p>7、扩展<br>
+a、前面第2点中提到GET的请求数据常规的是跟在URL后面的，难道还有其他方式？<br>
+是的，其实GET同样可以像POST那样用Request Body来发送数据，只是有些框架在处理get请求时，不会去处理Request Body中的数据。我就在和兄弟公司调接口时，碰到过。
+b、在某些浏览器上POST会产生两个TCP数据包</p>
+<p>下表来自w3school
+<img alt="post和get的区别" src="../../../images/20190529143602.png"></p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        This blog is proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                    </p>
+                    <p>
+                        <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a> is a responsive theme designed by <a href="http://jsliang.com/">jsliang</a> and <a href="https://github.com/jsliang/pelican-fresh/graphs/contributors">contributors</a>.
+                        Special thanks to <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a> and <a href="http://getbootstrap.com/">Twitter Bootstrap</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

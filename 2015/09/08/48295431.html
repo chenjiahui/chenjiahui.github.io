@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="python随机数"/>
+    <meta property="og:url" content="/2015/09/08/48295431.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/09/08/48295431.html" />
+
+    <title>python随机数 | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li class="active"><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/09/08/48295431.html" rel="bookmark"
+             title="Permalink to python随机数">python随机数</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/python.html">python</a>
+
+    on 2015-09-08
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48295431 </p>
+<p>1、关于随机数，较多的是用到了随机生成6位密码</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span><span class="mi">999999</span><span class="p">)</span>
+<span class="mi">939712</span>
+</pre></div>
+
+
+<p>2、生成指定时间段的一个随机日期 </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">date1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">time1</span> <span class="o">=</span> <span class="n">mktime</span><span class="p">(</span><span class="n">date1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">date2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2016</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">time2</span> <span class="o">=</span> <span class="n">mktime</span><span class="p">(</span><span class="n">date2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">random_time</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="n">time1</span><span class="p">,</span><span class="n">time2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">asctime</span><span class="p">(</span><span class="n">localtime</span><span class="p">(</span><span class="n">random_time</span><span class="p">))</span>
+<span class="n">Fri</span> <span class="n">Sep</span> <span class="mo">04</span> <span class="mi">17</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">24</span> <span class="mi">2015</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>3、随机生成一个100以下，3的倍数的数 </p>
+<div class="highlight"><pre><span></span><span class="n">randrange</span> <span class="p">([</span><span class="k">start</span><span class="p">,]</span> <span class="n">stop</span> <span class="p">[,</span><span class="n">step</span><span class="p">])</span>
+</pre></div>
+
+
+<p>start：开始的范围。这将包括在范围内。<br>
+stop：结束的范围。这将排除的范围。<br>
+step：添加一个数字来决定一个随机数的步骤。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">15</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">18</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">45</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">72</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">12</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">75</span>
+</pre></div>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

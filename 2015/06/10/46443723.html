@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="Flex上传文件"/>
+    <meta property="og:url" content="/2015/06/10/46443723.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2015/06/10/46443723.html" />
+
+    <title>Flex上传文件 | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li class="active"><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2015/06/10/46443723.html" rel="bookmark"
+             title="Permalink to Flex上传文件">Flex上传文件</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/qian-duan.html">前端</a>
+
+    on 2015-06-10
+
+        |
+        tags:         <a href="/tag/qian-duan.html">前端</a>
+        <a href="/tag/flex.html">Flex</a>
+        <a href="/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46443723 </p>
+<p>前几天写了一篇<a href="http://blog.csdn.net/i_chenjiahui/article/details/46349259">jsp页面利用ajaxFileUpload上传文件</a>，现在把flex上传页面也分享出来：</p>
+<p>前台页面</p>
+<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+    <span class="nt">&lt;s:HGroup</span> <span class="na">xmlns:fx=</span><span class="s">&quot;&lt;a target=_blank href=&quot;</span><span class="err">http://ns.adobe.com/mxml/2009&quot;</span><span class="nt">&gt;</span>http://ns.adobe.com/mxml/2009<span class="nt">&lt;/a&gt;</span>&quot;
+        xmlns:s=&quot;library://ns.adobe.com/flex/spark&quot;
+        xmlns:mx=&quot;library://ns.adobe.com/flex/mx&quot; creationComplete=&quot;hgroup1_creationCompleteHandler(event)&quot;
+        width=&quot;100%&quot; height=&quot;30&quot; &gt;
+     <span class="nt">&lt;fx:Script&gt;</span>
+      <span class="cp">&lt;![CDATA[</span>
+<span class="cp">       import mx.collections.ArrayList;</span>
+<span class="cp">       import mx.controls.Alert;</span>
+<span class="cp">       import mx.events.FlexEvent;</span>
+<span class="cp">       private var file:FileReference = new FileReference; </span>
+<span class="cp">       public var fileList:ArrayList;</span>
+<span class="cp">       public var manualCheck:ManualCheck;</span>
+<span class="cp">       </span>
+<span class="cp">       protected function hgroup1_creationCompleteHandler(event:FlexEvent):void</span>
+<span class="cp">       {</span>
+<span class="cp">        // TODO Auto-generated method stub</span>
+<span class="cp">    //    file.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA,fileUploadCompleteHandler); </span>
+<span class="cp">        file.addEventListener(Event.SELECT, fileSelect);  </span>
+<span class="cp">    //    file.addEventListener(IOErrorEvent.IO_ERROR,uploadError);</span>
+<span class="cp">       }</span>
+<span class="cp">       </span>
+<span class="cp">       protected function button2_clickHandler(event:MouseEvent):void</span>
+<span class="cp">       {</span>
+<span class="cp">        // 浏览</span>
+<span class="cp">        file.browse();</span>
+<span class="cp">       }</span>
+<span class="cp">       </span>
+<span class="cp">       private function fileSelect(e:Event):void  </span>
+<span class="cp">       {   </span>
+<span class="cp">        if(fileList.getItemIndex(file) == -1){</span>
+<span class="cp">         fileList.addItem(file);</span>
+<span class="cp">        }</span>
+<span class="cp">        fileName.text = file.name;</span>
+<span class="cp">       }</span>
+<span class="cp">       </span>
+<span class="cp">    //   private function fileUploadCompleteHandler(e:DataEvent):void{     </span>
+<span class="cp">    //    </span>
+<span class="cp">    //   } </span>
+<span class="cp">       </span>
+<span class="cp">       private function uploadError(e:IOErrorEvent):void{    </span>
+<span class="cp">        this.cursorManager.removeBusyCursor();</span>
+<span class="cp">        //获取后台的错误提示信息</span>
+<span class="cp">        Alert.show(&quot;上传出错。&quot;,&quot;提示&quot;);</span>
+<span class="cp">       }</span>
+<span class="cp">       </span>
+<span class="cp">       </span>
+<span class="cp">       protected function button3_clickHandler(event:MouseEvent):void</span>
+<span class="cp">       {</span>
+<span class="cp">        // 删除</span>
+<span class="cp">        fileList.removeItem(this.file);</span>
+<span class="cp">        manualCheck.group.removeElement(this);</span>
+<span class="cp">       }</span>
+<span class="cp">       </span>
+<span class="cp">      ]]&gt;</span>
+     <span class="nt">&lt;/fx:Script&gt;</span>
+     <span class="nt">&lt;fx:Declarations&gt;</span>
+      <span class="c">&lt;!-- 将非可视元素（例如服务、值对象）放在此处 --&gt;</span>
+      
+     <span class="nt">&lt;/fx:Declarations&gt;</span>
+     <span class="nt">&lt;s:TextInput</span> <span class="na">id=</span><span class="s">&quot;fileName&quot;</span> <span class="na">width=</span><span class="s">&quot;350&quot;</span><span class="nt">/&gt;</span>
+     <span class="nt">&lt;mx:Button</span> <span class="na">label=</span><span class="s">&quot;浏览&quot;</span> <span class="na">click=</span><span class="s">&quot;button2_clickHandler(event)&quot;</span> <span class="na">fontWeight=</span><span class="s">&quot;bold&quot;</span>
+          <span class="na">overSkin=</span><span class="s">&quot;@Embed(source=&#39;/assets/dfpBtn/btnliulan2.png&#39;)&quot;</span>
+          <span class="na">skin=</span><span class="s">&quot;@Embed(source=&#39;/assets/dfpBtn/btnliulan.png&#39;)&quot;</span><span class="nt">/&gt;</span>
+     <span class="nt">&lt;mx:Button</span> <span class="na">click=</span><span class="s">&quot;button3_clickHandler(event)&quot;</span>
+          <span class="na">overSkin=</span><span class="s">&quot;@Embed(source=&#39;/assets/dfpBtn/deletebtn2.png&#39;)&quot;</span>
+          <span class="na">skin=</span><span class="s">&quot;@Embed(source=&#39;/assets/dfpBtn/deletebtn.png&#39;)&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/s:HGroup&gt;</span>
+</pre></div>
+
+
+<p>as：</p>
+<div class="highlight"><pre><span></span>    <span class="k">var</span> <span class="nx">file</span><span class="o">:</span><span class="nb">FileReference</span> <span class="o">=</span> <span class="nx">fileList</span><span class="p">.</span><span class="nx">getItemAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="nx">as</span> <span class="nb">FileReference</span><span class="o">;</span>
+    <span class="k">var</span> <span class="nx">request</span><span class="o">:</span><span class="nb">URLRequest</span><span class="o">=</span><span class="k">new</span> <span class="nb">URLRequest</span><span class="p">(</span><span class="s2">&quot;s/upload/uploadFile&quot;</span><span class="p">);</span> 
+    <span class="nx">request</span><span class="p">.</span><span class="nx">data</span><span class="o">=</span><span class="k">new</span> <span class="nx">URLVariables</span><span class="p">();</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">orderRedoRecord</span><span class="o">=</span><span class="nx">n</span><span class="o">;</span>
+
+    <span class="k">try</span><span class="p">{</span>   
+        <span class="nx">file</span><span class="p">.</span><span class="nx">upload</span><span class="p">(</span><span class="nx">request</span><span class="o">,</span><span class="s2">&quot;file&quot;</span><span class="p">);</span> 
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="o">:</span><span class="nb">Error</span><span class="p">){</span>
+        <span class="nx">isSuccess</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="nx">Alert</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="s2">&quot;文件上传失败&quot;</span><span class="p">);</span>   
+    <span class="p">}</span>   
+</pre></div>
+
+
+<p>后台java:</p>
+<div class="highlight"><pre><span></span>    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;/uploadFile&quot;</span><span class="o">)</span>
+    <span class="nd">@ResponseBody</span><span class="o">()</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">UploadFiles</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;file&quot;</span><span class="o">)</span> <span class="n">MultipartFile</span> <span class="n">file</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">file</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">String</span> <span class="n">attachName</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="na">getOriginalFilename</span><span class="o">();</span>
+                <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="n">attachName</span><span class="o">);</span>
+
+                <span class="n">String</span> <span class="n">filePath</span> <span class="o">=</span> <span class="s">&quot;你的路径&quot;</span><span class="o">;</span>
+                <span class="c1">//此处省去业务代码</span>
+                <span class="c1">//FileUtils.saveDataToFile(file.getBytes(), filePath);</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;上传成功&quot;</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// TODO Auto-generated catch block</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;上传失败&quot;</span><span class="o">;</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+</pre></div>
+
+
+<p>﻿﻿</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>
