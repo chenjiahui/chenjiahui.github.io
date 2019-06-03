@@ -47,7 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://localhost:8000/">Home</a></li>
                             <li ><a href="/category/java.html">java</a></li>
-                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/jia-gou.html">架构</a></li>
                             <li ><a href="/category/other.html">other</a></li>
                             <li ><a href="/category/python.html">python</a></li>
                             <li ><a href="/category/qian-duan.html">前端</a></li>
@@ -67,6 +67,49 @@
 <div class="span9">
                 <section>
                     <ol id="posts-list" class="hfeed" start="9">
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2016/08/07/52141391.html" rel="bookmark" title="Permalink to 截取带emoji表情的utf8字符串">
+                                       截取带emoji表情的utf8字符串
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/python.html">python</a>
+
+    on 2016-08-07
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/52141391 </p>
+<p>好久没有写博客了，当然这个锅得甩给忙碌的工作!🤭😁</p>
+<p>最近工作中又一次碰到了关于emoji表情的问题：需求要求将用户输入的一段内容，截取8个长度作为标题。app端简单的对内容substr了一下。</p>
+<p>然而当在一些特殊情况下，就会出现截取后最后一位乱码的情况。比如内容为：“明天要发奖金啦🏅😁😍”，按预期截取后应该是：“明天要发奖金啦🏅”；而实际上截取的结果是：“明天要发奖金啦□”，最后一位是个乱码，看来奖金发不成了。</p>
+<p>要细说起编码，那就是一篇很长的论文了，不了解的同学可以度娘、谷哥一下。</p>
+<p>这里主要说说utf8编码：</p>
+<p>UTF-8是一种变长字节编码方式。对于某一个字符的UTF-8编码，如果只有一个字节则其最高二进制位为0；如果是多字节，其第一个字节从最高位开始，连续的二进制位值为1的个数决定了其编码的位数，其余各字节均以10开头。  </p>
+<p>#1-byte格式: 0xxxxxxx<br>
+#2-byte格式: 110xxxxx 10xxxxxx<br>
+#3-byte格式: 1110xxxx 10xxxxxx 10xxxxxx<br>
+#4-byte格式: 11110xxx …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2016/08/07/52141391.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
                     <li>
                         <article>
                             <header>
@@ -528,47 +571,6 @@
                             <hr/>
                         </article>
                     </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2015/09/30/48830593.html" rel="bookmark" title="Permalink to linux使用crontab设置定时任务">
-                                       linux使用crontab设置定时任务
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/yun-wei.html">运维</a>
-
-    on 2015-09-30
-
-        |
-        tags:         <a href="/tag/linux.html">linux</a>
-        <a href="/tag/yun-wei.html">运维</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48830593 </p>
-<p>因最近工作中需要定时执行一段代码来跑批生成一些统计数据。</p>
-<p>最近刚好接触python，又了解到可以使用linux的crontab来执行定时任务。类似于windows的任务计划程序。</p>
-<p>那么怎么使用呢？</p>
-<p>首先要确定linux是否安装了crontab</p>
-<p>可以使用which crontab来查看。  </p>
-<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@cjh ~</span><span class="o">]</span><span class="n">#which</span><span class="w"> </span><span class="n">crontab</span><span class="w"></span>
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="nl">which</span><span class="p">:</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">crontab</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.7.0</span><span class="n">_45</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.7.0</span><span class="n">_45</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="nl">bin …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2015/09/30/48830593.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/author/bugguan-li-yuan.html">&laquo;</a>
@@ -627,5 +629,15 @@
 
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script> -->
+	
 </body>
 </html>

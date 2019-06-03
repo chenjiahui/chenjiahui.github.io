@@ -47,7 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://localhost:8000/">Home</a></li>
                             <li ><a href="/category/java.html">java</a></li>
-                            <li ><a href="/category/ji-qun.html">集群</a></li>
+                            <li ><a href="/category/jia-gou.html">架构</a></li>
                             <li ><a href="/category/other.html">other</a></li>
                             <li ><a href="/category/python.html">python</a></li>
                             <li ><a href="/category/qian-duan.html">前端</a></li>
@@ -67,6 +67,52 @@
 <div class="span9">
                 <section>
                     <ol id="posts-list" class="hfeed" start="9">
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2015/08/22/47859581.html" rel="bookmark" title="Permalink to python中的mysql数据库like模糊查询">
+                                       python中的mysql数据库like模糊查询
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/python.html">python</a>
+
+    on 2015-08-22
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+        <a href="/tag/mysql.html">mysql</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/47859581 </p>
+<p>最近工作在使用python语言开发项目，工作中遇到了一个python连接mysql的like查询。</p>
+<p>由于%在python中三个特殊的符号，如%s，%d分别代表了字符串占位符和数字占位符。</p>
+<p>大家知道，mysql的模糊查询也需要用到%。</p>
+<p>我们有一张test表，要对name字段进行模糊查询，预期的sql如下：</p>
+<div class="highlight"><pre><span></span>    <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">test</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%abc%&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>那么python中怎么写呢？ </p>
+<div class="highlight"><pre><span></span>    <span class="k">sql</span> <span class="o">=</span> <span class="s2">&quot;select * from test where name like &#39;%%%%%s%%%%&#39;&quot;</span>
+    <span class="k">sql</span> <span class="o">=</span> <span class="k">sql</span> <span class="o">%</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>  <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;white-space:pre&quot;</span><span class="o">&gt;</span>  <span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="c1">#此处进行第一次转义</span>
+    <span class="n">print</span> <span class="k">sql …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2015/08/22/47859581.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
                     <li>
                         <article>
                             <header>
@@ -383,49 +429,6 @@ find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="/2015/06/09/46406770.html" rel="bookmark" title="Permalink to Flex自定义进度条样式">
-                                       Flex自定义进度条样式
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/qian-duan.html">前端</a>
-
-    on 2015-06-09
-
-        |
-        tags:         <a href="/tag/flex.html">Flex</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>CustomProgressBar.mxml</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-<span class="nt">&lt;s:GridItemRenderer</span> <span class="na">xmlns:fx=</span><span class="s">&quot;http://ns.adobe.com/mxml/2009&quot;</span> 
-                    <span class="na">xmlns:s=</span><span class="s">&quot;library://ns.adobe.com/flex/spark&quot;</span> 
-                    <span class="na">xmlns:mx=</span><span class="s">&quot;library://ns.adobe.com/flex/mx&quot;</span> <span class="na">clipAndEnableScrolling=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;fx:Script&gt;</span>
-        <span class="cp">&lt;![CDATA[</span>
-<span class="cp">            import mx.skins.spark.ProgressBarSkin;</span>
-<span class="cp">            [Bindable]</span>
-<span class="cp">            [Embed(source=&quot;/assets/daihecha/green …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2015/06/09/46406770.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
                                     <a href="/2015/06/09/46425607.html" rel="bookmark" title="Permalink to easyui动态表头 && 动态添加tabs">
                                        easyui动态表头 && 动态添加tabs
                                     </a>
@@ -572,5 +575,15 @@ find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="
 
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script> -->
+	
 </body>
 </html>
