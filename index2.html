@@ -45,7 +45,7 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://localhost:8000/">Home</a></li>
+                        	<li><a href="https://chenjiahui.github.io/">Home</a></li>
                             <li ><a href="/category/java.html">java</a></li>
                             <li ><a href="/category/jia-gou.html">架构</a></li>
                             <li ><a href="/category/other.html">other</a></li>
@@ -67,6 +67,54 @@
 <div class="span9">
                 <section>
                     <ol id="posts-list" class="hfeed" start="9">
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2016/10/30/h5-ios.html" rel="bookmark" title="Permalink to h5与iOS交互">
+                                       h5与iOS交互
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/qian-duan.html">前端</a>
+
+    on 2016-10-30
+
+        |
+        tags:         <a href="/tag/qian-duan.html">前端</a>
+        <a href="/tag/ios.html">ios</a>
+        <a href="/tag/android.html">android</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p><strong>iOS</strong></p>
+<div class="highlight"><pre><span></span><span class="n">_bridge</span> <span class="o">=</span> <span class="p">[</span><span class="n">WebViewJavascriptBridge</span> <span class="nl">bridgeForWebView</span><span class="p">:</span><span class="n">_webView</span> <span class="nl">webViewDelegate</span><span class="p">:</span><span class="nb">self</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// NSLog(@&quot;ObjC received message from JS: %@&quot;, data);</span>
+        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response for message from ObjC&quot;</span><span class="p">);</span>
+    <span class="p">}];</span>
+    <span class="p">[</span><span class="n">_bridge</span> <span class="nl">registerHandler</span><span class="p">:</span><span class="s">@&quot;testObjcCallback&quot;</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// NSLog(@&quot;testObjcCallback2222 called: %@&quot;, data);</span>
+        <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">navigationController</span> <span class="nl">popViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response from testObjcCallback&quot;</span><span class="p">);</span>
+    <span class="p">}];</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">buttonClicked:</span><span class="p">(</span><span class="bp">UIButton</span><span class="o">*</span><span class="p">)</span><span class="nv">sender</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">_bridge …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2016/10/30/h5-ios.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
                     <li>
                         <article>
                             <header>
@@ -510,62 +558,6 @@
 <p>代码如下 …</p>
                                 <p class="readmore">
                                     <a class="btn btn-small btn-info" href="/2015/10/16/49180767.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2015/09/30/48830863.html" rel="bookmark" title="Permalink to Window7下忘记MySQL ROOT密码">
-                                       Window7下忘记MySQL ROOT密码
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/yun-wei.html">运维</a>
-
-    on 2015-09-30
-
-        |
-        tags:         <a href="/tag/windows.html">Windows</a>
-        <a href="/tag/yun-wei.html">运维</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48830863 </p>
-<p>前端时间，因为太久没用，导致忘记了本地mysql的root密码。</p>
-<p>从网上找了点资料，一步一步的解决，并记录了下来。</p>
-<p>解决步骤如下：<br>
-1. 停止mysql 服务  </p>
-<div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">stop</span> <span class="n">mysql</span>
-</pre></div>
-
-
-<p>2. 以不检查权限的方式启动mysql </p>
-<div class="highlight"><pre><span></span><span class="n">mysqld</span> <span class="c1">--skip-grant-tables</span>
-</pre></div>
-
-
-<p>可以看到窗口光标在下一行的第一个位置闪烁，说明已经启动，不需要管。<br>
-3. 新建一个命令行窗口，启动mysql   </p>
-<div class="highlight"><pre><span></span><span class="n">mysql</span>
-</pre></div>
-
-
-<p>4. 修改ROOT密码  </p>
-<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span><span class="n">use</span> <span class="n">mysql</span>
-<span class="n">mysql</span><span class="o">&gt;</span><span class="k">update</span> <span class="k">user</span> <span class="k">set</span> <span class="n">password</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;cjh&#39;</span><span class="p">)</span> <span class="k">where</span> <span class="k">user</span><span class="o">=</span><span class="s1">&#39;root …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2015/09/30/48830863.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>

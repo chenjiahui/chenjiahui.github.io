@@ -45,7 +45,7 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://localhost:8000/">Home</a></li>
+                        	<li><a href="https://chenjiahui.github.io/">Home</a></li>
                             <li ><a href="/category/java.html">java</a></li>
                             <li ><a href="/category/jia-gou.html">架构</a></li>
                             <li ><a href="/category/other.html">other</a></li>
@@ -67,6 +67,54 @@
 <div class="span9">
                 <section>
                     <ol id="posts-list" class="hfeed" start="9">
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2015/05/19/46400887.html" rel="bookmark" title="Permalink to JDK自带工具jps，jstat，jmap，jconsole使用">
+                                       JDK自带工具jps，jstat，jmap，jconsole使用
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/java.html">java</a>
+
+    on 2015-05-19
+
+        |
+        tags:         <a href="/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46400887 </p>
+<p><strong>jps</strong></p>
+<p>与ps命令类似：</p>
+<div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">ef</span><span class="o">|</span><span class="n">grep</span> <span class="n">java</span>
+</pre></div>
+
+
+<p>用来显示本地的java进程，查看本地运行着几个java应用，并显示进程号。</p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w">   </span><span class="o">//</span><span class="n">只显示进程号</span><span class="w"></span>
+<span class="mi">23813</span><span class="w"> </span><span class="n">Jps</span><span class="w"></span>
+<span class="mi">710</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
+<span class="mi">792</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
+
+
+<span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w">    </span><span class="o">//</span><span class="n">显示jvm参数</span><span class="w"></span>
+<span class="mi">23852</span><span class="w"> </span><span class="n">Jps</span><span class="w"> </span><span class="o">-</span><span class="n">Denv</span><span class="p">.</span><span class="k">class</span><span class="p">.</span><span class="k">path</span><span class="o">=</span><span class="p">.</span><span class="err">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.6.0</span><span class="n">_21</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dt</span><span class="p">.</span><span class="nl">jar</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1 …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2015/05/19/46400887.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
                     <li>
                         <article>
                             <header>
@@ -487,50 +535,6 @@
 </pre></div>
                                 <p class="readmore">
                                     <a class="btn btn-small btn-info" href="/2014/05/23/26701811.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2014/05/15/25888827.html" rel="bookmark" title="Permalink to java调用js脚本，以及js脚本调用java方法">
-                                       java调用js脚本，以及js脚本调用java方法
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/java.html">java</a>
-
-    on 2014-05-15
-
-        |
-        tags:         <a href="/tag/java.html">java</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/25888827 </p>
-<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/25888827">http://blog.csdn.net/i_chenjiahui/article/details/25888827</a></p>
-<p>Test.java</p>
-<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="p">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.script.Invocable</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">javax.script …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2014/05/15/25888827.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>

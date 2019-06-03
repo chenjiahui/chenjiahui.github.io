@@ -45,7 +45,7 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://localhost:8000/">Home</a></li>
+                        	<li><a href="https://chenjiahui.github.io/">Home</a></li>
                             <li ><a href="/category/java.html">java</a></li>
                             <li ><a href="/category/jia-gou.html">架构</a></li>
                             <li ><a href="/category/other.html">other</a></li>
@@ -67,6 +67,51 @@
 <div class="span9">
                 <section>
                     <ol id="posts-list" class="hfeed" start="9">
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2015/06/09/46406772.html" rel="bookmark" title="Permalink to Flex_抛自定义事件">
+                                       Flex_抛自定义事件
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/qian-duan.html">前端</a>
+
+    on 2015-06-09
+
+        |
+        tags:         <a href="/tag/flex.html">Flex</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">function</span> <span class="nx">getCount</span><span class="p">(</span><span class="nx">o</span><span class="o">:</span><span class="nb">Object</span><span class="p">)</span><span class="o">:</span><span class="nb">int</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nx">sum</span><span class="o">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">children</span><span class="p">){</span>
+        <span class="k">for</span> <span class="k">each</span><span class="p">(</span><span class="k">var</span> <span class="nx">object</span><span class="o">:</span><span class="nb">Object</span> <span class="k">in</span> <span class="nx">o</span><span class="p">.</span><span class="nx">children</span><span class="p">){</span>
+            <span class="nx">sum</span> <span class="o">+=</span><span class="p">(</span><span class="nx">getCount</span><span class="p">(</span><span class="nx">object</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">sum</span><span class="o">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nx">sum</span> <span class="o">++;</span>
+        <span class="k">return</span> <span class="nx">sum</span><span class="o">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2015/06/09/46406772.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
                     <li>
                         <article>
                             <header>
@@ -466,54 +511,6 @@ TCP 127.0.0.1:5679 0.0.0.0:0 …</p>
 <div class="highlight"><pre><span></span>    <span class="n">List …</span></pre></div>
                                 <p class="readmore">
                                     <a class="btn btn-small btn-info" href="/2015/05/19/45844141.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2015/05/19/46400887.html" rel="bookmark" title="Permalink to JDK自带工具jps，jstat，jmap，jconsole使用">
-                                       JDK自带工具jps，jstat，jmap，jconsole使用
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/java.html">java</a>
-
-    on 2015-05-19
-
-        |
-        tags:         <a href="/tag/java.html">java</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46400887 </p>
-<p><strong>jps</strong></p>
-<p>与ps命令类似：</p>
-<div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">ef</span><span class="o">|</span><span class="n">grep</span> <span class="n">java</span>
-</pre></div>
-
-
-<p>用来显示本地的java进程，查看本地运行着几个java应用，并显示进程号。</p>
-<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w">   </span><span class="o">//</span><span class="n">只显示进程号</span><span class="w"></span>
-<span class="mi">23813</span><span class="w"> </span><span class="n">Jps</span><span class="w"></span>
-<span class="mi">710</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
-<span class="mi">792</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
-
-
-<span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w">    </span><span class="o">//</span><span class="n">显示jvm参数</span><span class="w"></span>
-<span class="mi">23852</span><span class="w"> </span><span class="n">Jps</span><span class="w"> </span><span class="o">-</span><span class="n">Denv</span><span class="p">.</span><span class="k">class</span><span class="p">.</span><span class="k">path</span><span class="o">=</span><span class="p">.</span><span class="err">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.6.0</span><span class="n">_21</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dt</span><span class="p">.</span><span class="nl">jar</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1 …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2015/05/19/46400887.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="Google Sheet授权"/>
+    <meta property="og:url" content="/2019/05/31/google-sheet-api.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2019/05/31/google-sheet-api.html" />
+
+    <title>Google Sheet授权 | BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="https://chenjiahui.github.io/">Home</a></li>
+                            <li ><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/jia-gou.html">架构</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li class="active"><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2019/05/31/google-sheet-api.html" rel="bookmark"
+             title="Permalink to Google Sheet授权">Google Sheet授权</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/python.html">python</a>
+
+    on 2019-05-31
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+        <a href="/tag/googlesheet.html">googlesheet</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <h2>前期准备</h2>
+<p>1、打开<a href="https://docs.google.com/spreadsheets/">google sheet</a>，国内开发人员，需要自行解决“网络问题”。注册Google账号如过已有账号就直接登录  </p>
+<p>2、新建1份sheet文件，随便写点数据，一会我们就要操作这份文件。<br>
+记住这个URL地址：<code>https://docs.google.com/spreadsheets/d/******************/edit#gid=0</code><br>
+因为我们下一步就要从URL地址中来获取spreadsheetId。也就是工作表的id  </p>
+<p>3、获取spreadsheetId<br>
+spreadsheetId就是编辑sheet页面时，网址中“/d/”与“/edit”之间的值。  </p>
+<p>4、sheetId<br>
+就是#git=后面的值。在上面这个URL中是0  </p>
+<p>5、打开<a href="https://developers.google.com/sheets/api/quickstart/">quickstart</a>页面<br>
+点击下方的 ENABLE THE GOOGLE SHEETS API<br>
+<img alt="image" src="../../../images/20190603224501.png">  </p>
+<p>在弹窗中点击“DOWNLOAD CLIENT CONFIGURATION”下载credentials.json文件<br>
+<img alt="image" src="../../../images/20190603230052.png">   </p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;project_id&quot;</span><span class="p">:</span> <span class="s2">&quot;google-sheet&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;auth_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;https://accounts.google.com/o/oauth2/auth&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;token_uri&quot;</span><span class="p">:</span> <span class="s2">&quot;https://oauth2.googleapis.com/token&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;auth_provider_x509_cert_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.googleapis.com/oauth2/v1/certs&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;redirect_uris&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;urn:ietf:wg:oauth:2.0:oob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;http://localhost&quot;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>Google授权</h2>
+<p>为了看起来直观，减少代码量，我们以<a href="https://developers.google.com/sheets/api/quickstart/python">python代码</a>为例。<br>
+<strong>首先安装python的google sheet依赖包</strong></p>
+<div class="highlight"><pre><span></span><span class="n">google</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">client</span> <span class="n">google</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">httplib2</span> <span class="n">google</span><span class="o">-</span><span class="n">auth</span><span class="o">-</span><span class="n">oauthlib</span>
+</pre></div>
+
+
+<p><strong>唤起google授权</strong><br>
+新建python文件quickstart.py，复制<a href="https://developers.google.com/sheets/api/quickstart/python">站点</a>的python quickstart代码。<br>
+将json文件放在quickstart.py同目录下，执行python quickstart.py。<br>
+程序会自动唤起浏览器，访问授权页面。如果没唤起也不要着急，在控制台有打印URL地址，复制后在浏览器打开即可。 <br>
+我已经登录了，没有登录会有登录页面。选择授权哪个账号。  </p>
+<p><img alt="image" src="../../../images/20190603230058.png"><br>
+咦？怎么只认证查看的权限？<br>
+<img alt="image" src="../../../images/20190603231528.png"> <br>
+不要着急，我们调整一下就可以了：  </p>
+<div class="highlight"><pre><span></span><span class="c1">#将</span>
+<span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://www.googleapis.com/auth/spreadsheets.readonly&#39;</span><span class="p">]</span>
+<span class="c1">#修改为：</span>
+<span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://www.googleapis.com/auth/spreadsheets&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Google API开发中具体有哪些SCOPES可选可以查看下面这个地址:<br>
+<code>有哪些scope可以查看https://developers.google.com/identity/protocols/googlescopes</code><br>
+我们重新授权（如果前面点击过允许按钮，即：已经授过权了，则需要先删除，quickstart.py目录下的token.pickle文件）  <br>
+操作完后页面会提示<code>The authentication flow has completed, you may close this window.</code>整个授权动作就完成了。 </p>
+<p>完成授权动作后会在quickstart.py目录下的token.pickle文件<br>
+从源代码，可以看出，我们获取到token.pickl文件后，每次都是从token.pickl文件中读取token。无需再次授权。</p>
+<p><strong><font color=red size=3>注意</font></strong><br>
+如果发现网页可以访问，但是代码一直执行超时。原因是解决了浏览器的“网络问题”，根据方式不同，终端可能需要额外处理“网络问题”。</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script> -->
+	
+</body>
+</html>

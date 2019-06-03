@@ -45,7 +45,7 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://localhost:8000/">Home</a></li>
+                        	<li><a href="https://chenjiahui.github.io/">Home</a></li>
                             <li ><a href="/category/java.html">java</a></li>
                             <li ><a href="/category/jia-gou.html">架构</a></li>
                             <li ><a href="/category/other.html">other</a></li>
@@ -67,6 +67,52 @@
 <div class="span9">
                 <section>
                     <ol id="posts-list" class="hfeed" start="9">
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2019/05/31/google-sheet-api.html" rel="bookmark" title="Permalink to Google Sheet授权">
+                                       Google Sheet授权
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/python.html">python</a>
+
+    on 2019-05-31
+
+        |
+        tags:         <a href="/tag/python.html">python</a>
+        <a href="/tag/googlesheet.html">googlesheet</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <h2>前期准备</h2>
+<p>1、打开<a href="https://docs.google.com/spreadsheets/">google sheet</a>，国内开发人员，需要自行解决“网络问题”。注册Google账号如过已有账号就直接登录  </p>
+<p>2、新建1份sheet文件，随便写点数据，一会我们就要操作这份文件。<br>
+记住这个URL地址：<code>https://docs.google.com/spreadsheets/d/******************/edit#gid=0</code><br>
+因为我们下一步就要从URL地址中来获取spreadsheetId。也就是工作表的id  </p>
+<p>3、获取spreadsheetId<br>
+spreadsheetId就是编辑sheet页面时，网址中“/d/”与“/edit”之间的值。  </p>
+<p>4、sheetId<br>
+就是#git=后面的值。在上面这个URL中是0  </p>
+<p>5、打开<a href="https://developers.google.com/sheets/api/quickstart/">quickstart</a>页面<br>
+点击下方的 ENABLE THE GOOGLE SHEETS API<br>
+<img alt="image" src="../../../images/20190603224501.png">  </p>
+<p>在弹窗中点击 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2019/05/31/google-sheet-api.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
                     <li>
                         <article>
                             <header>
@@ -490,54 +536,6 @@ Tomcat：  </p>
 <p>复制生成的文字，取app上修改昵称 …</p>
                                 <p class="readmore">
                                     <a class="btn btn-small btn-info" href="/2017/01/10/54311168.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2016/10/30/h5-ios.html" rel="bookmark" title="Permalink to h5与iOS交互">
-                                       h5与iOS交互
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/qian-duan.html">前端</a>
-
-    on 2016-10-30
-
-        |
-        tags:         <a href="/tag/qian-duan.html">前端</a>
-        <a href="/tag/ios.html">ios</a>
-        <a href="/tag/android.html">android</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p><strong>iOS</strong></p>
-<div class="highlight"><pre><span></span><span class="n">_bridge</span> <span class="o">=</span> <span class="p">[</span><span class="n">WebViewJavascriptBridge</span> <span class="nl">bridgeForWebView</span><span class="p">:</span><span class="n">_webView</span> <span class="nl">webViewDelegate</span><span class="p">:</span><span class="nb">self</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// NSLog(@&quot;ObjC received message from JS: %@&quot;, data);</span>
-        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response for message from ObjC&quot;</span><span class="p">);</span>
-    <span class="p">}];</span>
-    <span class="p">[</span><span class="n">_bridge</span> <span class="nl">registerHandler</span><span class="p">:</span><span class="s">@&quot;testObjcCallback&quot;</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// NSLog(@&quot;testObjcCallback2222 called: %@&quot;, data);</span>
-        <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">navigationController</span> <span class="nl">popViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
-        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response from testObjcCallback&quot;</span><span class="p">);</span>
-    <span class="p">}];</span>
-
-<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">buttonClicked:</span><span class="p">(</span><span class="bp">UIButton</span><span class="o">*</span><span class="p">)</span><span class="nv">sender</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">_bridge …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2016/10/30/h5-ios.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
