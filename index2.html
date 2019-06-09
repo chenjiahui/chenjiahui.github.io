@@ -40,14 +40,13 @@
                     <a href="/">BugManager’s Blog</a>
                 </h1>
                 <h3>
-                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
                 </h3>
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="https://chenjiahui.github.io/">Home</a></li>
+                        	<li><a href="">Home</a></li>
                             <li ><a href="/category/java.html">java</a></li>
-                            <li ><a href="/category/jia-gou.html">架构</a></li>
                             <li ><a href="/category/other.html">other</a></li>
                             <li ><a href="/category/python.html">python</a></li>
                             <li ><a href="/category/qian-duan.html">前端</a></li>
@@ -66,13 +65,13 @@
             <div class="row-fluid">
 <div class="span9">
                 <section>
-                    <ol id="posts-list" class="hfeed" start="9">
+                    <ol id="posts-list" class="hfeed" start="5">
                     <li>
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="/2016/10/30/h5-ios.html" rel="bookmark" title="Permalink to h5与iOS交互">
-                                       h5与iOS交互
+                                    <a href="/2018/04/08/java-LinkedHashMap.html" rel="bookmark" title="Permalink to Java LinkedHashMap">
+                                       Java LinkedHashMap
                                     </a>
                                 </h1>
                             </header>
@@ -82,34 +81,39 @@
         by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="/category/qian-duan.html">前端</a>
+    in <a href="/category/java.html">java</a>
 
-    on 2016-10-30
+    on 2018-04-08
 
         |
-        tags:         <a href="/tag/qian-duan.html">前端</a>
-        <a href="/tag/ios.html">ios</a>
-        <a href="/tag/android.html">android</a>
+        tags:         <a href="/tag/java.html">java</a>
+        <a href="/tag/ji-he.html">集合</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p><strong>iOS</strong></p>
-<div class="highlight"><pre><span></span><span class="n">_bridge</span> <span class="o">=</span> <span class="p">[</span><span class="n">WebViewJavascriptBridge</span> <span class="nl">bridgeForWebView</span><span class="p">:</span><span class="n">_webView</span> <span class="nl">webViewDelegate</span><span class="p">:</span><span class="nb">self</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// NSLog(@&quot;ObjC received message from JS: %@&quot;, data);</span>
-        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response for message from ObjC&quot;</span><span class="p">);</span>
-    <span class="p">}];</span>
-    <span class="p">[</span><span class="n">_bridge</span> <span class="nl">registerHandler</span><span class="p">:</span><span class="s">@&quot;testObjcCallback&quot;</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// NSLog(@&quot;testObjcCallback2222 called: %@&quot;, data);</span>
-        <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">navigationController</span> <span class="nl">popViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
-        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response from testObjcCallback&quot;</span><span class="p">);</span>
-    <span class="p">}];</span>
+</footer><!-- /.post-info -->                                <h2>LinkedHashMap简介</h2>
+<p>平时工作中大多数场景一般只要没有多线程都是直接使用Hashmap就够用了。我之前面试过一些Java开发，有一些一直都只用Hashmap，也不知道其他Map的特行性。<br>
+但是Hashmap有个问题，迭代取出数据时是按照table+entry链表的顺序迭代的数据，和put数据时的顺序并无关系。 </p>
+<p>如果使用场景，需要map的元素在遍历时有序。我们就需要使用LinkedHashMap了。  </p>
+<h2>实现原理</h2>
+<p>LinkedHashMap增加的3个变量：  </p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * The head (eldest) of the doubly linked list.</span>
+<span class="cm"> * 链表的头</span>
+<span class="cm"> */</span>
+<span class="kd">transient</span> <span class="n">LinkedHashMap</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">head</span><span class="o">;</span>
 
-<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">buttonClicked:</span><span class="p">(</span><span class="bp">UIButton</span><span class="o">*</span><span class="p">)</span><span class="nv">sender</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">_bridge …</span></pre></div>
+<span class="cm">/**</span>
+<span class="cm"> * The tail (youngest) of the doubly linked list.</span>
+<span class="cm"> * 链表的尾</span>
+<span class="cm"> */</span>
+<span class="kd">transient</span> <span class="n">LinkedHashMap</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">tail</span><span class="o">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * The iteration ordering method for this …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2016/10/30/h5-ios.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="/2018/04/08/java-LinkedHashMap.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -119,8 +123,109 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="/2016/08/07/52141391.html" rel="bookmark" title="Permalink to 截取带emoji表情的utf8字符串">
-                                       截取带emoji表情的utf8字符串
+                                    <a href="/2018/04/01/java-HashMap.html" rel="bookmark" title="Permalink to Java HashMap">
+                                       Java HashMap
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/java.html">java</a>
+
+    on 2018-04-01
+
+        |
+        tags:         <a href="/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <h2>HashMap简介</h2>
+<p>HashMap是一个散列表，它存储的内容是键值对(key-value)映射。继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。<br>
+HashMap的实现不是同步的，这意味着它不是线程安全的。  </p>
+<h2>使用</h2>
+<p>HashMap的构造函数:</p>
+<div class="highlight"><pre><span></span><span class="c1">// 默认构造函数</span>
+<span class="n">HashMap</span><span class="o">()</span>
+<span class="c1">// 指定“容量大小”的构造函数</span>
+<span class="n">HashMap</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">)</span>
+<span class="c1">// 指定“容量大小”和“加载因子”的构造函数</span>
+<span class="n">HashMap</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">,</span> <span class="kt">float</span> <span class="n">loadFactor</span><span class="o">)</span>
+<span class="c1">// 包含“子Map”的构造函数</span>
+<span class="n">HashMap</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">K</span><span class="o">,</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">)</span>
+</pre></div>
+
+
+<h2>实现原理</h2>
+<p>1.8版本的HashMap和1.7版本的HashMap实现上有区别。底层数据结构1.7由数组+链表组成 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2018/04/01/java-HashMap.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2018/03/26/java-map.html" rel="bookmark" title="Permalink to Java Map">
+                                       Java Map
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/java.html">java</a>
+
+    on 2018-03-26
+
+        |
+        tags:         <a href="/tag/java.html">java</a>
+        <a href="/tag/ji-he.html">集合</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <h2>前言</h2>
+<p>Map是java.util中的集合类，另一个和它一样常用的是List。<br>
+Map提供了一个方便的数据结构，用来存储键值对。<br>
+Map根据键得到值，因此不允许键重复(重复就覆盖了)，但允许值重复。<br>
+它有四个实现类，分别是HashMap、Hashtable、LinkedHashMap和TreeMap。  </p>
+<h3><strong>Hashmap</strong></h3>
+<p>HashMap是最常用的Map，它根据键的HashCode值存储数据，根据键可以直接获取它的值，具有很快的访问速度，遍历时，取得数据的顺序是完全随机的。    <br>
+HashMap最多只允许一条记录的键为null; <br>
+允许多条记录的值为null;<br>
+HashMap不支持线程的同步，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。
+如果需要同步，可以用 Collections的synchronizedMap方法使HashMap具有同步的能力，或者使用ConcurrentHashMap。 <br>
+深入解析：<a href="java-HashMap.html">HashMap</a>  </p>
+<h3><strong>Hashtable</strong></h3>
+<p>Hashtable与HashMap类似都实现了Map、Cloneable, Serializable接口:<br>
+Hashtable继承自Dictionary类，HashMap继承自AbstractMap类。  <br>
+Hashtable不允许记录的键或者值为null，HashMap允许记录的键和值为null。<br>
+Hashtable初始容量为11，HashMap的初始1容量为16。
+Hashtable在链表变大时，不会改变链表结构，HashMap在链表长度达到<code>TREEIFY_THRESHOLD=8</code>时会转为红黑树(JDK1.8 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="/2018/03/26/java-map.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="/2017/03/24/65627740.html" rel="bookmark" title="Permalink to python使用代码对redis的key进行集中管理">
+                                       python使用代码对redis的key进行集中管理
                                     </a>
                                 </h1>
                             </header>
@@ -132,7 +237,7 @@
 
     in <a href="/category/python.html">python</a>
 
-    on 2016-08-07
+    on 2017-03-24
 
         |
         tags:         <a href="/tag/python.html">python</a>
@@ -140,19 +245,32 @@
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/52141391 </p>
-<p>好久没有写博客了，当然这个锅得甩给忙碌的工作!🤭😁</p>
-<p>最近工作中又一次碰到了关于emoji表情的问题：需求要求将用户输入的一段内容，截取8个长度作为标题。app端简单的对内容substr了一下。</p>
-<p>然而当在一些特殊情况下，就会出现截取后最后一位乱码的情况。比如内容为：“明天要发奖金啦🏅😁😍”，按预期截取后应该是：“明天要发奖金啦🏅”；而实际上截取的结果是：“明天要发奖金啦□”，最后一位是个乱码，看来奖金发不成了。</p>
-<p>要细说起编码，那就是一篇很长的论文了，不了解的同学可以度娘、谷哥一下。</p>
-<p>这里主要说说utf8编码：</p>
-<p>UTF-8是一种变长字节编码方式。对于某一个字符的UTF-8编码，如果只有一个字节则其最高二进制位为0；如果是多字节，其第一个字节从最高位开始，连续的二进制位值为1的个数决定了其编码的位数，其余各字节均以10开头。  </p>
-<p>#1-byte格式: 0xxxxxxx<br>
-#2-byte格式: 110xxxxx 10xxxxxx<br>
-#3-byte格式: 1110xxxx 10xxxxxx 10xxxxxx<br>
-#4-byte格式: 11110xxx …</p>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/65627740 </p>
+<p>平时工作中会经常用到一些全局的常量，如redis的key值命名等。</p>
+<p>可能会出现不同开发人员使用同一个key，导致缓存被覆盖等情况。</p>
+<p>针对这种情况，可以使用如下的方式，实现一个简单的集中管理。</p>
+<div class="highlight"><pre><span></span><span class="c1"># /usr/bin/env python</span>
+<span class="c1"># coding=utf-8</span>
+
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Created on 2017-03-17</span>
+
+<span class="sd">    @Author: Bug管理员</span>
+<span class="sd">    @note: 为了便于管理，将redis涉及到的key统一由该类管理</span>
+<span class="sd">    @demo: 调用示例：RdbKeyUtil.index_media_key(1)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="k">class</span> <span class="nc">RedisKeyUtil</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">USER_KEY</span> <span class="o">=</span> <span class="s1">&#39;test_key:</span><span class="si">%s</span><span class="s1">&#39;</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2016/08/07/52141391.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="/2017/03/24/65627740.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -162,8 +280,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="/2016/06/24/51752189.html" rel="bookmark" title="Permalink to python判断输入的内容是否是emoji表情">
-                                       python判断输入的内容是否是emoji表情
+                                    <a href="/2017/02/20/56009091.html" rel="bookmark" title="Permalink to tornado_mysql的pool使用事务的方法。">
+                                       tornado_mysql的pool使用事务的方法。
                                     </a>
                                 </h1>
                             </header>
@@ -175,7 +293,7 @@
 
     in <a href="/category/python.html">python</a>
 
-    on 2016-06-24
+    on 2017-02-20
 
         |
         tags:         <a href="/tag/python.html">python</a>
@@ -183,21 +301,28 @@
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/51752189 </p>
-<p>python判断输入的内容是否是emoji表情：</p>
-<div class="highlight"><pre><span></span><span class="s2">&quot;&quot;&quot;</span>
-@描述           根据传入的<span class="nv">content</span>，判断是否是<span class="nv">emoji</span>字符。
-@<span class="k">return</span>         <span class="nv">True</span>是<span class="nv">emoji</span>，<span class="nv">False</span>不是<span class="nv">True</span>是<span class="nv">emoji</span>。
-<span class="s2">&quot;&quot;&quot;</span>
-@<span class="nv">staticmethod</span>
-<span class="nv">def</span> <span class="nv">isEmoji</span><span class="ss">(</span><span class="nv">content</span><span class="ss">)</span>:
-    <span class="k">if</span> <span class="nv">not</span> <span class="nv">content</span>:
-        <span class="k">return</span> <span class="nv">False</span>
-    <span class="k">if</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F600</span><span class="s2">&quot;</span> <span class="o">&lt;=</span> <span class="nv">content</span> <span class="nv">and</span> <span class="nv">content</span> <span class="o">&lt;=</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F64F</span><span class="s2">&quot;</span>:
-        <span class="k">return</span> <span class="nv">True</span>
-    <span class="nv">elif</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F300</span><span class="s2">&quot;</span> <span class="o">&lt;=</span> <span class="nv">content …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/56009091 </p>
+<div class="highlight"><pre><span></span><span class="c1">#/usr/bin/env python</span>
+<span class="c1">#coding=utf-8</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Created on 2017-02-20</span>
+
+<span class="sd">@Author: Bug管理员</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tornado_mysql</span> <span class="kn">import</span> <span class="n">pools</span>
+
+<span class="n">data_time</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+<span class="k">def</span> <span class="nf">create_pool</span><span class="p">():</span>
+    <span class="k">print</span> <span class="n">DB_CONN</span><span class="o">.</span><span class="n">PORT</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_USER</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_PASSWORD</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">DBNAME</span>
+    <span class="n">pool_db</span> <span class="o">=</span> <span class="n">pools</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">DB_CONN …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2016/06/24/51752189.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="/2017/02/20/56009091.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -207,8 +332,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="/2016/06/24/51751032.html" rel="bookmark" title="Permalink to python调用存储过程，获取返回值">
-                                       python调用存储过程，获取返回值
+                                    <a href="/2017/02/09/54947198.html" rel="bookmark" title="Permalink to JAVA生成总和及个数确定的一组随机数(抢红包)">
+                                       JAVA生成总和及个数确定的一组随机数(抢红包)
                                     </a>
                                 </h1>
                             </header>
@@ -218,346 +343,38 @@
         by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="/category/python.html">python</a>
+    in <a href="/category/java.html">java</a>
 
-    on 2016-06-24
+    on 2017-02-09
 
         |
-        tags:         <a href="/tag/python.html">python</a>
+        tags:         <a href="/tag/java.html">java</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/51751032 </p>
-<p>python调用存储过程，获取返回值</p>
-<div class="highlight"><pre><span></span><span class="k">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;&quot;&quot;</span>
-<span class="ss">    call pro_test(%s,@tt);</span>
-<span class="ss">    select @tt as pro_out</span>
-<span class="ss">&quot;&quot;&quot;</span><span class="w"></span>
-<span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="n">yield</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">pool</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;test&quot;</span><span class="p">))</span><span class="w"></span>
-<span class="n">res</span><span class="p">,</span><span class="k">old</span><span class="o">=</span><span class="n">dbInterface</span><span class="p">.</span><span class="n">getone</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span><span class="n">o</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="n">pro_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">old</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="ss">&quot;pro_out&quot;</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/54947198 </p>
+<p>许久未碰java，写的有点拙。</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="p">;</span>
+<span class="o">/**</span>
+ <span class="o">*</span> 
+ <span class="o">*</span> <span class="nd">@author</span> <span class="n">chenjiahui</span>
+ <span class="o">*</span> <span class="nd">@2017</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">09</span>
+ <span class="o">*</span>
+ <span class="o">*/</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">Test</span> <span class="p">{</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">splitRedPacket</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">41 …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2016/06/24/51751032.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2016/04/20/51200656.html" rel="bookmark" title="Permalink to python插入记录cursor.lastrowid值为0的情况">
-                                       python插入记录cursor.lastrowid值为0的情况
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/python.html">python</a>
-
-    on 2016-04-20
-
-        |
-        tags:         <a href="/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/51200656 </p>
-<p>python向mysql插入数据后，可以根据根据cursor.lastrowid获取所插入数据的主键id值。</p>
-<p>最近遇到有一个插入语句执行后，cursor.lastrowid获取到的值为0的情况。</p>
-<p>经过测试发现，被插入的表的id必须是AUTO_INCREMENT，cursor.lastrowid才能获取到id值。因为插入的业务数据的id是我们自己生成的，table的id没有设置成AUTO_INCREMENT，修改为AUTO_INCREMENT后，问题解决。</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2016/04/20/51200656.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2015/12/16/50311479.html" rel="bookmark" title="Permalink to onload和ready的区别">
-                                       onload和ready的区别
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/qian-duan.html">前端</a>
-
-    on 2015-12-16
-
-        |
-        tags:         <a href="/tag/qian-duan.html">前端</a>
-        <a href="/tag/html.html">html</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/50311479 </p>
-<p>今天想等网页加载好后动态计算某个div宽高和位置。<br>
-起初用的是下面这种方式：</p>
-<div class="highlight"><pre><span></span><span class="err">$</span><span class="p">(</span><span class="k">function</span><span class="p">()</span><span class="err">{</span>
-    <span class="n">doAdapter</span><span class="p">();</span>
-<span class="err">}</span><span class="p">)</span>
-
-<span class="err">$</span><span class="p">(</span><span class="n">document</span><span class="p">).</span><span class="n">ready</span><span class="p">(</span><span class="k">function</span><span class="p">()</span><span class="err">{</span>
-    <span class="n">doAdapter</span><span class="p">();</span>
-<span class="err">}</span><span class="p">);</span>
-</pre></div>
-
-
-<p>这东西不是很靠谱啊（当然它也有它的优点，在这里用就不靠谱了），这个不是一定等页面的图片全部加载完成才触发的。<br>
-它在DOM就绪后就触发了，而此时，dom元素所关联的内容可能还没有加载完毕。<br>
-比如图片的宽、高，图片的父容器的宽、高此时就不一定有值。<br>
-后来改成了 </p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span> <span class="n">onload</span><span class="o">=</span><span class="ss">&quot;doAdapter();&quot;</span><span class="o">&gt;</span>
-
-
-
-
-
-
-<span class="err">$</span><span class="p">(</span><span class="n">window</span><span class="p">).</span><span class="k">load</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="err">{</span>
-        <span class="n">doAdapter</span><span class="p">();</span>
-<span class="err">}</span><span class="p">);</span>
-</pre></div>
-
-
-<p>必须等待网页中所有的内容加载完毕后 ( 包括图片 ) 才能执行  </p>
-<p>效果就好了。</p>
-<p>借用网友的一张图：</p>
-<p><img alt="image" src="images/20151215102455828.jpg">  </p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2015/12/16/50311479.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2015/12/15/50311589.html" rel="bookmark" title="Permalink to APP端webview自动播放视频">
-                                       APP端webview自动播放视频
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/qian-duan.html">前端</a>
-
-    on 2015-12-15
-
-        |
-        tags:         <a href="/tag/qian-duan.html">前端</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/50311589 </p>
-<p>昨天碰到一需求，需要写一个html5页面，要求支持打开自动播放视频。</p>
-<p>ok，要支持自动播放，设置<video>的autoplay="autoplay"就可以了吧。</p>
-<p>测试发现只有在浏览器中是正常播放了，android和ios都没有播放。</p>
-<p>换了种写法：</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span> <span class="n">onload</span><span class="o">=</span><span class="ss">&quot;playVideo();&quot;</span><span class="o">&gt;</span>
-
-
-<span class="k">function</span> <span class="n">playVideo</span><span class="p">()</span><span class="err">{</span>
-    <span class="n">var</span> <span class="n">video</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">getElementById</span><span class="p">(</span><span class="ss">&quot;alt-player-ios&quot;</span><span class="p">);</span> 
-    <span class="n">video</span><span class="p">.</span><span class="n">play</span><span class="p">();</span> 
-<span class="err">}</span>
-</pre></div>
-
-
-<p>android的webview中可以自动播放了。（android以前设置过允许执行javascript，如果大家不能自动播放的话可能需要设置这个）。 </p>
-<p>ios需要添加webview的属性设置：</p>
-<div class="highlight"><pre><span></span><span class="n">_webView</span><span class="p">.</span><span class="n">mediaPlaybackRequiresUserAction</span> <span class="o">=</span> <span class="k">NO</span><span class="p">;</span>
-</pre></div>
-
-
-<p>ok，能自动播放了。 </p>
-<p>如果希望自动播放时不要全屏，那么嗨需要设置下面的属性：</p>
-<div class="highlight"><pre><span></span><span class="n">_webView</span><span class="p">.</span><span class="n">allowsInlineMediaPlayback</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
-</pre></div>
-
-
-<p>参考资料 …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2015/12/15/50311589.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2015/11/03/49619661.html" rel="bookmark" title="Permalink to 一行代码写python">
-                                       一行代码写python
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/python.html">python</a>
-
-    on 2015-11-03
-
-        |
-        tags:         <a href="/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/49619661 </p>
-<p>1、一行代码更新python数组中对象属性满足某一值的元素</p>
-<div class="highlight"><pre><span></span>    <span class="n">arr</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}]</span>
-    <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
-    <span class="k">print</span> <span class="n">arr</span>
-</pre></div>
-
-
-<p>输出： </p>
-<div class="highlight"><pre><span></span>    <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;d …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2015/11/03/49619661.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2015/11/03/49619439.html" rel="bookmark" title="Permalink to python数组排序">
-                                       python数组排序
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/python.html">python</a>
-
-    on 2015-11-03
-
-        |
-        tags:         <a href="/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/49619439 </p>
-<p>简单排序：</p>
-<div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="n">sorted</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="n">print</span> <span class="n">arr</span>
-<span class="n">print</span> <span class="n">temp</span>
-</pre></div>
-
-
-<p>输出： </p>
-<div class="highlight"><pre><span></span><span class="k">[3, 4, 1]</span>
-<span class="k">[1, 3, 4]</span>
-</pre></div>
-
-
-<p>简单排序示例2： </p>
-<div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">arr2</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span> 
-<span class="n">print</span> <span class="n">arr</span>
-<span class="n">print</span> <span class="n">arr2</span>
-</pre></div>
-
-
-<p>输出： </p>
-<div class="highlight"><pre><span></span><span class="k">[1, 3, 4]</span>
-<span class="na">None</span>
-</pre></div>
-
-
-<p>正序排序： </p>
-<div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="err">{</span><span class="s1">&#39;a …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2015/11/03/49619439.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="/2015/10/16/49180767.html" rel="bookmark" title="Permalink to html根据宽的百分比设置高">
-                                       html根据宽的百分比设置高
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="/category/qian-duan.html">前端</a>
-
-    on 2015-10-16
-
-        |
-        tags:         <a href="/tag/html.html">html</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/49180767 </p>
-<p>最近在团队中开发了一部分html页面</p>
-<p>有一个功能点，需要在一行展示三张图片，每张图片拉伸成正方形。</p>
-<p>对于图片的宽设置为33%就可以了，但是怎么让高度根据宽度变化呢？最初想到的是在页面生成后使用js来获取图片宽，再根据这个获取的宽设置图片的高。</p>
-<p>代码如下：</p>
-<div class="highlight"><pre><span></span>$<span class="ss">(</span><span class="nv">function</span><span class="ss">()</span>{
-    <span class="nv">var</span> <span class="nv">imgs</span><span class="o">=</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">.view_img</span><span class="s1">&#39;</span><span class="ss">)</span>
-    <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;imgs.length;i++){</span>
-        <span class="nv">imgs</span>[<span class="nv">i</span>].<span class="nv">style</span>.<span class="nv">height</span><span class="o">=</span><span class="nv">imgs</span>[<span class="nv">i</span>].<span class="nv">offsetWidth</span><span class="o">+</span><span class="s1">&#39;</span><span class="s">px</span><span class="s1">&#39;</span><span class="c1">;</span>
-    }
-}<span class="ss">)</span>
-</pre></div>
-
-
-<p>在手机web中，不拉伸页面大小其实这样做是可以了的。</p>
-<p>但是如果在pc段的页面中查看，拉伸下页面，图片的高度是不会跟着宽度变化的。</p>
-<p>查看了点资料，原来直接使用css样式也是可以做到宽按父组件的百分比设置，高根据宽的百分比设置的。</p>
-<p>代码如下 …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="/2015/10/16/49180767.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="/2017/02/09/54947198.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -566,7 +383,7 @@
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/index.html">&laquo;</a>
-    Page 2 / 7
+    Page 2 / 13
         <a href="/index3.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -583,20 +400,19 @@
                 </ul>
             </div><!-- /.browse -->
             <div>
-                <h2>LINKS</h2>
-                <ul>
-                    <li><a href="#">友情链接1</a></li>
-                    <li><a href="#">友情链接2</a></li>
-                    <li><a href="#">友情链接3</a></li>
-                </ul>
-            </div><!-- /.Links -->
-            <div>
                 <h2>SOCIAL</h2>
                 <ul>
-                    <li><a href="https://api.qiangwoapp.com/">抢我APP</a></li>
-                    <li><a href="https://api.qiangwoapp.com/">吻别APP</a></li>
+                    <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
+                    <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
                 </ul>
             </div><!-- /.social -->
+            <div>
+                <h2>LINKS</h2>
+                <ul>
+                    <li><a href="https://portal.qiniu.com/signup?code=1hjft36l61cuq">七牛云存储(免费10G)</a></li>
+                </ul>
+            </div><!-- /.Links -->
 <!-- /.Tags -->
     </section><!-- /#sidebar -->
 </div>

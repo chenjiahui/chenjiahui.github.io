@@ -6,11 +6,11 @@
     <meta name="robots" content="index, follow"/>
 
     <meta property="og:title" content="Java HashMap"/>
-    <meta property="og:url" content="/2019/02/26/java-HashMap.html"/>
+    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/2019/02/26/java-HashMap.html"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="article"/>
 
-    <link rel="canonical" href="/2019/02/26/java-HashMap.html" />
+    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2019/02/26/java-HashMap.html" />
 
     <title>Java HashMap | BugManager’s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -37,22 +37,21 @@
         <div class="span10 offset1">
             <header id="banner" >
                 <h1>
-                    <a href="/">BugManager’s Blog</a>
+                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
                 </h1>
                 <h3>
-                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
                 </h3>
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="https://chenjiahui.github.io/">Home</a></li>
-                            <li class="active"><a href="/category/java.html">java</a></li>
-                            <li ><a href="/category/jia-gou.html">架构</a></li>
-                            <li ><a href="/category/other.html">other</a></li>
-                            <li ><a href="/category/python.html">python</a></li>
-                            <li ><a href="/category/qian-duan.html">前端</a></li>
-                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
-                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
+                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
                         </ul>
 
                     </div>
@@ -69,21 +68,21 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="/2019/02/26/java-HashMap.html" rel="bookmark"
+          <a href="http://chenjiahui.hot-cool.cn/2019/02/26/java-HashMap.html" rel="bookmark"
              title="Permalink to Java HashMap">Java HashMap</a></h1>
       </header>
       <div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="/category/java.html">java</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
     on 2019-02-26
 
         |
-        tags:         <a href="/tag/java.html">java</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
 
 
 
@@ -112,7 +111,7 @@ HashMap的实现不是同步的，这意味着它不是线程安全的。  </p>
 当过多的Hash碰撞导致Hash节点上的链表过长时（长度 &gt; TREEIFY_THRESHOLD = 8），如果量表元素的数量 &gt; MIN_TREEIFY_CAPACITY 
 = 64时，HashMap会将该节点的链表改成红黑树。<br>
 当执行resize操作时，当红黑树节点的数量 &lt; UNTREEIFY_THRESHOLD = 6时，使用链表来代替树。</p>
-<h3>HashMap的常量解读</h3>
+<h2>HashMap的变量解读</h2>
 <p><em>DEFAULT_INITIAL_CAPACITY</em><br>
 默认的初始容量，值是16  </p>
 <p><em>MAXIMUM_CAPACITY</em><br>
@@ -125,7 +124,9 @@ HashMap的实现不是同步的，这意味着它不是线程安全的。  </p>
 当发生resize时，如果红黑树的节点数小于该值，就会转成链表。默认值是6</p>
 <p><em>MIN_TREEIFY_CAPACITY</em><br>
 当链表结构需要转化为红黑树时，所检查的对应的table的最小大小，默认值是64（至少要是TREEIFY_THRESHOLD的4倍）。这是为了避免在哈希表建立初期，多个键值对恰好被放入了同一个链表中而导致不必要的转化。</p>
-<h3>构造函数</h3>
+<p><em>modCount和expectedModCount</em>
+当HashMap的节点发生修改时，使<code>modCount++</code>，当在遍历HashMap时会比对modCount和expectedModCount的值，发生不一致就报异常。</p>
+<h2>构造函数</h2>
 <p>HashMap一共有4个构造函数：
 public HashMap()
 public HashMap(int initialCapacity)
@@ -183,6 +184,7 @@ initialCapacity默认为16，loadFactory默认为0.75  </p>
 </pre></div>
 
 
+<h2>主要方法</h2>
 <p><strong>添加元素put(k,v)</strong></p>
 <div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">V</span> <span class="nf">put</span><span class="o">(</span><span class="n">K</span> <span class="n">key</span><span class="o">,</span> <span class="n">V</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">return</span> <span class="n">putVal</span><span class="o">(</span><span class="n">hash</span><span class="o">(</span><span class="n">key</span><span class="o">),</span> <span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">,</span> <span class="kc">false</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>

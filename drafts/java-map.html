@@ -5,20 +5,20 @@
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
 
-    <meta property="og:title" content="Java Map的总结"/>
-    <meta property="og:url" content="/drafts/java-map.html"/>
+    <meta property="og:title" content="Java Map"/>
+    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/drafts/java-map.html"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="article"/>
 
-    <link rel="canonical" href="/drafts/java-map.html" />
+    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/drafts/java-map.html" />
 
-    <title>Java Map的总结 | BugManager’s Blog</title>
+    <title>Java Map | BugManager’s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="/theme/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -37,22 +37,21 @@
         <div class="span10 offset1">
             <header id="banner" >
                 <h1>
-                    <a href="/">BugManager’s Blog</a>
+                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
                 </h1>
                 <h3>
-                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，走上了苦B的程序猿之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
                 </h3>
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="https://chenjiahui.github.io/">Home</a></li>
-                            <li class="active"><a href="/category/java.html">java</a></li>
-                            <li ><a href="/category/jia-gou.html">架构</a></li>
-                            <li ><a href="/category/other.html">other</a></li>
-                            <li ><a href="/category/python.html">python</a></li>
-                            <li ><a href="/category/qian-duan.html">前端</a></li>
-                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
-                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
+                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
                         </ul>
 
                     </div>
@@ -69,22 +68,22 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="/drafts/java-map.html" rel="bookmark"
-             title="Permalink to Java Map的总结">Java Map的总结</a></h1>
+          <a href="http://chenjiahui.hot-cool.cn/drafts/java-map.html" rel="bookmark"
+             title="Permalink to Java Map">Java Map</a></h1>
       </header>
       <div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="/category/java.html">java</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
     on 2019-02-26
 
         |
-        tags:         <a href="/tag/java.html">java</a>
-        <a href="/tag/ji-he.html">集合</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a>
 
 
 
@@ -104,9 +103,13 @@ HashMap不支持线程的同步，即任一时刻可以有多个线程同时写H
 如果需要同步，可以用 Collections的synchronizedMap方法使HashMap具有同步的能力，或者使用ConcurrentHashMap。 <br>
 深入解析：<a href="java-HashMap.html">HashMap</a>  </p>
 <h3><strong>Hashtable</strong></h3>
-<p>与HashMap类似，它继承自Dictionary类，不同的是:  <br>
-它不允许记录的键或者值为null;  <br>
-它支持线程的同步，即任一时刻只有一个线程能写Hashtable，因此也导致了 Hashtable在写入时会比较慢。   </p>
+<p>Hashtable与HashMap类似都实现了Map、Cloneable, Serializable接口:<br>
+Hashtable继承自Dictionary类，HashMap继承自AbstractMap类。  <br>
+Hashtable不允许记录的键或者值为null，HashMap允许记录的键和值为null。<br>
+Hashtable初始容量为11，HashMap的初始1容量为16。
+Hashtable在链表变大时，不会改变链表结构，HashMap在链表长度达到<code>TREEIFY_THRESHOLD=8</code>时会转为红黑树(JDK1.8)。 <br>
+Hashtable的许多方法中使用了synchronized关键字，所以Hashtable是线程安全的，即任一时刻只有一个线程能写Hashtable，这也导致了Hashtable在写入时会比较慢。
+如果在非线程安全的情况下，建议使用HashMap。如果在线程安全的情况下可以使用Hashtable，不过官方还是建议使用ConcurrentHashMap。     </p>
 <h3><strong>LinkedHashMap</strong></h3>
 <p>是HashMap的一个子类，保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录肯定是先插入的。
 也可以在构造时用带参数，按照应用次数排序。
