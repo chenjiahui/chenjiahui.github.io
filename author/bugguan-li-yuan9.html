@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html" />
 
-    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog</title>
+    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,7 +71,180 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46406773.html" rel="bookmark" title="Permalink to Flex_抛自定义事件">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/13/46412397.html" rel="bookmark" title="Permalink to Flex列排序">
+                                       Flex列排序
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+
+    on 2015-06-13
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>第一种：new一个sort，指定排序字段，然后赋给AdvancedDataGrid数据源的sort属性</p>
+<div class="highlight"><pre><span></span><span class="k">var</span> <span class="nx">sort</span><span class="o">:</span><span class="nx">Sort</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mx</span><span class="p">.</span><span class="nx">collections</span><span class="p">.</span><span class="nx">Sort</span><span class="p">();</span>    
+<span class="nx">sort</span><span class="p">.</span><span class="nx">fields</span> <span class="o">=</span> <span class="p">[</span><span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;device_type&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)</span><span class="o">,</span>
+<span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;company&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)</span><span class="o">,</span>
+<span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;dist&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)</span><span class="o">,</span>
+<span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;device_name_sort&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)];</span>
+
+<span class="nx">adv1</span><span class="p">.</span><span class="nx">dataProvider</span><span class="p">.</span><span class="nx">sort</span><span class="o">=</span><span class="nx">sort</span><span class="o">;</span>
+<span class="nx">adv1</span><span class="p">.</span><span class="nx">dataProvider</span><span class="p">.</span><span class="nx">refresh</span><span class="p">();</span>
+</pre></div>
+
+
+<p>第二种：如果你的数据源是array，则使用array的sortOn方法，指定排序字段，如下：</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">children</span> <span class="nx">as</span> <span class="nb">Array</span><span class="p">).</span><span class="nx">sortOn …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/13/46412397.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/10/46409997.html" rel="bookmark" title="Permalink to Flex自定义进度条样式">
+                                       Flex自定义进度条样式
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+
+    on 2015-06-10
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>flex页面在加载图片时，图片可能是圆角的，拉伸会导致圆角变形，这时就要用到九宫格拉伸：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;s:Image</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span> <span class="na">height=</span><span class="s">&quot;100%&quot;</span>
+         <span class="na">source=</span><span class="s">&quot;@Embed(source=&#39;assets/images/index/panelBg2.PNG&#39;,</span>
+<span class="s">         scaleGridTop=40,scaleGridBottom=350,scaleGridLeft=7,scaleGridRight=525)&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>这样就只会拉伸4个点所限定的内部区域 外部的像素大小不变</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/10/46409997.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/10/46443723.html" rel="bookmark" title="Permalink to Flex上传文件">
+                                       Flex上传文件
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+
+    on 2015-06-10
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46443723 </p>
+<p>前几天写了一篇<a href="http://blog.csdn.net/i_chenjiahui/article/details/46349259">jsp页面利用ajaxFileUpload上传文件</a>，现在把flex上传页面也分享出来：</p>
+<p>前台页面</p>
+<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+    <span class="nt">&lt;s:HGroup</span> <span class="na">xmlns:fx=</span><span class="s">&quot;&lt;a target=_blank href=&quot;</span><span class="err">http://ns.adobe.com/mxml/2009&quot;</span><span class="nt">&gt;</span>http://ns.adobe.com/mxml/2009<span class="nt">&lt;/a&gt;</span>&quot;
+        xmlns:s=&quot;library://ns.adobe.com/flex/spark …</pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/10/46443723.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/09/46425607.html" rel="bookmark" title="Permalink to easyui动态表头 && 动态添加tabs">
+                                       easyui动态表头 && 动态添加tabs
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+
+    on 2015-06-09
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46425607 </p>
+<p>今天在实现一个业务的时候，需要根据后台业务数据生成多个tab页，并且每个tab页中表格的表头需要根据数据动态生成。</p>
+<p>后台返回的数据格式如下：</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150609131129904.png"></p>
+<p>实现方法如下：</p>
+<div class="highlight"><pre><span></span><span class="o">//</span>$<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span><span class="o">//</span>弹窗
+<span class="o">//</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#compareResTabs</span><span class="s1">&#39;</span><span class="ss">)</span><span class="o">//</span>弹窗内的<span class="nv">tab</span>页面
+<span class="nv">success</span>: <span class="nv">function</span><span class="ss">(</span><span class="nb">result</span><span class="ss">)</span> {
+ <span class="k">if</span><span class="ss">(</span><span class="nb">result</span>.<span class="nv">length</span><span class="o">==</span><span class="mi">0</span><span class="ss">)</span>{
+  <span class="nv">alert</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">无比对结果</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;</span>
+ }<span class="k">else</span>{
+  $<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span>.<span class="nv">window</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">open</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;//弹窗需要先打开，不然表格内容初始化不出来。</span>
+  <span class="o">//</span>循环创建<span class="nv">tab</span>
+  <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;result.length;i++){</span>
+   <span class="nv">var</span> <span class="nv">oneScene</span> <span class="o">=</span> <span class="nb">result …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/09/46425607.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/09/46406772.html" rel="bookmark" title="Permalink to Flex_抛自定义事件">
                                        Flex_抛自定义事件
                                     </a>
                                 </h1>
@@ -83,7 +257,7 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2015-06-08
+    on 2015-06-09
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
@@ -91,63 +265,21 @@
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46406773 </p>
-<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。!</p>
-<p>flex_抛自定义事件</p>
-<div class="highlight"><pre><span></span>    <span class="k">for</span> <span class="k">each</span><span class="p">(</span><span class="k">var</span> <span class="nx">nc</span><span class="o">:</span><span class="nx">HBox</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="nx">superTabnav</span><span class="p">.</span><span class="nx">getChildren</span><span class="p">())</span>
-    <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">nc</span><span class="p">.</span><span class="nx">id</span><span class="o">==</span><span class="nx">ncId</span><span class="p">){</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">superTabnav</span><span class="p">.</span><span class="nx">selectedChild</span><span class="o">=</span><span class="nx">nc</span><span class="o">;</span>
-            <span class="k">var</span> <span class="nx">uiComponent</span><span class="o">:</span><span class="nx">UIComponent</span> <span class="o">=</span> <span class="nx">nc</span><span class="p">.</span><span class="nx">getChildAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="nx">as</span> <span class="nx">UIComponent</span><span class="o">;</span>
-            <span class="nx">uiComponent</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="k">new</span> <span class="nb">Event</span><span class="p">(</span><span class="s2">&quot;showRef&quot;</span><span class="p">));</span><span class="c1">//抛事件</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">workorderlist</span><span class="p">.</span><span class="nx">currentListItem …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46406773.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46406745.html" rel="bookmark" title="Permalink to Flex给组件添加滚动条">
-                                       Flex给组件添加滚动条
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
-
-    on 2015-06-08
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46406745 </p>
-<p>最近打算吧硬盘中的资料记录在博客中，</p>
-<p>在flex前台，有时会出现页面撑出付组件，而不出现滚动条的情况。（时间过去很久了，具体的场景记不起来了。）</p>
-<p>可以再外面加一层Scroller 解决。</p>
-<div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">s:Scroller</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;100%&quot;</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">s:Group</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">mx:Grid</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;grid&quot;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">borderColor</span><span class="o">=</span><span class="s">&quot;#E6E6E6&quot;</span> <span class="na">borderStyle</span><span class="o">=</span><span class="s">&quot;none&quot;</span> <span class="na">horizontalGap</span><span class="o">=</span><span class="s">&quot;-1&quot;</span>
-                         <span class="na">verticalGap</span><span class="o">=</span><span class="s">&quot;-1&quot;</span> <span class="p">&gt;</span>
-
-                <span class="p">&lt;/</span><span class="nt">mx:Grid</span><span class="p">&gt;</span>      
-            <span class="p">&lt;/</span><span class="nt">s:Group</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">s:Scroller</span><span class="p">&gt;</span>
+</footer><!-- /.post-info -->                                <div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">function</span> <span class="nx">getCount</span><span class="p">(</span><span class="nx">o</span><span class="o">:</span><span class="nb">Object</span><span class="p">)</span><span class="o">:</span><span class="nb">int</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nx">sum</span><span class="o">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">children</span><span class="p">){</span>
+        <span class="k">for</span> <span class="k">each</span><span class="p">(</span><span class="k">var</span> <span class="nx">object</span><span class="o">:</span><span class="nb">Object</span> <span class="k">in</span> <span class="nx">o</span><span class="p">.</span><span class="nx">children</span><span class="p">){</span>
+            <span class="nx">sum</span> <span class="o">+=</span><span class="p">(</span><span class="nx">getCount</span><span class="p">(</span><span class="nx">object</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">sum</span><span class="o">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nx">sum</span> <span class="o">++;</span>
+        <span class="k">return</span> <span class="nx">sum</span><span class="o">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46406745.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/09/46406772.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -157,8 +289,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46406725.html" rel="bookmark" title="Permalink to flex_进度条样式">
-                                       flex_进度条样式
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/09/23168327.html" rel="bookmark" title="Permalink to Windows平台端口被占用处理">
+                                       Windows平台端口被占用处理
                                     </a>
                                 </h1>
                             </header>
@@ -168,169 +300,27 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
 
-    on 2015-06-08
+    on 2015-06-09
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46406725 </p>
-<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。!🙂</p>
-<p>一共4个文件：</p>
-<p><img alt="image" src="../../../images/20150608004825249.png"></p>
-<p>JinDuTiaoItem.mxml：</p>
-<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-    <span class="nt">&lt;s:GridItemRenderer</span> <span class="na">xmlns:fx=</span><span class="s">&quot;http://ns.adobe.com/mxml/2009&quot;</span> 
-                        <span class="na">xmlns:s=</span><span class="s">&quot;library://ns.adobe.com/flex/spark&quot;</span> 
-                        <span class="na">xmlns:mx=</span><span class="s">&quot;library://ns.adobe.com/flex/mx …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/23168327 </p>
+<p>端口查看&amp;关闭进程及Kill使用  </p>
+<p>1、Windows平台 <br>
+在windows命令行窗口下执行： <br>
+1.查看所有的端口占用情况 <br>
+C:>netstat -ano   </p>
+<p>协议 本地地址 外部地址 状态 PID <br>
+TCP 127.0.0.1:1434 0.0.0.0:0 LISTENING 3236 <br>
+TCP 127.0.0.1:5679 0.0.0.0:0 …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46406725.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/03/46349259.html" rel="bookmark" title="Permalink to jsp借助了ajaxfileupload实现上传文件">
-                                       jsp借助了ajaxfileupload实现上传文件
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
-
-    on 2015-06-03
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46349259 </p>
-<p>以往我用的上传文件都是Flex写的，最近html页面需要上传页面功能。</p>
-<p>相比之下，比flex还是要麻烦一些，问题也多一些。这里记录下：</p>
-<p>ajax上传文件，我用到了<a href="http://download.csdn.net/detail/nicky9470/8768957">ajaxfileupload.js</a>修正版。</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nv">form</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">addAttaForm</span><span class="s2">&quot;</span> <span class="nv">enctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">multipart/form-data</span><span class="s2">&quot;</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nv">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">&gt;</span>请选择要上传的文件：<span class="o">&lt;/</span><span class="nv">label</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">file</span><span class="s2">&quot;</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">/&gt;</span>
-        <span class="o">&lt;/</span><span class="nv">div</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">button …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/03/46349259.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/19/45844141.html" rel="bookmark" title="Permalink to activiti的组任务开发">
-                                       activiti的组任务开发
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2015-05-19
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45844141 </p>
-<p>在工作中使用到了将任务派发给用户组处理，第一次使用，查了点资料，写了个demo。</p>
-<p>首先，查看数据库中关于用户、用户组的表结构：</p>
-<p><img alt="image" src="../../../images/20150519141150125.jpg"></p>
-<p>可以看出来，用户、用户组相关的表其实与其他的activiti表无关联。我们可以使用自己的一套用户、用户组管理，而且官方也是建议使用自己的用户用户组权限管理的。</p>
-<p>怎么使用自己的用户、用户组管理以后会在另写一篇，这里就不介绍了。</p>
-<p>首先我们创建一个测试用的bpmn</p>
-<p><img alt="image" src="../../../images/20150519141718989.jpg"></p>
-<p>如上图中，我们对Group Task节点，添加了两个用户组：groupB和GroupC。注意，要用英文逗号。</p>
-<p>在用户表，用户组表，关系表中插入用户、用户组，以及关联信息。</p>
-<p>用户表：act_id_user</p>
-<p><img alt="image" src="../../../images/20150519142436460.png"></p>
-<p>用户组表：act_id_group</p>
-<p><img alt="image" src="../../../images/20150519142620403.png"></p>
-<p>关系表：act_id_membership</p>
-<p><img alt="image" src="../../../images/20150519142936219.jpg"></p>
-<p>将流程定义跑到Group Task节点，查询用户组任务。</p>
-<div class="highlight"><pre><span></span>    <span class="n">List …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/19/45844141.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/19/46400887.html" rel="bookmark" title="Permalink to JDK自带工具jps，jstat，jmap，jconsole使用">
-                                       JDK自带工具jps，jstat，jmap，jconsole使用
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2015-05-19
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46400887 </p>
-<p><strong>jps</strong></p>
-<p>与ps命令类似：</p>
-<div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">ef</span><span class="o">|</span><span class="n">grep</span> <span class="n">java</span>
-</pre></div>
-
-
-<p>用来显示本地的java进程，查看本地运行着几个java应用，并显示进程号。</p>
-<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w">   </span><span class="o">//</span><span class="n">只显示进程号</span><span class="w"></span>
-<span class="mi">23813</span><span class="w"> </span><span class="n">Jps</span><span class="w"></span>
-<span class="mi">710</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
-<span class="mi">792</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
-
-
-<span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w">    </span><span class="o">//</span><span class="n">显示jvm参数</span><span class="w"></span>
-<span class="mi">23852</span><span class="w"> </span><span class="n">Jps</span><span class="w"> </span><span class="o">-</span><span class="n">Denv</span><span class="p">.</span><span class="k">class</span><span class="p">.</span><span class="k">path</span><span class="o">=</span><span class="p">.</span><span class="err">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.6.0</span><span class="n">_21</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dt</span><span class="p">.</span><span class="nl">jar</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1 …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/19/46400887.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/09/23168327.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -339,7 +329,7 @@
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan8.html">&laquo;</a>
-    Page 9 / 12
+    Page 9 / 14
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan10.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -360,7 +350,8 @@
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

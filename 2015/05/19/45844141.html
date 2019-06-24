@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2015/05/19/45844141.html" />
 
-    <title>activiti的组任务开发 | BugManager’s Blog</title>
+    <title>activiti的组任务开发 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -93,19 +94,19 @@
         <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45844141 </p>
 <p>在工作中使用到了将任务派发给用户组处理，第一次使用，查了点资料，写了个demo。</p>
 <p>首先，查看数据库中关于用户、用户组的表结构：</p>
-<p><img alt="image" src="../../../images/20150519141150125.jpg"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150519141150125.jpg"></p>
 <p>可以看出来，用户、用户组相关的表其实与其他的activiti表无关联。我们可以使用自己的一套用户、用户组管理，而且官方也是建议使用自己的用户用户组权限管理的。</p>
 <p>怎么使用自己的用户、用户组管理以后会在另写一篇，这里就不介绍了。</p>
 <p>首先我们创建一个测试用的bpmn</p>
-<p><img alt="image" src="../../../images/20150519141718989.jpg"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150519141718989.jpg"></p>
 <p>如上图中，我们对Group Task节点，添加了两个用户组：groupB和GroupC。注意，要用英文逗号。</p>
 <p>在用户表，用户组表，关系表中插入用户、用户组，以及关联信息。</p>
 <p>用户表：act_id_user</p>
-<p><img alt="image" src="../../../images/20150519142436460.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150519142436460.png"></p>
 <p>用户组表：act_id_group</p>
-<p><img alt="image" src="../../../images/20150519142620403.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150519142620403.png"></p>
 <p>关系表：act_id_membership</p>
-<p><img alt="image" src="../../../images/20150519142936219.jpg"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150519142936219.jpg"></p>
 <p>将流程定义跑到Group Task节点，查询用户组任务。</p>
 <div class="highlight"><pre><span></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">groupIds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
             <span class="n">groupIds</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;groupB&quot;</span><span class="o">);</span>

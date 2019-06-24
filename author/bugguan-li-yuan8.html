@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html" />
 
-    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog</title>
+    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,8 +71,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/09/46425607.html" rel="bookmark" title="Permalink to easyui动态表头 && 动态添加tabs">
-                                       easyui动态表头 && 动态添加tabs
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/08/23/47907585.html" rel="bookmark" title="Permalink to 让bootstrap的carousel支持滑动滚屏">
+                                       让bootstrap的carousel支持滑动滚屏
                                     </a>
                                 </h1>
                             </header>
@@ -83,31 +84,27 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2015-06-09
+    on 2015-08-23
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46425607 </p>
-<p>今天在实现一个业务的时候，需要根据后台业务数据生成多个tab页，并且每个tab页中表格的表头需要根据数据动态生成。</p>
-<p>后台返回的数据格式如下：</p>
-<p><img alt="image" src="../../../images/20150609131129904.png"></p>
-<p>实现方法如下：</p>
-<div class="highlight"><pre><span></span><span class="o">//</span>$<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span><span class="o">//</span>弹窗
-<span class="o">//</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">#compareResTabs</span><span class="s1">&#39;</span><span class="ss">)</span><span class="o">//</span>弹窗内的<span class="nv">tab</span>页面
-<span class="nv">success</span>: <span class="nv">function</span><span class="ss">(</span><span class="nb">result</span><span class="ss">)</span> {
- <span class="k">if</span><span class="ss">(</span><span class="nb">result</span>.<span class="nv">length</span><span class="o">==</span><span class="mi">0</span><span class="ss">)</span>{
-  <span class="nv">alert</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">无比对结果</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;</span>
- }<span class="k">else</span>{
-  $<span class="ss">(</span><span class="s2">&quot;</span><span class="s">#compareResWin</span><span class="s2">&quot;</span><span class="ss">)</span>.<span class="nv">window</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">open</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;//弹窗需要先打开，不然表格内容初始化不出来。</span>
-  <span class="o">//</span>循环创建<span class="nv">tab</span>
-  <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;result.length;i++){</span>
-   <span class="nv">var</span> <span class="nv">oneScene</span> <span class="o">=</span> <span class="nb">result …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/47907585 </p>
+<p>原始的轮播组件，并不支持滑动滚屏：</p>
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;white-space:pre&quot;</span><span class="p">&gt;</span>  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;carousel-generic&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;carousel slide&quot;</span>
+                <span class="na">data-ride</span><span class="o">=</span><span class="s">&quot;carousel&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">ol</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;carousel-indicators&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;#carousel-generic&quot;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+                        <span class="na">class</span><span class="o">=</span><span class="s">&quot;active&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;#carousel-generic&quot;</span> <span class="na">data-slide-to</span><span class="o">=</span><span class="s">&quot;1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;#carousel-generic …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/09/46425607.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/08/23/47907585.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -117,8 +114,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/09/46406772.html" rel="bookmark" title="Permalink to Flex_抛自定义事件">
-                                       Flex_抛自定义事件
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/08/22/47859581.html" rel="bookmark" title="Permalink to python中的mysql数据库like模糊查询">
+                                       python中的mysql数据库like模糊查询
                                     </a>
                                 </h1>
                             </header>
@@ -128,31 +125,32 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
 
-    on 2015-06-09
+    on 2015-08-22
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">mysql</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">function</span> <span class="nx">getCount</span><span class="p">(</span><span class="nx">o</span><span class="o">:</span><span class="nb">Object</span><span class="p">)</span><span class="o">:</span><span class="nb">int</span><span class="p">{</span>
-    <span class="k">var</span> <span class="nx">sum</span><span class="o">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">children</span><span class="p">){</span>
-        <span class="k">for</span> <span class="k">each</span><span class="p">(</span><span class="k">var</span> <span class="nx">object</span><span class="o">:</span><span class="nb">Object</span> <span class="k">in</span> <span class="nx">o</span><span class="p">.</span><span class="nx">children</span><span class="p">){</span>
-            <span class="nx">sum</span> <span class="o">+=</span><span class="p">(</span><span class="nx">getCount</span><span class="p">(</span><span class="nx">object</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nx">sum</span><span class="o">;</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="nx">sum</span> <span class="o">++;</span>
-        <span class="k">return</span> <span class="nx">sum</span><span class="o">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/47859581 </p>
+<p>最近工作在使用python语言开发项目，工作中遇到了一个python连接mysql的like查询。</p>
+<p>由于%在python中三个特殊的符号，如%s，%d分别代表了字符串占位符和数字占位符。</p>
+<p>大家知道，mysql的模糊查询也需要用到%。</p>
+<p>我们有一张test表，要对name字段进行模糊查询，预期的sql如下：</p>
+<div class="highlight"><pre><span></span>    <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">test</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%abc%&#39;</span><span class="p">;</span>
 </pre></div>
+
+
+<p>那么python中怎么写呢？ </p>
+<div class="highlight"><pre><span></span>    <span class="k">sql</span> <span class="o">=</span> <span class="s2">&quot;select * from test where name like &#39;%%%%%s%%%%&#39;&quot;</span>
+    <span class="k">sql</span> <span class="o">=</span> <span class="k">sql</span> <span class="o">%</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>  <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;white-space:pre&quot;</span><span class="o">&gt;</span>  <span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span><span class="c1">#此处进行第一次转义</span>
+    <span class="n">print</span> <span class="k">sql …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/09/46406772.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/08/22/47859581.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -162,8 +160,50 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/09/23168327.html" rel="bookmark" title="Permalink to Windows平台端口被占用处理">
-                                       Windows平台端口被占用处理
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/08/14/47665585.html" rel="bookmark" title="Permalink to mysql利用atlas进行读写分离时，一直走主库的问题">
+                                       mysql利用atlas进行读写分离时，一直走主库的问题
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a>
+
+    on 2015-08-14
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/47665585 </p>
+<p>项目中，利用atlas对mysql数据库进行了读写分离。</p>
+<p>当时配置了去从库读数据。</p>
+<p>当用数据库工具连接代理测试时，一切正常。</p>
+<p>当在项目中使用框架mybatis连数据库时，却都直接去主库读写数据了。  </p>
+<p>自己写个main方法 用jdbc连接也是正常的。一用mybatis框架就不正常了，难道atlas对mybatis不支持吗？</p>
+<p>于是各种百度，谷歌。。。</p>
+<p>最后发现原因：如果有事务存在的话，atlas就强制走主库。而这个方法类上偏偏添加了事务@Transactional  </p>
+<p>解决办法在方法上加上@Transactional(propagation=Propagation.NOT_SUPPORTED)即可。  </p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/08/14/47665585.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/08/12/47440683.html" rel="bookmark" title="Permalink to linux模糊查询文件并删除">
+                                       linux模糊查询文件并删除
                                     </a>
                                 </h1>
                             </header>
@@ -175,25 +215,36 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
 
-    on 2015-06-09
+    on 2015-08-12
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/23168327 </p>
-<p>端口查看&amp;关闭进程及Kill使用  </p>
-<p>1、Windows平台 <br>
-在windows命令行窗口下执行： <br>
-1.查看所有的端口占用情况 <br>
-C:>netstat -ano   </p>
-<p>协议 本地地址 外部地址 状态 PID <br>
-TCP 127.0.0.1:1434 0.0.0.0:0 LISTENING 3236 <br>
-TCP 127.0.0.1:5679 0.0.0.0:0 …</p>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/47440683 </p>
+<p>因为工作用到定时删除3天前的日志文件文件，就写了段脚本。</p>
+<p>发现其中还是有几小点坑人之处。记录一下</p>
+<p>命令：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
+
+find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="se">\;</span>//删除log目录下第2级目录中3天前的*.log文件echo <span class="s2">&quot;delete execute successfully&quot;</span>!   
+<span class="nb">echo</span> <span class="s2">&quot;delete execute successfully&quot;</span>!
+</pre></div>
+</td></tr></table>
+
+<p>1、结尾的分号要也斜线转义，因为";"在不同版本的linux中会有不同的意义。<br>
+2、{}与\;之间必须有空格。<br>
+测试如下：</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150812103843201.png"></p>
+<p>保存文件后，会发现没有权限执行，需要修改权限 …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/09/23168327.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/08/12/47440683.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -203,54 +254,8 @@ TCP 127.0.0.1:5679 0.0.0.0:0 …</p>
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46419465.html" rel="bookmark" title="Permalink to 集群负载均衡算法原理">
-                                       集群负载均衡算法原理
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a>
-
-    on 2015-06-08
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/ji-qun.html">集群</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46419465 </p>
-<p>最近打算往互联网方向发展，研究了下集群的负载均衡。其实早就应该去了解学习了。如有理解不到位的地方，还望各大神指出。</p>
-<p>负载均衡算法是集群在调度时，选择具体调度和分发方式的逻辑。</p>
-<p>目前流行和常用的算法有：轮询算法，Hash算法，Session，最小连接数，最大空闲等。</p>
-<p>1、轮询算法：</p>
-<p>实现方式：把每一次的用户请求，按顺序循环分配给集群内部的一台服务器。优点是算法简洁，无状态。</p>
-<p>2、权重轮询算法</p>
-<p>由于服务器的处理能力不同，可以再给服务器加权。也就是权重轮询算法。</p>
-<p>3、Hash算法</p>
-<p>一般就是将请求中的某项数据做hash运算，然后根据集群的服务器总数n取模，根据取模后的值分配服务器。</p>
-<p>一般可以根据请求时间，请求来源的ip等来做散列运算。</p>
-<p>java中哈希值的算法：</p>
-<div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="ss">&quot;hello&quot;</span><span class="p">;</span>
-<span class="nb">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">s …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46419465.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46406927.html" rel="bookmark" title="Permalink to 获得当前用户的ip">
-                                       获得当前用户的ip
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/07/22/46997303.html" rel="bookmark" title="Permalink to hadoop学习笔记之HDFS">
+                                       hadoop学习笔记之HDFS
                                     </a>
                                 </h1>
                             </header>
@@ -262,26 +267,30 @@ TCP 127.0.0.1:5679 0.0.0.0:0 …</p>
 
     in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2015-06-08
+    on 2015-07-22
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/hadoop.html">hadoop</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46406927 </p>
-<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。
-<img alt="微笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/smile.gif"></p>
-<p>java获取当前用户的ip</p>
-<div class="highlight"><pre><span></span>    <span class="n">String</span> <span class="n">modify_user_ip</span> <span class="o">=</span> <span class="o">((</span><span class="n">ServletRequestAttributes</span><span class="o">)</span> <span class="o">(</span><span class="n">RequestContextHolder</span>
-                        <span class="o">.</span><span class="na">getRequestAttributes</span><span class="o">())).</span><span class="na">getRequest</span><span class="o">().</span><span class="na">getRemoteAddr</span><span class="o">();</span>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46997303 </p>
+<p>HDFS：Hadoop Distributed File System 分布式文件系统，其操作方式与linux相似，使用指令之前要在前面加上dfs。（注意：hdfs没有当前目录的概念，不能使用cd命令）</p>
+<p>常规操作命令：</p>
+<div class="highlight"><pre><span></span>     dfs -put ../hello hello
+     dfs -ls
+     dfs -get hello ./mypath/hello
+     dfs -rmr hello
+     dfs -cat part-r-00000 //打开文件，查看内容
+     dfsadmin -report //hdfs的信息情况
 </pre></div>
 
 
-<p>﻿﻿</p>
+<p>客户端如何从HDFS上 <strong>获取文件</strong> 呢？以获取文件名为“hello …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46406927.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/07/22/46997303.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -291,8 +300,8 @@ TCP 127.0.0.1:5679 0.0.0.0:0 …</p>
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46406863.html" rel="bookmark" title="Permalink to Flex根据数据，动态生成表格">
-                                       Flex根据数据，动态生成表格
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/16/20150616225821.html" rel="bookmark" title="Permalink to Flex列排序">
+                                       Flex列排序
                                     </a>
                                 </h1>
                             </header>
@@ -304,36 +313,30 @@ TCP 127.0.0.1:5679 0.0.0.0:0 …</p>
 
     in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2015-06-08
+    on 2015-06-16
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46406863 </p>
-<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。<img alt="微笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/smile.gif"></p>
-<p>在项目开发中，有这样的场景：前台页面的表格列需要通过查询的数据来生成。</p>
-<div class="highlight"><pre><span></span><span class="nv">public</span> <span class="nv">Map</span> <span class="nv">myMethod</span><span class="ss">()</span> {
-    <span class="o">//</span>此处省略部分代码，主要功能就是封装好表格数据和表头信息。  
-    <span class="nv">Map</span> <span class="nv">resM</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">HashMap</span><span class="ss">()</span><span class="c1">;</span>
-    <span class="nv">resM</span>.<span class="nv">put</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">head</span><span class="s2">&quot;</span>, <span class="nv">headNameList</span><span class="ss">)</span><span class="c1">;</span>
-    <span class="nv">resM</span>.<span class="nv">put</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">data</span><span class="s2">&quot;</span>, <span class="nv">dataList</span><span class="ss">)</span><span class="c1">;</span>
-    <span class="k">return</span> <span class="nv">resM</span><span class="c1">;</span>
-}
-</pre></div>
+</footer><!-- /.post-info -->                                <div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">format</span><span class="o">:</span><span class="nx">DateFormatter</span><span class="o">=</span><span class="k">new</span> <span class="nx">DateFormatter</span><span class="p">();</span>
+<span class="nx">format</span><span class="p">.</span><span class="nx">formatString</span><span class="o">=</span><span class="s2">&quot;YYYY-MM-DD JJ:NN:SS&quot;</span> 
+<span class="nx">format</span><span class="p">.</span><span class="nx">error</span> <span class="o">=</span> <span class="s2">&quot;日期转换时出错&quot;</span><span class="p">;</span>
+<span class="k">for</span> <span class="nx">each</span><span class="p">(</span><span class="kd">var</span> <span class="nx">o</span><span class="o">:</span><span class="nb">Object</span> <span class="k">in</span> <span class="nx">ac</span><span class="p">){</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">sender_time2</span> <span class="o">=</span> <span class="nx">o</span><span class="p">.</span><span class="nx">org_sender_time</span><span class="p">;</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">receive_time2</span> <span class="o">=</span> <span class="nx">o</span><span class="p">.</span><span class="nx">org_receive_time</span><span class="p">;</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">org_sender_time</span> <span class="o">=</span> <span class="nx">format</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">org_sender_time</span><span class="p">);</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">org_receive_time</span> <span class="o">=</span> <span class="nx">format</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">org_receive_time</span><span class="p">);</span>
+<span class="p">}</span>
 
 
-<p>前台：</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spark.components.gridClasses.GridColumn</span><span class="p">;</span>
-
-    <span class="n">protected</span> <span class="n">function</span> <span class="n">vgroup1_creationCompleteHandler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span><span class="n">FlexEvent</span><span class="p">):</span><span class="n">void</span>
-    <span class="p">{</span>
-        <span class="o">//</span> <span class="n">TODO …</span></pre></div>
+<span class="kr">private</span> <span class="kd">function</span> <span class="nx">subtractionDay</span><span class="p">(</span><span class="nx">day</span><span class="o">:</span><span class="kr">int</span><span class="p">,</span> <span class="nx">mydate</span><span class="o">:</span><span class="nb">Date</span><span class="p">)</span><span class="o">:</span><span class="nb">Date</span> 
+<span class="p">{</span> 
+    <span class="kd">var …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46406863.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/16/20150616225821.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -342,7 +345,7 @@ TCP 127.0.0.1:5679 0.0.0.0:0 …</p>
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan7.html">&laquo;</a>
-    Page 8 / 12
+    Page 8 / 14
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan9.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -363,7 +366,8 @@ TCP 127.0.0.1:5679 0.0.0.0:0 …</p>
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

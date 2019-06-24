@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="nginx增减模块"/>
+    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/2018/05/21/nginx-moudle.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2018/05/21/nginx-moudle.html" />
+
+    <title>nginx增减模块 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="http://chenjiahui.hot-cool.cn/2018/05/21/nginx-moudle.html" rel="bookmark"
+             title="Permalink to nginx增减模块">nginx增减模块</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-05-21
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>nginx拥有非常丰富的功能模块,<a href="http://nginx.org/en/docs/">官方文档</a><br>
+但是默认安装的nginx并不是包含所有模块的，而默认安装的模块中也有一些不需要用到的。我们可以选择去掉。  <br>
+呃！那么怎么添加、剔除模块呢？我们可以通过命令<code>./configure --help</code>查看一下:   </p>
+<div class="highlight"><pre><span></span>ubuntu@VM-0-6-ubuntu:~/cjh/nginx-1.14.2$ ./configure --help<span class="p">|</span>grep with
+  ... 
+  ... 
+  --with-http_ssl_module             <span class="nb">enable</span> ngx_http_ssl_module
+  ...
+  --without-http_autoindex_module    disable ngx_http_autoindex_module
+  ...
+  ...
+</pre></div>
+
+
+<p>比如我们打算去掉autoindex模块，增加ssl模块，我们可以在源码目录下输入以下命令（这里我们只是举个例子，大家根据自己的情况添加删除模块）</p>
+<div class="highlight"><pre><span></span>./configure --without-http_autoindex_module --without-http_ssi_module
+</pre></div>
+
+
+<p>编译后最后执行<code>make&amp;&amp;make install</code>安装    </p>
+<p>如果已经安装了nginx查看看nginx增加或减少了哪些模块，可以通过指令查看：</p>
+<div class="highlight"><pre><span></span>ubuntu@VM-0-6-ubuntu:nginx -V
+nginx version: nginx/1.13.1
+built by gcc <span class="m">4</span>.8.5 <span class="m">20150623</span> <span class="o">(</span>Red Hat <span class="m">4</span>.8.5-11<span class="o">)</span> <span class="o">(</span>GCC<span class="o">)</span> 
+built with OpenSSL <span class="m">1</span>.0.1e-fips <span class="m">11</span> Feb <span class="m">2013</span>
+TLS SNI support enabled
+configure arguments: --with-http_ssl_module
+</pre></div>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script> -->
+	
+</body>
+</html>

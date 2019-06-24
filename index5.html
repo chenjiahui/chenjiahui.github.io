@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn" />
 
-    <title>BugManager’s Blog</title>
+    <title>BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,8 +71,86 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/30/48830593.html" rel="bookmark" title="Permalink to linux使用crontab设置定时任务">
-                                       linux使用crontab设置定时任务
+                                    <a href="http://chenjiahui.hot-cool.cn/2016/06/24/51751032.html" rel="bookmark" title="Permalink to python调用存储过程，获取返回值">
+                                       python调用存储过程，获取返回值
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
+
+    on 2016-06-24
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/51751032 </p>
+<p>python调用存储过程，获取返回值</p>
+<div class="highlight"><pre><span></span><span class="k">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;&quot;&quot;</span>
+<span class="ss">    call pro_test(%s,@tt);</span>
+<span class="ss">    select @tt as pro_out</span>
+<span class="ss">&quot;&quot;&quot;</span><span class="w"></span>
+<span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="n">yield</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">pool</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;test&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="n">res</span><span class="p">,</span><span class="k">old</span><span class="o">=</span><span class="n">dbInterface</span><span class="p">.</span><span class="n">getone</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span><span class="n">o</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="n">pro_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">old</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="ss">&quot;pro_out&quot;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/06/24/51751032.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2016/04/20/51200656.html" rel="bookmark" title="Permalink to python插入记录cursor.lastrowid值为0的情况">
+                                       python插入记录cursor.lastrowid值为0的情况
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
+
+    on 2016-04-20
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/51200656 </p>
+<p>python向mysql插入数据后，可以根据根据cursor.lastrowid获取所插入数据的主键id值。</p>
+<p>最近遇到有一个插入语句执行后，cursor.lastrowid获取到的值为0的情况。</p>
+<p>经过测试发现，被插入的表的id必须是AUTO_INCREMENT，cursor.lastrowid才能获取到id值。因为插入的业务数据的id是我们自己生成的，table的id没有设置成AUTO_INCREMENT，修改为AUTO_INCREMENT后，问题解决。</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/04/20/51200656.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2016/01/07/linux-too-many-open-files.html" rel="bookmark" title="Permalink to 文件句柄数Too many open files">
+                                       文件句柄数Too many open files
                                     </a>
                                 </h1>
                             </header>
@@ -83,25 +162,25 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
 
-    on 2015-09-30
+    on 2016-01-07
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48830593 </p>
-<p>因最近工作中需要定时执行一段代码来跑批生成一些统计数据。</p>
-<p>最近刚好接触python，又了解到可以使用linux的crontab来执行定时任务。类似于windows的任务计划程序。</p>
-<p>那么怎么使用呢？</p>
-<p>首先要确定linux是否安装了crontab</p>
-<p>可以使用which crontab来查看。  </p>
-<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@cjh ~</span><span class="o">]</span><span class="n">#which</span><span class="w"> </span><span class="n">crontab</span><span class="w"></span>
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="nl">which</span><span class="p">:</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">crontab</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.7.0</span><span class="n">_45</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.7.0</span><span class="n">_45</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="nl">bin …</span></pre></div>
+</footer><!-- /.post-info -->                                <div class="highlight"><pre><span></span><span class="n">chenjiahui</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="o">~</span> <span class="n">jiahui$</span> <span class="n">ulimit</span> <span class="o">-</span><span class="n">a</span><span class="err">（查看文件句柄数）</span>
+<span class="n">core</span> <span class="n">file</span> <span class="k">size</span>          <span class="p">(</span><span class="n">blocks</span><span class="p">,</span> <span class="o">-</span><span class="k">c</span><span class="p">)</span> <span class="mi">0</span>
+<span class="k">data</span> <span class="n">seg</span> <span class="k">size</span>           <span class="p">(</span><span class="n">kbytes</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">)</span> <span class="n">unlimited</span>
+<span class="n">file</span> <span class="k">size</span>               <span class="p">(</span><span class="n">blocks</span><span class="p">,</span> <span class="o">-</span><span class="n">f</span><span class="p">)</span> <span class="n">unlimited</span>
+<span class="k">max</span> <span class="n">locked</span> <span class="n">memory</span>       <span class="p">(</span><span class="n">kbytes</span><span class="p">,</span> <span class="o">-</span><span class="n">l</span><span class="p">)</span> <span class="n">unlimited</span>
+<span class="k">max</span> <span class="n">memory</span> <span class="k">size</span>         <span class="p">(</span><span class="n">kbytes</span><span class="p">,</span> <span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="n">unlimited</span>
+<span class="k">open</span> <span class="n">files</span>                      <span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">)</span> <span class="mi">256</span>
+<span class="n">pipe</span> <span class="k">size</span>            <span class="p">(</span><span class="mi">512</span> <span class="n">bytes</span><span class="p">,</span> <span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="mi">1</span>
+<span class="n">stack</span> <span class="k">size</span>              <span class="p">(</span><span class="n">kbytes</span><span class="p">,</span> <span class="o">-</span><span class="n">s</span><span class="p">)</span> <span class="mi">8192 …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/30/48830593.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/01/07/linux-too-many-open-files.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -111,8 +190,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/25/48738377.html" rel="bookmark" title="Permalink to 数据库存储手机emoji表情">
-                                       数据库存储手机emoji表情
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/12/16/50311479.html" rel="bookmark" title="Permalink to onload和ready的区别">
+                                       onload和ready的区别
                                     </a>
                                 </h1>
                             </header>
@@ -122,27 +201,53 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2015-09-25
+    on 2015-12-16
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/html.html">html</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48738377 </p>
-<p>最近在开发手机APP应用，用户的评论是可以添加表情的。<br>
-由于的第一次做这方面的东西，在评论表中评论内容用utf8存表情，发现是乱码。  </p>
-<p>查原因，说的<a href="http://baike.baidu.com/item/emoji">emoji</a>的表情，需要将数据库编码格式改成utf8mb4。<br>
-确定了升级方案后，将表情存成utf8mb4，测试。然而，发现并没什么用，依然是乱码。  </p>
-<p>再查资料。网上有人也碰到这个问题，解决方式和我一样，设置成utf8mb4，有的解决了，有的没有解决。解决不聊的，有人通过把数据存成了2进制来解决，有的自己把表情根据自己定义的字典转换后存入数据库。<br>
-这样就增加了许多浪费。  </p>
-<p>因为有同事以前在postgresql上保存成功过。继续找原因，主要还是考虑编码方向，原来连接数据库时，还是用的utf8，改为utf8mb4后，成功解决。 </p>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/50311479 </p>
+<p>今天想等网页加载好后动态计算某个div宽高和位置。<br>
+起初用的是下面这种方式：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span><span class="p">(</span><span class="k">function</span><span class="p">()</span><span class="err">{</span>
+    <span class="n">doAdapter</span><span class="p">();</span>
+<span class="err">}</span><span class="p">)</span>
+
+<span class="err">$</span><span class="p">(</span><span class="n">document</span><span class="p">).</span><span class="n">ready</span><span class="p">(</span><span class="k">function</span><span class="p">()</span><span class="err">{</span>
+    <span class="n">doAdapter</span><span class="p">();</span>
+<span class="err">}</span><span class="p">);</span>
+</pre></div>
+
+
+<p>这东西不是很靠谱啊（当然它也有它的优点，在这里用就不靠谱了），这个不是一定等页面的图片全部加载完成才触发的。<br>
+它在DOM就绪后就触发了，而此时，dom元素所关联的内容可能还没有加载完毕。<br>
+比如图片的宽、高，图片的父容器的宽、高此时就不一定有值。<br>
+后来改成了 </p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span> <span class="n">onload</span><span class="o">=</span><span class="ss">&quot;doAdapter();&quot;</span><span class="o">&gt;</span>
+
+
+
+
+
+
+<span class="err">$</span><span class="p">(</span><span class="n">window</span><span class="p">).</span><span class="k">load</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="err">{</span>
+        <span class="n">doAdapter</span><span class="p">();</span>
+<span class="err">}</span><span class="p">);</span>
+</pre></div>
+
+
+<p>必须等待网页中所有的内容加载完毕后 ( 包括图片 ) 才能执行  </p>
+<p>效果就好了。</p>
+<p>借用网友的一张图：</p>
+<p><img alt="image" src="images/20151215102455828.jpg">  </p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/25/48738377.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/12/16/50311479.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -152,8 +257,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/17/48525073.html" rel="bookmark" title="Permalink to python生成一组随机数">
-                                       python生成一组随机数
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/12/15/50311589.html" rel="bookmark" title="Permalink to APP端webview自动播放视频">
+                                       APP端webview自动播放视频
                                     </a>
                                 </h1>
                             </header>
@@ -163,37 +268,46 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2015-09-17
+    on 2015-12-15
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48525073 </p>
-<p>今天看到群里有人问到</p>
-<p>生成一个list,长度为1000，里面的元素是可以重复的随机数（范围0-10000）</p>
-<p>随即写了一个，</p>
-<div class="highlight"><pre><span></span>[<span class="k">random</span>.<span class="nv">randint</span><span class="ss">(</span><span class="mi">0</span>,<span class="mi">10000</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">1000</span><span class="ss">)</span>]
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/50311589 </p>
+<p>昨天碰到一需求，需要写一个html5页面，要求支持打开自动播放视频。</p>
+<p>ok，要支持自动播放，设置<video>的autoplay="autoplay"就可以了吧。</p>
+<p>测试发现只有在浏览器中是正常播放了，android和ios都没有播放。</p>
+<p>换了种写法：</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span> <span class="n">onload</span><span class="o">=</span><span class="ss">&quot;playVideo();&quot;</span><span class="o">&gt;</span>
+
+
+<span class="k">function</span> <span class="n">playVideo</span><span class="p">()</span><span class="err">{</span>
+    <span class="n">var</span> <span class="n">video</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">getElementById</span><span class="p">(</span><span class="ss">&quot;alt-player-ios&quot;</span><span class="p">);</span> 
+    <span class="n">video</span><span class="p">.</span><span class="n">play</span><span class="p">();</span> 
+<span class="err">}</span>
 </pre></div>
 
 
-<p>后来翻看资料发现，下面这样就可以了 </p>
-<div class="highlight"><pre><span></span>[<span class="k">random</span>.<span class="nv">randrange</span><span class="ss">(</span><span class="mi">10000</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">1000</span><span class="ss">)</span>]
+<p>android的webview中可以自动播放了。（android以前设置过允许执行javascript，如果大家不能自动播放的话可能需要设置这个）。 </p>
+<p>ios需要添加webview的属性设置：</p>
+<div class="highlight"><pre><span></span><span class="n">_webView</span><span class="p">.</span><span class="n">mediaPlaybackRequiresUserAction</span> <span class="o">=</span> <span class="k">NO</span><span class="p">;</span>
 </pre></div>
 
 
-<p>翻看资料延伸的想了下生成不可重复的随机数。 </p>
-<div class="highlight"><pre><span></span><span class="k">random</span>.<span class="nv">sample</span><span class="ss">(</span>[<span class="nv">i</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">10000</span><span class="ss">)</span>],<span class="mi">1000</span><span class="ss">)</span>
+<p>ok，能自动播放了。 </p>
+<p>如果希望自动播放时不要全屏，那么嗨需要设置下面的属性：</p>
+<div class="highlight"><pre><span></span><span class="n">_webView</span><span class="p">.</span><span class="n">allowsInlineMediaPlayback</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
 </pre></div>
 
 
-<p>再一次体会到了python的简洁。用java的话，得好几行代码了 </p>
+<p>参考资料 …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/17/48525073.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/12/15/50311589.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -203,64 +317,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/13/48415483.html" rel="bookmark" title="Permalink to python的while语法中的else从句">
-                                       python的while语法中的else从句
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2015-09-13
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48415483 </p>
-<p>由于以前是写java的，现在正在接触python,学习中看到下面一句话：</p>
-<p>while语句允许你重复执行一块语句。while语句是所谓 循环 语句的一个例子。while语句有一个可选的else从句。  </p>
-<p>上代码尝试了一把</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span><span class="ss">(</span><span class="nv">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="ss">)</span>:
-...     <span class="nv">print</span> <span class="nv">i</span>
-...     <span class="nv">i</span><span class="o">=</span><span class="nv">i</span><span class="o">+</span><span class="mi">1</span>
-... <span class="k">else</span>:
-...     <span class="nv">print</span> <span class="s1">&#39;</span><span class="s">i&gt;=10</span><span class="s1">&#39;</span>,<span class="nv">i</span>
-...
-<span class="mi">0</span>
-<span class="mi">1</span>
-<span class="mi">2</span>
-<span class="mi">3</span>
-<span class="mi">4</span>
-<span class="mi">5</span>
-<span class="mi">6</span>
-<span class="mi">7</span>
-<span class="mi">8</span>
-<span class="mi">9</span>
-<span class="nv">i</span><span class="o">&gt;=</span><span class="mi">10</span> <span class="mi">10</span>
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span>
-</pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/13/48415483.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/11/48378017.html" rel="bookmark" title="Permalink to python解决sql注入以及特殊字符">
-                                       python解决sql注入以及特殊字符
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/11/03/49619661.html" rel="bookmark" title="Permalink to 一行代码写python">
+                                       一行代码写python
                                     </a>
                                 </h1>
                             </header>
@@ -272,7 +330,7 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
 
-    on 2015-09-11
+    on 2015-11-03
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
@@ -280,76 +338,18 @@
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48378017 </p>
-<p>python往数据库插入数据，</p>
-<p>基础做法是：</p>
-<div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">=</span><span class="n">db</span><span class="p">.</span><span class="k">cursor</span><span class="p">()</span>
-<span class="k">sql</span> <span class="o">=</span> <span class="ss">&quot;INSERT INTO test2(cid, author, content) VALUES (1, &#39;1&#39;, &#39;aa&#39;)&quot;</span>
-<span class="n">cur</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,())</span>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/49619661 </p>
+<p>1、一行代码更新python数组中对象属性满足某一值的元素</p>
+<div class="highlight"><pre><span></span>    <span class="n">arr</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}]</span>
+    <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
+    <span class="k">print</span> <span class="n">arr</span>
 </pre></div>
 
 
-<p>也可以这样：</p>
-<div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">=</span><span class="n">db</span><span class="p">.</span><span class="k">cursor</span><span class="p">()</span>
-<span class="k">sql</span> <span class="o">=</span> <span class="ss">&quot;INSERT INTO test2(cid, author, content) VALUES (%s, &#39;%s&#39;, &#39;%s&#39;)&quot;</span>
-<span class="k">sql</span><span class="o">=</span><span class="k">sql</span><span class="o">%</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;bb …</span></pre></div>
+<p>输出： </p>
+<div class="highlight"><pre><span></span>    <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;d …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/11/48378017.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/08/48296437.html" rel="bookmark" title="Permalink to python将对象写入文件，以及从文件中读取对象">
-                                       python将对象写入文件，以及从文件中读取对象
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2015-09-08
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48296437 </p>
-<p>写入文件代码：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">shelve</span>
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">test.dat&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="o">=</span><span class="p">{}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;123456&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key2&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;eeeeee&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key3&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;ABCDEF&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">dataKey</span> <span class="o">=</span> <span class="s2">&quot;mydata&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="p">[</span><span class="n">dataKey</span><span class="p">]</span><span class="o">=</span><span class="n">data</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span>
-</pre></div>
-
-
-<p>可以看到在D盘生成了一个test.dat的文件</p>
-<p><img alt="image" src="../../../images/20150908205313782.png">  </p>
-<p>读取数据代码： </p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">shelve</span>
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">test.dat …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/08/48296437.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/11/03/49619661.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -358,7 +358,7 @@
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/index4.html">&laquo;</a>
-    Page 5 / 13
+    Page 5 / 14
         <a href="http://chenjiahui.hot-cool.cn/index6.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -379,7 +379,8 @@
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

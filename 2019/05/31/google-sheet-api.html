@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2019/05/31/google-sheet-api.html" />
 
-    <title>Google Sheet授权 | BugManager’s Blog</title>
+    <title>Google Sheet授权 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -101,9 +102,9 @@ spreadsheetId就是编辑sheet页面时，网址中“/d/”与“/edit”之间
 就是#git=后面的值。在上面这个URL中是0  </p>
 <p>5、打开<a href="https://developers.google.com/sheets/api/quickstart/python?hl=zh-cn">quickstart</a>页面<br>
 点击下方的 ENABLE THE GOOGLE SHEETS API<br>
-<img alt="image" src="../../../images/20190603224501.png">  </p>
+<img alt="image" src="http://blogimg.hot-cool.cn/20190603224501.png">  </p>
 <p>在弹窗中点击“DOWNLOAD CLIENT CONFIGURATION”下载credentials.json文件<br>
-<img alt="image" src="../../../images/20190603230052.png">   </p>
+<img alt="image" src="http://blogimg.hot-cool.cn/20190603230052.png">   </p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;installed&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -133,9 +134,9 @@ spreadsheetId就是编辑sheet页面时，网址中“/d/”与“/edit”之间
 将json文件放在quickstart.py同目录下，执行python quickstart.py。<br>
 程序会自动唤起浏览器，访问授权页面。如果没唤起也不要着急，在控制台有打印URL地址，复制后在浏览器打开即可。 <br>
 我已经登录了，没有登录会有登录页面。选择授权哪个账号。  </p>
-<p><img alt="image" src="../../../images/20190603230058.png"><br>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20190603230058.png"><br>
 咦？怎么只认证查看的权限？<br>
-<img alt="image" src="../../../images/20190603231528.png"> <br>
+<img alt="image" src="http://blogimg.hot-cool.cn/20190603231528.png"> <br>
 不要着急，我们调整一下就可以了：  </p>
 <div class="highlight"><pre><span></span><span class="c1">#将</span>
 <span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;https://www.googleapis.com/auth/spreadsheets.readonly&#39;</span><span class="p">]</span>

@@ -5,14 +5,14 @@
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
 
-    <meta property="og:title" content="java虚拟机-内存模型"/>
+    <meta property="og:title" content="java虚拟机(HotSpot)"/>
     <meta property="og:url" content="http://chenjiahui.hot-cool.cn/drafts/javaVM-jmm.html"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="article"/>
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/drafts/javaVM-jmm.html" />
 
-    <title>java虚拟机-内存模型 | BugManager’s Blog</title>
+    <title>java虚拟机(HotSpot) | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -69,7 +70,7 @@
       <header>
         <h1 class="entry-title">
           <a href="http://chenjiahui.hot-cool.cn/drafts/javaVM-jmm.html" rel="bookmark"
-             title="Permalink to java虚拟机-内存模型">java虚拟机-内存模型</a></h1>
+             title="Permalink to java虚拟机(HotSpot)">java虚拟机(HotSpot)</a></h1>
       </header>
       <div class="entry-content">
 <footer class="post-info">
@@ -92,9 +93,9 @@
 
         <h1>JVM</h1>
 <p>JVM主要包含类加载器、执行引擎、内存区域、本地方法接口四个部分。</p>
-<h2>Java内存模型</h2>
+<h1>Java内存模型</h1>
 <p><strong>内存区包含</strong>方法区、虚拟机栈、本地方法栈、堆、程序计数器。如下图：<br>
-<img alt="jmm" src="../../../images/20190529161453.png"></p>
+<img alt="jmm" src="http://blogimg.hot-cool.cn/20190529161453.png"></p>
 <p><strong>方法区</strong><br>
 方法区属于线程共享的内存区域，存放已经被虚拟机加载的类的结构信息、常量池、静态变量、构造函数等信息。    <br>
 <strong>Java堆</strong><br>
@@ -109,14 +110,53 @@ java栈总是和线程关联再一起的，每创建一个线程，jvm就会为�
 如分支、循环、跳转、异常处理、线程恢复等都用到了方法区。 <br>
 <strong>本地方法接口</strong><br>
 主要是为调用c或c++实现的本地方法及放回结果。  </p>
-<h3>jvm内存分配</h3>
-<p>jvm在一开始会一次性分配一块较大的空间，程序执行时需要的内存空间会在这块空间上进行分配和释放，减少了系统调用的次数，从而节省开销。<br>
-Java内存申请有两种：<strong><em>静态内存和动态内存</em></strong>，一般来说栈(stack)就是静态内存，堆(heap)就是动态内存 </p>
+<p>下图来源于网络
+<img alt="jmm" src="http://blogimg.hot-cool.cn/jvmdogdemo.jpg"></p>
+<h1>jvm内存分配</h1>
+<p>jvm在一开始会一次性分配一块较大的空间，程序执行时需要的内存空间会在这块空间上进行分配和释放，减少了系统调用的次数，从而节省开销。  <br>
+Java内存申请有两种：<strong><em>静态内存和动态内存</em></strong>，一般来说栈(stack)就是静态内存，堆(heap)就是动态内存  </p>
+<h2>内存分配策略</h2>
+<p><strong>优先分配到Eden</strong><br>
+<strong>如果有大对象，可能会直接进入到老年代</strong><br>
+<strong>长期存活的对象会被分配到老年代</strong><br>
+<strong>空间分配担保</strong><br>
+<strong>动态对象的年龄判断</strong>  </p>
+<h2>垃圾回收算法</h2>
+<p>￼</p>
+<h3>垃圾检测</h3>
+<div class="highlight"><pre><span></span><span class="err">引用计数法：给对象添加一个引用计数器，被引用时</span><span class="o">+</span><span class="mi">1</span><span class="err">，失效时</span><span class="o">-</span><span class="mi">1</span><span class="err">。</span>
+<span class="err">可达性检测：以根对象为起点，进行搜索，如果对象不可达，则认为该对象为垃圾对象。</span>
+</pre></div>
+
+
+<p>那根节点是怎么确定的？</p>
+<h3>回收算法</h3>
+<div class="highlight"><pre><span></span><span class="err">标记</span><span class="o">-</span><span class="err">清除：将检测到的垃圾对象进行标记，再进行统一删除操作。会出现碎片</span>
+<span class="err">复制：将内存分为两个区域，垃圾回收时，遍历使用区域将仍在使用的对象复制到另一区域。不会出现碎片，但是需要使用</span><span class="mi">2</span><span class="err">倍的内存空间。</span>
+<span class="err">标记</span><span class="o">-</span><span class="err">整理：将检测到的垃圾对象进行标记，将未标记的数据移动到一块。此算法解决了上述两个缺点。</span>
+</pre></div>
+
+
+<h3>分代收集算法：</h3>
+<p>将Java内存划为多块不同的区域，如下图： <br>
+<img alt="分代收集算法" src="http://blogimg.hot-cool.cn/20190620156102301356538.png">
+当有一个新的对象呗new出来时，会被放在Eden，当对象在经历MinorGc后存活时，会被放到survivor区。
+当对象在survivor区域存活一定次数后，会被放到老年代。（如果<code>XX:MaxTenuringThreshold</code>设置的是0时，对象会跳过survivor区直接放进老年代。） </p>
+<p>在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用复制算法，只需要付出少量存活对象的复制成本就可以完成收集。<br>
+在老年代中，因为对象存活率高、没有额外空间对它进行分配担保，就必须使用“标记-清除”或“标记-整理”算法来进行回收。  </p>
+<h3>Java虚拟机调优</h3>
+<p><img alt="java -X" src="http://blogimg.hot-cool.cn/20190621156110974555632.png"><br>
+-XX:NewRatio<br>
+-XX:SurvivorRatio<br>
+-XX:MaxPermSize<br>
+-XX:MaxTenuringThreshold<br>
+<strong>堆内存快照</strong> <br>
+-XX:+HeapDumpOnOutOfMemoryError  </p>
+<p>在目录下生成了java_pid18953.hprof文件
+分析日志，使用<a href="https://www.eclipse.org/mat/downloads.php">Memory Analyzer</a></p>
 <h4>主内存</h4>
 <h4>工作内存</h4>
-<h3>Java</h3>
-<p>下图来源于网络
-<img alt="jmm" src="../../../images/jvmdogdemo.jpg"></p>
+<p>volitail</p>
 
       </div><!-- /.entry-content -->
 

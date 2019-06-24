@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2014/10/27/40518473.html" />
 
-    <title>jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法 | BugManager’s Blog</title>
+    <title>jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -95,10 +96,10 @@
 <p><strong>﻿﻿jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</strong></p>
 <p>工作中用到一个具有多选功能的easyui-datagrid在处理cell的点击事件时，不允许被选中行的需求。</p>
 <p>如下图，点击“查看”时，只是为了查看详细信息，并不是需要选择行。</p>
-<p><img alt="image" src="../../../images/20141027234702859.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20141027234702859.png"></p>
 <p>完成这个需求，其实只需要将datagrid的checkOnSelect属性设置为false就可以了。</p>
 <p>然而，当设置该属性后，新的问题就随之出现了。</p>
-<p><img alt="image" src="../../../images/20141027234813312.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20141027234813312.png"></p>
 <p>目前的办法是使用以下代码去除高亮： （本来是打算处理成checkbox选中的行高亮显示，奈何刚开始使用easyui功力不够）  </p>
 <div class="highlight"><pre><span></span><span class="n">onSelect</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="n">rowData</span><span class="o">){</span>
  <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectRow&#39;</span><span class="o">,</span><span class="n">rowIndex</span><span class="o">);</span>

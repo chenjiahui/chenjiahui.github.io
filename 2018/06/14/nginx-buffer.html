@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="nginx防止控制缓冲区溢出攻击"/>
+    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/2018/06/14/nginx-buffer.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2018/06/14/nginx-buffer.html" />
+
+    <title>nginx防止控制缓冲区溢出攻击 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="http://chenjiahui.hot-cool.cn/2018/06/14/nginx-buffer.html" rel="bookmark"
+             title="Permalink to nginx防止控制缓冲区溢出攻击">nginx防止控制缓冲区溢出攻击</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-06-14
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>缓冲区溢出攻击是利用缓冲区溢出漏洞所进行的攻击行动。
+缓冲区溢出是一种非常普遍、非常危险的漏洞，在各种操作系统、应用软件中广泛存在。利用缓冲区溢出攻击，可以导致程序运行失败、系统关机、重新启动等后果。<br>
+在配置文件中设置自定义缓存可以限制缓冲区溢出攻击的可能性。</p>
+<div class="highlight"><pre><span></span><span class="c1">#body</span>
+client_body_buffer_size  1k<span class="p">;</span>    
+client_max_body_size 1k<span class="p">;</span> 
+<span class="c1">#header</span>
+client_header_buffer_size 1k<span class="p">;</span>   <span class="c1"># 对于绝大多数请求，缓冲区大小为1K就足够了。如果header中存有大量cookie，。</span>
+large_client_header_buffers <span class="m">2</span> 1k<span class="p">;</span>   <span class="c1">#默认是4 8k</span>
+</pre></div>
+
+
+<p><strong><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_buffer_size">client_body_buffer_size</a></strong></p>
+<div class="highlight"><pre><span></span><span class="nv">Sets</span> <span class="nv">buffer</span> <span class="nv">size</span> <span class="k">for</span> <span class="nv">reading</span> <span class="nv">client</span> <span class="nv">request</span> <span class="nv">body</span>. 
+<span class="nv">In</span> <span class="nv">case</span> <span class="nv">the</span> <span class="nv">request</span> <span class="nv">body</span> <span class="nv">is</span> <span class="nv">larger</span> <span class="nv">than</span> <span class="nv">the</span> <span class="nv">buffer</span>, <span class="nv">the</span> <span class="nv">whole</span> <span class="nv">body</span> <span class="nv">or</span> <span class="nv">only</span> <span class="nv">its</span> <span class="nv">part</span> <span class="nv">is</span> <span class="nv">written</span> <span class="nv">to</span> <span class="nv">a</span> <span class="nv">temporary</span> <span class="nv">file</span>. 
+<span class="nv">By</span> <span class="nv">default</span>, <span class="nv">buffer</span> <span class="nv">size</span> <span class="nv">is</span> <span class="nv">equal</span> <span class="nv">to</span> <span class="nv">two</span> <span class="nv">memory</span> <span class="nv">pages</span>. 
+<span class="nv">This</span> <span class="nv">is</span> <span class="mi">8</span><span class="nv">K</span> <span class="nv">on</span> <span class="nv">x86</span>, <span class="nv">other</span> <span class="mi">32</span><span class="o">-</span><span class="nv">bit</span> <span class="nv">platforms</span>, <span class="nv">and</span> <span class="nv">x86</span><span class="o">-</span><span class="mi">64</span>. <span class="nv">It</span> <span class="nv">is</span> <span class="nv">usually</span> <span class="mi">16</span><span class="nv">K</span> <span class="nv">on</span> <span class="nv">other</span> <span class="mi">64</span><span class="o">-</span><span class="nv">bit</span> <span class="nv">platforms</span>.
+</pre></div>
+
+
+<p>设置读取客户端请求主体的缓冲区大小。如果请求主体大小大于该值，则会将整个请求体或一部分写入临时文件。
+默认情况下，缓冲区大小等于两个<a href="http://c.biancheng.net/view/1267.html">内存页</a>。
+在32位平台上默认值是8K。在64位平台上默认值是16K。</p>
+<p><strong><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_buffer_size">client_max_body_size</a></strong></p>
+<div class="highlight"><pre><span></span><span class="nv">Sets</span> <span class="nv">the</span> <span class="nv">maximum</span> <span class="nv">allowed</span> <span class="nv">size</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">client</span> <span class="nv">request</span> <span class="nv">body</span>, <span class="nv">specified</span> <span class="nv">in</span> <span class="nv">the</span> “<span class="nv">Content</span><span class="o">-</span><span class="nv">Length</span>” <span class="nv">request</span> <span class="nv">header</span> <span class="nv">field</span>. 
+<span class="k">If</span> <span class="nv">the</span> <span class="nv">size</span> <span class="nv">in</span> <span class="nv">a</span> <span class="nv">request</span> <span class="nv">exceeds</span> <span class="nv">the</span> <span class="nv">configured</span> <span class="nv">value</span>, <span class="nv">the</span> <span class="mi">413</span> <span class="ss">(</span><span class="nv">Request</span> <span class="nv">Entity</span> <span class="nv">Too</span> <span class="nv">Large</span><span class="ss">)</span> <span class="nv">error</span> <span class="nv">is</span> <span class="nv">returned</span> <span class="nv">to</span> <span class="nv">the</span> <span class="nv">client</span>. 
+<span class="nv">Please</span> <span class="nv">be</span> <span class="nv">aware</span> <span class="nv">that</span> <span class="nv">browsers</span> <span class="nv">cannot</span> <span class="nv">correctly</span> <span class="nv">display</span> <span class="nv">this</span> <span class="nv">error</span>. <span class="nv">Setting</span> <span class="nv">size</span> <span class="nv">to</span> <span class="mi">0</span> <span class="nv">disables</span> <span class="nv">checking</span> <span class="nv">of</span> <span class="nv">client</span> <span class="nv">request</span> <span class="nv">body</span> <span class="nv">size</span>.
+</pre></div>
+
+
+<p>设置客户端请求正文的最大允许大小，这个值对应请求头的“Content-Length”字段。
+如果请求中的大小超过配置的值，则会返回413错误(Request Entity Too Large)。
+设置size为0将禁用检查客户端请求正文大小。注意，<font color="red">浏览器无法正确显示此错误。</font></p>
+<p><strong><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#client_header_buffer_size">client_header_buffer_size</a></strong></p>
+<div class="highlight"><pre><span></span><span class="nv">Sets</span> <span class="nv">buffer</span> <span class="nv">size</span> <span class="k">for</span> <span class="nv">reading</span> <span class="nv">client</span> <span class="nv">request</span> <span class="nv">header</span>. <span class="k">For</span> <span class="nv">most</span> <span class="nv">requests</span>, <span class="nv">a</span> <span class="nv">buffer</span> <span class="nv">of</span> <span class="mi">1</span><span class="nv">K</span> <span class="nv">bytes</span> <span class="nv">is</span> <span class="nv">enough</span>. 
+<span class="nv">However</span>, <span class="k">if</span> <span class="nv">a</span> <span class="nv">request</span> <span class="nv">includes</span> <span class="nv">long</span> <span class="nv">cookies</span>, <span class="nv">or</span> <span class="nv">comes</span> <span class="nv">from</span> <span class="nv">a</span> <span class="nv">WAP</span> <span class="nv">client</span>, <span class="nv">it</span> <span class="nv">may</span> <span class="nv">not</span> <span class="nv">fit</span> <span class="nv">into</span> <span class="mi">1</span><span class="nv">K</span>.
+ <span class="k">If</span> <span class="nv">a</span> <span class="nv">request</span> <span class="nv">line</span> <span class="nv">or</span> <span class="nv">a</span> <span class="nv">request</span> <span class="nv">header</span> <span class="nv">field</span> <span class="nv">does</span> <span class="nv">not</span> <span class="nv">fit</span> <span class="nv">into</span> <span class="nv">this</span> <span class="nv">buffer</span> <span class="k">then</span> <span class="nv">larger</span> <span class="nv">buffers</span>, <span class="nv">configured</span> <span class="nv">by</span> <span class="nv">the</span> <span class="nv">large_client_header_buffers</span> <span class="nv">directive</span>, <span class="nv">are</span> <span class="nv">allocated</span>.
+</pre></div>
+
+
+<p>设置读取客户端请求头时缓冲区的大小。对于大多数请求，1K字节的缓冲区就足够了。
+但是，如果请求包含长cookie，1K可能不够用。
+当设置的缓冲区不够用时，则会分配<a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#large_client_header_buffers">large_client_header_buffers</a>指令配置的较大缓冲区 。</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script> -->
+	
+</body>
+</html>

@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html" />
 
-    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog</title>
+    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,8 +71,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2018/04/08/java-LinkedHashMap.html" rel="bookmark" title="Permalink to Java LinkedHashMap">
-                                       Java LinkedHashMap
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/06/14/nginx-buffer.html" rel="bookmark" title="Permalink to nginx防止控制缓冲区溢出攻击">
+                                       nginx防止控制缓冲区溢出攻击
                                     </a>
                                 </h1>
                             </header>
@@ -81,89 +82,33 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
 
-    on 2018-04-08
+    on 2018-06-14
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <h2>LinkedHashMap简介</h2>
-<p>平时工作中大多数场景一般只要没有多线程都是直接使用Hashmap就够用了。我之前面试过一些Java开发，有一些一直都只用Hashmap，也不知道其他Map的特行性。<br>
-但是Hashmap有个问题，迭代取出数据时是按照table+entry链表的顺序迭代的数据，和put数据时的顺序并无关系。 </p>
-<p>如果使用场景，需要map的元素在遍历时有序。我们就需要使用LinkedHashMap了。  </p>
-<h2>实现原理</h2>
-<p>LinkedHashMap增加的3个变量：  </p>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * The head (eldest) of the doubly linked list.</span>
-<span class="cm"> * 链表的头</span>
-<span class="cm"> */</span>
-<span class="kd">transient</span> <span class="n">LinkedHashMap</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">head</span><span class="o">;</span>
-
-<span class="cm">/**</span>
-<span class="cm"> * The tail (youngest) of the doubly linked list.</span>
-<span class="cm"> * 链表的尾</span>
-<span class="cm"> */</span>
-<span class="kd">transient</span> <span class="n">LinkedHashMap</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">tail</span><span class="o">;</span>
-
-<span class="cm">/**</span>
-<span class="cm"> * The iteration ordering method for this …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/04/08/java-LinkedHashMap.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2018/04/01/java-HashMap.html" rel="bookmark" title="Permalink to Java HashMap">
-                                       Java HashMap
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2018-04-01
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <h2>HashMap简介</h2>
-<p>HashMap是一个散列表，它存储的内容是键值对(key-value)映射。继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。<br>
-HashMap的实现不是同步的，这意味着它不是线程安全的。  </p>
-<h2>使用</h2>
-<p>HashMap的构造函数:</p>
-<div class="highlight"><pre><span></span><span class="c1">// 默认构造函数</span>
-<span class="n">HashMap</span><span class="o">()</span>
-<span class="c1">// 指定“容量大小”的构造函数</span>
-<span class="n">HashMap</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">)</span>
-<span class="c1">// 指定“容量大小”和“加载因子”的构造函数</span>
-<span class="n">HashMap</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">,</span> <span class="kt">float</span> <span class="n">loadFactor</span><span class="o">)</span>
-<span class="c1">// 包含“子Map”的构造函数</span>
-<span class="n">HashMap</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">K</span><span class="o">,</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">)</span>
+</footer><!-- /.post-info -->                                <p>缓冲区溢出攻击是利用缓冲区溢出漏洞所进行的攻击行动。
+缓冲区溢出是一种非常普遍、非常危险的漏洞，在各种操作系统、应用软件中广泛存在。利用缓冲区溢出攻击，可以导致程序运行失败、系统关机、重新启动等后果。<br>
+在配置文件中设置自定义缓存可以限制缓冲区溢出攻击的可能性。</p>
+<div class="highlight"><pre><span></span><span class="c1">#body</span>
+client_body_buffer_size  1k<span class="p">;</span>    
+client_max_body_size 1k<span class="p">;</span> 
+<span class="c1">#header</span>
+client_header_buffer_size 1k<span class="p">;</span>   <span class="c1"># 对于绝大多数请求，缓冲区大小为1K就足够了。如果header中存有大量cookie，。</span>
+large_client_header_buffers <span class="m">2</span> 1k<span class="p">;</span>   <span class="c1">#默认是4 8k</span>
 </pre></div>
 
 
-<h2>实现原理</h2>
-<p>1.8版本的HashMap和1.7版本的HashMap实现上有区别。底层数据结构1.7由数组+链表组成 …</p>
+<p><strong><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_buffer_size">client_body_buffer_size</a></strong></p>
+<div class="highlight"><pre><span></span><span class="nv">Sets</span> <span class="nv">buffer</span> <span class="nv">size</span> <span class="k">for</span> <span class="nv">reading</span> <span class="nv">client</span> <span class="nv">request</span> <span class="nv">body</span>. 
+<span class="nv">In</span> <span class="nv">case</span> <span class="nv">the</span> <span class="nv">request</span> <span class="nv">body</span> <span class="nv">is</span> <span class="nv">larger</span> <span class="nv">than</span> <span class="nv">the</span> <span class="nv">buffer</span>, <span class="nv">the</span> <span class="nv">whole</span> <span class="nv">body</span> <span class="nv">or</span> <span class="nv">only …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/04/01/java-HashMap.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/06/14/nginx-buffer.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -173,8 +118,8 @@ HashMap的实现不是同步的，这意味着它不是线程安全的。  </p>
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2018/03/26/java-map.html" rel="bookmark" title="Permalink to Java Map">
-                                       Java Map
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/06/10/Java-TreeMap.html" rel="bookmark" title="Permalink to Java TreeMap">
+                                       Java TreeMap
                                     </a>
                                 </h1>
                             </header>
@@ -186,166 +131,7 @@ HashMap的实现不是同步的，这意味着它不是线程安全的。  </p>
 
     in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2018-03-26
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <h2>前言</h2>
-<p>Map是java.util中的集合类，另一个和它一样常用的是List。<br>
-Map提供了一个方便的数据结构，用来存储键值对。<br>
-Map根据键得到值，因此不允许键重复(重复就覆盖了)，但允许值重复。<br>
-它有四个实现类，分别是HashMap、Hashtable、LinkedHashMap和TreeMap。  </p>
-<h3><strong>Hashmap</strong></h3>
-<p>HashMap是最常用的Map，它根据键的HashCode值存储数据，根据键可以直接获取它的值，具有很快的访问速度，遍历时，取得数据的顺序是完全随机的。    <br>
-HashMap最多只允许一条记录的键为null; <br>
-允许多条记录的值为null;<br>
-HashMap不支持线程的同步，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。
-如果需要同步，可以用 Collections的synchronizedMap方法使HashMap具有同步的能力，或者使用ConcurrentHashMap。 <br>
-深入解析：<a href="java-HashMap.html">HashMap</a>  </p>
-<h3><strong>Hashtable</strong></h3>
-<p>Hashtable与HashMap类似都实现了Map、Cloneable, Serializable接口:<br>
-Hashtable继承自Dictionary类，HashMap继承自AbstractMap类。  <br>
-Hashtable不允许记录的键或者值为null，HashMap允许记录的键和值为null。<br>
-Hashtable初始容量为11，HashMap的初始1容量为16。
-Hashtable在链表变大时，不会改变链表结构，HashMap在链表长度达到<code>TREEIFY_THRESHOLD=8</code>时会转为红黑树(JDK1.8 …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/03/26/java-map.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/03/24/65627740.html" rel="bookmark" title="Permalink to python使用代码对redis的key进行集中管理">
-                                       python使用代码对redis的key进行集中管理
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2017-03-24
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/65627740 </p>
-<p>平时工作中会经常用到一些全局的常量，如redis的key值命名等。</p>
-<p>可能会出现不同开发人员使用同一个key，导致缓存被覆盖等情况。</p>
-<p>针对这种情况，可以使用如下的方式，实现一个简单的集中管理。</p>
-<div class="highlight"><pre><span></span><span class="c1"># /usr/bin/env python</span>
-<span class="c1"># coding=utf-8</span>
-
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Created on 2017-03-17</span>
-
-<span class="sd">    @Author: Bug管理员</span>
-<span class="sd">    @note: 为了便于管理，将redis涉及到的key统一由该类管理</span>
-<span class="sd">    @demo: 调用示例：RdbKeyUtil.index_media_key(1)</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="k">class</span> <span class="nc">RedisKeyUtil</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-
-    <span class="n">USER_KEY</span> <span class="o">=</span> <span class="s1">&#39;test_key:</span><span class="si">%s</span><span class="s1">&#39;</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/03/24/65627740.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/02/20/56009091.html" rel="bookmark" title="Permalink to tornado_mysql的pool使用事务的方法。">
-                                       tornado_mysql的pool使用事务的方法。
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2017-02-20
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/56009091 </p>
-<div class="highlight"><pre><span></span><span class="c1">#/usr/bin/env python</span>
-<span class="c1">#coding=utf-8</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Created on 2017-02-20</span>
-
-<span class="sd">@Author: Bug管理员</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tornado_mysql</span> <span class="kn">import</span> <span class="n">pools</span>
-
-<span class="n">data_time</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-
-<span class="k">def</span> <span class="nf">create_pool</span><span class="p">():</span>
-    <span class="k">print</span> <span class="n">DB_CONN</span><span class="o">.</span><span class="n">PORT</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_USER</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_PASSWORD</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">DBNAME</span>
-    <span class="n">pool_db</span> <span class="o">=</span> <span class="n">pools</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span>
-        <span class="nb">dict</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">DB_CONN …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/02/20/56009091.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/02/09/54947198.html" rel="bookmark" title="Permalink to JAVA生成总和及个数确定的一组随机数(抢红包)">
-                                       JAVA生成总和及个数确定的一组随机数(抢红包)
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2017-02-09
+    on 2018-06-10
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
@@ -353,28 +139,229 @@ Hashtable在链表变大时，不会改变链表结构，HashMap在链表长度�
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/54947198 </p>
-<p>许久未碰java，写的有点拙。</p>
-<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
+</footer><!-- /.post-info -->                                <h2>TreeMap简介</h2>
+<p>TreeMap是基于红黑树实现的。
+它实现NavigableMap接口，而NavigableMap接口是继承自SortMap接口的，所以TreeMap能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator 遍历TreeMap时，得到的记录是排过序的。 </p>
+<h2>特点</h2>
+<p>TreeMap适用于按自然顺序或自定义顺序遍历键(key)，且有subMap方法支持Map的分割。  </p>
+<h2>构造函数</h2>
+<div class="highlight"><pre><span></span><span class="c1">// 默认构造函数。使用默认比较器，TreeMap中的元素按照自然排序进行排列。</span>
+<span class="kd">public</span> <span class="nf">TreeMap</span><span class="o">()</span>
 
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="p">;</span>
-<span class="o">/**</span>
- <span class="o">*</span> 
- <span class="o">*</span> <span class="nd">@author</span> <span class="n">chenjiahui</span>
- <span class="o">*</span> <span class="nd">@2017</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">09</span>
- <span class="o">*</span>
- <span class="o">*/</span>
+<span class="c1">// 创建的TreeMap包含Map</span>
+<span class="kd">public</span> <span class="nf">TreeMap</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">K</span><span class="o">,</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">m</span><span class="o">)</span>
 
-<span class="n">public</span> <span class="k">class</span> <span class="nc">Test</span> <span class="p">{</span>
+<span class="c1">// 创建TreeMap时使用指定比较器</span>
+<span class="kd">public</span> <span class="nf">TreeMap</span><span class="o">(</span><span class="n">Comparator</span><span class="o">&lt;?</span> <span class="kd">super</span> <span class="n">K</span><span class="o">&gt;</span> <span class="n">comparator</span><span class="o">)</span>
 
-    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// 根据传入的SortedMap，创建的TreeSet，TreeSet将会使用SortedMap的比较器</span>
+<span class="kd">public</span> <span class="nf">TreeMap</span><span class="o">(</span><span class="n">SortedMap</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">m</span><span class="o">)</span> 
+</pre></div>
 
-        <span class="n">splitRedPacket</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">41 …</span></pre></div>
+
+<h2><strong>put</strong></h2>
+<div class="highlight"><pre><span></span><span class="c1">//添加元素</span>
+<span class="kd">public</span> <span class="n">V …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/02/09/54947198.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/06/10/Java-TreeMap.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/06/04/nginx-securety.html" rel="bookmark" title="Permalink to nginx安全配置">
+                                       nginx安全配置
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-06-04
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>nginx作为一个高性能的HTTP和反向代理web服务器，许多公司都在使用它。任何软件都存在漏洞bug。 
+一般来说，不同版本的nginx都对应着一些不同的漏洞。所以，隐藏nginx的版本号可以提高nginx的安全性。</p>
+<h2>隐藏版本号</h2>
+<p>配置前，我们访问一个不存在的路径试一下：<code>http://chenjiahui.hot-cool.cn/abcdef</code><br>
+<img alt="配置前" src="http://blogimg.hot-cool.cn/20190612156032948234497.png"><br>
+我们用的是nginx 1.10.3，而且还可以看到，服务器是Ubuntu的。<br>
+现在我们先把nginx版本号隐藏掉。找到nginx配置文件。<br>
+如果是源码安装，配置文件会在<code>/usr/local/nginx/conf/nginx.conf</code>下  </p>
+<div class="highlight"><pre><span></span>    server_tokens off<span class="p">;</span> <span class="c1"># 这个值，默认是on</span>
+</pre></div>
+
+
+<p>配置完成，可以看到，信息被隐藏了：<br>
+<img alt="配置后" src="http://blogimg.hot-cool.cn/20190612156032992216537.png"> </p>
+<p>其实，不隐藏也没关系，我们下面会有个更cool的方法。  </p>
+<h2>给nginx穿一件吉利服</h2>
+<p>中午休息时经常听办公室同事说到吉利服，起初我还以为是蒺藜服，毕竟是伪装成一身的植物嘛😅。<br>
+想知道为什么叫吉利服，自己看下吧：<a href="https://baike.baidu.com/item/%E5%90%89%E5%88%A9%E6%9C%8D">百科-吉利服</a> </p>
+<p>要给nginx穿上吉利服 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/06/04/nginx-securety.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/05/30/nginx-https.html" rel="bookmark" title="Permalink to nginx开启HTTPS">
+                                       nginx开启HTTPS
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-05-30
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <h2>https</h2>
+<p>https是以安全为目标的HTTP通道，简单讲是HTTP的安全版。HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。
+https可用于安全的HTTP数据传输。</p>
+<p>HTTPS和HTTP的区别主要为以下四点：
+一、https协议需要使用证书验证身份，，证书可以自行生成(自己生成ca证书，不受到浏览器信任)，也可以ca机构申请。
+二、http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。
+三、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。
+四、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+<h2>配置https</h2>
+<p><strong>ca证书</strong>
+1、通过openssl生成证书签名
+因为自建不受浏览器信任，而且目前阿里云有免费的证书可以购买。关于openssl生成证书的步骤就简单的示范一下，不过多叙述。<br>
+想了解一下的可以看一下，推荐直接去阿里云购买免费的证书。<a href="https://www.aliyun.com/product/cas/">SSL证书-传送门</a>  </p>
+<p><strong>安装openssl</strong>
+使用命令<code>which openssl</code>或者<code>openssl version</code>查看是否安装有openssl。我的已经安装了 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/05/30/nginx-https.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/05/21/nginx-moudle.html" rel="bookmark" title="Permalink to nginx增减模块">
+                                       nginx增减模块
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-05-21
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>nginx拥有非常丰富的功能模块,<a href="http://nginx.org/en/docs/">官方文档</a><br>
+但是默认安装的nginx并不是包含所有模块的，而默认安装的模块中也有一些不需要用到的。我们可以选择去掉。  <br>
+呃！那么怎么添加、剔除模块呢？我们可以通过命令<code>./configure --help</code>查看一下:   </p>
+<div class="highlight"><pre><span></span>ubuntu@VM-0-6-ubuntu:~/cjh/nginx-1.14.2$ ./configure --help<span class="p">|</span>grep with
+  ... 
+  ... 
+  --with-http_ssl_module             <span class="nb">enable</span> ngx_http_ssl_module
+  ...
+  --without-http_autoindex_module    disable ngx_http_autoindex_module
+  ...
+  ...
+</pre></div>
+
+
+<p>比如我们打算去掉autoindex模块，增加ssl模块，我们可以在源码目录下输入以下命令（这里我们只是举个例子，大家根据自己的情况添加删除模块）</p>
+<div class="highlight"><pre><span></span>./configure --without-http_autoindex_module --without-http_ssi_module
+</pre></div>
+
+
+<p>编译后最后执行<code>make&amp;&amp;make install</code>安装    </p>
+<p>如果已经安装了nginx查看看nginx增加或减少了哪些模块，可以通过指令查看：</p>
+<div class="highlight"><pre><span></span>ubuntu@VM-0-6-ubuntu:nginx -V
+nginx version: nginx …</pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/05/21/nginx-moudle.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/05/12/nginx.html" rel="bookmark" title="Permalink to nginx的使用">
+                                       nginx的使用
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-05-12
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>Nginx是一种轻量级，高性能的Web服务器/反向代理和电子邮件（IMAP / POP3）代理。
+它可以在UNIX、Linux、MacOS、Solaris等类Linux服务器和Windows上运行。
+Nginx是为解决C10K问题而编写的少数服务器之一。
+与传统服务器不同，Nginx不依赖线程来处理请求。相反，它使用扩展性更强的事件驱动（异步）架构。
+nginx生态非常丰富，它是一款高度模块化的应用程序，拥有大量的第三方模块。    </p>
+<p>自2015年接触nginx以来，陆陆续续的使用了nginx中的许多功能。一直想对这些功能的使用做一个记录。</p>
+<h2>版本选择</h2>
+<p>开源版：nginx.org 免费，很多公司及个人都在使用。
+商业版：nginx.com 由nginx作者成立商业公司在运营监控，技术支持上有很多优势，但是收费的。
+Tengine：阿里巴巴在nginx主干代码上二次开发的产物，很多功能领先于nginx官方版本，无法对nginx的官方版本同步升级
+没有特殊的需求，我们就下载个开源版的吧，当下载时，选择稳定版。一般<strong>双数</strong>的版本为稳定版。</p>
+<h2>基础命令</h2>
+<div class="highlight"><pre><span></span><span class="c1">#启动或重启前检查配置是否正确，非常重要。修改配置后切记要先测试再重启 …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/05/12/nginx.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -383,7 +370,7 @@ Hashtable在链表变大时，不会改变链表结构，HashMap在链表长度�
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">&laquo;</a>
-    Page 2 / 12
+    Page 2 / 14
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan3.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -404,7 +391,8 @@ Hashtable在链表变大时，不会改变链表结构，HashMap在链表长度�
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

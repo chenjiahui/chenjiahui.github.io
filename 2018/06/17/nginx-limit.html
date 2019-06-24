@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="nginx限流配置"/>
+    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/2018/06/17/nginx-limit.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2018/06/17/nginx-limit.html" />
+
+    <title>nginx限流配置 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="http://chenjiahui.hot-cool.cn/2018/06/17/nginx-limit.html" rel="bookmark"
+             title="Permalink to nginx限流配置">nginx限流配置</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-06-17
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <div class="highlight"><pre><span></span><span class="nt">limit_req_zone</span> <span class="o">$</span><span class="nt">binary_remote_addr</span> <span class="nt">zone</span><span class="o">=</span><span class="nt">one</span><span class="p">:</span><span class="nd">10m</span> <span class="nt">rate</span><span class="o">=</span><span class="nt">1r</span><span class="o">/</span><span class="nt">s</span><span class="o">;</span>
+</pre></div>
+
+
+<p><strong>$binary_remote_addr</strong>，表示通过请求的ip地址来做限制，即：限制同一客户端ip地址。
+<strong>zone=one:10m</strong>，表示生成一个名字为one(这个可以是随便什么有意义的名字one是官网示例上的名字)，大小为10M的内存区域，用来存储访问的频次信息。
+<strong>rate=1r/s</strong>，表示允许相同标识的客户端的访问频次，这里限制的是每秒1次，每秒1次，似乎不太科学，我们就配置成5r/s吧。
+嗯，这样感觉挺好的了。但是！某些特殊的场景，比如：在做APP的api服务时，当开始打开APP时，往往会发起比较多的请求。<br>
+可能会导致同一ip的请求突然爆发，5r/s就可能不够了。我们可以配置一个缓冲，当请求爆发时，把超过访问频次的请求放在缓冲区里等待处理。 <br>
+这个时候，我们的配置是长这样的</p>
+<div class="highlight"><pre><span></span>limit_req_zone <span class="nv">$binary_remote_addr</span> <span class="nv">zone</span><span class="o">=</span>myBucket:10m <span class="nv">rate</span><span class="o">=</span>5r/s<span class="p">;</span>
+server <span class="o">{</span>
+    location  /test/burst/ <span class="o">{</span>
+        limit_req <span class="nv">zone</span><span class="o">=</span>one <span class="nv">burst</span><span class="o">=</span><span class="m">5</span><span class="p">;</span>
+    <span class="o">}</span>
+</pre></div>
+
+
+<p>嗯，这样感觉又挺好了。可是测试同时来10个请求时，后面5个请求响应速度会慢1秒左右。<br>
+原因是<code>rate=5r/s</code>配置了1秒最多处理5个请求，虽然配置了<code>burst=5</code>可以缓存5个请求。
+但是，请求不会马上被处理，需要等待处理能力限制恢复后才会继续处理，即大约1秒的时间。<br>
+我们可以加上<code>nodelay</code>来告诉nginx，如果请求处理完了，如果有缓存的请求不需要等待，立即处理。<br>
+配置：</p>
+<div class="highlight"><pre><span></span>limit_req_zone <span class="nv">$binary_remote_addr</span> <span class="nv">zone</span><span class="o">=</span>myBucket:10m <span class="nv">rate</span><span class="o">=</span>5r/s<span class="p">;</span>
+server <span class="o">{</span>
+    location  /test/burst/ <span class="o">{</span>
+        limit_req <span class="nv">zone</span><span class="o">=</span>one <span class="nv">burst</span><span class="o">=</span><span class="m">5</span> nodelay<span class="p">;</span>
+    <span class="o">}</span>
+</pre></div>
+
+
+<p>这个时候我们在/test/burst/下的接口，能够在1秒内处理10r/s的请求了（rate + burst）。  </p>
+<p>官网介绍nginx限流的地址：<a href="http://nginx.org/en/docs/http/ngx_http_limit_req_module.html">ngx_http_limit_req_module</a></p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script> -->
+	
+</body>
+</html>

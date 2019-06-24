@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html" />
 
-    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog</title>
+    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,8 +71,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/04/26/24512669.html" rel="bookmark" title="Permalink to eclipse设置${user}">
-                                       eclipse设置${user}
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/05/45502187.html" rel="bookmark" title="Permalink to activiti表单设置节点的默认变量">
+                                       activiti表单设置节点的默认变量
                                     </a>
                                 </h1>
                             </header>
@@ -81,32 +82,33 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2014-04-26
+    on 2015-05-05
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/eclipse.html">eclipse</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/24512669 </p>
-<h3>设置eclipse中的${user}</h3>
-<p>eclipse中想要在创建java文件的时候显示@author "自己的名字"，</p>
-<p>在window -&gt; preference -&gt; java -&gt; code typle -&gt; code template -&gt; Code -&gt; New Java files ，点击Edit ，加入如下代码即可：</p>
-<p>/<em><em><br>
-</em> @author ${user} //创建者名字<br>
-</em> ${date} ${time} //创建时间<br>
-<em> <br>
-</em>/</p>
-<p>应用修改，这时，你会发现新建的java文件中@author 后面是administrator（windows系统的用户字）,解决方法如下。</p>
-<p>需要设置${user}变量</p>
-<p>打开eclipse目录下的eclipse.ini文件，添加上一行。</p>
-<p>-Duser.name …</p>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45502187 </p>
+<p>最近使用activiti，需求中需要用到表单设置节点的默认变量。源码如下：</p>
+<p>在bpmn文件中，选中节点，配置表单属性：</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150507135724948.png"></p>
+<p>类型是enum的，可以下方设置可以选值，如下：</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150507140143022.png"></p>
+<p>当流程走到该节点时使用下列代码获取表单信息：</p>
+<div class="highlight"><pre><span></span><span class="nv">ProcessEngine</span> <span class="nv">processEngine</span> <span class="o">=</span> <span class="nv">ProcessEngines</span>.<span class="nv">getDefaultProcessEngine</span><span class="ss">()</span><span class="c1">;</span>
+        <span class="nv">String</span> <span class="nv">taskId</span>  <span class="o">=</span> <span class="s2">&quot;</span><span class="s">1102</span><span class="s2">&quot;</span><span class="c1">;</span>
+        <span class="nv">String</span> <span class="nv">processDefinitionId</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">myProcess:2:904</span><span class="s2">&quot;</span><span class="c1">;</span>
+        <span class="nv">List</span><span class="o">&lt;</span><span class="nv">FormProperty</span><span class="o">&gt;</span> <span class="nv">list</span> <span class="o">=</span> <span class="nv">processEngine</span>.<span class="nv">getFormService</span><span class="ss">()</span>.<span class="nv">getTaskFormData</span><span class="ss">(</span><span class="nv">taskId</span><span class="ss">)</span>.<span class="nv">getFormProperties</span><span class="ss">()</span><span class="c1">;</span>
+
+        <span class="k">if</span><span class="ss">(</span><span class="nv">list</span><span class="o">!=</span><span class="nv">null</span> <span class="o">&amp;&amp;</span> <span class="nv">list</span>.<span class="nv">size</span><span class="ss">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="ss">)</span>{
+            <span class="k">for</span><span class="ss">(</span><span class="nv">FormProperty</span> <span class="nv">formProperty …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/04/26/24512669.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/05/45502187.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -116,8 +118,58 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/03/28/22393821.html" rel="bookmark" title="Permalink to Flex DataGrid行自定义颜色">
-                                       Flex DataGrid行自定义颜色
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/02/03/linux-tar.html" rel="bookmark" title="Permalink to linux tar命令">
+                                       linux tar命令
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
+
+    on 2015-02-03
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <h2>tar命令使用</h2>
+<p>Linux下最常用的打包程序就是tar了，使用tar程序打出来的包我们常称为tar包，tar包文件的命令通常都是以.tar结尾的。
+生成tar包后，就可以用其它的程序来进行压缩了。  </p>
+<p>选项：  </p>
+<div class="highlight"><pre><span></span><span class="o">-</span><span class="k">c</span>  <span class="err">建立新的归档文件</span>
+<span class="o">-</span><span class="n">r</span>  <span class="err">向归档文件末尾追加文件</span>
+<span class="o">-</span><span class="n">x</span>  <span class="err">从归档文件中解出文件</span>
+<span class="o">-</span><span class="n">O</span>  <span class="err">将文件解开到标准输出</span>
+<span class="o">-</span><span class="n">v</span>  <span class="err">处理过程中输出相关信息</span>
+<span class="o">-</span><span class="n">f</span>  <span class="err">对普通文件操作</span>
+<span class="o">-</span><span class="n">z</span>  <span class="err">调用</span><span class="n">gzip</span><span class="err">来压缩归档文件，与</span><span class="o">-</span><span class="n">x</span><span class="err">联用时调用</span><span class="n">gzip</span><span class="err">完成解压缩</span>
+<span class="o">-</span><span class="n">Z</span>  <span class="err">调用</span><span class="n">compress</span><span class="err">来压缩归档文件，与</span><span class="o">-</span><span class="n">x</span><span class="err">联用时调用</span><span class="n">compress</span><span class="err">完成解压缩</span>
+</pre></div>
+
+
+<h2>tar压缩</h2>
+<p>1.将当前目录下<code>*.txt</code>文件打包并压缩归档到文件<code>test.tar.gz</code>，我们可以使用  </p>
+<div class="highlight"><pre><span></span>tar -czvf test …</pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/02/03/linux-tar.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2014/10/27/40518473.html" rel="bookmark" title="Permalink to jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法">
+                                       jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法
                                     </a>
                                 </h1>
                             </header>
@@ -129,38 +181,38 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2014-03-28
+    on 2014-10-27
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/jquery-easyui.html">jquery-easyui</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/javascript.html">javascript</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/22393821">http://blog.csdn.net/i_chenjiahui/article/details/22393821</a></p>
-<p>以前在Flex开发中用到了表格要自定义行颜色的情况。</p>
-<p><img alt="image" src="../../../images/20140328132526203.png"></p>
-<div class="highlight"><pre><span></span><span class="o">/**</span>
- <span class="o">*</span> <span class="n">ActionScript</span> <span class="nb">file</span> 
- <span class="o">*</span> <span class="nd">@author</span> <span class="n">chenjiahui</span>
- <span class="o">*/</span> 
-<span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">xxx</span><span class="o">.</span><span class="n">dm</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">jsjhcNew</span>
-<span class="p">{</span>
- <span class="kn">import</span> <span class="nn">flash.display.Sprite</span><span class="p">;</span>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/40518473 </p>
+<p><strong>﻿﻿jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</strong></p>
+<p>工作中用到一个具有多选功能的easyui-datagrid在处理cell的点击事件时，不允许被选中行的需求。</p>
+<p>如下图，点击“查看”时，只是为了查看详细信息，并不是需要选择行。</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20141027234702859.png"></p>
+<p>完成这个需求，其实只需要将datagrid的checkOnSelect属性设置为false就可以了。</p>
+<p>然而，当设置该属性后，新的问题就随之出现了。</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20141027234813312.png"></p>
+<p>目前的办法是使用以下代码去除高亮： （本来是打算处理成checkbox选中的行高亮显示，奈何刚开始使用easyui功力不够）  </p>
+<div class="highlight"><pre><span></span><span class="n">onSelect</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="n">rowData</span><span class="o">){</span>
+ <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectRow&#39;</span><span class="o">,</span><span class="n">rowIndex</span><span class="o">);</span>
+<span class="o">},</span>
+<span class="n">onCheckAll</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rows</span><span class="o">){</span>
+ <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectAll&#39;</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
 
- <span class="kn">import</span> <span class="nn">mx.controls.AdvancedDataGrid</span><span class="p">;</span>
 
- <span class="n">public</span> <span class="k">class</span> <span class="nc">RowColorAdvancedDataGrid</span> <span class="n">extends</span> <span class="n">AdvancedDataGrid</span>
- <span class="p">{</span>
-  <span class="n">public</span> <span class="n">function</span> <span class="n">RowColorAdvancedDataGrid</span><span class="p">()</span>
-  <span class="p">{</span>
-   <span class="nb">super</span><span class="p">();</span>
-  <span class="p">}</span>
-  <span class="n">override</span> <span class="n">protected</span> <span class="n">function</span> <span class="n">drawRowBackground</span><span class="p">(</span>
-   <span class="n">s</span><span class="p">:</span><span class="n">Sprite</span><span class="p">,</span> <span class="n">rowIndex</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">Number</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span><span class="n">Number</span><span class="p">,</span> 
-   <span class="n">color …</span></pre></div>
+<p>使用以上代码之后，要获取到checkbox选中的所以行数据，则使用以下代码：</p>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">checkedItems</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#datagrid2 …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/03/28/22393821.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/10/27/40518473.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -170,8 +222,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/03/27/22323113.html" rel="bookmark" title="Permalink to 【code】java_方法执行sql返回一个key">
-                                       【code】java_方法执行sql返回一个key
+                                    <a href="http://chenjiahui.hot-cool.cn/2014/08/22/38752955.html" rel="bookmark" title="Permalink to java split | （竖线）">
+                                       java split | （竖线）
                                     </a>
                                 </h1>
                             </header>
@@ -183,7 +235,7 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2014-03-27
+    on 2014-08-22
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
@@ -191,18 +243,19 @@
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/22323113 </p>
-<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/22323113">http://blog.csdn.net/i_chenjiahui/article/details/22323113</a></p>
-<p>在开发中遇到了将一条数据插入到数据库的同时，又需要获得这个条数据的所自动生成的key值的场景。</p>
-<div class="highlight"><pre><span></span><span class="k">Map</span> <span class="k">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="p">();</span>
-   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;order_id&quot;</span><span class="p">,</span> <span class="n">orderId</span><span class="p">);</span>
-   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;scene_id&quot;</span><span class="p">,</span> <span class="n">senceId</span><span class="p">);</span>
-   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;device_type&quot;</span><span class="p">,</span> <span class="n">deviceType</span><span class="p">);</span>
-   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;device_company&quot;</span><span class="p">,</span> <span class="n">company</span><span class="p">);</span>
-   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;redo_info&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
-   <span class="k">map</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="ss">&quot;state&quot;</span><span class="p">,</span> <span class="ss">&quot;当前 …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/38752955 </p>
+<p>java split | （竖线）</p>
+<p>在java中,有一个字符串"866|10|1824261|214|",需要根据“|”截取。</p>
+<p>而直接用split("|");是不行的。</p>
+<p>原因是竖线 | 在正则中是特殊字符，需要转义，也就是split(“|”);</p>
+<p>但实际在java中使用时，\又是java的特殊字符，需要转义，最终变成了split("\|");</p>
+<div class="highlight"><pre><span></span><span class="nv">public</span> <span class="nv">static</span> <span class="nv">void</span> <span class="nv">main</span><span class="ss">(</span><span class="nv">String</span>[] <span class="nv">args</span><span class="ss">)</span> {
+        <span class="nv">String</span> <span class="nv">line</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">866|10|1824261|214|</span><span class="s2">&quot;</span><span class="c1">;</span>
+        <span class="nv">String</span>[] <span class="nv">cells</span> <span class="o">=</span> <span class="nv">line</span>.<span class="nv">split</span><span class="ss">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s">|</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+
+        <span class="k">for</span><span class="ss">(</span><span class="nv">int …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/03/27/22323113.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/08/22/38752955.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -212,8 +265,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/03/27/22302655.html" rel="bookmark" title="Permalink to Flex中解析JSON">
-                                       Flex中解析JSON
+                                    <a href="http://chenjiahui.hot-cool.cn/2014/08/15/38584777.html" rel="bookmark" title="Permalink to Flex TextInput 动态判断输入内容">
+                                       Flex TextInput 动态判断输入内容
                                     </a>
                                 </h1>
                             </header>
@@ -225,7 +278,7 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2014-03-27
+    on 2014-08-15
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
@@ -233,17 +286,14 @@
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/22302655 </p>
-<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/22302655">http://blog.csdn.net/i_chenjiahui/article/details/22302655</a></p>
-<p>今天碰到flex4.5中使用json数据的情况。</p>
-<p>网上查了下，flex4.5自带包没有提供解析json数据的方法。（flex4.6已经支持）</p>
-<p>需要使用corelib包，下载as3corelib.swc文件直接复制到flex项目的libs目录即可。</p>
-<p>下面是例子：</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="err">?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="err">?</span><span class="o">&gt;</span> 
-<span class="o">&lt;</span><span class="n">s</span><span class="p">:</span><span class="n">Application</span> <span class="n">xmlns</span><span class="p">:</span><span class="n">fx</span><span class="o">=</span><span class="s2">&quot;http://ns.adobe.com/mxml/2009&quot;</span> 
-               <span class="n">xmlns</span><span class="p">:</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;library …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/38584777 </p>
+<p>Flex TextInput 动态判断输入内容</p>
+<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+    <span class="p">&lt;</span><span class="nt">s:Application</span> <span class="na">xmlns:fx</span><span class="o">=</span><span class="s">&quot;http://ns.adobe.com/mxml/2009&quot;</span> 
+                   <span class="na">xmlns:s</span><span class="o">=</span><span class="s">&quot;library://ns.adobe.com/flex/spark&quot;</span> 
+                   <span class="na">xmlns:mx</span><span class="o">=</span><span class="s">&quot;library://ns.adobe.com/flex/mx&quot;</span> <span class="na">minWidth</span><span class="o">=</span><span class="s">&quot;955&quot;</span> <span class="na">minHeight</span><span class="o">=</span><span class="s">&quot;600 …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/03/27/22302655.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/08/15/38584777.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -253,8 +303,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/03/26/0002.html" rel="bookmark" title="Permalink to ibatis中#和$的区别">
-                                       ibatis中#和$的区别
+                                    <a href="http://chenjiahui.hot-cool.cn/2014/07/30/38302601.html" rel="bookmark" title="Permalink to ip格式判断、地址段分析、掩码计算工具类">
+                                       ip格式判断、地址段分析、掩码计算工具类
                                     </a>
                                 </h1>
                             </header>
@@ -266,77 +316,33 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2014-03-26
+    on 2014-07-30
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/ibatis.html">ibatis</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/22181467 </p>
-<div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">SYS_ROAD_LINE_INFO</span> <span class="k">where</span> <span class="n">ROAD_LINE_NO</span> <span class="k">in</span> <span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">)</span>
-</pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/38302601 </p>
+<div class="highlight"><pre><span></span>    <span class="kn">package</span> <span class="nn">com.cjh.ip.utils</span><span class="o">;</span>
 
+    <span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+    <span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+    <span class="kn">import</span> <span class="nn">java.util.regex.Pattern</span><span class="o">;</span>
 
-<p>$中间的变量就是直接替换成值的</p>
-<p>#会根据变量的类型来进行替换</p>
-<p>比如articleTitle的类型是string, 值是"标题"的时候</p>
-<p>\$articleTitle$ = 标题</p>
-<p>#articleTitle# = '标题</p>
+    <span class="cm">/**</span>
+<span class="cm">     * @author cjh </span>
+<span class="cm">     * 2014年7月28日 上午10:38:39</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">IPUtil</span> <span class="o">{</span>
+        <span class="cm">/**</span>
+<span class="cm">         * 计算IP地址段，并返回Map:{&quot;startIp&quot;: startIp,&quot;endIp&quot;: endIp}</span>
+<span class="cm">         * @param ip</span>
+<span class="cm">         * @param mask</span>
+<span class="cm">         * @return Map …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/03/26/0002.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/03/26/22181667.html" rel="bookmark" title="Permalink to Ibatis学习笔记">
-                                       Ibatis学习笔记
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2014-03-26
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/ibatis.html">ibatis</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p><strong>Ibatis 学习笔记</strong></p>
-<p>最近学习了ibatis连接数据库</p>
-<p><strong>搭建 iBatis开发环境：</strong></p>
-<p>仅仅需要两个包：数据库驱动包，和ibatis包。</p>
-<p>三个配置文件：数据库连接属性文件、总配置文件、实体的映射文件（Map文件）。</p>
-<p><strong>数据库连接属性文件： jdbc.properties</strong></p>
-<p>内容如下： __</p>
-<div class="highlight"><pre><span></span><span class="n">jdbc</span><span class="p">.</span><span class="n">driverClassName</span><span class="o">=</span><span class="n">com</span><span class="p">.</span><span class="n">mysql</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">Driver</span>
-<span class="n">jdbc</span><span class="p">.</span><span class="n">url</span><span class="o">=</span><span class="n">jdbc</span><span class="p">:</span><span class="n">mysql</span><span class="p">:</span><span class="o">//</span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="p">:</span><span class="mi">3306</span><span class="o">/</span><span class="n">test</span><span class="o">?</span><span class="n">autoReconnect</span><span class="o">=</span><span class="k">true</span><span class="o">&amp;</span><span class="n">useUnicode</span><span class="o">=</span><span class="k">true</span><span class="o">&amp;</span><span class="n">characterEncoding</span><span class="o">=</span><span class="n">utf8</span>
-<span class="n">jdbc</span><span class="p">.</span><span class="n">username</span><span class="o">=</span><span class="n">test</span>
-<span class="n">jdbc</span><span class="p">.</span><span class="n">password</span><span class="o">=</span><span class="n">test123</span>
-</pre></div>
-
-
-<p><strong>总配置文件， SqlMapConfig.xml</strong></p>
-<p>内容如下：</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/03/26/22181667.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/07/30/38302601.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -345,7 +351,8 @@
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan11.html">&laquo;</a>
-    Page 12 / 12
+    Page 12 / 14
+        <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan13.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
 </div>
@@ -365,7 +372,8 @@
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

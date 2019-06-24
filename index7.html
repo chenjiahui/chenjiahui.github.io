@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn" />
 
-    <title>BugManager’s Blog</title>
+    <title>BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,8 +71,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/08/12/47440683.html" rel="bookmark" title="Permalink to linux模糊查询文件并删除">
-                                       linux模糊查询文件并删除
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/13/48415483.html" rel="bookmark" title="Permalink to python的while语法中的else从句">
+                                       python的while语法中的else从句
                                     </a>
                                 </h1>
                             </header>
@@ -81,38 +82,42 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
 
-    on 2015-08-12
+    on 2015-09-13
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/47440683 </p>
-<p>因为工作用到定时删除3天前的日志文件文件，就写了段脚本。</p>
-<p>发现其中还是有几小点坑人之处。记录一下</p>
-<p>命令：</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
-
-find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="se">\;</span>//删除log目录下第2级目录中3天前的*.log文件echo <span class="s2">&quot;delete execute successfully&quot;</span>!   
-<span class="nb">echo</span> <span class="s2">&quot;delete execute successfully&quot;</span>!
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48415483 </p>
+<p>由于以前是写java的，现在正在接触python,学习中看到下面一句话：</p>
+<p>while语句允许你重复执行一块语句。while语句是所谓 循环 语句的一个例子。while语句有一个可选的else从句。  </p>
+<p>上代码尝试了一把</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span><span class="ss">(</span><span class="nv">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="ss">)</span>:
+...     <span class="nv">print</span> <span class="nv">i</span>
+...     <span class="nv">i</span><span class="o">=</span><span class="nv">i</span><span class="o">+</span><span class="mi">1</span>
+... <span class="k">else</span>:
+...     <span class="nv">print</span> <span class="s1">&#39;</span><span class="s">i&gt;=10</span><span class="s1">&#39;</span>,<span class="nv">i</span>
+...
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+<span class="mi">5</span>
+<span class="mi">6</span>
+<span class="mi">7</span>
+<span class="mi">8</span>
+<span class="mi">9</span>
+<span class="nv">i</span><span class="o">&gt;=</span><span class="mi">10</span> <span class="mi">10</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span>
 </pre></div>
-</td></tr></table>
-
-<p>1、结尾的分号要也斜线转义，因为";"在不同版本的linux中会有不同的意义。<br>
-2、{}与\;之间必须有空格。<br>
-测试如下：</p>
-<p><img alt="image" src="../../../images/20150812103843201.png"></p>
-<p>保存文件后，会发现没有权限执行，需要修改权限 …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/08/12/47440683.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/13/48415483.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -122,8 +127,202 @@ find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/07/22/46997303.html" rel="bookmark" title="Permalink to hadoop学习笔记之HDFS">
-                                       hadoop学习笔记之HDFS
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/11/48378017.html" rel="bookmark" title="Permalink to python解决sql注入以及特殊字符">
+                                       python解决sql注入以及特殊字符
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
+
+    on 2015-09-11
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48378017 </p>
+<p>python往数据库插入数据，</p>
+<p>基础做法是：</p>
+<div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">=</span><span class="n">db</span><span class="p">.</span><span class="k">cursor</span><span class="p">()</span>
+<span class="k">sql</span> <span class="o">=</span> <span class="ss">&quot;INSERT INTO test2(cid, author, content) VALUES (1, &#39;1&#39;, &#39;aa&#39;)&quot;</span>
+<span class="n">cur</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,())</span>
+</pre></div>
+
+
+<p>也可以这样：</p>
+<div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">=</span><span class="n">db</span><span class="p">.</span><span class="k">cursor</span><span class="p">()</span>
+<span class="k">sql</span> <span class="o">=</span> <span class="ss">&quot;INSERT INTO test2(cid, author, content) VALUES (%s, &#39;%s&#39;, &#39;%s&#39;)&quot;</span>
+<span class="k">sql</span><span class="o">=</span><span class="k">sql</span><span class="o">%</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;bb …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/11/48378017.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/08/48296437.html" rel="bookmark" title="Permalink to python将对象写入文件，以及从文件中读取对象">
+                                       python将对象写入文件，以及从文件中读取对象
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
+
+    on 2015-09-08
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48296437 </p>
+<p>写入文件代码：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">shelve</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">test.dat&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="o">=</span><span class="p">{}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;123456&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key2&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;eeeeee&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key3&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;ABCDEF&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dataKey</span> <span class="o">=</span> <span class="s2">&quot;mydata&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="p">[</span><span class="n">dataKey</span><span class="p">]</span><span class="o">=</span><span class="n">data</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>可以看到在D盘生成了一个test.dat的文件</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150908205313782.png">  </p>
+<p>读取数据代码： </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">shelve</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">test.dat …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/08/48296437.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/08/48295431.html" rel="bookmark" title="Permalink to python随机数">
+                                       python随机数
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
+
+    on 2015-09-08
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48295431 </p>
+<p>1、关于随机数，较多的是用到了随机生成6位密码</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span><span class="mi">999999</span><span class="p">)</span>
+<span class="mi">939712</span>
+</pre></div>
+
+
+<p>2、生成指定时间段的一个随机日期 </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">date1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">time1</span> <span class="o">=</span> <span class="n">mktime</span><span class="p">(</span><span class="n">date1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">date2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2016</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0 …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/08/48295431.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/01/48163833.html" rel="bookmark" title="Permalink to mysql类似rownum查询">
+                                       mysql类似rownum查询
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a>
+
+    on 2015-09-01
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48163833 </p>
+<p>mysql 查询某一用户的排名，由于mysql没有rownum，查询排名就比较麻烦了，所以记录下</p>
+<div class="highlight"><pre><span></span>    <span class="k">SELECT</span> <span class="nf">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">AS</span> <span class="n">rank_num</span><span class="err">，</span>
+      <span class="k">FROM</span> <span class="n">tab_game_rank</span>
+     <span class="k">WHERE</span> <span class="n">pnumber</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">pnumber</span>
+                         <span class="k">FROM</span> <span class="n">tab_game_rank</span>
+                        <span class="k">WHERE</span> <span class="n">uid</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<p>rank_num 排名</p>
+<p>pnumber 排名字段</p>
+<p>uid 用户id</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/01/48163833.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/08/25/47962803.html" rel="bookmark" title="Permalink to hadoop学习笔记之Map-Reduce">
+                                       hadoop学习笔记之Map-Reduce
                                     </a>
                                 </h1>
                             </header>
@@ -135,7 +334,7 @@ find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="
 
     in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2015-07-22
+    on 2015-08-25
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
@@ -144,193 +343,26 @@ find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46997303 </p>
-<p>HDFS：Hadoop Distributed File System 分布式文件系统，其操作方式与linux相似，使用指令之前要在前面加上dfs。（注意：hdfs没有当前目录的概念，不能使用cd命令）</p>
-<p>常规操作命令：</p>
-<div class="highlight"><pre><span></span>     dfs -put ../hello hello
-     dfs -ls
-     dfs -get hello ./mypath/hello
-     dfs -rmr hello
-     dfs -cat part-r-00000 //打开文件，查看内容
-     dfsadmin -report //hdfs的信息情况
-</pre></div>
-
-
-<p>客户端如何从HDFS上 <strong>获取文件</strong> 呢？以获取文件名为“hello …</p>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/47962803 </p>
+<p>Map-Reduce的工作机制：<br>
+a、编写好一个Map-Reduce程序，运行作业程序。<br>
+b、JobClient向JobTracker申请一个作业ID，<br>
+c、JobClient将作业所需要的资源，复制到HDFS系统中。<br>
+d、c、JobClient提交作业<br>
+e、JobTracker初始化作业。<br>
+f、JobTracker向nameNode询问，决定这些任务在哪些机器上跑。<br>
+有关的数据在哪些文件里，这些文件保存在哪些节点的数据块中。<br>
+(程序要和所要运行的作业资源在一起)<br>
+根据taskTracker与JobTracker之间的心跳，知道哪些task可以参与到本次作业中来。<br>
+如：taskTracker必须是活着的，Tracker中是否有其他作业在做。<br>
+确定哪些taskTracker<br>
+g、taskTracker和JobTracker保持心跳，以确定taskTracker是否正常。<br>
+h、taskTracker从HDFS中将相关代码、资源等获取到本地。<br>
+i、架设java虚拟机<br>
+j、开始工作。<br>
+k、taskTracker将结果写入本地硬盘（这个是中间结果不写入HDFS …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/07/22/46997303.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/16/20150616225821.html" rel="bookmark" title="Permalink to Flex列排序">
-                                       Flex列排序
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
-
-    on 2015-06-16
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">format</span><span class="o">:</span><span class="nx">DateFormatter</span><span class="o">=</span><span class="k">new</span> <span class="nx">DateFormatter</span><span class="p">();</span>
-<span class="nx">format</span><span class="p">.</span><span class="nx">formatString</span><span class="o">=</span><span class="s2">&quot;YYYY-MM-DD JJ:NN:SS&quot;</span> 
-<span class="nx">format</span><span class="p">.</span><span class="nx">error</span> <span class="o">=</span> <span class="s2">&quot;日期转换时出错&quot;</span><span class="p">;</span>
-<span class="k">for</span> <span class="nx">each</span><span class="p">(</span><span class="kd">var</span> <span class="nx">o</span><span class="o">:</span><span class="nb">Object</span> <span class="k">in</span> <span class="nx">ac</span><span class="p">){</span>
-    <span class="nx">o</span><span class="p">.</span><span class="nx">sender_time2</span> <span class="o">=</span> <span class="nx">o</span><span class="p">.</span><span class="nx">org_sender_time</span><span class="p">;</span>
-    <span class="nx">o</span><span class="p">.</span><span class="nx">receive_time2</span> <span class="o">=</span> <span class="nx">o</span><span class="p">.</span><span class="nx">org_receive_time</span><span class="p">;</span>
-    <span class="nx">o</span><span class="p">.</span><span class="nx">org_sender_time</span> <span class="o">=</span> <span class="nx">format</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">org_sender_time</span><span class="p">);</span>
-    <span class="nx">o</span><span class="p">.</span><span class="nx">org_receive_time</span> <span class="o">=</span> <span class="nx">format</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">org_receive_time</span><span class="p">);</span>
-<span class="p">}</span>
-
-
-<span class="kr">private</span> <span class="kd">function</span> <span class="nx">subtractionDay</span><span class="p">(</span><span class="nx">day</span><span class="o">:</span><span class="kr">int</span><span class="p">,</span> <span class="nx">mydate</span><span class="o">:</span><span class="nb">Date</span><span class="p">)</span><span class="o">:</span><span class="nb">Date</span> 
-<span class="p">{</span> 
-    <span class="kd">var …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/16/20150616225821.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/13/46412397.html" rel="bookmark" title="Permalink to Flex列排序">
-                                       Flex列排序
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
-
-    on 2015-06-13
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>第一种：new一个sort，指定排序字段，然后赋给AdvancedDataGrid数据源的sort属性</p>
-<div class="highlight"><pre><span></span><span class="k">var</span> <span class="nx">sort</span><span class="o">:</span><span class="nx">Sort</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mx</span><span class="p">.</span><span class="nx">collections</span><span class="p">.</span><span class="nx">Sort</span><span class="p">();</span>    
-<span class="nx">sort</span><span class="p">.</span><span class="nx">fields</span> <span class="o">=</span> <span class="p">[</span><span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;device_type&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)</span><span class="o">,</span>
-<span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;company&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)</span><span class="o">,</span>
-<span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;dist&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)</span><span class="o">,</span>
-<span class="k">new</span> <span class="nx">SortField</span><span class="p">(</span><span class="s2">&quot;device_name_sort&quot;</span><span class="o">,</span><span class="kc">false</span><span class="o">,</span><span class="kc">false</span><span class="p">)];</span>
-
-<span class="nx">adv1</span><span class="p">.</span><span class="nx">dataProvider</span><span class="p">.</span><span class="nx">sort</span><span class="o">=</span><span class="nx">sort</span><span class="o">;</span>
-<span class="nx">adv1</span><span class="p">.</span><span class="nx">dataProvider</span><span class="p">.</span><span class="nx">refresh</span><span class="p">();</span>
-</pre></div>
-
-
-<p>第二种：如果你的数据源是array，则使用array的sortOn方法，指定排序字段，如下：</p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">children</span> <span class="nx">as</span> <span class="nb">Array</span><span class="p">).</span><span class="nx">sortOn …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/13/46412397.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/10/46409997.html" rel="bookmark" title="Permalink to Flex自定义进度条样式">
-                                       Flex自定义进度条样式
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
-
-    on 2015-06-10
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>flex页面在加载图片时，图片可能是圆角的，拉伸会导致圆角变形，这时就要用到九宫格拉伸：</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;s:Image</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span> <span class="na">height=</span><span class="s">&quot;100%&quot;</span>
-         <span class="na">source=</span><span class="s">&quot;@Embed(source=&#39;assets/images/index/panelBg2.PNG&#39;,</span>
-<span class="s">         scaleGridTop=40,scaleGridBottom=350,scaleGridLeft=7,scaleGridRight=525)&quot;</span><span class="nt">/&gt;</span>
-</pre></div>
-
-
-<p>这样就只会拉伸4个点所限定的内部区域 外部的像素大小不变</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/10/46409997.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/10/46443723.html" rel="bookmark" title="Permalink to Flex上传文件">
-                                       Flex上传文件
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
-
-    on 2015-06-10
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46443723 </p>
-<p>前几天写了一篇<a href="http://blog.csdn.net/i_chenjiahui/article/details/46349259">jsp页面利用ajaxFileUpload上传文件</a>，现在把flex上传页面也分享出来：</p>
-<p>前台页面</p>
-<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-    <span class="nt">&lt;s:HGroup</span> <span class="na">xmlns:fx=</span><span class="s">&quot;&lt;a target=_blank href=&quot;</span><span class="err">http://ns.adobe.com/mxml/2009&quot;</span><span class="nt">&gt;</span>http://ns.adobe.com/mxml/2009<span class="nt">&lt;/a&gt;</span>&quot;
-        xmlns:s=&quot;library://ns.adobe.com/flex/spark …</pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/10/46443723.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/08/25/47962803.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -339,7 +371,7 @@ find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/index6.html">&laquo;</a>
-    Page 7 / 13
+    Page 7 / 14
         <a href="http://chenjiahui.hot-cool.cn/index8.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -360,7 +392,8 @@ find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

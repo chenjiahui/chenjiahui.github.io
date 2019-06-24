@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="nginx的使用"/>
+    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/2018/05/12/nginx.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2018/05/12/nginx.html" />
+
+    <title>nginx的使用 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="http://chenjiahui.hot-cool.cn/2018/05/12/nginx.html" rel="bookmark"
+             title="Permalink to nginx的使用">nginx的使用</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-05-12
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>Nginx是一种轻量级，高性能的Web服务器/反向代理和电子邮件（IMAP / POP3）代理。
+它可以在UNIX、Linux、MacOS、Solaris等类Linux服务器和Windows上运行。
+Nginx是为解决C10K问题而编写的少数服务器之一。
+与传统服务器不同，Nginx不依赖线程来处理请求。相反，它使用扩展性更强的事件驱动（异步）架构。
+nginx生态非常丰富，它是一款高度模块化的应用程序，拥有大量的第三方模块。    </p>
+<p>自2015年接触nginx以来，陆陆续续的使用了nginx中的许多功能。一直想对这些功能的使用做一个记录。</p>
+<h2>版本选择</h2>
+<p>开源版：nginx.org 免费，很多公司及个人都在使用。
+商业版：nginx.com 由nginx作者成立商业公司在运营监控，技术支持上有很多优势，但是收费的。
+Tengine：阿里巴巴在nginx主干代码上二次开发的产物，很多功能领先于nginx官方版本，无法对nginx的官方版本同步升级
+没有特殊的需求，我们就下载个开源版的吧，当下载时，选择稳定版。一般<strong>双数</strong>的版本为稳定版。</p>
+<h2>基础命令</h2>
+<div class="highlight"><pre><span></span><span class="c1">#启动或重启前检查配置是否正确，非常重要。修改配置后切记要先测试再重启。</span>
+/usr/local/nginx/sbin/nginx -t
+<span class="c1">#启动命令</span>
+/usr/local/nginx/sbin/nginx
+<span class="c1">#启动命令-指定配置文件</span>
+/usr/local/nginx/sbin/nginx -c path/nginx.conf
+<span class="c1">#退出命令</span>
+/usr/local/nginx/sbin/nginx -s stop
+<span class="c1">#退出命令-优雅的关闭，会处理完已接受的请求再退出前</span>
+/usr/local/nginx/sbin/nginx -s quit
+<span class="c1">#重启nginx</span>
+/usr/local/nginx/sbin/nginx -s reload
+<span class="c1">#重新打开日志，在做日志切割时会用到。</span>
+/usr/local/nginx/sbin/nginx -s reopen
+</pre></div>
+
+
+<p>reload命令过程：nginx主进程读取配置文件，如果发现配置文件变更，会创建一个新的worker，然后通知旧的进程关闭，旧进程会拒绝新的连接，然后将已经接受的请求处理完成，最后关闭。</p>
+<h2>nginx静态服务器</h2>
+<div class="highlight"><pre><span></span><span class="n">server</span>
+<span class="err">{</span>
+    <span class="k">location</span> <span class="o">^~</span> <span class="o">/</span><span class="n">img</span><span class="o">/</span> <span class="err">{</span>
+        <span class="n">root</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="p">;</span>
+    <span class="err">}</span>
+
+    <span class="k">location</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span> <span class="err">{</span>
+        <span class="k">alias</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="p">;</span>    
+        <span class="k">index</span>  <span class="k">index</span><span class="p">.</span><span class="n">html</span><span class="p">;</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>我们使用了两种配置方式：root和alias。<br>
+区别：<br>
+root方式：请求<code>http://chenjiahui.hot-cool.cn/img/abc.jpg</code>，对应的是<code>/home/test/img/abc.jpg</code>资源 </p>
+<p>alias方式：请求<code>http://chenjiahui.hot-cool.cn/home/abc.html</code>，对应的是<code>/home/test/html/abc.html</code>资源 </p>
+<h2>nginx开启gzip</h2>
+<div class="highlight"><pre><span></span>gzip on<span class="p">;</span>    <span class="c1">#开启gzip</span>
+gzip_min_length <span class="m">1000</span><span class="p">;</span>   <span class="c1">#大于1k的资源才压缩</span>
+gzip_buffers <span class="m">4</span> 16k<span class="p">;</span>     <span class="c1">#设置用于压缩响应的缓冲区数量及大小</span>
+gzip_comp_level <span class="m">2</span><span class="p">;</span>      <span class="c1">#压缩级别，范围为1到9。数字越大压缩效果越好，消耗资源也越大</span>
+gzip_types text/css text/javascript image/png<span class="p">;</span>  <span class="c1">#对哪些类型的文件启用压缩，一般图片、音视频不适合启用gzip，这里为了测试开启了png类型的压缩</span>
+gzip_vary on<span class="p">;</span>           <span class="c1">#开启后，会在响应投中增加 Vary: Accept-Encoding</span>
+gzip_disable <span class="s2">&quot;MSIE [1-6]\.&quot;</span><span class="p">;</span>    <span class="c1">#配置禁用gzip条件，支持正则。</span>
+</pre></div>
+
+
+<p>请求页面，可以发现大于1k的资源被gzip了。    </p>
+<h2>自定义50X、40X页面</h2>
+<p>当后端服务代码发生错误，且没有很好的处理错误时，可能会遇到在响应体中包含了错误日志的信息。其中，可能带有源码，数据库表信息等。非常不安全。</p>
+<div class="highlight"><pre><span></span>error_page <span class="m">500</span> /error1.json<span class="p">;</span>   <span class="c1"># 配置500情况返回固定格式的json</span>
+error_page <span class="m">403</span> <span class="m">404</span> <span class="m">405</span> error2.json<span class="p">;</span> <span class="c1"># 也可以配置多个状态吗</span>
+</pre></div>
+
+
+<p>这里我用的是json格式，因为这台服务器是用来做api服务的，如果是网站，也可以是error.html等。  </p>
+<h2>nginx反向代理 - proxy</h2>
+<p>nginx反向代理模块，功能是将接收到的网络请求，转发给另一台服务器，也可以是本机</p>
+<div class="highlight"><pre><span></span>location / <span class="o">{</span>
+    proxy_pass       http://localhost:8080<span class="p">;</span>
+    proxy_redirect off<span class="p">;</span>
+    proxy_buffering off<span class="p">;</span>
+    proxy_set_header        Host            <span class="nv">$host</span><span class="p">;</span>
+    proxy_set_header        X-Real-IP       <span class="nv">$remote_addr</span><span class="p">;</span>
+    proxy_set_header        X-Forwarded-For <span class="nv">$http_x_forwarded_for</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>跟多配置参数请查看官网：<a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html">ngx_http_proxy_module</a> </p>
+<h2>使用HTTPS</h2>
+<p><a href="../../../2018/05/30/nginx-https.html">传送门-nginx开启HTTPS</a></p>
+<h2>删除不需要的nginx模块，以减小漏洞风险</h2>
+<p><a href="../../../2018/05/21/nginx-buffer">传送门-nginx增减模块</a></p>
+<h2>nginx限制缓冲区溢出攻击</h2>
+<p><a href="../../../2018/06/14/nginx-buffer.html">传送门-nginx防止缓冲区溢出攻击</a></p>
+<h2>nginx限流配置</h2>
+<p><a href="../../../2018/06/17/nginx-limit.html">传送门-nginx限流配置</a></p>
+<h2>nginx安全配置</h2>
+<p><a href="../../../2018/06/04/nginx-securety.html">传送门-nginx安全配置</a></p>
+<h2>过滤user_agent，避免爬虫，curl等脚本的冲击</h2>
+<div class="highlight"><pre><span></span><span class="nv">server</span>
+{
+    <span class="k">if</span> <span class="ss">(</span>$<span class="nv">http_user_agent</span> <span class="o">~*</span> <span class="ss">(</span><span class="nv">Scrapy</span><span class="o">|</span><span class="nv">Curl</span><span class="o">|</span><span class="nv">HttpClient</span><span class="ss">))</span> {
+        <span class="k">return</span> <span class="mi">403</span><span class="c1">;</span>
+    }
+}
+</pre></div>
+
+
+<p>只要user_agent符合上述条件的，一律返回403。可根据具体的情况修改条件<br>
+<img alt="ua filter" src="http://blogimg.hot-cool.cn/2019061715607664574614.png">  </p>
+<h2>通过ip限制访问</h2>
+<p>比如内部服务可以配置仅允许相关的几台内网访问，运营系统可以配置仅在公司ip段访问。  </p>
+<div class="highlight"><pre><span></span>server
+<span class="o">{</span>
+    <span class="c1">#屏蔽IP段</span>
+    deny <span class="m">192</span>.168.1.123  
+    <span class="c1">#允许IP段    </span>
+    allow <span class="m">192</span>.168.1.124  
+    <span class="c1">#屏蔽IP地址段</span>
+    deny <span class="m">172</span>.0.0.0/24
+    <span class="c1">#屏蔽所有</span>
+    deny all<span class="p">;</span>
+    <span class="c1">#允许所有</span>
+    allow all<span class="p">;</span>  
+<span class="o">}</span>
+</pre></div>
+
+
+<p>关于地址段的计算，我写有一个<a href="../../../2014/07/30/38302601.html">工具类</a>  </p>
+<h2>nginx日志配置</h2>
+<div class="highlight"><pre><span></span><span class="o">#</span><span class="err">定义日志格式</span>
+<span class="n">log_format</span> <span class="n">srvlog</span> <span class="s1">&#39;$remote_addr - $remote_user [$time_local] $request &quot;$http_version&quot; &quot;$request_body&quot; &#39;</span>
+             <span class="s1">&#39;$status $body_bytes_sent $http_referer &#39;</span>
+             <span class="s1">&#39;$http_user_agent $http_x_forwarded_for &quot;$request_time&quot; &quot;$upstream_response_time&quot;&#39;</span><span class="p">;</span>
+
+<span class="o">#</span><span class="err">配置日志目录，使用哪个日志格式</span><span class="p">(</span><span class="n">srvlog</span><span class="p">),</span> <span class="err">日志缓存</span><span class="mi">32</span><span class="n">k</span><span class="err">才写日志，日志使用</span><span class="n">gzip</span><span class="err">压缩，如果</span><span class="mi">5</span><span class="n">s</span><span class="err">未写日志则写日志。</span>
+<span class="n">access_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">nginxlogs</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">srv</span><span class="p">.</span><span class="n">log</span> <span class="n">srvlog</span> <span class="n">buffer</span><span class="o">=</span><span class="mi">32</span><span class="n">k</span> <span class="n">gzip</span> <span class="n">flush</span><span class="o">=</span><span class="mi">5</span><span class="n">s</span><span class="p">;</span>
+</pre></div>
+
+
+<h2>nginx 日志切割</h2>
+<p>nginx似乎没有一个日志切割模块。不过写个shell脚本实现也并不难。  </p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#日志目录</span>
+<span class="nv">LOG_PATH</span><span class="o">=</span>/home/nginxlogs
+<span class="c1">#获取昨天的日期</span>
+<span class="nv">YESTERDAY</span><span class="o">=</span><span class="k">$(</span>date -d <span class="s2">&quot;yesterday&quot;</span> +%Y-%m-%d<span class="k">)</span>
+<span class="c1">#分割日志</span>
+<span class="k">for</span> a in <span class="sb">`</span> find  <span class="si">${</span><span class="nv">LOG_PATH</span><span class="si">}</span> -name <span class="s2">&quot;*.access_log&quot;</span> <span class="sb">`</span><span class="p">;</span><span class="k">do</span> cp <span class="nv">$a</span> <span class="nv">$a</span>-<span class="si">${</span><span class="nv">YESTERDAY</span><span class="si">}</span><span class="p">;</span><span class="nb">echo</span> <span class="s2">&quot;&quot;</span>  &gt;<span class="nv">$a</span><span class="p">;</span><span class="k">done</span>
+<span class="k">for</span> e in <span class="sb">`</span> find  <span class="si">${</span><span class="nv">LOG_PATH</span><span class="si">}</span> -name <span class="s2">&quot;*.error_log&quot;</span> <span class="sb">`</span><span class="p">;</span><span class="k">do</span> cp <span class="nv">$e</span> <span class="nv">$e</span>-<span class="si">${</span><span class="nv">YESTERDAY</span><span class="si">}</span><span class="p">;</span><span class="nb">echo</span> <span class="s2">&quot;&quot;</span>  &gt;<span class="nv">$e</span><span class="p">;</span><span class="k">done</span>
+</pre></div>
+
+
+<p>crontab中配置定时执行shell脚本  </p>
+<div class="highlight"><pre><span></span><span class="m">0</span> <span class="m">0</span> * * * sh /home/script/nginx-log-split.sh &gt;&gt; /home/log/split.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+
+
+<h2>清除历史日志</h2>
+<p>清除7天前的日志</p>
+<div class="highlight"><pre><span></span>find /tmp/ -name *.log-* -type f -mtime +7 <span class="p">|</span>xargs rm
+</pre></div>
+
+
+<h2>nginx负载均衡</h2>
+<p>http {
+    upstream srv {
+        server srv1.hot-cool.cn;
+        server srv2.hot-cool.cn;
+        server srv3.hot-cool.cn;
+    }
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://srv;
+        }
+    }
+}
+之前在<a href="../../../2015/06/08/46419465.html">负载均衡算法原理</a>里讲到过，负载均衡有很多种算法。<br>
+上面的例子中，我们没有指定有什么算法。所以使用的是默认的轮询算法。  </p>
+<p><strong>加权负载均衡</strong></p>
+<div class="highlight"><pre><span></span>    upstream srv <span class="o">{</span>
+        server srv1.hot-cool.cn <span class="nv">weight</span> <span class="o">=</span> <span class="m">2</span><span class="p">;</span> 
+        server srv2.hot-cool.cn<span class="p">;</span>
+        server srv3.hot-cool.cn<span class="p">;</span>
+    <span class="o">}</span>
+</pre></div>
+
+
+<p>当服务器性能不一的时候，可以考虑做个加权</p>
+<p><strong>最少连接数算法</strong></p>
+<div class="highlight"><pre><span></span>    upstream srv <span class="o">{</span>
+        least_conn<span class="p">;</span>
+        server srv1.hot-cool.cn<span class="p">;</span>
+        server srv2.hot-cool.cn<span class="p">;</span>
+        server srv3.hot-cool.cn<span class="p">;</span>
+    <span class="o">}</span>
+</pre></div>
+
+
+<p><strong>ip-hash</strong></p>
+<div class="highlight"><pre><span></span>    upstream srv <span class="o">{</span>
+        ip_hash<span class="p">;</span> 
+        server srv1.hot-cool.cn<span class="p">;</span>
+        server srv2.hot-cool.cn<span class="p">;</span>
+        server srv3.hot-cool.cn<span class="p">;</span>
+    <span class="o">}</span>
+</pre></div>
+
+
+<p>ip_hash的特点是可以保证同一用户每次访问同一服务。
+从而实现会话保持。但也是他的这已特性，当集群中某一个服务不可用时，iphash对应到这台服务器上的所有请求都将失败。<br>
+在分布式集群架构中，session共享可以借助于redis等内存数据库实现，Tomcat自带的插件也可以实现session共享  </p>
+<h2>nginx服务器健康检查</h2>
+<p><a href="../../../2018/05/21/nginx-buffer">传送门-nginx服务器健康检查</a></p>
+<h2>nginx 热部署</h2>
+<p>前面提到：<br>
+reload命令过程：nginx主进程读取配置文件，如果发现配置文件变更，会根据配置文件创建新的worker来处理新的请求，然后通知旧的进程关闭，旧进程会拒绝新的连接，然后将已经接受的请求处理完成，最后关闭。
+利用这一特性，以及nginx的负载均衡功能，即可实现集群的热部署。 
+只需要在部署前修改nginx配置文件，暂时将服务从集群中踢出，部署完成后再放回集群即可。   </p>
+<h2>nginx缓存</h2>
+<p>proxy_cache_path</p>
+<h2>利用GoAccess分析nginx日志</h2>
+<p><a href="https://goaccess.io/">传送门-GoAccess</a></p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script> -->
+	
+</body>
+</html>

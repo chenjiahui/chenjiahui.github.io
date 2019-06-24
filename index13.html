@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn" />
 
-    <title>BugManager’s Blog</title>
+    <title>BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,31 +71,271 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/0001-zh.html" rel="bookmark" title="Permalink to 如何使用pelican">
-                                       如何使用pelican
+                                    <a href="http://chenjiahui.hot-cool.cn/2014/05/23/26701811.html" rel="bookmark" title="Permalink to 利用StringBuffer实现字符串反转">
+                                       利用StringBuffer实现字符串反转
                                     </a>
                                 </h1>
                             </header>
                             <div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/chenjiahui.html">chenjiahui</a>
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2014-01-24
+    on 2014-05-23
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/blog.html">blog</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p class="first last">Welcome document</p>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/26701811 </p>
+<p>利用StringBuffer实现字符串反转</p>
+<div class="highlight"><pre><span></span>    <span class="kn">package</span> <span class="nn">com.cjh.test</span><span class="o">;</span>
+    <span class="cm">/**</span>
+<span class="cm">     * @author chenjiahui</span>
+<span class="cm">     * 2014年5月23日 下午2:21:45</span>
+<span class="cm">     * </span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReverseString</span> <span class="o">{</span>
 
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;12345&quot;</span><span class="o">;</span>
+      <span class="n">StringBuffer</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+      <span class="n">str</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">reverse</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span><span class="c1">//54321</span>
+     <span class="o">}</span>
+    <span class="o">}</span>
+</pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/0001-zh.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/05/23/26701811.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2014/05/15/25888827.html" rel="bookmark" title="Permalink to java调用js脚本，以及js脚本调用java方法">
+                                       java调用js脚本，以及js脚本调用java方法
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
+
+    on 2014-05-15
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/25888827 </p>
+<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/25888827">http://blog.csdn.net/i_chenjiahui/article/details/25888827</a></p>
+<p>Test.java</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.script.Invocable</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.script …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/05/15/25888827.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2014/05/13/25695365.html" rel="bookmark" title="Permalink to 查看指定端口，关闭进程及Kill使用">
+                                       查看指定端口，关闭进程及Kill使用
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
+
+    on 2014-05-13
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/windows.html">windows</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/25695365 </p>
+<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/25695365">http://blog.csdn.net/i_chenjiahui/article/details/25695365</a></p>
+<p>1、Windows平台 <br>
+在windows命令行窗口下执行： <br>
+1.查看所有的端口占用情况 <br>
+netstat -ano</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20140513110937796.png"></p>
+<p>2.查看指定端口的占用情况 <br>
+netstat -aon|findstr "8109"</p>
+<p>C:\Users\Administrator&gt;netstat -aon|findstr "8109"<br>
+TCP 0.0.0.0:8109 0.0.0.0 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/05/13/25695365.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2014/05/11/25553607.html" rel="bookmark" title="Permalink to maven找jar包方法">
+                                       maven找jar包方法
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
+
+    on 2014-05-11
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>进入 <a href="http://search.maven.org">http://search.maven.org</a>，</p>
+<p>在搜索栏中查找所需要的jar包,如图：</p>
+<p><img alt="image" src="https://img-blog.csdn.net/20140511172225875"></p>
+<p><img alt="image" src="https://img-blog.csdn.net/20140511172239656"></p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/05/11/25553607.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2014/04/26/24512669.html" rel="bookmark" title="Permalink to eclipse设置${user}">
+                                       eclipse设置${user}
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a>
+
+    on 2014-04-26
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/eclipse.html">eclipse</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/24512669 </p>
+<h3>设置eclipse中的${user}</h3>
+<p>eclipse中想要在创建java文件的时候显示@author "自己的名字"，</p>
+<p>在window -&gt; preference -&gt; java -&gt; code typle -&gt; code template -&gt; Code -&gt; New Java files ，点击Edit ，加入如下代码即可：</p>
+<p>/<em><em><br>
+</em> @author ${user} //创建者名字<br>
+</em> ${date} ${time} //创建时间<br>
+<em> <br>
+</em>/</p>
+<p>应用修改，这时，你会发现新建的java文件中@author 后面是administrator（windows系统的用户字）,解决方法如下。</p>
+<p>需要设置${user}变量</p>
+<p>打开eclipse目录下的eclipse.ini文件，添加上一行。</p>
+<p>-Duser.name …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/04/26/24512669.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2014/03/28/22393821.html" rel="bookmark" title="Permalink to Flex DataGrid行自定义颜色">
+                                       Flex DataGrid行自定义颜色
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+
+    on 2014-03-28
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/22393821">http://blog.csdn.net/i_chenjiahui/article/details/22393821</a></p>
+<p>以前在Flex开发中用到了表格要自定义行颜色的情况。</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20140328132526203.png"></p>
+<div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">ActionScript</span> <span class="nb">file</span> 
+ <span class="o">*</span> <span class="nd">@author</span> <span class="n">chenjiahui</span>
+ <span class="o">*/</span> 
+<span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">xxx</span><span class="o">.</span><span class="n">dm</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">jsjhcNew</span>
+<span class="p">{</span>
+ <span class="kn">import</span> <span class="nn">flash.display.Sprite</span><span class="p">;</span>
+
+ <span class="kn">import</span> <span class="nn">mx.controls.AdvancedDataGrid</span><span class="p">;</span>
+
+ <span class="n">public</span> <span class="k">class</span> <span class="nc">RowColorAdvancedDataGrid</span> <span class="n">extends</span> <span class="n">AdvancedDataGrid</span>
+ <span class="p">{</span>
+  <span class="n">public</span> <span class="n">function</span> <span class="n">RowColorAdvancedDataGrid</span><span class="p">()</span>
+  <span class="p">{</span>
+   <span class="nb">super</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="n">override</span> <span class="n">protected</span> <span class="n">function</span> <span class="n">drawRowBackground</span><span class="p">(</span>
+   <span class="n">s</span><span class="p">:</span><span class="n">Sprite</span><span class="p">,</span> <span class="n">rowIndex</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">Number</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span><span class="n">Number</span><span class="p">,</span> 
+   <span class="n">color …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/03/28/22393821.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -103,7 +344,8 @@
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/index12.html">&laquo;</a>
-    Page 13 / 13
+    Page 13 / 14
+        <a href="http://chenjiahui.hot-cool.cn/index14.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
 </div>
@@ -123,7 +365,8 @@
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

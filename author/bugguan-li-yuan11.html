@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html" />
 
-    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog</title>
+    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,8 +71,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/08/15/38584777.html" rel="bookmark" title="Permalink to Flex TextInput 动态判断输入内容">
-                                       Flex TextInput 动态判断输入内容
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/03/46349259.html" rel="bookmark" title="Permalink to jsp借助了ajaxfileupload实现上传文件">
+                                       jsp借助了ajaxfileupload实现上传文件
                                     </a>
                                 </h1>
                             </header>
@@ -83,22 +84,27 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2014-08-15
+    on 2015-06-03
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/38584777 </p>
-<p>Flex TextInput 动态判断输入内容</p>
-<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-    <span class="p">&lt;</span><span class="nt">s:Application</span> <span class="na">xmlns:fx</span><span class="o">=</span><span class="s">&quot;http://ns.adobe.com/mxml/2009&quot;</span> 
-                   <span class="na">xmlns:s</span><span class="o">=</span><span class="s">&quot;library://ns.adobe.com/flex/spark&quot;</span> 
-                   <span class="na">xmlns:mx</span><span class="o">=</span><span class="s">&quot;library://ns.adobe.com/flex/mx&quot;</span> <span class="na">minWidth</span><span class="o">=</span><span class="s">&quot;955&quot;</span> <span class="na">minHeight</span><span class="o">=</span><span class="s">&quot;600 …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46349259 </p>
+<p>以往我用的上传文件都是Flex写的，最近html页面需要上传页面功能。</p>
+<p>相比之下，比flex还是要麻烦一些，问题也多一些。这里记录下：</p>
+<p>ajax上传文件，我用到了<a href="http://download.csdn.net/detail/nicky9470/8768957">ajaxfileupload.js</a>修正版。</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nv">form</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">addAttaForm</span><span class="s2">&quot;</span> <span class="nv">enctype</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">multipart/form-data</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">&gt;</span>请选择要上传的文件：<span class="o">&lt;/</span><span class="nv">label</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">file</span><span class="s2">&quot;</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span> <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">fileUpload</span><span class="s2">&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;/</span><span class="nv">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nv">div</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">row</span><span class="s2">&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nv">input</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">button …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/08/15/38584777.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/03/46349259.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -108,8 +114,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/07/30/38302601.html" rel="bookmark" title="Permalink to ip格式判断、地址段分析、掩码计算工具类">
-                                       ip格式判断、地址段分析、掩码计算工具类
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/19/45844141.html" rel="bookmark" title="Permalink to activiti的组任务开发">
+                                       activiti的组任务开发
                                     </a>
                                 </h1>
                             </header>
@@ -121,33 +127,35 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2014-07-30
+    on 2015-05-19
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/38302601 </p>
-<div class="highlight"><pre><span></span>    <span class="kn">package</span> <span class="nn">com.cjh.ip.utils</span><span class="o">;</span>
-
-    <span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
-    <span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
-    <span class="kn">import</span> <span class="nn">java.util.regex.Pattern</span><span class="o">;</span>
-
-    <span class="cm">/**</span>
-<span class="cm">     * @author cjh </span>
-<span class="cm">     * 2014年7月28日 上午10:38:39</span>
-<span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">IPUtil</span> <span class="o">{</span>
-        <span class="cm">/**</span>
-<span class="cm">         * 计算IP地址段，并返回Map:{&quot;startIp&quot;: startIp,&quot;endIp&quot;: endIp}</span>
-<span class="cm">         * @param ip</span>
-<span class="cm">         * @param mask</span>
-<span class="cm">         * @return Map …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45844141 </p>
+<p>在工作中使用到了将任务派发给用户组处理，第一次使用，查了点资料，写了个demo。</p>
+<p>首先，查看数据库中关于用户、用户组的表结构：</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150519141150125.jpg"></p>
+<p>可以看出来，用户、用户组相关的表其实与其他的activiti表无关联。我们可以使用自己的一套用户、用户组管理，而且官方也是建议使用自己的用户用户组权限管理的。</p>
+<p>怎么使用自己的用户、用户组管理以后会在另写一篇，这里就不介绍了。</p>
+<p>首先我们创建一个测试用的bpmn</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150519141718989.jpg"></p>
+<p>如上图中，我们对Group Task节点，添加了两个用户组：groupB和GroupC。注意，要用英文逗号。</p>
+<p>在用户表，用户组表，关系表中插入用户、用户组，以及关联信息。</p>
+<p>用户表：act_id_user</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150519142436460.png"></p>
+<p>用户组表：act_id_group</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150519142620403.png"></p>
+<p>关系表：act_id_membership</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150519142936219.jpg"></p>
+<p>将流程定义跑到Group Task节点，查询用户组任务。</p>
+<div class="highlight"><pre><span></span>    <span class="n">List …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/07/30/38302601.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/19/45844141.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -157,8 +165,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/05/23/26701811.html" rel="bookmark" title="Permalink to 利用StringBuffer实现字符串反转">
-                                       利用StringBuffer实现字符串反转
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/19/46400887.html" rel="bookmark" title="Permalink to JDK自带工具jps，jstat，jmap，jconsole使用">
+                                       JDK自带工具jps，jstat，jmap，jconsole使用
                                     </a>
                                 </h1>
                             </header>
@@ -170,7 +178,7 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2014-05-23
+    on 2015-05-19
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
@@ -178,26 +186,24 @@
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/26701811 </p>
-<p>利用StringBuffer实现字符串反转</p>
-<div class="highlight"><pre><span></span>    <span class="kn">package</span> <span class="nn">com.cjh.test</span><span class="o">;</span>
-    <span class="cm">/**</span>
-<span class="cm">     * @author chenjiahui</span>
-<span class="cm">     * 2014年5月23日 下午2:21:45</span>
-<span class="cm">     * </span>
-<span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReverseString</span> <span class="o">{</span>
-
-     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;12345&quot;</span><span class="o">;</span>
-      <span class="n">StringBuffer</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
-      <span class="n">str</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">reverse</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span><span class="c1">//54321</span>
-     <span class="o">}</span>
-    <span class="o">}</span>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46400887 </p>
+<p><strong>jps</strong></p>
+<p>与ps命令类似：</p>
+<div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">ef</span><span class="o">|</span><span class="n">grep</span> <span class="n">java</span>
 </pre></div>
+
+
+<p>用来显示本地的java进程，查看本地运行着几个java应用，并显示进程号。</p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w">   </span><span class="o">//</span><span class="n">只显示进程号</span><span class="w"></span>
+<span class="mi">23813</span><span class="w"> </span><span class="n">Jps</span><span class="w"></span>
+<span class="mi">710</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
+<span class="mi">792</span><span class="w"> </span><span class="n">Bootstrap</span><span class="w"></span>
+
+
+<span class="o">[</span><span class="n">root@SE43 ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">jps</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w">    </span><span class="o">//</span><span class="n">显示jvm参数</span><span class="w"></span>
+<span class="mi">23852</span><span class="w"> </span><span class="n">Jps</span><span class="w"> </span><span class="o">-</span><span class="n">Denv</span><span class="p">.</span><span class="k">class</span><span class="p">.</span><span class="k">path</span><span class="o">=</span><span class="p">.</span><span class="err">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.6.0</span><span class="n">_21</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dt</span><span class="p">.</span><span class="nl">jar</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">jdk1 …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/05/23/26701811.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/19/46400887.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -207,8 +213,54 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/05/15/25888827.html" rel="bookmark" title="Permalink to java调用js脚本，以及js脚本调用java方法">
-                                       java调用js脚本，以及js脚本调用java方法
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/14/45726553.html" rel="bookmark" title="Permalink to easyui动态生成页面元素时，easyui样式失效问题">
+                                       easyui动态生成页面元素时，easyui样式失效问题
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+
+    on 2015-05-14
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/jquery-easyui.html">jquery-easyui</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/javascript.html">javascript</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45726553 </p>
+<p>﻿﻿</p>
+<p>在前台页面动态生成easyui页面元素时，有时会发现，easyui的样式出不来，甚至页面不是想要的效果。</p>
+<p>多数原因是在页面加载完时执行的$(function(){}方法中动态生成元素。</p>
+<p>而调用$(function(){}方法时，页面已经渲染完毕，导致通过代码动态加载的元素，不会被自动渲染。</p>
+<p>解决方法：</p>
+<p>在加载完元素后，渲染组件即可：</p>
+<div class="highlight"><pre><span></span>      <span class="nx">$</span><span class="p">.</span><span class="nx">parser</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;#configTable&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>﻿﻿</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/14/45726553.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/12/45668341.html" rel="bookmark" title="Permalink to maven下载flex依赖的jar包失败，解决办法">
+                                       maven下载flex依赖的jar包失败，解决办法
                                     </a>
                                 </h1>
                             </header>
@@ -220,28 +272,31 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2014-05-15
+    on 2015-05-12
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/maven.html">maven</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/25888827 </p>
-<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/25888827">http://blog.csdn.net/i_chenjiahui/article/details/25888827</a></p>
-<p>Test.java</p>
-<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">js</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="p">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.script.Invocable</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">javax.script …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45668341 </p>
+<p>在开发过程中，有的时候会碰到个别jar包在maven仓库中未提供的情况。比如flex相关的一些jar包。</p>
+<p>如果自己公司没有私服，则可以通过自己下载jar包放在项目中，如：</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150512133452830.png"></p>
+<p>再在pom.xml中添加本地依赖：</p>
+<div class="highlight"><pre><span></span> <span class="nt">&lt;dependency&gt;</span> 
+      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
+      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
+      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
+      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
+      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/blazeds-common-4.0.0.14931.jar<span class="nt">&lt;/systemPath&gt;</span> 
+  <span class="nt">&lt;/dependency&gt;</span>
+  <span class="nt">&lt;dependency&gt;</span> 
+      <span class="nt">&lt;groupId …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/05/15/25888827.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/12/45668341.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -251,52 +306,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/05/13/25695365.html" rel="bookmark" title="Permalink to 查看指定端口，关闭进程及Kill使用">
-                                       查看指定端口，关闭进程及Kill使用
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
-
-    on 2014-05-13
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/windows.html">windows</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/25695365 </p>
-<p>原文地址：<a href="http://blog.csdn.net/i_chenjiahui/article/details/25695365">http://blog.csdn.net/i_chenjiahui/article/details/25695365</a></p>
-<p>1、Windows平台 <br>
-在windows命令行窗口下执行： <br>
-1.查看所有的端口占用情况 <br>
-netstat -ano</p>
-<p><img alt="image" src="../../../images/20140513110937796.png"></p>
-<p>2.查看指定端口的占用情况 <br>
-netstat -aon|findstr "8109"</p>
-<p>C:\Users\Administrator&gt;netstat -aon|findstr "8109"<br>
-TCP 0.0.0.0:8109 0.0.0.0 …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/05/13/25695365.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/05/11/25553607.html" rel="bookmark" title="Permalink to maven找jar包方法">
-                                       maven找jar包方法
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/07/45560269.html" rel="bookmark" title="Permalink to activiti实现任务超时，创建job不执行的原因">
+                                       activiti实现任务超时，创建job不执行的原因
                                     </a>
                                 </h1>
                             </header>
@@ -308,20 +319,35 @@ TCP 0.0.0.0:8109 0.0.0.0 …</p>
 
     in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2014-05-11
+    on 2015-05-07
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>进入 <a href="http://search.maven.org">http://search.maven.org</a>，</p>
-<p>在搜索栏中查找所需要的jar包,如图：</p>
-<p><img alt="image" src="https://img-blog.csdn.net/20140511172225875"></p>
-<p><img alt="image" src="https://img-blog.csdn.net/20140511172239656"></p>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45560269 </p>
+<p>最近刚开始上手activiti，发现在使用定时任务时，创建了定时job，缺一直不执行。</p>
+<p>情况如下：</p>
+<p>首先通过配置定时器穿件一个定时任务，设置超时时间60秒</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;boundaryEvent</span> <span class="na">id=</span><span class="s">&quot;boundarytimer1&quot;</span> <span class="na">name=</span><span class="s">&quot;Timer&quot;</span> <span class="na">attachedToRef=</span><span class="s">&quot;任务1&quot;</span> <span class="na">cancelActivity=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;timerEventDefinition&gt;</span>
+          <span class="nt">&lt;timeDuration&gt;</span>PT60S<span class="nt">&lt;/timeDuration&gt;</span>
+      <span class="nt">&lt;/timerEventDefinition&gt;</span>
+<span class="nt">&lt;/boundaryEvent&gt;</span>
+</pre></div>
+
+
+<p>当流程执行到该任务节点时，数据库中产生了一条job数据。其中字段DUEDATE_的值为当前时间60S后。</p>
+<p>但是时间过了60秒，job并没有按预期执行。</p>
+<p>翻看文档，发现Activiti的Job管理器，默认是关闭的，需要通过设置processEnginConfiguration中的<property name="jobExecutorActivate" value="false" />激活。</p>
+<p>配置后重新尝试上述步骤，job任然未执行。</p>
+<p>继续查看文档，发现是activiti与spring集成时，需要将activiti的引擎配置交由Spring来管理。</p>
+<p>将activiti.cfg …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/05/11/25553607.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/07/45560269.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -330,7 +356,7 @@ TCP 0.0.0.0:8109 0.0.0.0 …</p>
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan10.html">&laquo;</a>
-    Page 11 / 12
+    Page 11 / 14
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan12.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -351,7 +377,8 @@ TCP 0.0.0.0:8109 0.0.0.0 …</p>
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

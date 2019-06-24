@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html" />
 
-    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog</title>
+    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,8 +71,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/01/10/54311168.html" rel="bookmark" title="Permalink to python过滤unicode控制字符">
-                                       python过滤unicode控制字符
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/04/14/Java-Hashtable.html" rel="bookmark" title="Permalink to Java Hashtable">
+                                       Java Hashtable
                                     </a>
                                 </h1>
                             </header>
@@ -81,28 +82,38 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2017-01-10
+    on 2018-04-14
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/54311168 </p>
-<p>昨天晚上平台被个别用户利用了一个漏洞：</p>
-<p>原理：<a href="http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html">https://www.zhihu.com/question/43621727</a></p>
-<p><a href="http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html">http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html</a></p>
-<p>在浏览器上执行测试代码：</p>
-<div class="highlight"><pre><span></span>data:text/html;charset=utf8,<span class="nt">&lt;script&gt;</span>document.write(&#39;陈佳慧&#39;+String.fromCharCode(8238)+&#39;送了一座海岛&#39;.split(&#39;&#39;).reverse().join(&#39;&#39;)+String.fromCharCode(8237))<span class="nt">&lt;/script&gt;</span>
+</footer><!-- /.post-info -->                                <h2>Hashtable简介</h2>
+<p>Hashtable和HashMap类似，同样是基于哈希表实现的。Hashtable是线程安全的（有许多方法用synchronized修饰），key和value都不支持null，没有红黑树的实现。且已不建议使用。      </p>
+<h2>与HashMap比较</h2>
+<p>Hashtable与HashMap类似都实现了Map、Cloneable, Serializable接口:<br>
+Hashtable继承自Dictionary类，HashMap继承自AbstractMap类。  <br>
+Hashtable不允许记录的键或者值为null，HashMap允许记录的键和值为null。<br>
+Hashtable初始容量为11，HashMap的初始1容量为16。
+Hashtable的许多方法中使用了synchronized关键字，所以Hashtable是线程安全的，即任一时刻只有一个线程能写Hashtable，这也导致了Hashtable在写入时会比较慢。
+如果在非线程安全的情况下，建议使用HashMap。如果在线程安全的情况下可以使用Hashtable，不过官方还是<strong>建议使用ConcurrentHashMap</strong>。     </p>
+<h2>构造函数</h2>
+<p>大致上和HashMap没有太大区别，主要的有以下两个区别： <br>
+1、无参构造函数，初始的~initialCapacity~是11   </p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="nf">Hashtable</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">(</span><span class="mi">11</span><span class="o">,</span> <span class="mf">0.75f</span><span class="o">);</span>
+<span class="o">}</span>
 </pre></div>
 
 
-<p>复制生成的文字，取app上修改昵称 …</p>
+<p>2、threshold计算方式与HashMap不同</p>
+<div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">initialCapacity</span> <span class="o">*</span> <span class="n">loadFactor</span><span class="o">,</span> <span class="n">MAX_ARRAY_SIZE …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/01/10/54311168.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/04/14/Java-Hashtable.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -112,8 +123,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2016/10/30/h5-ios.html" rel="bookmark" title="Permalink to h5与iOS交互">
-                                       h5与iOS交互
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/04/08/java-LinkedHashMap.html" rel="bookmark" title="Permalink to Java LinkedHashMap">
+                                       Java LinkedHashMap
                                     </a>
                                 </h1>
                             </header>
@@ -123,34 +134,39 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2016-10-30
+    on 2018-04-08
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/ios.html">ios</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/android.html">android</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p><strong>iOS</strong></p>
-<div class="highlight"><pre><span></span><span class="n">_bridge</span> <span class="o">=</span> <span class="p">[</span><span class="n">WebViewJavascriptBridge</span> <span class="nl">bridgeForWebView</span><span class="p">:</span><span class="n">_webView</span> <span class="nl">webViewDelegate</span><span class="p">:</span><span class="nb">self</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// NSLog(@&quot;ObjC received message from JS: %@&quot;, data);</span>
-        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response for message from ObjC&quot;</span><span class="p">);</span>
-    <span class="p">}];</span>
-    <span class="p">[</span><span class="n">_bridge</span> <span class="nl">registerHandler</span><span class="p">:</span><span class="s">@&quot;testObjcCallback&quot;</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// NSLog(@&quot;testObjcCallback2222 called: %@&quot;, data);</span>
-        <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">navigationController</span> <span class="nl">popViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
-        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response from testObjcCallback&quot;</span><span class="p">);</span>
-    <span class="p">}];</span>
+</footer><!-- /.post-info -->                                <h2>LinkedHashMap简介</h2>
+<p>平时工作中大多数场景一般只要没有多线程都是直接使用Hashmap就够用了。我之前面试过一些Java开发，有一些一直都只用Hashmap，也不知道其他Map的特行性。<br>
+但是Hashmap有个问题，迭代取出数据时是按照table+entry链表的顺序迭代的数据，和put数据时的顺序并无关系。 </p>
+<p>如果使用场景，需要map的元素在遍历时有序。我们就需要使用LinkedHashMap了。  </p>
+<h2>实现原理</h2>
+<p>LinkedHashMap增加的3个变量：  </p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * The head (eldest) of the doubly linked list.</span>
+<span class="cm"> * 链表的头</span>
+<span class="cm"> */</span>
+<span class="kd">transient</span> <span class="n">LinkedHashMap</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">head</span><span class="o">;</span>
 
-<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">buttonClicked:</span><span class="p">(</span><span class="bp">UIButton</span><span class="o">*</span><span class="p">)</span><span class="nv">sender</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">_bridge …</span></pre></div>
+<span class="cm">/**</span>
+<span class="cm"> * The tail (youngest) of the doubly linked list.</span>
+<span class="cm"> * 链表的尾</span>
+<span class="cm"> */</span>
+<span class="kd">transient</span> <span class="n">LinkedHashMap</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">tail</span><span class="o">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * The iteration ordering method for this …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/10/30/h5-ios.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/04/08/java-LinkedHashMap.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -160,8 +176,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2016/08/07/52141391.html" rel="bookmark" title="Permalink to 截取带emoji表情的utf8字符串">
-                                       截取带emoji表情的utf8字符串
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/04/01/java-HashMap.html" rel="bookmark" title="Permalink to Java HashMap">
+                                       Java HashMap
                                     </a>
                                 </h1>
                             </header>
@@ -171,116 +187,36 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2016-08-07
+    on 2018-04-01
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/52141391 </p>
-<p>好久没有写博客了，当然这个锅得甩给忙碌的工作!🤭😁</p>
-<p>最近工作中又一次碰到了关于emoji表情的问题：需求要求将用户输入的一段内容，截取8个长度作为标题。app端简单的对内容substr了一下。</p>
-<p>然而当在一些特殊情况下，就会出现截取后最后一位乱码的情况。比如内容为：“明天要发奖金啦🏅😁😍”，按预期截取后应该是：“明天要发奖金啦🏅”；而实际上截取的结果是：“明天要发奖金啦□”，最后一位是个乱码，看来奖金发不成了。</p>
-<p>要细说起编码，那就是一篇很长的论文了，不了解的同学可以度娘、谷哥一下。</p>
-<p>这里主要说说utf8编码：</p>
-<p>UTF-8是一种变长字节编码方式。对于某一个字符的UTF-8编码，如果只有一个字节则其最高二进制位为0；如果是多字节，其第一个字节从最高位开始，连续的二进制位值为1的个数决定了其编码的位数，其余各字节均以10开头。  </p>
-<p>#1-byte格式: 0xxxxxxx<br>
-#2-byte格式: 110xxxxx 10xxxxxx<br>
-#3-byte格式: 1110xxxx 10xxxxxx 10xxxxxx<br>
-#4-byte格式: 11110xxx …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/08/07/52141391.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2016/06/24/51752189.html" rel="bookmark" title="Permalink to python判断输入的内容是否是emoji表情">
-                                       python判断输入的内容是否是emoji表情
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2016-06-24
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/51752189 </p>
-<p>python判断输入的内容是否是emoji表情：</p>
-<div class="highlight"><pre><span></span><span class="s2">&quot;&quot;&quot;</span>
-@描述           根据传入的<span class="nv">content</span>，判断是否是<span class="nv">emoji</span>字符。
-@<span class="k">return</span>         <span class="nv">True</span>是<span class="nv">emoji</span>，<span class="nv">False</span>不是<span class="nv">True</span>是<span class="nv">emoji</span>。
-<span class="s2">&quot;&quot;&quot;</span>
-@<span class="nv">staticmethod</span>
-<span class="nv">def</span> <span class="nv">isEmoji</span><span class="ss">(</span><span class="nv">content</span><span class="ss">)</span>:
-    <span class="k">if</span> <span class="nv">not</span> <span class="nv">content</span>:
-        <span class="k">return</span> <span class="nv">False</span>
-    <span class="k">if</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F600</span><span class="s2">&quot;</span> <span class="o">&lt;=</span> <span class="nv">content</span> <span class="nv">and</span> <span class="nv">content</span> <span class="o">&lt;=</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F64F</span><span class="s2">&quot;</span>:
-        <span class="k">return</span> <span class="nv">True</span>
-    <span class="nv">elif</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F300</span><span class="s2">&quot;</span> <span class="o">&lt;=</span> <span class="nv">content …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/06/24/51752189.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2016/06/24/51751032.html" rel="bookmark" title="Permalink to python调用存储过程，获取返回值">
-                                       python调用存储过程，获取返回值
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2016-06-24
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/51751032 </p>
-<p>python调用存储过程，获取返回值</p>
-<div class="highlight"><pre><span></span><span class="k">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;&quot;&quot;</span>
-<span class="ss">    call pro_test(%s,@tt);</span>
-<span class="ss">    select @tt as pro_out</span>
-<span class="ss">&quot;&quot;&quot;</span><span class="w"></span>
-<span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="n">yield</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">pool</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;test&quot;</span><span class="p">))</span><span class="w"></span>
-<span class="n">res</span><span class="p">,</span><span class="k">old</span><span class="o">=</span><span class="n">dbInterface</span><span class="p">.</span><span class="n">getone</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span><span class="n">o</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="n">pro_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">old</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="ss">&quot;pro_out&quot;</span><span class="p">)</span><span class="w"></span>
+</footer><!-- /.post-info -->                                <h2>HashMap简介</h2>
+<p>HashMap是一个散列表，它存储的内容是键值对(key-value)映射。继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。<br>
+HashMap的实现不是同步的，这意味着它不是线程安全的。  </p>
+<h2>使用</h2>
+<p>HashMap的构造函数:</p>
+<div class="highlight"><pre><span></span><span class="c1">// 默认构造函数</span>
+<span class="n">HashMap</span><span class="o">()</span>
+<span class="c1">// 指定“容量大小”的构造函数</span>
+<span class="n">HashMap</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">)</span>
+<span class="c1">// 指定“容量大小”和“加载因子”的构造函数</span>
+<span class="n">HashMap</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">,</span> <span class="kt">float</span> <span class="n">loadFactor</span><span class="o">)</span>
+<span class="c1">// 包含“子Map”的构造函数</span>
+<span class="n">HashMap</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">K</span><span class="o">,</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">)</span>
 </pre></div>
+
+
+<h2>实现原理</h2>
+<p>1.8版本的HashMap和1.7版本的HashMap实现上有区别。底层数据结构1.7由数组+链表组成 …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/06/24/51751032.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/04/01/java-HashMap.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -290,8 +226,105 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2016/04/20/51200656.html" rel="bookmark" title="Permalink to python插入记录cursor.lastrowid值为0的情况">
-                                       python插入记录cursor.lastrowid值为0的情况
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/03/26/java-map.html" rel="bookmark" title="Permalink to Java Map">
+                                       Java Map
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
+
+    on 2018-03-26
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <h2>前言</h2>
+<p>Map是java.util中的集合类，另一个和它一样常用的是List。<br>
+Map提供了一个方便的数据结构，用来存储键值对。<br>
+Map根据键得到值，因此不允许键重复(重复就覆盖了)，但允许值重复。<br>
+它有四个实现类，分别是HashMap、Hashtable、LinkedHashMap和TreeMap。  </p>
+<h3><strong>Hash算法简述</strong></h3>
+<p>常见的散列函数方法：除留余数法、直接寻址法、数字分析法、平方取中法、折叠法、随机数法<br>
+常见的处理Hash冲突的方法：拉链法、线性探索法等。</p>
+<h3><strong>Hashmap</strong></h3>
+<p>HashMap是最常用的Map，它根据键的HashCode值存储数据，根据键可以直接获取它的值，具有很快的访问速度，遍历时，取得数据的顺序是完全随机的。    <br>
+HashMap最多只允许一条记录的键为null; <br>
+允许多条记录的值为null;<br>
+HashMap不支持线程的同步，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。
+如果需要同步，可以用 Collections的synchronizedMap方法使HashMap具有同步的能力，或者使用ConcurrentHashMap。 <br>
+深入解析：<a href="java-HashMap.html">HashMap</a>  </p>
+<h3><strong>Hashtable</strong></h3>
+<p>Hashtable与HashMap类似都实现了Map、Cloneable, Serializable接口:<br>
+Hashtable继承自Dictionary类，HashMap继承自AbstractMap类。  <br>
+Hashtable不允许记录的键或者值为null …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/03/26/java-map.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2017/05/28/20180528212707.html" rel="bookmark" title="Permalink to HTTP请求中GET和POST的区别">
+                                       HTTP请求中GET和POST的区别
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a>
+
+    on 2017-05-28
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/http.html">http</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>1、很显然，报文方法名不同，一个是GET，一个是POST。</p>
+<p>2、请求携带参数的方式不同<br>
+GET参数常规的是跟在请求的url后面，以?开始，参数间以&amp;隔开，数据被直观的展现在URL上。如：https://www.baidu.com/s?ie=UTF-8&amp;wd=test<br>
+POST参数一般是放在请求体entity-body中，传输给目标服务器，数据在URL中不可见。</p>
+<p>3、请求时，携带的参数大小限制不同<br>
+GET请求的URL传参有大小限制<br>
+POST请求理论上是没有大小限制的，但实际情况是，各类应用服务器都对请求大小做了限制。因为过大请求包，会增加服务器解析时间。甚至会被人恶意请求超大的数据包。<br>
+Tomcat：  </p>
+<div class="highlight"><pre><span></span>    <span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">&quot;8080&quot;</span> <span class="na">protocol=</span><span class="s">&quot;HTTP/1.1&quot;</span>
+               <span class="na">connectionTimeout=</span><span class="s">&quot;20000&quot;</span>
+               <span class="na">redirectPort=</span><span class="s">&quot;8443&quot;</span>
+               <span class="na">maxPostSize=</span><span class="s">&quot;-1 …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/05/28/20180528212707.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2017/03/24/65627740.html" rel="bookmark" title="Permalink to python使用代码对redis的key进行集中管理">
+                                       python使用代码对redis的key进行集中管理
                                     </a>
                                 </h1>
                             </header>
@@ -303,7 +336,7 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
 
-    on 2016-04-20
+    on 2017-03-24
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
@@ -311,12 +344,32 @@
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/51200656 </p>
-<p>python向mysql插入数据后，可以根据根据cursor.lastrowid获取所插入数据的主键id值。</p>
-<p>最近遇到有一个插入语句执行后，cursor.lastrowid获取到的值为0的情况。</p>
-<p>经过测试发现，被插入的表的id必须是AUTO_INCREMENT，cursor.lastrowid才能获取到id值。因为插入的业务数据的id是我们自己生成的，table的id没有设置成AUTO_INCREMENT，修改为AUTO_INCREMENT后，问题解决。</p>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/65627740 </p>
+<p>平时工作中会经常用到一些全局的常量，如redis的key值命名等。</p>
+<p>可能会出现不同开发人员使用同一个key，导致缓存被覆盖等情况。</p>
+<p>针对这种情况，可以使用如下的方式，实现一个简单的集中管理。</p>
+<div class="highlight"><pre><span></span><span class="c1"># /usr/bin/env python</span>
+<span class="c1"># coding=utf-8</span>
+
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Created on 2017-03-17</span>
+
+<span class="sd">    @Author: Bug管理员</span>
+<span class="sd">    @note: 为了便于管理，将redis涉及到的key统一由该类管理</span>
+<span class="sd">    @demo: 调用示例：RdbKeyUtil.index_media_key(1)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="k">class</span> <span class="nc">RedisKeyUtil</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">USER_KEY</span> <span class="o">=</span> <span class="s1">&#39;test_key:</span><span class="si">%s</span><span class="s1">&#39;</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/04/20/51200656.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/03/24/65627740.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -325,7 +378,7 @@
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan2.html">&laquo;</a>
-    Page 3 / 12
+    Page 3 / 14
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan4.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -346,7 +399,8 @@
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

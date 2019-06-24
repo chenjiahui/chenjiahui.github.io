@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2014/05/13/25695365.html" />
 
-    <title>查看指定端口，关闭进程及Kill使用 | BugManager’s Blog</title>
+    <title>查看指定端口，关闭进程及Kill使用 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -96,7 +97,7 @@
 在windows命令行窗口下执行： <br>
 1.查看所有的端口占用情况 <br>
 netstat -ano</p>
-<p><img alt="image" src="../../../images/20140513110937796.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20140513110937796.png"></p>
 <p>2.查看指定端口的占用情况 <br>
 netstat -aon|findstr "8109"</p>
 <p>C:\Users\Administrator&gt;netstat -aon|findstr "8109"<br>
@@ -105,12 +106,12 @@ TCP 0.0.0.0:8109 0.0.0.0:0 LISTENING 5056</p>
 <p>找到两条，端口被进程号为 5056的进程占用，继续执行下面命令： （也可以去任务管理器中查看pid对应的进程）</p>
 <p>3.查看PID对应的进程</p>
 <p>tasklist|findstr "5056"</p>
-<p><img alt="image" src="../../../images/20140513112616640.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20140513112616640.png"></p>
 <p>javaw.exe占用了8109的端口（一开始就知道是它了，这里只是作为演示用）。</p>
 <p>4.结束该进程</p>
-<p><img alt="image" src="../../../images/20140513113057062.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20140513113057062.png"></p>
 <p>一般服务器上都是会有多个tomcat的，这样kill不是很科学。可以直接根据PID来kill：</p>
-<p><img alt="image" src="../../../images/20140513113230375.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20140513113230375.png"></p>
 
       </div><!-- /.entry-content -->
 

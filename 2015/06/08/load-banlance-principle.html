@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="集群负载均衡算法原理"/>
+    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/2015/06/08/load-banlance-principle.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2015/06/08/load-banlance-principle.html" />
+
+    <title>集群负载均衡算法原理 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="http://chenjiahui.hot-cool.cn/2015/06/08/load-banlance-principle.html" rel="bookmark"
+             title="Permalink to 集群负载均衡算法原理">集群负载均衡算法原理</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2015-06-08
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/ji-qun.html">集群</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46419465 </p>
+<p>最近打算往互联网方向发展，研究了下集群的负载均衡。其实早就应该去了解学习了。如有理解不到位的地方，还望各大神指出。</p>
+<p>负载均衡算法是集群在调度时，选择具体调度和分发方式的逻辑。</p>
+<p>目前流行和常用的算法有：轮询算法，Hash算法，Session，最小连接数，最大空闲等。</p>
+<p>1、轮询算法：</p>
+<p>实现方式：把每一次的用户请求，按顺序循环分配给集群内部的一台服务器。优点是算法简洁，无状态。</p>
+<p>2、权重轮询算法</p>
+<p>由于服务器的处理能力不同，可以再给服务器加权。也就是权重轮询算法。</p>
+<p>3、Hash算法</p>
+<p>一般就是将请求中的某项数据做hash运算，然后根据集群的服务器总数n取模，根据取模后的值分配服务器。</p>
+<p>一般可以根据请求时间，请求来源的ip等来做散列运算。</p>
+<p>java中哈希值的算法：</p>
+<div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="ss">&quot;hello&quot;</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">hashCode</span><span class="p">();</span>
+</pre></div>
+
+
+<p>4、一致性Hash算法</p>
+<p><a href="http://blog.csdn.net/cywosp/article/details/23397179/">http://blog.csdn.net/cywosp/article/details/23397179/</a></p>
+<p>5、Session算法</p>
+<p>此算法是解决WEB集群会话问题最简单的方式。</p>
+<p>与轮询算法类似，当用户发起请求时检查，若该请求的SessionID是首次发起的请求，则根据SessionID使用轮询算法选择服务器，当再次发起同一sessionID的请求时，直接转发给之前选择的服务器。使得服务器的缓存得到更好的利用。</p>
+<p>6、最少连接数请求，最大空闲请求</p>
+<p>如ftp，云服务等，若使用前面的几种算法，可能会由于客户端的连接时间不同，导致部分服务器连接数过多，压力过大。</p>
+<p>最小连接数算法，根据服务器当前的连接情况，把请求转发给当前连接数少的服务器。</p>
+<p>最大空闲请求，也是类似。可以根据服务器性能的不同做加权。</p>
+<p>﻿﻿</p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script> -->
+	
+</body>
+</html>

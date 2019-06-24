@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn" />
 
-    <title>BugManager’s Blog</title>
+    <title>BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -103,7 +104,7 @@ spreadsheetId就是编辑sheet页面时，网址中“/d/”与“/edit”之间
 就是#git=后面的值。在上面这个URL中是0  </p>
 <p>5、打开<a href="https://developers.google.com/sheets/api/quickstart/python?hl=zh-cn">quickstart</a>页面<br>
 点击下方的 ENABLE THE GOOGLE SHEETS API<br>
-<img alt="image" src="../../../images/20190603224501.png">  </p>
+<img alt="image" src="http://blogimg.hot-cool.cn/20190603224501.png">  </p>
 <p>在弹窗中点击 …</p>
                                 <p class="readmore">
                                     <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2019/05/31/google-sheet-api.html">Read more...</a>
@@ -247,8 +248,8 @@ invoke-rc.d …</pre></div>
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2018/05/28/20180528212707.html" rel="bookmark" title="Permalink to HTTP请求中GET和POST的区别">
-                                       HTTP请求中GET和POST的区别
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/07/02/nginx-upstream-check.html" rel="bookmark" title="Permalink to nginx服务器健康检查">
+                                       nginx服务器健康检查
                                     </a>
                                 </h1>
                             </header>
@@ -258,31 +259,33 @@ invoke-rc.d …</pre></div>
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
 
-    on 2018-05-28
+    on 2018-07-02
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/http.html">http</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>1、很显然，报文方法名不同，一个是GET，一个是POST。</p>
-<p>2、请求携带参数的方式不同<br>
-GET参数常规的是跟在请求的url后面，以?开始，参数间以&amp;隔开，数据被直观的展现在URL上。如：https://www.baidu.com/s?ie=UTF-8&amp;wd=test<br>
-POST参数一般是放在请求体entity-body中，传输给目标服务器，数据在URL中不可见。</p>
-<p>3、请求时，携带的参数大小限制不同<br>
-GET请求的URL传参有大小限制<br>
-POST请求理论上是没有大小限制的，但实际情况是，各类应用服务器都对请求大小做了限制。因为过大请求包，会增加服务器解析时间。甚至会被人恶意请求超大的数据包。<br>
-Tomcat：  </p>
-<div class="highlight"><pre><span></span>    <span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">&quot;8080&quot;</span> <span class="na">protocol=</span><span class="s">&quot;HTTP/1.1&quot;</span>
-               <span class="na">connectionTimeout=</span><span class="s">&quot;20000&quot;</span>
-               <span class="na">redirectPort=</span><span class="s">&quot;8443&quot;</span>
-               <span class="na">maxPostSize=</span><span class="s">&quot;-1 …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>现在，我们已经有了一组被nginx管理的服务，</p>
+<div class="highlight"><pre><span></span>    upstream srv <span class="o">{</span>
+        server srv1.hot-cool.cn <span class="nv">weight</span> <span class="o">=</span> <span class="m">2</span><span class="p">;</span> 
+        server srv2.hot-cool.cn<span class="p">;</span>
+        server srv3.hot-cool.cn backup<span class="p">;</span>
+
+        <span class="c1">#http健康检查相关配置</span>
+        check <span class="nv">interval</span><span class="o">=</span><span class="m">3000</span> <span class="nv">rise</span><span class="o">=</span><span class="m">2</span> <span class="nv">fall</span><span class="o">=</span><span class="m">3</span> <span class="nv">timeout</span><span class="o">=</span><span class="m">3000</span> <span class="nv">type</span><span class="o">=</span>http<span class="p">;</span>   <span class="c1">#1</span>
+        check_http_send <span class="s2">&quot;GET /checkhealth HTTP/1.0\r\n\r\n&quot;</span><span class="p">;</span>   <span class="c1">#2</span>
+        check_http_expect_alive http_2xx http_3xx<span class="p">;</span>  <span class="c1">#3</span>
+    <span class="o">}</span>
+</pre></div>
+
+
+<p>#1: 每间隔3000毫秒请求一次接口，连续rise次或以上正常响应认为服务器up …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/05/28/20180528212707.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/07/02/nginx-upstream-check.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -292,8 +295,8 @@ Tomcat：  </p>
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2018/04/14/Java-Hashtable.html" rel="bookmark" title="Permalink to Java Hashtable">
-                                       Java Hashtable
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/06/17/nginx-limit.html" rel="bookmark" title="Permalink to nginx限流配置">
+                                       nginx限流配置
                                     </a>
                                 </h1>
                             </header>
@@ -303,43 +306,29 @@ Tomcat：  </p>
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
 
-    on 2018-04-14
+    on 2018-06-17
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <h2>Hashtable简介</h2>
-<p>Hashtable是线程安全的（有许多方法用synchronized修饰），key和value都不支持null。      </p>
-<h2>与HashMap比较</h2>
-<p>Hashtable与HashMap类似都实现了Map、Cloneable, Serializable接口:<br>
-Hashtable继承自Dictionary类，HashMap继承自AbstractMap类。  <br>
-Hashtable不允许记录的键或者值为null，HashMap允许记录的键和值为null。<br>
-Hashtable初始容量为11，HashMap的初始1容量为16。
-Hashtable的许多方法中使用了synchronized关键字，所以Hashtable是线程安全的，即任一时刻只有一个线程能写Hashtable，这也导致了Hashtable在写入时会比较慢。
-如果在非线程安全的情况下，建议使用HashMap。如果在线程安全的情况下可以使用Hashtable，不过官方还是<strong>建议使用ConcurrentHashMap</strong>。     </p>
-<h2>构造函数</h2>
-<p>大致上和HashMap没有太大区别，主要的有以下两个区别： <br>
-1、无参构造函数，初始的~initialCapacity~是11   </p>
-<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="nf">Hashtable</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">this</span><span class="o">(</span><span class="mi">11</span><span class="o">,</span> <span class="mf">0.75f</span><span class="o">);</span>
-<span class="o">}</span>
+</footer><!-- /.post-info -->                                <div class="highlight"><pre><span></span><span class="nt">limit_req_zone</span> <span class="o">$</span><span class="nt">binary_remote_addr</span> <span class="nt">zone</span><span class="o">=</span><span class="nt">one</span><span class="p">:</span><span class="nd">10m</span> <span class="nt">rate</span><span class="o">=</span><span class="nt">1r</span><span class="o">/</span><span class="nt">s</span><span class="o">;</span>
 </pre></div>
 
 
-<p>2、threshold计算方式与HashMap不同</p>
-<div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">initialCapacity</span> <span class="o">*</span> <span class="n">loadFactor</span><span class="o">,</span> <span class="n">MAX_ARRAY_SIZE</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
-</pre></div>
-
-
-<h2>get</h2>
-<div class="highlight"><pre><span></span><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&quot;unchecked …</span></pre></div>
+<p><strong>$binary_remote_addr</strong>，表示通过请求的ip地址来做限制，即：限制同一客户端ip地址。
+<strong>zone=one:10m</strong>，表示生成一个名字为one(这个可以是随便什么有意义的名字one是官网示例上的名字)，大小为10M的内存区域，用来存储访问的频次信息。
+<strong>rate=1r/s</strong>，表示允许相同标识的客户端的访问频次，这里限制的是每秒1次，每秒1次，似乎不太科学，我们就配置成5r/s吧。
+嗯，这样感觉挺好的了。但是！某些特殊的场景，比如：在做APP的api服务时，当开始打开APP时，往往会发起比较多的请求。<br>
+可能会导致同一ip的请求突然爆发，5r/s就可能不够了。我们可以配置一个缓冲，当请求爆发时，把超过访问频次的请求放在缓冲区里等待处理。 <br>
+这个时候，我们的配置是长这样的</p>
+<div class="highlight"><pre><span></span>limit_req_zone <span class="nv">$binary_remote_addr</span> <span class="nv">zone</span><span class="o">=</span>myBucket:10m <span class="nv">rate …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/04/14/Java-Hashtable.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/06/17/nginx-limit.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -347,7 +336,7 @@ Hashtable的许多方法中使用了synchronized关键字，所以Hashtable是�
                     </li>
                     </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 13
+    Page 1 / 14
         <a href="http://chenjiahui.hot-cool.cn/index2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -368,7 +357,8 @@ Hashtable的许多方法中使用了synchronized关键字，所以Hashtable是�
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

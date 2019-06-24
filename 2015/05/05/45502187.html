@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2015/05/05/45502187.html" />
 
-    <title>activiti表单设置节点的默认变量 | BugManager’s Blog</title>
+    <title>activiti表单设置节点的默认变量 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -93,9 +94,9 @@
         <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45502187 </p>
 <p>最近使用activiti，需求中需要用到表单设置节点的默认变量。源码如下：</p>
 <p>在bpmn文件中，选中节点，配置表单属性：</p>
-<p><img alt="image" src="../../../images/20150507135724948.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150507135724948.png"></p>
 <p>类型是enum的，可以下方设置可以选值，如下：</p>
-<p><img alt="image" src="../../../images/20150507140143022.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150507140143022.png"></p>
 <p>当流程走到该节点时使用下列代码获取表单信息：</p>
 <div class="highlight"><pre><span></span><span class="nv">ProcessEngine</span> <span class="nv">processEngine</span> <span class="o">=</span> <span class="nv">ProcessEngines</span>.<span class="nv">getDefaultProcessEngine</span><span class="ss">()</span><span class="c1">;</span>
         <span class="nv">String</span> <span class="nv">taskId</span>  <span class="o">=</span> <span class="s2">&quot;</span><span class="s">1102</span><span class="s2">&quot;</span><span class="c1">;</span>

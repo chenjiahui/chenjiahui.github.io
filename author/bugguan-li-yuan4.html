@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html" />
 
-    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog</title>
+    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,135 +71,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/12/16/50311479.html" rel="bookmark" title="Permalink to onload和ready的区别">
-                                       onload和ready的区别
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
-
-    on 2015-12-16
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/html.html">html</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/50311479 </p>
-<p>今天想等网页加载好后动态计算某个div宽高和位置。<br>
-起初用的是下面这种方式：</p>
-<div class="highlight"><pre><span></span><span class="err">$</span><span class="p">(</span><span class="k">function</span><span class="p">()</span><span class="err">{</span>
-    <span class="n">doAdapter</span><span class="p">();</span>
-<span class="err">}</span><span class="p">)</span>
-
-<span class="err">$</span><span class="p">(</span><span class="n">document</span><span class="p">).</span><span class="n">ready</span><span class="p">(</span><span class="k">function</span><span class="p">()</span><span class="err">{</span>
-    <span class="n">doAdapter</span><span class="p">();</span>
-<span class="err">}</span><span class="p">);</span>
-</pre></div>
-
-
-<p>这东西不是很靠谱啊（当然它也有它的优点，在这里用就不靠谱了），这个不是一定等页面的图片全部加载完成才触发的。<br>
-它在DOM就绪后就触发了，而此时，dom元素所关联的内容可能还没有加载完毕。<br>
-比如图片的宽、高，图片的父容器的宽、高此时就不一定有值。<br>
-后来改成了 </p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span> <span class="n">onload</span><span class="o">=</span><span class="ss">&quot;doAdapter();&quot;</span><span class="o">&gt;</span>
-
-
-
-
-
-
-<span class="err">$</span><span class="p">(</span><span class="n">window</span><span class="p">).</span><span class="k">load</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="err">{</span>
-        <span class="n">doAdapter</span><span class="p">();</span>
-<span class="err">}</span><span class="p">);</span>
-</pre></div>
-
-
-<p>必须等待网页中所有的内容加载完毕后 ( 包括图片 ) 才能执行  </p>
-<p>效果就好了。</p>
-<p>借用网友的一张图：</p>
-<p><img alt="image" src="images/20151215102455828.jpg">  </p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/12/16/50311479.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/12/15/50311589.html" rel="bookmark" title="Permalink to APP端webview自动播放视频">
-                                       APP端webview自动播放视频
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
-
-    on 2015-12-15
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/50311589 </p>
-<p>昨天碰到一需求，需要写一个html5页面，要求支持打开自动播放视频。</p>
-<p>ok，要支持自动播放，设置<video>的autoplay="autoplay"就可以了吧。</p>
-<p>测试发现只有在浏览器中是正常播放了，android和ios都没有播放。</p>
-<p>换了种写法：</p>
-<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span> <span class="n">onload</span><span class="o">=</span><span class="ss">&quot;playVideo();&quot;</span><span class="o">&gt;</span>
-
-
-<span class="k">function</span> <span class="n">playVideo</span><span class="p">()</span><span class="err">{</span>
-    <span class="n">var</span> <span class="n">video</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">getElementById</span><span class="p">(</span><span class="ss">&quot;alt-player-ios&quot;</span><span class="p">);</span> 
-    <span class="n">video</span><span class="p">.</span><span class="n">play</span><span class="p">();</span> 
-<span class="err">}</span>
-</pre></div>
-
-
-<p>android的webview中可以自动播放了。（android以前设置过允许执行javascript，如果大家不能自动播放的话可能需要设置这个）。 </p>
-<p>ios需要添加webview的属性设置：</p>
-<div class="highlight"><pre><span></span><span class="n">_webView</span><span class="p">.</span><span class="n">mediaPlaybackRequiresUserAction</span> <span class="o">=</span> <span class="k">NO</span><span class="p">;</span>
-</pre></div>
-
-
-<p>ok，能自动播放了。 </p>
-<p>如果希望自动播放时不要全屏，那么嗨需要设置下面的属性：</p>
-<div class="highlight"><pre><span></span><span class="n">_webView</span><span class="p">.</span><span class="n">allowsInlineMediaPlayback</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
-</pre></div>
-
-
-<p>参考资料 …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/12/15/50311589.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/11/03/49619661.html" rel="bookmark" title="Permalink to 一行代码写python">
-                                       一行代码写python
+                                    <a href="http://chenjiahui.hot-cool.cn/2017/02/20/56009091.html" rel="bookmark" title="Permalink to tornado_mysql的pool使用事务的方法。">
+                                       tornado_mysql的pool使用事务的方法。
                                     </a>
                                 </h1>
                             </header>
@@ -210,7 +84,7 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
 
-    on 2015-11-03
+    on 2017-02-20
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
@@ -218,18 +92,28 @@
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/49619661 </p>
-<p>1、一行代码更新python数组中对象属性满足某一值的元素</p>
-<div class="highlight"><pre><span></span>    <span class="n">arr</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}]</span>
-    <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
-    <span class="k">print</span> <span class="n">arr</span>
-</pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/56009091 </p>
+<div class="highlight"><pre><span></span><span class="c1">#/usr/bin/env python</span>
+<span class="c1">#coding=utf-8</span>
 
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Created on 2017-02-20</span>
 
-<p>输出： </p>
-<div class="highlight"><pre><span></span>    <span class="p">[{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;d …</span></pre></div>
+<span class="sd">@Author: Bug管理员</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tornado_mysql</span> <span class="kn">import</span> <span class="n">pools</span>
+
+<span class="n">data_time</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+<span class="k">def</span> <span class="nf">create_pool</span><span class="p">():</span>
+    <span class="k">print</span> <span class="n">DB_CONN</span><span class="o">.</span><span class="n">PORT</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_USER</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_PASSWORD</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">DBNAME</span>
+    <span class="n">pool_db</span> <span class="o">=</span> <span class="n">pools</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">DB_CONN …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/11/03/49619661.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/02/20/56009091.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -239,8 +123,60 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/11/03/49619439.html" rel="bookmark" title="Permalink to python数组排序">
-                                       python数组排序
+                                    <a href="http://chenjiahui.hot-cool.cn/2017/02/09/54947198.html" rel="bookmark" title="Permalink to JAVA生成总和及个数确定的一组随机数(抢红包)">
+                                       JAVA生成总和及个数确定的一组随机数(抢红包)
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
+
+    on 2017-02-09
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/54947198 </p>
+<p>许久未碰java，写的有点拙。</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">test</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="p">;</span>
+<span class="o">/**</span>
+ <span class="o">*</span> 
+ <span class="o">*</span> <span class="nd">@author</span> <span class="n">chenjiahui</span>
+ <span class="o">*</span> <span class="nd">@2017</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">09</span>
+ <span class="o">*</span>
+ <span class="o">*/</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">Test</span> <span class="p">{</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">splitRedPacket</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">41 …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/02/09/54947198.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2017/01/10/54311168.html" rel="bookmark" title="Permalink to python过滤unicode控制字符">
+                                       python过滤unicode控制字符
                                     </a>
                                 </h1>
                             </header>
@@ -252,7 +188,7 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
 
-    on 2015-11-03
+    on 2017-01-10
 
         |
         tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
@@ -260,39 +196,18 @@
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/49619439 </p>
-<p>简单排序：</p>
-<div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">temp</span> <span class="o">=</span> <span class="n">sorted</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="n">print</span> <span class="n">arr</span>
-<span class="n">print</span> <span class="n">temp</span>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/54311168 </p>
+<p>昨天晚上平台被个别用户利用了一个漏洞：</p>
+<p>原理：<a href="http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html">https://www.zhihu.com/question/43621727</a></p>
+<p><a href="http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html">http://blog.sina.com.cn/s/blog_593d2b950100hwl1.html</a></p>
+<p>在浏览器上执行测试代码：</p>
+<div class="highlight"><pre><span></span>data:text/html;charset=utf8,<span class="nt">&lt;script&gt;</span>document.write(&#39;陈佳慧&#39;+String.fromCharCode(8238)+&#39;送了一座海岛&#39;.split(&#39;&#39;).reverse().join(&#39;&#39;)+String.fromCharCode(8237))<span class="nt">&lt;/script&gt;</span>
 </pre></div>
 
 
-<p>输出： </p>
-<div class="highlight"><pre><span></span><span class="k">[3, 4, 1]</span>
-<span class="k">[1, 3, 4]</span>
-</pre></div>
-
-
-<p>简单排序示例2： </p>
-<div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">arr2</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span> 
-<span class="n">print</span> <span class="n">arr</span>
-<span class="n">print</span> <span class="n">arr2</span>
-</pre></div>
-
-
-<p>输出： </p>
-<div class="highlight"><pre><span></span><span class="k">[1, 3, 4]</span>
-<span class="na">None</span>
-</pre></div>
-
-
-<p>正序排序： </p>
-<div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="err">{</span><span class="s1">&#39;a …</span></pre></div>
+<p>复制生成的文字，取app上修改昵称 …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/11/03/49619439.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/01/10/54311168.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -302,8 +217,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/10/16/49180767.html" rel="bookmark" title="Permalink to html根据宽的百分比设置高">
-                                       html根据宽的百分比设置高
+                                    <a href="http://chenjiahui.hot-cool.cn/2016/10/30/h5-app.html" rel="bookmark" title="Permalink to h5与APP交互">
+                                       h5与APP交互
                                     </a>
                                 </h1>
                             </header>
@@ -315,34 +230,32 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2015-10-16
+    on 2016-10-30
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/html.html">html</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/ios.html">ios</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/android.html">android</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/49180767 </p>
-<p>最近在团队中开发了一部分html页面</p>
-<p>有一个功能点，需要在一行展示三张图片，每张图片拉伸成正方形。</p>
-<p>对于图片的宽设置为33%就可以了，但是怎么让高度根据宽度变化呢？最初想到的是在页面生成后使用js来获取图片宽，再根据这个获取的宽设置图片的高。</p>
-<p>代码如下：</p>
-<div class="highlight"><pre><span></span>$<span class="ss">(</span><span class="nv">function</span><span class="ss">()</span>{
-    <span class="nv">var</span> <span class="nv">imgs</span><span class="o">=</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">.view_img</span><span class="s1">&#39;</span><span class="ss">)</span>
-    <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;imgs.length;i++){</span>
-        <span class="nv">imgs</span>[<span class="nv">i</span>].<span class="nv">style</span>.<span class="nv">height</span><span class="o">=</span><span class="nv">imgs</span>[<span class="nv">i</span>].<span class="nv">offsetWidth</span><span class="o">+</span><span class="s1">&#39;</span><span class="s">px</span><span class="s1">&#39;</span><span class="c1">;</span>
-    }
-}<span class="ss">)</span>
-</pre></div>
+</footer><!-- /.post-info -->                                <p><strong>iOS</strong></p>
+<div class="highlight"><pre><span></span><span class="n">_bridge</span> <span class="o">=</span> <span class="p">[</span><span class="n">WebViewJavascriptBridge</span> <span class="nl">bridgeForWebView</span><span class="p">:</span><span class="n">_webView</span> <span class="nl">webViewDelegate</span><span class="p">:</span><span class="nb">self</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// NSLog(@&quot;ObjC received message from JS: %@&quot;, data);</span>
+        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response for message from ObjC&quot;</span><span class="p">);</span>
+    <span class="p">}];</span>
+    <span class="p">[</span><span class="n">_bridge</span> <span class="nl">registerHandler</span><span class="p">:</span><span class="s">@&quot;testObjcCallback&quot;</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">data</span><span class="p">,</span> <span class="n">WVJBResponseCallback</span> <span class="n">responseCallback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// NSLog(@&quot;testObjcCallback2222 called: %@&quot;, data);</span>
+        <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">navigationController</span> <span class="nl">popViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+        <span class="n">responseCallback</span><span class="p">(</span><span class="s">@&quot;Response from testObjcCallback&quot;</span><span class="p">);</span>
+    <span class="p">}];</span>
 
-
-<p>在手机web中，不拉伸页面大小其实这样做是可以了的。</p>
-<p>但是如果在pc段的页面中查看，拉伸下页面，图片的高度是不会跟着宽度变化的。</p>
-<p>查看了点资料，原来直接使用css样式也是可以做到宽按父组件的百分比设置，高根据宽的百分比设置的。</p>
-<p>代码如下 …</p>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">buttonClicked:</span><span class="p">(</span><span class="bp">UIButton</span><span class="o">*</span><span class="p">)</span><span class="nv">sender</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">_bridge …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/10/16/49180767.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/10/30/h5-app.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -352,8 +265,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/30/48830863.html" rel="bookmark" title="Permalink to Window7下忘记MySQL ROOT密码">
-                                       Window7下忘记MySQL ROOT密码
+                                    <a href="http://chenjiahui.hot-cool.cn/2016/08/07/52141391.html" rel="bookmark" title="Permalink to 截取带emoji表情的utf8字符串">
+                                       截取带emoji表情的utf8字符串
                                     </a>
                                 </h1>
                             </header>
@@ -363,42 +276,74 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
 
-    on 2015-09-30
+    on 2016-08-07
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/windows.html">Windows</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48830863 </p>
-<p>前端时间，因为太久没用，导致忘记了本地mysql的root密码。</p>
-<p>从网上找了点资料，一步一步的解决，并记录了下来。</p>
-<p>解决步骤如下：<br>
-1. 停止mysql 服务  </p>
-<div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">stop</span> <span class="n">mysql</span>
-</pre></div>
-
-
-<p>2. 以不检查权限的方式启动mysql </p>
-<div class="highlight"><pre><span></span><span class="n">mysqld</span> <span class="c1">--skip-grant-tables</span>
-</pre></div>
-
-
-<p>可以看到窗口光标在下一行的第一个位置闪烁，说明已经启动，不需要管。<br>
-3. 新建一个命令行窗口，启动mysql   </p>
-<div class="highlight"><pre><span></span><span class="n">mysql</span>
-</pre></div>
-
-
-<p>4. 修改ROOT密码  </p>
-<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span><span class="n">use</span> <span class="n">mysql</span>
-<span class="n">mysql</span><span class="o">&gt;</span><span class="k">update</span> <span class="k">user</span> <span class="k">set</span> <span class="n">password</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;cjh&#39;</span><span class="p">)</span> <span class="k">where</span> <span class="k">user</span><span class="o">=</span><span class="s1">&#39;root …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/52141391 </p>
+<p>好久没有写博客了，当然这个锅得甩给忙碌的工作!🤭😁</p>
+<p>最近工作中又一次碰到了关于emoji表情的问题：需求要求将用户输入的一段内容，截取8个长度作为标题。app端简单的对内容substr了一下。</p>
+<p>然而当在一些特殊情况下，就会出现截取后最后一位乱码的情况。比如内容为：“明天要发奖金啦🏅😁😍”，按预期截取后应该是：“明天要发奖金啦🏅”；而实际上截取的结果是：“明天要发奖金啦□”，最后一位是个乱码，看来奖金发不成了。</p>
+<p>要细说起编码，那就是一篇很长的论文了，不了解的同学可以度娘、谷哥一下。</p>
+<p>这里主要说说utf8编码：</p>
+<p>UTF-8是一种变长字节编码方式。对于某一个字符的UTF-8编码，如果只有一个字节则其最高二进制位为0；如果是多字节，其第一个字节从最高位开始，连续的二进制位值为1的个数决定了其编码的位数，其余各字节均以10开头。  </p>
+<p>#1-byte格式: 0xxxxxxx<br>
+#2-byte格式: 110xxxxx 10xxxxxx<br>
+#3-byte格式: 1110xxxx 10xxxxxx 10xxxxxx<br>
+#4-byte格式: 11110xxx …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/30/48830863.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/08/07/52141391.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2016/06/24/51752189.html" rel="bookmark" title="Permalink to python判断输入的内容是否是emoji表情">
+                                       python判断输入的内容是否是emoji表情
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
+
+    on 2016-06-24
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/51752189 </p>
+<p>python判断输入的内容是否是emoji表情：</p>
+<div class="highlight"><pre><span></span><span class="s2">&quot;&quot;&quot;</span>
+@描述           根据传入的<span class="nv">content</span>，判断是否是<span class="nv">emoji</span>字符。
+@<span class="k">return</span>         <span class="nv">True</span>是<span class="nv">emoji</span>，<span class="nv">False</span>不是<span class="nv">True</span>是<span class="nv">emoji</span>。
+<span class="s2">&quot;&quot;&quot;</span>
+@<span class="nv">staticmethod</span>
+<span class="nv">def</span> <span class="nv">isEmoji</span><span class="ss">(</span><span class="nv">content</span><span class="ss">)</span>:
+    <span class="k">if</span> <span class="nv">not</span> <span class="nv">content</span>:
+        <span class="k">return</span> <span class="nv">False</span>
+    <span class="k">if</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F600</span><span class="s2">&quot;</span> <span class="o">&lt;=</span> <span class="nv">content</span> <span class="nv">and</span> <span class="nv">content</span> <span class="o">&lt;=</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F64F</span><span class="s2">&quot;</span>:
+        <span class="k">return</span> <span class="nv">True</span>
+    <span class="nv">elif</span> <span class="nv">u</span><span class="s2">&quot;</span><span class="s">\U0001F300</span><span class="s2">&quot;</span> <span class="o">&lt;=</span> <span class="nv">content …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2016/06/24/51752189.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -407,7 +352,7 @@
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan3.html">&laquo;</a>
-    Page 4 / 12
+    Page 4 / 14
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan5.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -428,7 +373,8 @@
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

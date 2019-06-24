@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html" />
 
-    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog</title>
+    <title>BugManager’s Blog - Bug管理员 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -70,8 +71,96 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/14/45726553.html" rel="bookmark" title="Permalink to easyui动态生成页面元素时，easyui样式失效问题">
-                                       easyui动态生成页面元素时，easyui样式失效问题
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/load-banlance-principle.html" rel="bookmark" title="Permalink to 集群负载均衡算法原理">
+                                       集群负载均衡算法原理
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2015-06-08
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/ji-qun.html">集群</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46419465 </p>
+<p>最近打算往互联网方向发展，研究了下集群的负载均衡。其实早就应该去了解学习了。如有理解不到位的地方，还望各大神指出。</p>
+<p>负载均衡算法是集群在调度时，选择具体调度和分发方式的逻辑。</p>
+<p>目前流行和常用的算法有：轮询算法，Hash算法，Session，最小连接数，最大空闲等。</p>
+<p>1、轮询算法：</p>
+<p>实现方式：把每一次的用户请求，按顺序循环分配给集群内部的一台服务器。优点是算法简洁，无状态。</p>
+<p>2、权重轮询算法</p>
+<p>由于服务器的处理能力不同，可以再给服务器加权。也就是权重轮询算法。</p>
+<p>3、Hash算法</p>
+<p>一般就是将请求中的某项数据做hash运算，然后根据集群的服务器总数n取模，根据取模后的值分配服务器。</p>
+<p>一般可以根据请求时间，请求来源的ip等来做散列运算。</p>
+<p>java中哈希值的算法：</p>
+<div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="ss">&quot;hello&quot;</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">s …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/load-banlance-principle.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46406927.html" rel="bookmark" title="Permalink to 获得当前用户的ip">
+                                       获得当前用户的ip
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
+
+    on 2015-06-08
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46406927 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。
+<img alt="微笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/smile.gif"></p>
+<p>java获取当前用户的ip</p>
+<div class="highlight"><pre><span></span>    <span class="n">String</span> <span class="n">modify_user_ip</span> <span class="o">=</span> <span class="o">((</span><span class="n">ServletRequestAttributes</span><span class="o">)</span> <span class="o">(</span><span class="n">RequestContextHolder</span>
+                        <span class="o">.</span><span class="na">getRequestAttributes</span><span class="o">())).</span><span class="na">getRequest</span><span class="o">().</span><span class="na">getRemoteAddr</span><span class="o">();</span>
+</pre></div>
+
+
+<p>﻿﻿</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46406927.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46406863.html" rel="bookmark" title="Permalink to Flex根据数据，动态生成表格">
+                                       Flex根据数据，动态生成表格
                                     </a>
                                 </h1>
                             </header>
@@ -83,30 +172,36 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2015-05-14
+    on 2015-06-08
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/jquery-easyui.html">jquery-easyui</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/javascript.html">javascript</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45726553 </p>
-<p>﻿﻿</p>
-<p>在前台页面动态生成easyui页面元素时，有时会发现，easyui的样式出不来，甚至页面不是想要的效果。</p>
-<p>多数原因是在页面加载完时执行的$(function(){}方法中动态生成元素。</p>
-<p>而调用$(function(){}方法时，页面已经渲染完毕，导致通过代码动态加载的元素，不会被自动渲染。</p>
-<p>解决方法：</p>
-<p>在加载完元素后，渲染组件即可：</p>
-<div class="highlight"><pre><span></span>      <span class="nx">$</span><span class="p">.</span><span class="nx">parser</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;#configTable&#39;</span><span class="p">);</span>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46406863 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。<img alt="微笑" src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/smile.gif"></p>
+<p>在项目开发中，有这样的场景：前台页面的表格列需要通过查询的数据来生成。</p>
+<div class="highlight"><pre><span></span><span class="nv">public</span> <span class="nv">Map</span> <span class="nv">myMethod</span><span class="ss">()</span> {
+    <span class="o">//</span>此处省略部分代码，主要功能就是封装好表格数据和表头信息。  
+    <span class="nv">Map</span> <span class="nv">resM</span> <span class="o">=</span> <span class="nv">new</span> <span class="nv">HashMap</span><span class="ss">()</span><span class="c1">;</span>
+    <span class="nv">resM</span>.<span class="nv">put</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">head</span><span class="s2">&quot;</span>, <span class="nv">headNameList</span><span class="ss">)</span><span class="c1">;</span>
+    <span class="nv">resM</span>.<span class="nv">put</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">data</span><span class="s2">&quot;</span>, <span class="nv">dataList</span><span class="ss">)</span><span class="c1">;</span>
+    <span class="k">return</span> <span class="nv">resM</span><span class="c1">;</span>
+}
 </pre></div>
 
 
-<p>﻿﻿</p>
+<p>前台：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spark.components.gridClasses.GridColumn</span><span class="p">;</span>
+
+    <span class="n">protected</span> <span class="n">function</span> <span class="n">vgroup1_creationCompleteHandler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span><span class="n">FlexEvent</span><span class="p">):</span><span class="n">void</span>
+    <span class="p">{</span>
+        <span class="o">//</span> <span class="n">TODO …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/14/45726553.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46406863.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -116,153 +211,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/12/45668341.html" rel="bookmark" title="Permalink to maven下载flex依赖的jar包失败，解决办法">
-                                       maven下载flex依赖的jar包失败，解决办法
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2015-05-12
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/maven.html">maven</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45668341 </p>
-<p>在开发过程中，有的时候会碰到个别jar包在maven仓库中未提供的情况。比如flex相关的一些jar包。</p>
-<p>如果自己公司没有私服，则可以通过自己下载jar包放在项目中，如：</p>
-<p><img alt="image" src="../../../images/20150512133452830.png"></p>
-<p>再在pom.xml中添加本地依赖：</p>
-<div class="highlight"><pre><span></span> <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId&gt;</span>javabuilder<span class="nt">&lt;/groupId&gt;</span> 
-      <span class="nt">&lt;artifactId&gt;</span>javabuilder<span class="nt">&lt;/artifactId&gt;</span> 
-      <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span> 
-      <span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span> 
-      <span class="nt">&lt;systemPath&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">basedir</span><span class="cp">}</span>/src/main/webapp/WEB-INF/lib/blazeds-common-4.0.0.14931.jar<span class="nt">&lt;/systemPath&gt;</span> 
-  <span class="nt">&lt;/dependency&gt;</span>
-  <span class="nt">&lt;dependency&gt;</span> 
-      <span class="nt">&lt;groupId …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/12/45668341.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/07/45560269.html" rel="bookmark" title="Permalink to activiti实现任务超时，创建job不执行的原因">
-                                       activiti实现任务超时，创建job不执行的原因
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2015-05-07
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45560269 </p>
-<p>最近刚开始上手activiti，发现在使用定时任务时，创建了定时job，缺一直不执行。</p>
-<p>情况如下：</p>
-<p>首先通过配置定时器穿件一个定时任务，设置超时时间60秒</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;boundaryEvent</span> <span class="na">id=</span><span class="s">&quot;boundarytimer1&quot;</span> <span class="na">name=</span><span class="s">&quot;Timer&quot;</span> <span class="na">attachedToRef=</span><span class="s">&quot;任务1&quot;</span> <span class="na">cancelActivity=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;timerEventDefinition&gt;</span>
-          <span class="nt">&lt;timeDuration&gt;</span>PT60S<span class="nt">&lt;/timeDuration&gt;</span>
-      <span class="nt">&lt;/timerEventDefinition&gt;</span>
-<span class="nt">&lt;/boundaryEvent&gt;</span>
-</pre></div>
-
-
-<p>当流程执行到该任务节点时，数据库中产生了一条job数据。其中字段DUEDATE_的值为当前时间60S后。</p>
-<p>但是时间过了60秒，job并没有按预期执行。</p>
-<p>翻看文档，发现Activiti的Job管理器，默认是关闭的，需要通过设置processEnginConfiguration中的<property name="jobExecutorActivate" value="false" />激活。</p>
-<p>配置后重新尝试上述步骤，job任然未执行。</p>
-<p>继续查看文档，发现是activiti与spring集成时，需要将activiti的引擎配置交由Spring来管理。</p>
-<p>将activiti.cfg …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/07/45560269.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/05/05/45502187.html" rel="bookmark" title="Permalink to activiti表单设置节点的默认变量">
-                                       activiti表单设置节点的默认变量
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2015-05-05
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/45502187 </p>
-<p>最近使用activiti，需求中需要用到表单设置节点的默认变量。源码如下：</p>
-<p>在bpmn文件中，选中节点，配置表单属性：</p>
-<p><img alt="image" src="../../../images/20150507135724948.png"></p>
-<p>类型是enum的，可以下方设置可以选值，如下：</p>
-<p><img alt="image" src="../../../images/20150507140143022.png"></p>
-<p>当流程走到该节点时使用下列代码获取表单信息：</p>
-<div class="highlight"><pre><span></span><span class="nv">ProcessEngine</span> <span class="nv">processEngine</span> <span class="o">=</span> <span class="nv">ProcessEngines</span>.<span class="nv">getDefaultProcessEngine</span><span class="ss">()</span><span class="c1">;</span>
-        <span class="nv">String</span> <span class="nv">taskId</span>  <span class="o">=</span> <span class="s2">&quot;</span><span class="s">1102</span><span class="s2">&quot;</span><span class="c1">;</span>
-        <span class="nv">String</span> <span class="nv">processDefinitionId</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">myProcess:2:904</span><span class="s2">&quot;</span><span class="c1">;</span>
-        <span class="nv">List</span><span class="o">&lt;</span><span class="nv">FormProperty</span><span class="o">&gt;</span> <span class="nv">list</span> <span class="o">=</span> <span class="nv">processEngine</span>.<span class="nv">getFormService</span><span class="ss">()</span>.<span class="nv">getTaskFormData</span><span class="ss">(</span><span class="nv">taskId</span><span class="ss">)</span>.<span class="nv">getFormProperties</span><span class="ss">()</span><span class="c1">;</span>
-
-        <span class="k">if</span><span class="ss">(</span><span class="nv">list</span><span class="o">!=</span><span class="nv">null</span> <span class="o">&amp;&amp;</span> <span class="nv">list</span>.<span class="nv">size</span><span class="ss">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="ss">)</span>{
-            <span class="k">for</span><span class="ss">(</span><span class="nv">FormProperty</span> <span class="nv">formProperty …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/05/05/45502187.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/10/27/40518473.html" rel="bookmark" title="Permalink to jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法">
-                                       jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46406773.html" rel="bookmark" title="Permalink to Flex_抛自定义事件">
+                                       Flex_抛自定义事件
                                     </a>
                                 </h1>
                             </header>
@@ -274,38 +224,26 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2014-10-27
+    on 2015-06-08
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/jquery-easyui.html">jquery-easyui</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/javascript.html">javascript</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/40518473 </p>
-<p><strong>﻿﻿jquery-easyui的datagrid在checkbox多选时，行选中不对应，去除高亮的解决方法</strong></p>
-<p>工作中用到一个具有多选功能的easyui-datagrid在处理cell的点击事件时，不允许被选中行的需求。</p>
-<p>如下图，点击“查看”时，只是为了查看详细信息，并不是需要选择行。</p>
-<p><img alt="image" src="../../../images/20141027234702859.png"></p>
-<p>完成这个需求，其实只需要将datagrid的checkOnSelect属性设置为false就可以了。</p>
-<p>然而，当设置该属性后，新的问题就随之出现了。</p>
-<p><img alt="image" src="../../../images/20141027234813312.png"></p>
-<p>目前的办法是使用以下代码去除高亮： （本来是打算处理成checkbox选中的行高亮显示，奈何刚开始使用easyui功力不够）  </p>
-<div class="highlight"><pre><span></span><span class="n">onSelect</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="n">rowData</span><span class="o">){</span>
- <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectRow&#39;</span><span class="o">,</span><span class="n">rowIndex</span><span class="o">);</span>
-<span class="o">},</span>
-<span class="n">onCheckAll</span><span class="o">:</span><span class="kd">function</span><span class="o">(</span><span class="n">rows</span><span class="o">){</span>
- <span class="n">$</span><span class="o">(</span><span class="s1">&#39;#datagrid2&#39;</span><span class="o">).</span><span class="n">datagrid</span><span class="o">(</span><span class="s1">&#39;unselectAll&#39;</span><span class="o">);</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p>使用以上代码之后，要获取到checkbox选中的所以行数据，则使用以下代码：</p>
-<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">checkedItems</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#datagrid2 …</span></pre></div>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46406773 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。!</p>
+<p>flex_抛自定义事件</p>
+<div class="highlight"><pre><span></span>    <span class="k">for</span> <span class="k">each</span><span class="p">(</span><span class="k">var</span> <span class="nx">nc</span><span class="o">:</span><span class="nx">HBox</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="nx">superTabnav</span><span class="p">.</span><span class="nx">getChildren</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">nc</span><span class="p">.</span><span class="nx">id</span><span class="o">==</span><span class="nx">ncId</span><span class="p">){</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">superTabnav</span><span class="p">.</span><span class="nx">selectedChild</span><span class="o">=</span><span class="nx">nc</span><span class="o">;</span>
+            <span class="k">var</span> <span class="nx">uiComponent</span><span class="o">:</span><span class="nx">UIComponent</span> <span class="o">=</span> <span class="nx">nc</span><span class="p">.</span><span class="nx">getChildAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="nx">as</span> <span class="nx">UIComponent</span><span class="o">;</span>
+            <span class="nx">uiComponent</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="k">new</span> <span class="nb">Event</span><span class="p">(</span><span class="s2">&quot;showRef&quot;</span><span class="p">));</span><span class="c1">//抛事件</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">workorderlist</span><span class="p">.</span><span class="nx">currentListItem …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/10/27/40518473.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46406773.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -315,8 +253,8 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2014/08/22/38752955.html" rel="bookmark" title="Permalink to java split | （竖线）">
-                                       java split | （竖线）
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46406745.html" rel="bookmark" title="Permalink to Flex给组件添加滚动条">
+                                       Flex给组件添加滚动条
                                     </a>
                                 </h1>
                             </header>
@@ -326,29 +264,72 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
 
-    on 2014-08-22
+    on 2015-06-08
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
 
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/38752955 </p>
-<p>java split | （竖线）</p>
-<p>在java中,有一个字符串"866|10|1824261|214|",需要根据“|”截取。</p>
-<p>而直接用split("|");是不行的。</p>
-<p>原因是竖线 | 在正则中是特殊字符，需要转义，也就是split(“|”);</p>
-<p>但实际在java中使用时，\又是java的特殊字符，需要转义，最终变成了split("\|");</p>
-<div class="highlight"><pre><span></span><span class="nv">public</span> <span class="nv">static</span> <span class="nv">void</span> <span class="nv">main</span><span class="ss">(</span><span class="nv">String</span>[] <span class="nv">args</span><span class="ss">)</span> {
-        <span class="nv">String</span> <span class="nv">line</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">866|10|1824261|214|</span><span class="s2">&quot;</span><span class="c1">;</span>
-        <span class="nv">String</span>[] <span class="nv">cells</span> <span class="o">=</span> <span class="nv">line</span>.<span class="nv">split</span><span class="ss">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s">|</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46406745 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，</p>
+<p>在flex前台，有时会出现页面撑出付组件，而不出现滚动条的情况。（时间过去很久了，具体的场景记不起来了。）</p>
+<p>可以再外面加一层Scroller 解决。</p>
+<div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">s:Scroller</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;100%&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">s:Group</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">mx:Grid</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;grid&quot;</span>  <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">borderColor</span><span class="o">=</span><span class="s">&quot;#E6E6E6&quot;</span> <span class="na">borderStyle</span><span class="o">=</span><span class="s">&quot;none&quot;</span> <span class="na">horizontalGap</span><span class="o">=</span><span class="s">&quot;-1&quot;</span>
+                         <span class="na">verticalGap</span><span class="o">=</span><span class="s">&quot;-1&quot;</span> <span class="p">&gt;</span>
 
-        <span class="k">for</span><span class="ss">(</span><span class="nv">int …</span></pre></div>
+                <span class="p">&lt;/</span><span class="nt">mx:Grid</span><span class="p">&gt;</span>      
+            <span class="p">&lt;/</span><span class="nt">s:Group</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">s:Scroller</span><span class="p">&gt;</span>
+</pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2014/08/22/38752955.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46406745.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/06/08/46406725.html" rel="bookmark" title="Permalink to flex_进度条样式">
+                                       flex_进度条样式
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+
+    on 2015-06-08
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/46406725 </p>
+<p>最近打算吧硬盘中的资料记录在博客中，有用的就当是个分享，没用的就当是个备份，还望大家不要见怪。!🙂</p>
+<p>一共4个文件：</p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150608004825249.png"></p>
+<p>JinDuTiaoItem.mxml：</p>
+<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+    <span class="nt">&lt;s:GridItemRenderer</span> <span class="na">xmlns:fx=</span><span class="s">&quot;http://ns.adobe.com/mxml/2009&quot;</span> 
+                        <span class="na">xmlns:s=</span><span class="s">&quot;library://ns.adobe.com/flex/spark&quot;</span> 
+                        <span class="na">xmlns:mx=</span><span class="s">&quot;library://ns.adobe.com/flex/mx …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/06/08/46406725.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -357,7 +338,7 @@
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan9.html">&laquo;</a>
-    Page 10 / 12
+    Page 10 / 14
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan11.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -378,7 +359,8 @@
                 <ul>
                     <li><a href="http://qiangwo.net">吻别-寻找前任</a></li>
                     <li><a href="https://api.qiangwoapp.com/">抢我-聊天交友</a></li>
-                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-省钱利器</a></li>
+                    <li><a href="https://www.zmmapp.com">赚满满-省钱利器</a></li>
+                    <li><a href="http://blogimg.hot-cool.cn/20190609156009390435031.jpg">赚满满-APP下载</a></li>
                 </ul>
             </div><!-- /.social -->
             <div>

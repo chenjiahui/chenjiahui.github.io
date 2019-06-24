@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2015/08/12/47440683.html" />
 
-    <title>linux模糊查询文件并删除 | BugManager’s Blog</title>
+    <title>linux模糊查询文件并删除 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
@@ -47,6 +47,7 @@
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
@@ -107,7 +108,7 @@ find /log/*/*.log -mtime +3 -exec rm -rf <span class="o">{}</span> <span class="
 <p>1、结尾的分号要也斜线转义，因为";"在不同版本的linux中会有不同的意义。<br>
 2、{}与\;之间必须有空格。<br>
 测试如下：</p>
-<p><img alt="image" src="../../../images/20150812103843201.png"></p>
+<p><img alt="image" src="http://blogimg.hot-cool.cn/20150812103843201.png"></p>
 <p>保存文件后，会发现没有权限执行，需要修改权限</p>
 <div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="k">delete</span><span class="o">-</span><span class="n">files</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
