@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+
+    <meta property="og:title" content="java虚拟机-垃圾回收GC"/>
+    <meta property="og:url" content="/2017/03/24/javaVM-GC.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="/2017/03/24/javaVM-GC.html" />
+
+    <title>java虚拟机-垃圾回收GC | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css?v=1" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" />
+</a>
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="">Home</a></li>
+                            <li class="active"><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/jia-gou.html">架构</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+  <section>
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/2017/03/24/javaVM-GC.html" rel="bookmark"
+             title="Permalink to java虚拟机-垃圾回收GC">java虚拟机-垃圾回收GC</a></h1>
+      </header>
+      <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="/category/java.html">java</a>
+
+    on 2017-03-24
+
+        |
+        tags:         <a href="/tag/java.html">java</a>
+        <a href="/tag/jvm.html">jvm</a>
+
+
+
+    
+</footer><!-- /.post-info -->
+
+        <h2>垃圾回收算法</h2>
+<p>￼</p>
+<h3>垃圾检测</h3>
+<p><strong>引用计数法</strong><br>
+给对象添加一个引用计数器，被引用时+1，失效时-1。垃圾回收时，计数为0的对象。此算法最致命的是无法处理循环引用的问题。   <br>
+<strong>可达性检测</strong><br>
+以根对象为起点，进行搜索，如果对象不可达，则认为该对象为垃圾对象。   </p>
+<p><strong>那根节点是怎么确定的呢(GC Root)</strong>    <br>
+虚拟机栈（栈帧中的本地变量表）中引用的对象<br>
+方法区中类静态属性引用的对象<br>
+方法区中常量引用的对象<br>
+本地方法栈中JNI（即一般说的Native方法）引用的对象<br>
+这些信息都使用一组称为OopMap的数据结构来实现  </p>
+<h3>引用类型</h3>
+<p><strong>强引用</strong>  <br>
+只要强引用还存在，垃圾收集器永远不会回收掉被引用的对象  </p>
+<p><strong>软引用</strong> <br>
+描述一些还有用但并非必需的对象。在系统将要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行第二次回收。如果这次回收还没有足够的内存才会抛出内存溢出异常     </p>
+<p><strong>弱引用</strong>  <br>
+用来描述非必需的对象，强度比软引用还要弱，被弱引用关联的对象只能生存到下一次垃圾收集发生之前，当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象 </p>
+<p><strong>虚引用</strong> <br>
+也称为幽灵引用或者幻影引用，是最弱的一种引用关系。一个对象是否有虚引用的存在，完全不会影响其生存时间，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知 </p>
+<h3>回收算法</h3>
+<p><strong>标记-清除</strong><br>
+将检测到的垃圾对象进行标记，再进行统一删除操作。但会出现碎片，碎片太多，可能会导致大对象无法分配内存空间。<font color=#9999ff>下图来源于网络</font></p>
+<p><img alt="p1" src="http://blogimg.hot-cool.cn/20190625156143149580925.png">  </p>
+<p><strong>复制</strong><br>
+将内存分为大小相等的两个区域，垃圾回收时，遍历正在使用区域将仍在使用的对象复制到另一区域。实现简单，效率高，不会出现碎片，但是需要使用2倍的内存空间。  <font color=#9999ff >下图来源于网络</font></p>
+<p><img alt="p2" src="http://blogimg.hot-cool.cn/20190625156143156355841.png">    </p>
+<p><strong>标记-整理</strong><br>
+将检测到的垃圾对象进行标记，将未标记的数据移动到一块。此算法解决了上述两个缺点。但涉及到标记和整理两步，整理时还设计到块的移动，算法复杂。<font color=#9999ff >下图来源于网络</font></p>
+<p><img alt="p3" src="http://blogimg.hot-cool.cn/20190625156143157671486.png">  </p>
+<h3>分代收集算法：</h3>
+<p>有前人分析发现，大多数Java对象要么就很快可以被回收，要么就会在一段时间内长期存在。<br>
+针对这个特性将Java内存划为多块不同的区域，对不同生命周期的对象特性使用不同的上述算法。<font color=#9999ff>下图来源于网络</font>： <br>
+<img alt="分代收集算法" src="http://blogimg.hot-cool.cn/20190620156102301356538.png?v=1"></p>
+<p>当有一个新的对象被new出来时，会被放在<code>Eden</code>区。当<code>Eden</code>区没有足够的空间时，虚拟机将启动一次<code>MinorGc</code>。<br>
+对象在经历<code>MinorGc</code>后存活时，会被放到<code>survivor</code>区并设置其年龄为1。  <br>
+对象在survivor区域每经历一次<code>MinorGC</code>，年龄+1。 <br>
+当对象的年龄增加到一定程度(默认为15)，对象将会被放到老年代。（这个年龄可以配置：<code>XX:MaxTenuringThreshold</code> 如果设置的是0时，对象会跳过survivor区直接放进老年代。） </p>
+<p>如果在<code>Survivor</code>空间中相同年龄所有对象的大小的总和大于<code>Survivor</code>空间的一半，那么年龄大于或等于该年龄的对象就直接进入老年代。  </p>
+<h3>分配担保机制</h3>
+<p>其实分代收集算法整个年轻代的回收，是使用<strong>复制算法</strong>实现的。只不过，它没有对内存空间做1:1的分配。
+默认情况下，新生代内存中<code>Eden</code>区域与<code>Survivor</code>区域容量比值是<code>Eden:Survivor=8:1</code>。当<code>Eden</code>区的对象存活较多时，就存在<code>Survivor</code>区无法提供足够的空间来存储<code>Eden</code>区存活下来的对象。 </p>
+<p>这时，老年代要提供空间分配担保，即由老年代来提供足量的空间来进行<code>Minor GC</code>。<br>
+但一共有多少对象在内存回收后存活下来是不可预知的，因此只好取之前每次垃圾回收后晋升到老年代的对象大小的<strong>平均值</strong>作为参考。<br>
+使用这个平均值与老年代剩余空间进行比较，来决定是否进行Full GC来让老年代腾出更多空间。  <br>
+当然，如果在预判时空间足够，实际回收时，却发现需要的空间远超平均值，导致担保失败。此时也会进行一次FullGC。</p>
+<h2>垃圾收集器</h2>
+<p>在上面，我们提到了几种垃圾回收的算法。每一个都有各自的特点。
+如在分代回收算法中，在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用复制算法，只需要付出少量存活对象的复制成本就可以完成收集。<br>
+在老年代中，因为对象存活率高、没有额外空间对它进行分配担保，就必须使用“标记-清除”或“标记-整理”算法来进行回收。</p>
+<h4>Serial</h4>
+<p>开启方式：<code>-XX:+UseSerialGC</code>，虚拟机将使用Serial+Serial Old收集器组合进行垃圾收集。<br>
+一个单线程的收集器，使用复制算法，在收集垃圾过程中需要暂停所有其他的工作线程。对于限定单个CPU环境来说，没有线程交互的开销，简单高效。</p>
+<h4>ParNew</h4>
+<p>开启方式：<code>-XX:+UseParNewGC</code>，虚拟机将使用ParNew+Serial Old收集器组合进行垃圾收集。<br>
+多线程版的<code>Serial</code>收集器，使用复制算法，在手机垃圾过程中也需要暂停所有工作线程。<code>ParNew</code>默认开启和CPU个数相同的线程进行垃圾回收。在多核环境，比<code>Serial</code>更高效。    </p>
+<h4>Parallel Scavenge</h4>
+<p>开启方式：<code>-XX:+UseParallelGC</code>，虚拟机将使用Parallel Scavenge+Serial Old收集器组合进行垃圾收集。<br>
+一个能自适应调节内存策略的收集器，使用复制算法，可以通过<code>-XX:MaxGCPauseMillis</code>控制最大垃圾收集停顿时间，<code>-XX:GCTimeRation</code>设置吞吐量大小。<br>
+虚拟机会根据当前系统运行情况收集性能监控信息，动态调整GC参数以达到最大吞吐量。  </p>
+<h4>Serial Old</h4>
+<p>与其他收集器配合使用，开启方式参考上面。<br>
+<code>Serial Old</code>收集器是<code>Serial</code>收集器的老年代版本，是一个单线程收集器，采用标记-整理算法。</p>
+<h4>Parallel Old</h4>
+<p>开启方式：<code>-XX:+UseParallelOldGC</code>，虚拟机将使用Parallel Scavenge+Parallel Old收集器组合进行垃圾收集。<br>
+<code>Parallel Old</code>收集器是<code>Parallel Scavenge</code>的年老代版本，使用多线程的标记-整理算法。  </p>
+<h4>CMS收集器</h4>
+<p>开启方式：<code>-XX:+UseConcMarkSweepGC</code>，虚拟机使用ParNew+CMS+Serial Old收集器组合进行垃圾收集。Serial Old作为CMS收集器出现Concurrent Mode Failure的备用垃圾收集器。 </p>
+<p>CMS(Concurrent mark sweep)是一种年老代垃圾收集器，其最主要目标是获取最短垃圾回收停顿时间，使用多线程的标记-清除算法   </p>
+<p>CMS工作的四个过程：    </p>
+<table>
+<thead>
+<tr>
+<th align="center">过程</th>
+<th align="center">是否需要暂停所有线程</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">初始标记</td>
+<td align="center">是</td>
+<td align="left">标记一下GC Roots能直接关联的对象，速度很快</td>
+</tr>
+<tr>
+<td align="center">并发标记</td>
+<td align="center">否</td>
+<td align="left">进行GC Roots跟踪的过程，<font color=red>和用户线程一起工作</font></td>
+</tr>
+<tr>
+<td align="center">重新标记</td>
+<td align="center">是</td>
+<td align="left">修正标记记录（因用户程序继续运行而导致标记产生变动）</td>
+</tr>
+<tr>
+<td align="center">并发清除</td>
+<td align="center">否</td>
+<td align="left">清除GC Roots不可达对象，<font color=red>和用户线程一起工作</font></td>
+</tr>
+</tbody>
+</table>
+<p>从表格中可以看出有两个过程是不需要暂停所有线程，可以和用户线程一起工作，这种收集方式在资源允许的情况下(CPU负载)，可以实现垃圾收集时的低停顿。<br>
+CMS收集的部分工作和用户线程一起进行，使得它对CPU资源影响较明显。并且在垃圾回收时，还需要预留一部分空间给用户线程工作使用。 <br>
+默认设置下, CMS收集器在老年代使用了68%的空间后就会被激活。可以配置XX:CMSInitiatingOccupancyFraction的值来调整。 
+它使用的标记-清除算法，会导致老年代的内存空间中产生大量碎片。当有大对象需要分配资源时，如果无法找到一块连续的空间，将导致Full 
+GC。  </p>
+<h4>G1收集器</h4>
+<p>JDK7之后开始出现的垃圾收集器，是新一代的垃圾收集器。它使用标记-整理算法进行分代回收，相比CMS不会产生碎片。  <br>
+G1采用内存分区的理念，将内存划分为大小相同的N个<code>region</code>，允许大小在1~32M之间。以<code>region</code>为单位进行回收。根据分代回收的理念，<code>region</code>被标记为多个Eden、Survivor和old，当进行垃圾回收时，存活的对象被复制到空闲的<code>region</code>。 </p>
+<p><code>region</code>大小使用<code>-XX:G1HeapRegionSize</code>参数配置，最小值是1M，做大值是32M
+另外G1为超过<code>region</code>大小的大对象设计了Humongous空间，用来存储这些大对象。不过如果频繁大量的为大对象分配内存会导致性能问题。  </p>
+<h4>各收集器之间的搭配使用</h4>
+<p><img alt="gc" src="http://blogimg.hot-cool.cn/20190625156144359882172.png"></p>
+
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script> -->
+	
+</body>
+</html>

@@ -7,6 +7,8 @@ $h4size: $h3size * 9/10;
 $h5size: $h4size * 9/10;
 $h6size: $h5size * 9/10;
 
+@import url("table.css");
+
 @import url("pygment.css");
 
 @import url(//fonts.googleapis.com/css?family=Overlock:400,700,900);
@@ -373,16 +375,20 @@ li:last-child .hentry {
 li.tag-4 {
   font-size: 0.8em;
   font-weight: 100;
+  background-color: orange;
 }
 li.tag-3 {
   font-size: 1.0em;
   font-weight: 200;
+  background-color: maroon;
 }
 li.tag-2 {
   font-size: 1.2em;
   font-weight: 300;
+  background-color: fuchsia;
 }
 li.tag-1 {
   font-size: 1.4em;
   font-weight: 400;
+  background-color: purple;
 }

@@ -5,20 +5,20 @@
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
 
-    <meta property="og:title" content="java虚拟机-内存分配"/>
-    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/drafts/javaVM-mem.html"/>
+    <meta property="og:title" content="java虚拟机-内存模型"/>
+    <meta property="og:url" content="/drafts/javaVM-mem.html"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="article"/>
 
-    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/drafts/javaVM-mem.html" />
+    <link rel="canonical" href="/drafts/javaVM-mem.html" />
 
-    <title>java虚拟机-内存分配 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <title>java虚拟机-内存模型 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -33,26 +33,29 @@
 </head>
 
 <body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" />
+</a>
     <div class="row-fluid">
         <div class="span10 offset1">
             <header id="banner" >
                 <h1>
-                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                    <a href="/">BugManager’s Blog</a>
                 </h1>
                 <h3>
-                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
                 </h3>
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
-                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        	<li><a href="">Home</a></li>
+                            <li class="active"><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/jia-gou.html">架构</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
                         </ul>
 
                     </div>
@@ -69,29 +72,59 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="http://chenjiahui.hot-cool.cn/drafts/javaVM-mem.html" rel="bookmark"
-             title="Permalink to java虚拟机-内存分配">java虚拟机-内存分配</a></h1>
+          <a href="/drafts/javaVM-mem.html" rel="bookmark"
+             title="Permalink to java虚拟机-内存模型">java虚拟机-内存模型</a></h1>
       </header>
       <div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+        by <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
+    in <a href="/category/java.html">java</a>
 
     on 2017-03-20
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a>
+        tags:         <a href="/tag/java.html">java</a>
+        <a href="/tag/jvm.html">jvm</a>
 
 
 
     
 </footer><!-- /.post-info -->
 
-        
+        <h1>Java内存模型</h1>
+<p><strong>内存区包含</strong>方法区、虚拟机栈、本地方法栈、堆、程序计数器。如下图：<br>
+<img alt="jmm" src="http://blogimg.hot-cool.cn/20190529161453.png"></p>
+<p><strong>方法区</strong><br>
+方法区属于线程共享的内存区域，存放已经被虚拟机加载的类的结构信息、常量池、静态变量、构造函数等信息。    <br>
+<strong>Java堆</strong><br>
+Java Heap属于线程共享的内存区域，存储java实例的地方。是GC管理的主要区域。 <br>
+<strong>虚拟机栈</strong><br>
+java栈总是和线程关联再一起的，每创建一个线程，jvm就会为线程创建一个栈桢，用于存储局部变量、方法返回值、动态链接方法、操作数栈等。<br>
+<strong>本地方法栈</strong><br>
+本地方法栈属于线程私有的数据区域，这部分主要与虚拟机用到的 Native 方法相关，一般情况下，我们无需关心此区域。<br>
+<strong>程序计数器</strong><br>
+它是内存中的一小块空间，是用来标示下一条字节码指令的行号的计数器。<br>
+字节码解释器在工作时，如果线程执行的是Java方法，则程序计数器的记录就是下一条执行的指令的地址。如果线程执行的是本地方法，则程序计数器值为undefined
+如分支、循环、跳转、异常处理、线程恢复等都用到了方法区。 <br>
+<strong>本地方法接口</strong><br>
+主要是为调用c或c++实现的本地方法及放回结果。  </p>
+<p><font color=#9999ff >下图来源于网络</font>
+<img alt="jmm" src="http://blogimg.hot-cool.cn/jvmdogdemo.jpg"></p>
+<h1>jvm内存分配</h1>
+<p>jvm在一开始会一次性分配一块较大的空间，程序执行时需要的内存空间会在这块空间上进行分配和释放，减少了系统调用的次数，从而节省开销。  <br>
+Java内存申请有两种：<strong><em>静态内存和动态内存</em></strong>，一般来说栈(stack)就是静态内存，堆(heap)就是动态内存  </p>
+<h2>内存分配策略</h2>
+<p><strong>优先分配到Eden</strong><br>
+<strong>如果有大对象，可能会直接进入到老年代</strong><br>
+<strong>长期存活的对象会被分配到老年代</strong><br>
+<strong>空间分配担保</strong><br>
+<strong>动态对象的年龄判断</strong>  </p>
+<h2>创建对象过程</h2>
+<p>new --&gt; 检查是否已经加载了类 --&gt; 没有则加载类 --&gt; 分配内存空间(指针碰撞、空闲列表、CAS保证原子性) --&gt; 
+对内存空间初始化 --&gt; 设置对象头(对象属于哪个类、元数据信息、哈希码、GC分代年龄信息等) --&gt; 执行init方法</p>
 
       </div><!-- /.entry-content -->
 

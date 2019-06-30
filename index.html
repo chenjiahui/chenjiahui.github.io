@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -33,6 +33,9 @@
 </head>
 
 <body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png" alt="Fork me on GitHub" />
+</a>
     <div class="row-fluid">
         <div class="span10 offset1">
             <header id="banner" >
@@ -40,7 +43,7 @@
                     <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
                 </h1>
                 <h3>
-                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
                 </h3>
                 <nav class="navbar">
                     <div class="navbar-inner">
@@ -67,6 +70,111 @@
 <div class="span9">
                 <section>
                     <ol id="posts-list" class="hfeed" start="5">
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2019/06/22/server-check-shell.html" rel="bookmark" title="Permalink to shell脚本检查服务器情况">
+                                       shell脚本检查服务器情况
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
+
+    on 2019-06-22
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <h2>检查磁盘空间</h2>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nv">disk_vol</span><span class="o">=</span><span class="sb">`</span>df -h <span class="p">|</span> grep -v <span class="s2">&quot;Filesystem&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $5}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/%//g&#39;</span> <span class="p">|</span> sort -n <span class="p">|</span> tail -n <span class="m">1</span><span class="sb">`</span>
+<span class="c1">#磁盘空间判断</span>
+<span class="k">if</span> <span class="nb">test</span> <span class="nv">$disk_vol</span> -gt <span class="m">90</span><span class="p">;</span> <span class="k">then</span>
+   <span class="nv">warn_message</span><span class="o">=</span><span class="s1">&#39;web20服务器-磁盘超过90%&#39;</span><span class="p">;</span>
+   <span class="c1">#调用短信接口提示;</span>
+   curl ......<span class="p">;</span>
+<span class="k">fi</span>
+</pre></div>
+
+
+<h2>判断服务器端口是不是正常？</h2>
+<p>在<code>/script/port_list</code>中列出端口清单，每个端口占一行  如：</p>
+<div class="highlight"><pre><span></span><span class="mi">8080</span>
+<span class="mi">6379</span>
+<span class="mi">3306</span>
+</pre></div>
+
+
+<p>读取端口清单进行检查    </p>
+<div class="highlight"><pre><span></span><span class="k">for</span> i in <span class="sb">`</span>cat /script/port_list<span class="sb">`</span><span class="p">;</span> 
+ <span class="k">do …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2019/06/22/server-check-shell.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2019/06/09/redis-rudiments.html" rel="bookmark" title="Permalink to redis基础">
+                                       redis基础
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a>
+
+    on 2019-06-09
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/redis.html">redis</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <h2>数据类型及使用方法</h2>
+<p>string、hash、list、set、zset  </p>
+<h2>数据结构</h2>
+<p>涉及到的数据结构有链表、dict、跳跃表、集合、压缩列表等  </p>
+<h2>使用</h2>
+<h3>连接</h3>
+<div class="highlight"><pre><span></span><span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="o">-</span><span class="n">h</span> <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span> <span class="o">-</span><span class="n">p</span> <span class="mi">6379</span> <span class="o">-</span><span class="n">a</span> <span class="n">password</span>
+</pre></div>
+
+
+<h3>常见的几个操作演示</h3>
+<p>这里只演示几个常见的操作，如果需要了解更多的命令和使用建议看一下书<a href="http://redisbook.com/">《redis设计与实现》</a>。</p>
+<h3>string</h3>
+<div class="highlight"><pre><span></span><span class="m">127</span>.0.0.1:6379&gt; <span class="nb">set</span> a <span class="m">1</span>
+OK
+<span class="m">127</span>.0.0.1:6379&gt; incr a  <span class="c1">#如果是数字，可以使用incr对某个值进行++操作</span>
+<span class="o">(</span>integer …</pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2019/06/09/redis-rudiments.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
                     <li>
                         <article>
                             <header>
@@ -244,99 +352,9 @@ invoke-rc.d …</pre></div>
                             <hr/>
                         </article>
                     </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2018/07/02/nginx-upstream-check.html" rel="bookmark" title="Permalink to nginx服务器健康检查">
-                                       nginx服务器健康检查
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
-
-    on 2018-07-02
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>现在，我们已经有了一组被nginx管理的服务，</p>
-<div class="highlight"><pre><span></span>    upstream srv <span class="o">{</span>
-        server srv1.hot-cool.cn <span class="nv">weight</span> <span class="o">=</span> <span class="m">2</span><span class="p">;</span> 
-        server srv2.hot-cool.cn<span class="p">;</span>
-        server srv3.hot-cool.cn backup<span class="p">;</span>
-
-        <span class="c1">#http健康检查相关配置</span>
-        check <span class="nv">interval</span><span class="o">=</span><span class="m">3000</span> <span class="nv">rise</span><span class="o">=</span><span class="m">2</span> <span class="nv">fall</span><span class="o">=</span><span class="m">3</span> <span class="nv">timeout</span><span class="o">=</span><span class="m">3000</span> <span class="nv">type</span><span class="o">=</span>http<span class="p">;</span>   <span class="c1">#1</span>
-        check_http_send <span class="s2">&quot;GET /checkhealth HTTP/1.0\r\n\r\n&quot;</span><span class="p">;</span>   <span class="c1">#2</span>
-        check_http_expect_alive http_2xx http_3xx<span class="p">;</span>  <span class="c1">#3</span>
-    <span class="o">}</span>
-</pre></div>
-
-
-<p>#1: 每间隔3000毫秒请求一次接口，连续rise次或以上正常响应认为服务器up …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/07/02/nginx-upstream-check.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2018/06/17/nginx-limit.html" rel="bookmark" title="Permalink to nginx限流配置">
-                                       nginx限流配置
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
-
-    on 2018-06-17
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <div class="highlight"><pre><span></span><span class="nt">limit_req_zone</span> <span class="o">$</span><span class="nt">binary_remote_addr</span> <span class="nt">zone</span><span class="o">=</span><span class="nt">one</span><span class="p">:</span><span class="nd">10m</span> <span class="nt">rate</span><span class="o">=</span><span class="nt">1r</span><span class="o">/</span><span class="nt">s</span><span class="o">;</span>
-</pre></div>
-
-
-<p><strong>$binary_remote_addr</strong>，表示通过请求的ip地址来做限制，即：限制同一客户端ip地址。
-<strong>zone=one:10m</strong>，表示生成一个名字为one(这个可以是随便什么有意义的名字one是官网示例上的名字)，大小为10M的内存区域，用来存储访问的频次信息。
-<strong>rate=1r/s</strong>，表示允许相同标识的客户端的访问频次，这里限制的是每秒1次，每秒1次，似乎不太科学，我们就配置成5r/s吧。
-嗯，这样感觉挺好的了。但是！某些特殊的场景，比如：在做APP的api服务时，当开始打开APP时，往往会发起比较多的请求。<br>
-可能会导致同一ip的请求突然爆发，5r/s就可能不够了。我们可以配置一个缓冲，当请求爆发时，把超过访问频次的请求放在缓冲区里等待处理。 <br>
-这个时候，我们的配置是长这样的</p>
-<div class="highlight"><pre><span></span>limit_req_zone <span class="nv">$binary_remote_addr</span> <span class="nv">zone</span><span class="o">=</span>myBucket:10m <span class="nv">rate …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/06/17/nginx-limit.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
                     </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 14
+    Page 1 / 15
         <a href="http://chenjiahui.hot-cool.cn/index2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -367,6 +385,39 @@ invoke-rc.d …</pre></div>
                     <li><a href="https://portal.qiniu.com/signup?code=1hjft36l61cuq">七牛云存储(免费10G)</a></li>
                 </ul>
             </div><!-- /.Links -->
+            <div>
+                <h2>Tags</h2>
+                <ul id="cloud">
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/googlesheet.html">googlesheet</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/ios.html">ios</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a></li>
+                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/redis.html">redis</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/http.html">http</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/javascript.html">javascript</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/jquery-easyui.html">jquery-easyui</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/blog.html">blog</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/android.html">android</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/ji-qun.html">集群</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/maven.html">maven</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/html.html">html</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/windows.html">Windows</a></li>
+                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/ibatis.html">ibatis</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/eclipse.html">eclipse</a></li>
+                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/hadoop.html">hadoop</a></li>
+                </ul>
+             </div>
 <!-- /.Tags -->
     </section><!-- /#sidebar -->
 </div>

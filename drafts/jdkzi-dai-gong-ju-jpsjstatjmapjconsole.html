@@ -5,20 +5,20 @@
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
 
-    <meta property="og:title" content="从私信消息表的升级过程讲一讲不同时期数据库的表架构分析"/>
-    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/drafts/cong-si-xin-xiao-xi-biao-de-sheng-ji-guo-cheng-jiang-yi-jiang-bu-tong-shi-qi-shu-ju-ku-de-biao-jia-gou-fen-xi.html"/>
+    <meta property="og:title" content="JDK自带工具jps，jstat，jmap，jconsole"/>
+    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/drafts/jdkzi-dai-gong-ju-jpsjstatjmapjconsole.html"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="article"/>
 
-    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/drafts/cong-si-xin-xiao-xi-biao-de-sheng-ji-guo-cheng-jiang-yi-jiang-bu-tong-shi-qi-shu-ju-ku-de-biao-jia-gou-fen-xi.html" />
+    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/drafts/jdkzi-dai-gong-ju-jpsjstatjmapjconsole.html" />
 
-    <title>从私信消息表的升级过程讲一讲不同时期数据库的表架构分析 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <title>JDK自带工具jps，jstat，jmap，jconsole | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -33,6 +33,9 @@
 </head>
 
 <body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png" alt="Fork me on GitHub" />
+</a>
     <div class="row-fluid">
         <div class="span10 offset1">
             <header id="banner" >
@@ -40,7 +43,7 @@
                     <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
                 </h1>
                 <h3>
-                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
                 </h3>
                 <nav class="navbar">
                     <div class="navbar-inner">
@@ -69,8 +72,8 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="http://chenjiahui.hot-cool.cn/drafts/cong-si-xin-xiao-xi-biao-de-sheng-ji-guo-cheng-jiang-yi-jiang-bu-tong-shi-qi-shu-ju-ku-de-biao-jia-gou-fen-xi.html" rel="bookmark"
-             title="Permalink to 从私信消息表的升级过程讲一讲不同时期数据库的表架构分析">从私信消息表的升级过程讲一讲不同时期数据库的表架构分析</a></h1>
+          <a href="http://chenjiahui.hot-cool.cn/drafts/jdkzi-dai-gong-ju-jpsjstatjmapjconsole.html" rel="bookmark"
+             title="Permalink to JDK自带工具jps，jstat，jmap，jconsole">JDK自带工具jps，jstat，jmap，jconsole</a></h1>
       </header>
       <div class="entry-content">
 <footer class="post-info">
@@ -80,7 +83,7 @@
 
     in <a href="http://chenjiahui.hot-cool.cn/category/draft.html">draft</a>
 
-    on 2019-06-12
+    on 2017-03-18
 
 
 

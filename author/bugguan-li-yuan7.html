@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -33,6 +33,9 @@
 </head>
 
 <body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png" alt="Fork me on GitHub" />
+</a>
     <div class="row-fluid">
         <div class="span10 offset1">
             <header id="banner" >
@@ -40,7 +43,7 @@
                     <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
                 </h1>
                 <h3>
-                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
                 </h3>
                 <nav class="navbar">
                     <div class="navbar-inner">
@@ -67,6 +70,245 @@
 <div class="span9">
                 <section>
                     <ol id="posts-list" class="hfeed" start="5">
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/10/16/49180767.html" rel="bookmark" title="Permalink to html根据宽的百分比设置高">
+                                       html根据宽的百分比设置高
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a>
+
+    on 2015-10-16
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/html.html">html</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/49180767 </p>
+<p>最近在团队中开发了一部分html页面</p>
+<p>有一个功能点，需要在一行展示三张图片，每张图片拉伸成正方形。</p>
+<p>对于图片的宽设置为33%就可以了，但是怎么让高度根据宽度变化呢？最初想到的是在页面生成后使用js来获取图片宽，再根据这个获取的宽设置图片的高。</p>
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>$<span class="ss">(</span><span class="nv">function</span><span class="ss">()</span>{
+    <span class="nv">var</span> <span class="nv">imgs</span><span class="o">=</span>$<span class="ss">(</span><span class="s1">&#39;</span><span class="s">.view_img</span><span class="s1">&#39;</span><span class="ss">)</span>
+    <span class="k">for</span><span class="ss">(</span><span class="nv">var</span> <span class="nv">i</span><span class="o">=</span><span class="mi">0</span><span class="c1">;i&lt;imgs.length;i++){</span>
+        <span class="nv">imgs</span>[<span class="nv">i</span>].<span class="nv">style</span>.<span class="nv">height</span><span class="o">=</span><span class="nv">imgs</span>[<span class="nv">i</span>].<span class="nv">offsetWidth</span><span class="o">+</span><span class="s1">&#39;</span><span class="s">px</span><span class="s1">&#39;</span><span class="c1">;</span>
+    }
+}<span class="ss">)</span>
+</pre></div>
+
+
+<p>在手机web中，不拉伸页面大小其实这样做是可以了的。</p>
+<p>但是如果在pc段的页面中查看，拉伸下页面，图片的高度是不会跟着宽度变化的。</p>
+<p>查看了点资料，原来直接使用css样式也是可以做到宽按父组件的百分比设置，高根据宽的百分比设置的。</p>
+<p>代码如下 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/10/16/49180767.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/30/48830863.html" rel="bookmark" title="Permalink to Window7下忘记MySQL ROOT密码">
+                                       Window7下忘记MySQL ROOT密码
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
+
+    on 2015-09-30
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/windows.html">Windows</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48830863 </p>
+<p>前端时间，因为太久没用，导致忘记了本地mysql的root密码。</p>
+<p>从网上找了点资料，一步一步的解决，并记录了下来。</p>
+<p>解决步骤如下：<br>
+1. 停止mysql 服务  </p>
+<div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">stop</span> <span class="n">mysql</span>
+</pre></div>
+
+
+<p>2. 以不检查权限的方式启动mysql </p>
+<div class="highlight"><pre><span></span><span class="n">mysqld</span> <span class="c1">--skip-grant-tables</span>
+</pre></div>
+
+
+<p>可以看到窗口光标在下一行的第一个位置闪烁，说明已经启动，不需要管。<br>
+3. 新建一个命令行窗口，启动mysql   </p>
+<div class="highlight"><pre><span></span><span class="n">mysql</span>
+</pre></div>
+
+
+<p>4. 修改ROOT密码  </p>
+<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span><span class="n">use</span> <span class="n">mysql</span>
+<span class="n">mysql</span><span class="o">&gt;</span><span class="k">update</span> <span class="k">user</span> <span class="k">set</span> <span class="n">password</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;cjh&#39;</span><span class="p">)</span> <span class="k">where</span> <span class="k">user</span><span class="o">=</span><span class="s1">&#39;root …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/30/48830863.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/30/48830593.html" rel="bookmark" title="Permalink to linux使用crontab设置定时任务">
+                                       linux使用crontab设置定时任务
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
+
+    on 2015-09-30
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48830593 </p>
+<p>因最近工作中需要定时执行一段代码来跑批生成一些统计数据。</p>
+<p>最近刚好接触python，又了解到可以使用linux的crontab来执行定时任务。类似于windows的任务计划程序。</p>
+<p>那么怎么使用呢？</p>
+<p>首先要确定linux是否安装了crontab</p>
+<p>可以使用which crontab来查看。  </p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@cjh ~</span><span class="o">]</span><span class="n">#which</span><span class="w"> </span><span class="n">crontab</span><span class="w"></span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="nl">which</span><span class="p">:</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">crontab</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.7.0</span><span class="n">_45</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jdk1</span><span class="mf">.7.0</span><span class="n">_45</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="nl">bin …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/30/48830593.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/25/48738377.html" rel="bookmark" title="Permalink to 数据库存储手机emoji表情">
+                                       数据库存储手机emoji表情
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a>
+
+    on 2015-09-25
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48738377 </p>
+<p>最近在开发手机APP应用，用户的评论是可以添加表情的。<br>
+由于的第一次做这方面的东西，在评论表中评论内容用utf8存表情，发现是乱码。  </p>
+<p>查原因，说的<a href="http://baike.baidu.com/item/emoji">emoji</a>的表情，需要将数据库编码格式改成utf8mb4。<br>
+确定了升级方案后，将表情存成utf8mb4，测试。然而，发现并没什么用，依然是乱码。  </p>
+<p>再查资料。网上有人也碰到这个问题，解决方式和我一样，设置成utf8mb4，有的解决了，有的没有解决。解决不聊的，有人通过把数据存成了2进制来解决，有的自己把表情根据自己定义的字典转换后存入数据库。<br>
+这样就增加了许多浪费。  </p>
+<p>因为有同事以前在postgresql上保存成功过。继续找原因，主要还是考虑编码方向，原来连接数据库时，还是用的utf8，改为utf8mb4后，成功解决。 </p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/25/48738377.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/17/48525073.html" rel="bookmark" title="Permalink to python生成一组随机数">
+                                       python生成一组随机数
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
+
+    on 2015-09-17
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48525073 </p>
+<p>今天看到群里有人问到</p>
+<p>生成一个list,长度为1000，里面的元素是可以重复的随机数（范围0-10000）</p>
+<p>随即写了一个，</p>
+<div class="highlight"><pre><span></span>[<span class="k">random</span>.<span class="nv">randint</span><span class="ss">(</span><span class="mi">0</span>,<span class="mi">10000</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">1000</span><span class="ss">)</span>]
+</pre></div>
+
+
+<p>后来翻看资料发现，下面这样就可以了 </p>
+<div class="highlight"><pre><span></span>[<span class="k">random</span>.<span class="nv">randrange</span><span class="ss">(</span><span class="mi">10000</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">1000</span><span class="ss">)</span>]
+</pre></div>
+
+
+<p>翻看资料延伸的想了下生成不可重复的随机数。 </p>
+<div class="highlight"><pre><span></span><span class="k">random</span>.<span class="nv">sample</span><span class="ss">(</span>[<span class="nv">i</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">10000</span><span class="ss">)</span>],<span class="mi">1000</span><span class="ss">)</span>
+</pre></div>
+
+
+<p>再一次体会到了python的简洁。用java的话，得好几行代码了 </p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/17/48525073.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
                     <li>
                         <article>
                             <header>
@@ -123,255 +365,10 @@
                             <hr/>
                         </article>
                     </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/11/48378017.html" rel="bookmark" title="Permalink to python解决sql注入以及特殊字符">
-                                       python解决sql注入以及特殊字符
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2015-09-11
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48378017 </p>
-<p>python往数据库插入数据，</p>
-<p>基础做法是：</p>
-<div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">=</span><span class="n">db</span><span class="p">.</span><span class="k">cursor</span><span class="p">()</span>
-<span class="k">sql</span> <span class="o">=</span> <span class="ss">&quot;INSERT INTO test2(cid, author, content) VALUES (1, &#39;1&#39;, &#39;aa&#39;)&quot;</span>
-<span class="n">cur</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">,())</span>
-</pre></div>
-
-
-<p>也可以这样：</p>
-<div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">=</span><span class="n">db</span><span class="p">.</span><span class="k">cursor</span><span class="p">()</span>
-<span class="k">sql</span> <span class="o">=</span> <span class="ss">&quot;INSERT INTO test2(cid, author, content) VALUES (%s, &#39;%s&#39;, &#39;%s&#39;)&quot;</span>
-<span class="k">sql</span><span class="o">=</span><span class="k">sql</span><span class="o">%</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;bb …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/11/48378017.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/08/48296437.html" rel="bookmark" title="Permalink to python将对象写入文件，以及从文件中读取对象">
-                                       python将对象写入文件，以及从文件中读取对象
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2015-09-08
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48296437 </p>
-<p>写入文件代码：</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">shelve</span>
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">test.dat&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="o">=</span><span class="p">{}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;123456&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key2&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;eeeeee&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;key3&#39;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;ABCDEF&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">dataKey</span> <span class="o">=</span> <span class="s2">&quot;mydata&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="p">[</span><span class="n">dataKey</span><span class="p">]</span><span class="o">=</span><span class="n">data</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span>
-</pre></div>
-
-
-<p>可以看到在D盘生成了一个test.dat的文件</p>
-<p><img alt="image" src="http://blogimg.hot-cool.cn/20150908205313782.png">  </p>
-<p>读取数据代码： </p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">shelve</span>
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">test.dat …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/08/48296437.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/08/48295431.html" rel="bookmark" title="Permalink to python随机数">
-                                       python随机数
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2015-09-08
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48295431 </p>
-<p>1、关于随机数，较多的是用到了随机生成6位密码</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span><span class="mi">999999</span><span class="p">)</span>
-<span class="mi">939712</span>
-</pre></div>
-
-
-<p>2、生成指定时间段的一个随机日期 </p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">date1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">time1</span> <span class="o">=</span> <span class="n">mktime</span><span class="p">(</span><span class="n">date1</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">date2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2016</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0 …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/08/48295431.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/09/01/48163833.html" rel="bookmark" title="Permalink to mysql类似rownum查询">
-                                       mysql类似rownum查询
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a>
-
-    on 2015-09-01
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/48163833 </p>
-<p>mysql 查询某一用户的排名，由于mysql没有rownum，查询排名就比较麻烦了，所以记录下</p>
-<div class="highlight"><pre><span></span>    <span class="k">SELECT</span> <span class="nf">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">AS</span> <span class="n">rank_num</span><span class="err">，</span>
-      <span class="k">FROM</span> <span class="n">tab_game_rank</span>
-     <span class="k">WHERE</span> <span class="n">pnumber</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">pnumber</span>
-                         <span class="k">FROM</span> <span class="n">tab_game_rank</span>
-                        <span class="k">WHERE</span> <span class="n">uid</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-
-<p>rank_num 排名</p>
-<p>pnumber 排名字段</p>
-<p>uid 用户id</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/09/01/48163833.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2015/08/25/47962803.html" rel="bookmark" title="Permalink to hadoop学习笔记之Map-Reduce">
-                                       hadoop学习笔记之Map-Reduce
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2015-08-25
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/hadoop.html">hadoop</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/47962803 </p>
-<p>Map-Reduce的工作机制：<br>
-a、编写好一个Map-Reduce程序，运行作业程序。<br>
-b、JobClient向JobTracker申请一个作业ID，<br>
-c、JobClient将作业所需要的资源，复制到HDFS系统中。<br>
-d、c、JobClient提交作业<br>
-e、JobTracker初始化作业。<br>
-f、JobTracker向nameNode询问，决定这些任务在哪些机器上跑。<br>
-有关的数据在哪些文件里，这些文件保存在哪些节点的数据块中。<br>
-(程序要和所要运行的作业资源在一起)<br>
-根据taskTracker与JobTracker之间的心跳，知道哪些task可以参与到本次作业中来。<br>
-如：taskTracker必须是活着的，Tracker中是否有其他作业在做。<br>
-确定哪些taskTracker<br>
-g、taskTracker和JobTracker保持心跳，以确定taskTracker是否正常。<br>
-h、taskTracker从HDFS中将相关代码、资源等获取到本地。<br>
-i、架设java虚拟机<br>
-j、开始工作。<br>
-k、taskTracker将结果写入本地硬盘（这个是中间结果不写入HDFS …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2015/08/25/47962803.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan6.html">&laquo;</a>
-    Page 7 / 14
+    Page 7 / 15
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan8.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -402,6 +399,39 @@ k、taskTracker将结果写入本地硬盘（这个是中间结果不写入HDFS 
                     <li><a href="https://portal.qiniu.com/signup?code=1hjft36l61cuq">七牛云存储(免费10G)</a></li>
                 </ul>
             </div><!-- /.Links -->
+            <div>
+                <h2>Tags</h2>
+                <ul id="cloud">
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/googlesheet.html">googlesheet</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/ios.html">ios</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a></li>
+                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/redis.html">redis</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/http.html">http</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/javascript.html">javascript</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/jquery-easyui.html">jquery-easyui</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/blog.html">blog</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/android.html">android</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/ji-qun.html">集群</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/maven.html">maven</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/html.html">html</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/windows.html">Windows</a></li>
+                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/ibatis.html">ibatis</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/eclipse.html">eclipse</a></li>
+                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/hadoop.html">hadoop</a></li>
+                </ul>
+             </div>
 <!-- /.Tags -->
     </section><!-- /#sidebar -->
 </div>

@@ -5,20 +5,20 @@
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
 
-    <meta property="og:title" content="从私信消息表的升级过程讲一讲不同时期数据库的表架构分析"/>
-    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/drafts/db-.html"/>
+    <meta property="og:title" content="java虚拟机调优"/>
+    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/drafts/javaVM-optimize.html"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="article"/>
 
-    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/drafts/db-.html" />
+    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/drafts/javaVM-optimize.html" />
 
-    <title>从私信消息表的升级过程讲一讲不同时期数据库的表架构分析 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <title>java虚拟机调优 | BugManager’s Blog (゜-゜)つロ 干杯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -33,6 +33,9 @@
 </head>
 
 <body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png" alt="Fork me on GitHub" />
+</a>
     <div class="row-fluid">
         <div class="span10 offset1">
             <header id="banner" >
@@ -40,13 +43,13 @@
                     <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
                 </h1>
                 <h3>
-                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
                 </h3>
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
                         	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
+                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
                             <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
@@ -69,8 +72,8 @@
     <article>
       <header>
         <h1 class="entry-title">
-          <a href="http://chenjiahui.hot-cool.cn/drafts/db-.html" rel="bookmark"
-             title="Permalink to 从私信消息表的升级过程讲一讲不同时期数据库的表架构分析">从私信消息表的升级过程讲一讲不同时期数据库的表架构分析</a></h1>
+          <a href="http://chenjiahui.hot-cool.cn/drafts/javaVM-optimize.html" rel="bookmark"
+             title="Permalink to java虚拟机调优">java虚拟机调优</a></h1>
       </header>
       <div class="entry-content">
 <footer class="post-info">
@@ -78,17 +81,51 @@
         by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/draft.html">draft</a>
+    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
 
-    on 2019-06-12
+    on 2017-03-25
 
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
+        <a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a>
 
 
 
     
 </footer><!-- /.post-info -->
 
-        
+        <h3>Java虚拟机调优</h3>
+<p><img alt="java -X" src="http://blogimg.hot-cool.cn/20190621156110974555632.png">  </p>
+<h4>经验</h4>
+<p>-Xms与-Xmx设成一样的值，避免JVM因为频繁的GC导致性能大起大落。  </p>
+<p>-XX:NewRatio<br>
+-XX:SurvivorRatio<br>
+设置新生代中Eden区和一个Survivor区的空间比例    </p>
+<p>-XX:MaxPermSize<br>
+-XX:MaxTenuringThreshold  </p>
+<p>-XX:PretenureSizeThreshold
+配置多少大小的对象，直接在老年代中分配  </p>
+<p><strong>堆内存快照</strong> <br>
+-XX:+HeapDumpOnOutOfMemoryError</p>
+<!---
+-XX:NewSize  
+设置新生代最小空间大小。
+
+-XX:MaxNewSize  
+设置新生代最大空间大小。
+
+-XX:PermSize  
+设置永久代最小空间大小。
+
+-XX:MaxPermSize  
+设置永久代最大空间大小。
+
+-Xss  
+设置每个线程的堆栈大小。
+--->
+
+<p>在目录下生成了java_pid18953.hprof文件
+分析日志，使用<a href="https://www.eclipse.org/mat/downloads.php">Memory Analyzer</a></p>
 
       </div><!-- /.entry-content -->
 

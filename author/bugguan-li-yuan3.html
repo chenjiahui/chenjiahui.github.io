@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -33,6 +33,9 @@
 </head>
 
 <body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png" alt="Fork me on GitHub" />
+</a>
     <div class="row-fluid">
         <div class="span10 offset1">
             <header id="banner" >
@@ -40,7 +43,7 @@
                     <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
                 </h1>
                 <h3>
-                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿修仙之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
                 </h3>
                 <nav class="navbar">
                     <div class="navbar-inner">
@@ -67,6 +70,153 @@
 <div class="span9">
                 <section>
                     <ol id="posts-list" class="hfeed" start="5">
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/05/30/nginx-https.html" rel="bookmark" title="Permalink to nginx开启HTTPS">
+                                       nginx开启HTTPS
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-05-30
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <h2>https</h2>
+<p>https是以安全为目标的HTTP通道，简单讲是HTTP的安全版。HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。
+https可用于安全的HTTP数据传输。</p>
+<p>HTTPS和HTTP的区别主要为以下四点：
+一、https协议需要使用证书验证身份，，证书可以自行生成(自己生成ca证书，不受到浏览器信任)，也可以ca机构申请。
+二、http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。
+三、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。
+四、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+<h2>配置https</h2>
+<p><strong>ca证书</strong>
+1、通过openssl生成证书签名
+因为自建不受浏览器信任，而且目前阿里云有免费的证书可以购买。关于openssl生成证书的步骤就简单的示范一下，不过多叙述。<br>
+想了解一下的可以看一下，推荐直接去阿里云购买免费的证书。<a href="https://www.aliyun.com/product/cas/">SSL证书-传送门</a>  </p>
+<p><strong>安装openssl</strong>
+使用命令<code>which openssl</code>或者<code>openssl version</code>查看是否安装有openssl。我的已经安装了 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/05/30/nginx-https.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/05/21/nginx-moudle.html" rel="bookmark" title="Permalink to nginx增减模块">
+                                       nginx增减模块
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-05-21
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>nginx拥有非常丰富的功能模块,<a href="http://nginx.org/en/docs/">官方文档</a><br>
+但是默认安装的nginx并不是包含所有模块的，而默认安装的模块中也有一些不需要用到的。我们可以选择去掉。  <br>
+呃！那么怎么添加、剔除模块呢？我们可以通过命令<code>./configure --help</code>查看一下:   </p>
+<div class="highlight"><pre><span></span>ubuntu@VM-0-6-ubuntu:~/cjh/nginx-1.14.2$ ./configure --help<span class="p">|</span>grep with
+  ... 
+  ... 
+  --with-http_ssl_module             <span class="nb">enable</span> ngx_http_ssl_module
+  ...
+  --without-http_autoindex_module    disable ngx_http_autoindex_module
+  ...
+  ...
+</pre></div>
+
+
+<p>比如我们打算去掉autoindex模块，增加ssl模块，我们可以在源码目录下输入以下命令（这里我们只是举个例子，大家根据自己的情况添加删除模块）</p>
+<div class="highlight"><pre><span></span>./configure --without-http_autoindex_module --without-http_ssi_module
+</pre></div>
+
+
+<p>编译后最后执行<code>make&amp;&amp;make install</code>安装    </p>
+<p>如果已经安装了nginx查看看nginx增加或减少了哪些模块，可以通过指令查看：</p>
+<div class="highlight"><pre><span></span>ubuntu@VM-0-6-ubuntu:nginx -V
+nginx version: nginx …</pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/05/21/nginx-moudle.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://chenjiahui.hot-cool.cn/2018/05/12/nginx.html" rel="bookmark" title="Permalink to nginx的使用">
+                                       nginx的使用
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
+
+    on 2018-05-12
+
+        |
+        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a>
+
+
+
+    
+</footer><!-- /.post-info -->                                <p>Nginx是一种轻量级，高性能的Web服务器/反向代理和电子邮件（IMAP / POP3）代理。
+它可以在UNIX、Linux、MacOS、Solaris等类Linux服务器和Windows上运行。
+Nginx是为解决C10K问题而编写的少数服务器之一。
+与传统服务器不同，Nginx不依赖线程来处理请求。相反，它使用扩展性更强的事件驱动（异步）架构。
+nginx生态非常丰富，它是一款高度模块化的应用程序，拥有大量的第三方模块。    </p>
+<p>自2015年接触nginx以来，陆陆续续的使用了nginx中的许多功能。一直想对这些功能的使用做一个记录。</p>
+<h2>版本选择</h2>
+<p>开源版：nginx.org 免费，很多公司及个人都在使用。
+商业版：nginx.com 由nginx作者成立商业公司在运营监控，技术支持上有很多优势，但是收费的。
+Tengine：阿里巴巴在nginx主干代码上二次开发的产物，很多功能领先于nginx官方版本，无法对nginx的官方版本同步升级
+没有特殊的需求，我们就下载个开源版的吧，当下载时，选择稳定版。一般<strong>双数</strong>的版本为稳定版。</p>
+<h2>基础命令</h2>
+<div class="highlight"><pre><span></span><span class="c1">#启动或重启前检查配置是否正确，非常重要。修改配置后切记要先测试再重启 …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/05/12/nginx.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
                     <li>
                         <article>
                             <header>
@@ -222,163 +372,10 @@ HashMap的实现不是同步的，这意味着它不是线程安全的。  </p>
                             <hr/>
                         </article>
                     </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2018/03/26/java-map.html" rel="bookmark" title="Permalink to Java Map">
-                                       Java Map
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2018-03-26
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <h2>前言</h2>
-<p>Map是java.util中的集合类，另一个和它一样常用的是List。<br>
-Map提供了一个方便的数据结构，用来存储键值对。<br>
-Map根据键得到值，因此不允许键重复(重复就覆盖了)，但允许值重复。<br>
-它有四个实现类，分别是HashMap、Hashtable、LinkedHashMap和TreeMap。  </p>
-<h3><strong>Hash算法简述</strong></h3>
-<p>常见的散列函数方法：除留余数法、直接寻址法、数字分析法、平方取中法、折叠法、随机数法<br>
-常见的处理Hash冲突的方法：拉链法、线性探索法等。</p>
-<h3><strong>Hashmap</strong></h3>
-<p>HashMap是最常用的Map，它根据键的HashCode值存储数据，根据键可以直接获取它的值，具有很快的访问速度，遍历时，取得数据的顺序是完全随机的。    <br>
-HashMap最多只允许一条记录的键为null; <br>
-允许多条记录的值为null;<br>
-HashMap不支持线程的同步，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。
-如果需要同步，可以用 Collections的synchronizedMap方法使HashMap具有同步的能力，或者使用ConcurrentHashMap。 <br>
-深入解析：<a href="java-HashMap.html">HashMap</a>  </p>
-<h3><strong>Hashtable</strong></h3>
-<p>Hashtable与HashMap类似都实现了Map、Cloneable, Serializable接口:<br>
-Hashtable继承自Dictionary类，HashMap继承自AbstractMap类。  <br>
-Hashtable不允许记录的键或者值为null …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/03/26/java-map.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/05/28/20180528212707.html" rel="bookmark" title="Permalink to HTTP请求中GET和POST的区别">
-                                       HTTP请求中GET和POST的区别
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a>
-
-    on 2017-05-28
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/http.html">http</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>1、很显然，报文方法名不同，一个是GET，一个是POST。</p>
-<p>2、请求携带参数的方式不同<br>
-GET参数常规的是跟在请求的url后面，以?开始，参数间以&amp;隔开，数据被直观的展现在URL上。如：https://www.baidu.com/s?ie=UTF-8&amp;wd=test<br>
-POST参数一般是放在请求体entity-body中，传输给目标服务器，数据在URL中不可见。</p>
-<p>3、请求时，携带的参数大小限制不同<br>
-GET请求的URL传参有大小限制<br>
-POST请求理论上是没有大小限制的，但实际情况是，各类应用服务器都对请求大小做了限制。因为过大请求包，会增加服务器解析时间。甚至会被人恶意请求超大的数据包。<br>
-Tomcat：  </p>
-<div class="highlight"><pre><span></span>    <span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">&quot;8080&quot;</span> <span class="na">protocol=</span><span class="s">&quot;HTTP/1.1&quot;</span>
-               <span class="na">connectionTimeout=</span><span class="s">&quot;20000&quot;</span>
-               <span class="na">redirectPort=</span><span class="s">&quot;8443&quot;</span>
-               <span class="na">maxPostSize=</span><span class="s">&quot;-1 …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/05/28/20180528212707.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/03/24/65627740.html" rel="bookmark" title="Permalink to python使用代码对redis的key进行集中管理">
-                                       python使用代码对redis的key进行集中管理
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2017-03-24
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/65627740 </p>
-<p>平时工作中会经常用到一些全局的常量，如redis的key值命名等。</p>
-<p>可能会出现不同开发人员使用同一个key，导致缓存被覆盖等情况。</p>
-<p>针对这种情况，可以使用如下的方式，实现一个简单的集中管理。</p>
-<div class="highlight"><pre><span></span><span class="c1"># /usr/bin/env python</span>
-<span class="c1"># coding=utf-8</span>
-
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Created on 2017-03-17</span>
-
-<span class="sd">    @Author: Bug管理员</span>
-<span class="sd">    @note: 为了便于管理，将redis涉及到的key统一由该类管理</span>
-<span class="sd">    @demo: 调用示例：RdbKeyUtil.index_media_key(1)</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="k">class</span> <span class="nc">RedisKeyUtil</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-
-    <span class="n">USER_KEY</span> <span class="o">=</span> <span class="s1">&#39;test_key:</span><span class="si">%s</span><span class="s1">&#39;</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/03/24/65627740.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
                     </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan2.html">&laquo;</a>
-    Page 3 / 14
+    Page 3 / 15
         <a href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan4.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
@@ -409,6 +406,39 @@ Tomcat：  </p>
                     <li><a href="https://portal.qiniu.com/signup?code=1hjft36l61cuq">七牛云存储(免费10G)</a></li>
                 </ul>
             </div><!-- /.Links -->
+            <div>
+                <h2>Tags</h2>
+                <ul id="cloud">
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/googlesheet.html">googlesheet</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/ios.html">ios</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a></li>
+                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/redis.html">redis</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/http.html">http</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/javascript.html">javascript</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/jquery-easyui.html">jquery-easyui</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/blog.html">blog</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/android.html">android</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/ji-qun.html">集群</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/maven.html">maven</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/html.html">html</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/windows.html">Windows</a></li>
+                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/ibatis.html">ibatis</a></li>
+                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a></li>
+                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/eclipse.html">eclipse</a></li>
+                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a></li>
+                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/hadoop.html">hadoop</a></li>
+                </ul>
+             </div>
 <!-- /.Tags -->
     </section><!-- /#sidebar -->
 </div>
