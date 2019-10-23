@@ -4,24 +4,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
-
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
     <meta property="og:title" content="java虚拟机调优"/>
-    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/drafts/javaVM-optimize.html"/>
+    <meta property="og:url" content="/drafts/javaVM-optimize.html"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="article"/>
 
-    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/drafts/javaVM-optimize.html" />
+    <link rel="canonical" href="/drafts/javaVM-optimize.html" />
 
-    <title>java虚拟机调优 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <title>java虚拟机调优
+| BugManager’s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
     <script type="text/javascript">
         stLight.options({
             publisher: "",
@@ -40,7 +43,7 @@
         <div class="span10 offset1">
             <header id="banner" >
                 <h1>
-                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                    <a href="/">BugManager’s Blog</a>
                 </h1>
                 <h3>
                      <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
@@ -48,14 +51,14 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
-                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        	<li><a href="">Home</a></li>
+                            <li class="active"><a href="/category/java.html">java</a></li>
+                            <li ><a href="/category/jia-gou.html">架构</a></li>
+                            <li ><a href="/category/other.html">other</a></li>
+                            <li ><a href="/category/python.html">python</a></li>
+                            <li ><a href="/category/qian-duan.html">前端</a></li>
+                            <li ><a href="/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="/category/yun-wei.html">运维</a></li>
                         </ul>
 
                     </div>
@@ -68,33 +71,34 @@
         <div class="span10 offset1">
             <div class="row-fluid">
 <div class="span10 offset1">
-  <section>
-    <article>
-      <header>
-        <h1 class="entry-title">
-          <a href="http://chenjiahui.hot-cool.cn/drafts/javaVM-optimize.html" rel="bookmark"
-             title="Permalink to java虚拟机调优">java虚拟机调优</a></h1>
-      </header>
-      <div class="entry-content">
+	<section>
+		<article>
+			<header>
+				<h1 class="entry-title">
+					<a href="/drafts/javaVM-optimize.html" rel="bookmark"
+						title="Permalink to java虚拟机调优">java虚拟机调优</a>
+				</h1>
+			</header>
+			<div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+        作者 <a class="url fn" href="/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2017-03-25
+    分类 <a href="/category/java.html">java</a>
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a>
-
+        标签:         <a href="/tag/java.html">java</a>
+        <a href="/tag/jvm.html">jvm</a>
 
 
     
-</footer><!-- /.post-info -->
 
-        <h3>Java虚拟机调优</h3>
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2017-03-25 21时50分12秒 星期六
+</footer>  <h3>Java虚拟机调优</h3>
 <p><img alt="java -X" src="http://blogimg.hot-cool.cn/20190621156110974555632.png">  </p>
 <h4>经验</h4>
 <p>-Xms与-Xmx设成一样的值，避免JVM因为频繁的GC导致性能大起大落。  </p>
@@ -125,12 +129,12 @@
 --->
 
 <p>在目录下生成了java_pid18953.hprof文件
-分析日志，使用<a href="https://www.eclipse.org/mat/downloads.php">Memory Analyzer</a></p>
+分析日志，使用<a href="https://www.eclipse.org/mat/downloads.php">Memory Analyzer</a>分析文件。</p> 			</div>
+			<!-- /.entry-content -->
 
-      </div><!-- /.entry-content -->
 
-    </article>
-  </section>
+		</article>
+	</section>
 </div>
             </div>
         </div>
@@ -154,14 +158,14 @@
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
     
-    <!-- <script>
+    <script>
 		(function(){
 		    var bp = document.createElement('script');
 		    bp.src = '//push.zhanzhang.baidu.com/push.js';
 		    var s = document.getElementsByTagName("script")[0];
 		    s.parentNode.insertBefore(bp, s);
 		})();
-	</script> -->
+	</script>
 	
 </body>
 </html>

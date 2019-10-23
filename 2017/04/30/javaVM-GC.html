@@ -4,24 +4,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
-
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
     <meta property="og:title" content="java虚拟机-垃圾回收GC"/>
-    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/2017/04/30/javaVM-GC.html"/>
+    <meta property="og:url" content="http://localhost:8000/2017/04/30/javaVM-GC.html"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="article"/>
 
-    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2017/04/30/javaVM-GC.html" />
+    <link rel="canonical" href="http://localhost:8000/2017/04/30/javaVM-GC.html" />
 
-    <title>java虚拟机-垃圾回收GC | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <title>java虚拟机-垃圾回收GC
+| BugManager’s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
     <script type="text/javascript">
         stLight.options({
             publisher: "",
@@ -40,7 +43,7 @@
         <div class="span10 offset1">
             <header id="banner" >
                 <h1>
-                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                    <a href="http://localhost:8000/">BugManager’s Blog</a>
                 </h1>
                 <h3>
                      <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
@@ -48,14 +51,14 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
-                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        	<li><a href="http://localhost:8000">Home</a></li>
+                            <li class="active"><a href="http://localhost:8000/category/java.html">java</a></li>
+                            <li ><a href="http://localhost:8000/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://localhost:8000/category/other.html">other</a></li>
+                            <li ><a href="http://localhost:8000/category/python.html">python</a></li>
+                            <li ><a href="http://localhost:8000/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://localhost:8000/category/yun-wei.html">运维</a></li>
                         </ul>
 
                     </div>
@@ -68,33 +71,34 @@
         <div class="span10 offset1">
             <div class="row-fluid">
 <div class="span10 offset1">
-  <section>
-    <article>
-      <header>
-        <h1 class="entry-title">
-          <a href="http://chenjiahui.hot-cool.cn/2017/04/30/javaVM-GC.html" rel="bookmark"
-             title="Permalink to java虚拟机-垃圾回收GC">java虚拟机-垃圾回收GC</a></h1>
-      </header>
-      <div class="entry-content">
+	<section>
+		<article>
+			<header>
+				<h1 class="entry-title">
+					<a href="http://localhost:8000/2017/04/30/javaVM-GC.html" rel="bookmark"
+						title="Permalink to java虚拟机-垃圾回收GC">java虚拟机-垃圾回收GC</a>
+				</h1>
+			</header>
+			<div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2017-04-30
+    分类 <a href="http://localhost:8000/category/java.html">java</a>
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a>
-
+        标签:         <a href="http://localhost:8000/tag/java.html">java</a>
+        <a href="http://localhost:8000/tag/jvm.html">jvm</a>
 
 
     
-</footer><!-- /.post-info -->
 
-        <h2>垃圾回收算法</h2>
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2017-04-30 20时57分50秒 星期日
+</footer>  <h2>垃圾回收算法</h2>
 <p>￼</p>
 <h3>垃圾检测</h3>
 <p><strong>引用计数法</strong><br>
@@ -208,12 +212,12 @@ G1采用内存分区的理念，将内存划分为大小相同的N个<code>regio
 <p><code>region</code>大小使用<code>-XX:G1HeapRegionSize</code>参数配置，最小值是1M，做大值是32M
 另外G1为超过<code>region</code>大小的大对象设计了Humongous空间，用来存储这些大对象。不过如果频繁大量的为大对象分配内存会导致性能问题。  </p>
 <h4>各收集器之间的搭配使用</h4>
-<p><img alt="gc" src="http://blogimg.hot-cool.cn/20190625156144359882172.png"></p>
+<p><img alt="gc" src="http://blogimg.hot-cool.cn/20190625156144359882172.png"></p> 			</div>
+			<!-- /.entry-content -->
 
-      </div><!-- /.entry-content -->
 
-    </article>
-  </section>
+		</article>
+	</section>
 </div>
             </div>
         </div>
@@ -237,14 +241,14 @@ G1采用内存分区的理念，将内存划分为大小相同的N个<code>regio
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
     
-    <!-- <script>
+    <script>
 		(function(){
 		    var bp = document.createElement('script');
 		    bp.src = '//push.zhanzhang.baidu.com/push.js';
 		    var s = document.getElementsByTagName("script")[0];
 		    s.parentNode.insertBefore(bp, s);
 		})();
-	</script> -->
+	</script>
 	
 </body>
 </html>

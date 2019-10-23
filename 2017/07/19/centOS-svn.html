@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
+    <meta property="og:title" content="centOS上svn的安装与迁移"/>
+    <meta property="og:url" content="http://localhost:8000/2017/07/19/centOS-svn.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="http://localhost:8000/2017/07/19/centOS-svn.html" />
+
+    <title>centOS上svn的安装与迁移
+| BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/main.css?v=1" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png" alt="Fork me on GitHub" />
+</a>
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="http://localhost:8000/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/category/java.html">java</a></li>
+                            <li ><a href="http://localhost:8000/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://localhost:8000/category/other.html">other</a></li>
+                            <li ><a href="http://localhost:8000/category/python.html">python</a></li>
+                            <li ><a href="http://localhost:8000/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a></li>
+                            <li class="active"><a href="http://localhost:8000/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+	<section>
+		<article>
+			<header>
+				<h1 class="entry-title">
+					<a href="http://localhost:8000/2017/07/19/centOS-svn.html" rel="bookmark"
+						title="Permalink to centOS上svn的安装与迁移">centOS上svn的安装与迁移</a>
+				</h1>
+			</header>
+			<div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/yun-wei.html">运维</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/svn.html">svn</a>
+        <a href="http://localhost:8000/tag/linux.html">linux</a>
+        <a href="http://localhost:8000/tag/centos.html">centOS</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2017-07-19 10时23分46秒 星期三
+</footer>  <h2>系统环境</h2>
+<p>系统环境：centos7.2</p>
+<h2>安装</h2>
+<div class="highlight"><pre><span></span><span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">subversion</span>
+</pre></div>
+
+
+<h2>创建版本库目录</h2>
+<div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="k">data</span><span class="o">/</span><span class="n">cjh</span><span class="o">/</span><span class="n">svnrepos</span><span class="o">/</span>
+</pre></div>
+
+
+<h2>使用svnadmin创建版本库</h2>
+<div class="highlight"><pre><span></span><span class="n">svnadmin</span> <span class="k">create</span> <span class="o">/</span><span class="k">data</span><span class="o">/</span><span class="n">cjh</span><span class="o">/</span><span class="n">svnrepos</span><span class="o">/</span>
+</pre></div>
+
+
+<h2>版本库中文件列表</h2>
+<div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">/</span><span class="k">data</span><span class="o">/</span><span class="n">cjh</span><span class="o">/</span><span class="n">svnrepos</span><span class="o">/</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span> <span class="mi">2</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">4096</span> <span class="n">Mar</span> <span class="mi">27</span> <span class="mi">10</span><span class="p">:</span><span class="mi">16</span> <span class="n">conf</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">sr</span><span class="o">-</span><span class="n">x</span> <span class="mi">6</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">4096</span> <span class="n">Jul</span> <span class="mi">19</span> <span class="mi">23</span><span class="p">:</span><span class="mi">08</span> <span class="n">db</span>
+<span class="o">-</span><span class="n">r</span><span class="c1">--r--r-- 1 root root    2 Jun 27  2017 format</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span> <span class="mi">2</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">4096</span> <span class="n">Jun</span> <span class="mi">27</span>  <span class="mi">2017</span> <span class="n">hooks</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span> <span class="mi">2</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">4096</span> <span class="n">Jun</span> <span class="mi">27</span>  <span class="mi">2017</span> <span class="n">locks</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="c1">--r-- 1 root root  229 Jun 27  2017 README.txt</span>
+</pre></div>
+
+
+<h3>配置conf</h3>
+<p>conf目录下一共3个文件<br>
+passwd配置svn用户账号密码的<br>
+authz配置各个账号所拥有的目录权限。可以对用户分组，设置读写权限等。<br>
+svnserve.conf是svn服务器的配置文件  </p>
+<p>具体的各个配置项有什么作用，各个配置文件中都有介绍。重点说下几个主要配置。</p>
+<h3>svn服务配置</h3>
+<div class="highlight"><pre><span></span><span class="n">anon</span><span class="o">-</span><span class="k">access</span> <span class="o">=</span> <span class="k">none</span><span class="err">：表示禁止匿名用户访问。设置</span><span class="k">read</span><span class="err">表示允许匿名用户只读。</span>
+<span class="n">auth</span><span class="o">-</span><span class="k">access</span> <span class="o">=</span> <span class="k">write</span><span class="err">：表示授权用户拥有读写权限。</span>
+<span class="n">password</span><span class="o">-</span><span class="n">db</span> <span class="o">=</span> <span class="n">passswd</span><span class="err">：指定用户名口令文件，即</span> <span class="n">passwd</span> <span class="err">文件。</span>
+<span class="n">authz</span><span class="o">-</span><span class="n">db</span> <span class="o">=</span> <span class="n">authz</span><span class="err">：指定权限配置文件，即</span> <span class="n">authz</span> <span class="err">文件。</span>
+</pre></div>
+
+
+<h3>用户账号密码配置</h3>
+<p><code>vi passwd</code>，在<code>[users]</code>下设置用户名和密码行一个用户设置一个账号为<code>cjh</code>密码为<code>cjh123456</code>的账户  </p>
+<div class="highlight"><pre><span></span><span class="k">[users]</span>
+<span class="na">cjh</span><span class="o">=</span><span class="s">cjh123456</span>
+</pre></div>
+
+
+<h3>账号权限配置</h3>
+<h4>账号分组</h4>
+<p>在[groups]标签下设置分组，多个分组以换行分隔。</p>
+<div class="highlight"><pre><span></span><span class="k">[groups]</span>
+<span class="c1">#如设置`cjh,cjh2`2个账号为`admin`分组。</span>
+<span class="na">admin</span><span class="o">=</span><span class="s">cjh,cjh2,cjh3</span>
+<span class="c1">#设置`ios1,ios2,ios3`账号为iOS分组。</span>
+<span class="na">ios</span><span class="o">=</span><span class="s">ios1,ios2,ios3</span>
+</pre></div>
+
+
+<h3>目录权限</h3>
+<div class="highlight"><pre><span></span><span class="n">#如根目录只允许admin分组的用户访问</span><span class="w"></span>
+<span class="o">[</span><span class="n">/</span><span class="o">]</span><span class="w"></span>
+<span class="nv">@admin</span><span class="o">=</span><span class="n">rw</span><span class="w"></span>
+<span class="n">#设置分组只是为了方便管理用户</span><span class="err">，</span><span class="n">也可以不设置分组</span><span class="err">，</span><span class="n">直接标明账号权限</span><span class="err">。</span><span class="w"></span>
+<span class="n">#如下</span><span class="err">，</span><span class="n">设置ios组用户对ios项目的读写权限</span><span class="err">，</span><span class="n">设置白盒测试人员test1账号</span><span class="err">，</span><span class="n">对ios项目的读权限</span><span class="w"></span>
+<span class="o">[</span><span class="n">/iosproject</span><span class="o">]</span><span class="w"></span>
+<span class="nv">@ios</span><span class="o">=</span><span class="n">rw</span><span class="w"></span>
+<span class="n">test1</span><span class="o">=</span><span class="n">r</span><span class="w"></span>
+
+<span class="o">[</span><span class="n">/androidproject</span><span class="o">]</span><span class="w"></span>
+<span class="n">android1</span><span class="o">=</span><span class="n">rw</span><span class="w"></span>
+<span class="n">android2</span><span class="o">=</span><span class="n">rw</span><span class="w"></span>
+<span class="n">test2</span><span class="o">=</span><span class="n">r</span><span class="w"></span>
+</pre></div>
+
+
+<h3>启动svn</h3>
+<div class="highlight"><pre><span></span><span class="n">svnserve</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="k">data</span><span class="o">/</span><span class="n">cjh</span><span class="o">/</span><span class="n">svnrepos</span><span class="o">/</span>
+</pre></div>
+
+
+<h2>svn项目的迁移</h2>
+<h3>dump</h3>
+<p>如果是新老服务器在内网网络是打通了的情况下，建议直接使用dump方式，一般dump文件都比较大
+到原svn服务器下生成dump文件。
+svnadmin dump /data/svn/&gt;/data/2017-07-19-svn.dump</p>
+<p>将dump文件通过scp命令发送文件到新服务器上</p>
+<div class="highlight"><pre><span></span><span class="n">scp</span> <span class="p">.</span><span class="o">/</span><span class="k">data</span><span class="o">/</span><span class="mi">2017</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">19</span><span class="o">-</span><span class="n">svn</span><span class="p">.</span><span class="n">dump</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">170</span><span class="p">:</span><span class="o">/</span><span class="k">data</span>
+</pre></div>
+
+
+<p>在新服务器上将dump文件读进SVN仓库</p>
+<div class="highlight"><pre><span></span><span class="n">svnadmin</span> <span class="k">load</span> <span class="o">/</span><span class="k">data</span><span class="o">/</span><span class="n">cjh</span><span class="o">/</span><span class="n">svnrepos</span><span class="o">/&lt;</span><span class="mi">2017</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">19</span><span class="o">-</span><span class="n">svn</span><span class="p">.</span><span class="n">dump</span>
+</pre></div>
+
+
+<p>启动svn</p>
+<div class="highlight"><pre><span></span><span class="n">svnserve</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="k">data</span><span class="o">/</span><span class="n">cjh</span><span class="o">/</span><span class="n">svnrepos</span><span class="o">/</span>
+</pre></div>
+
+
+<p>测试后，记得及时通知同事切换svn，并关闭老的svn服务，防止错误提交。</p>
+<p>ps: 推荐给svn地址配置上域名解析，那样下次迁移svn时，SVN的用户们就不需要去切换操作了。</p> 			</div>
+			<!-- /.entry-content -->
+
+
+		</article>
+	</section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
+    <meta property="og:title" content="Spring Cloud Eureka"/>
+    <meta property="og:url" content="http://localhost:8000/2018/08/25/Spring-Cloud-Ribbon.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="http://localhost:8000/2018/08/25/Spring-Cloud-Ribbon.html" />
+
+    <title>Spring Cloud Eureka
+| BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/main.css?v=1" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png" alt="Fork me on GitHub" />
+</a>
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="http://localhost:8000/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000">Home</a></li>
+                            <li class="active"><a href="http://localhost:8000/category/java.html">java</a></li>
+                            <li ><a href="http://localhost:8000/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://localhost:8000/category/other.html">other</a></li>
+                            <li ><a href="http://localhost:8000/category/python.html">python</a></li>
+                            <li ><a href="http://localhost:8000/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://localhost:8000/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+	<section>
+		<article>
+			<header>
+				<h1 class="entry-title">
+					<a href="http://localhost:8000/2018/08/25/Spring-Cloud-Ribbon.html" rel="bookmark"
+						title="Permalink to Spring Cloud Eureka">Spring Cloud Eureka</a>
+				</h1>
+			</header>
+			<div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/java.html">java</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/java.html">java</a>
+        <a href="http://localhost:8000/tag/spring-cloud.html">spring-cloud</a>
+        <a href="http://localhost:8000/tag/jia-gou.html">架构</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2018-08-25 22时43分08秒 星期六
+</footer>  <p>既然我们已经开始向分布式、集群思考问题了，那么服务的负载均衡肯定是要考虑一下的。  </p>
+<h2>Ribbon介绍</h2>
+<p>Spring Cloud Ribbon是一个基于HTTP和TCP的客户端负载均衡工具，它基于Netflix Ribbon实现。
+通过Spring Cloud的封装，可以让我们轻松地将面向服务的REST模版请求自动转换成客户端负载均衡的服务调用，实际上，spring cloud的微服务架构中都会有Ribbon的影子（Feign默认集成了ribbon）。
+在Spring Cloud中，当Ribbon与Eureka配合使用时，Ribbon可自动从Eureka Server获取服务提供者地址列表，并基于负载均衡算法，请求其中一个服务提供者实例。</p>
+<h2>使用Ribbon</h2>
+<p>创建一个新的spring boot项目
+在<code>pom.xml</code>中导入相关依赖</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-eureka<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-ribbon<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+
+
+<p>application.property</p>
+<div class="highlight"><pre><span></span><span class="n">spring</span><span class="p">.</span><span class="n">application</span><span class="p">.</span><span class="n">name</span><span class="o">=</span><span class="n">cjh</span><span class="o">-</span><span class="n">ribbon</span>
+<span class="n">server</span><span class="p">.</span><span class="n">port</span><span class="o">=</span><span class="mi">8084</span>
+<span class="o">#</span><span class="err">指定一个</span><span class="n">eureka</span><span class="o">-</span><span class="n">server</span><span class="err">地址</span>
+<span class="n">eureka</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">serviceUrl</span><span class="p">.</span><span class="n">defaultZone</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">eureka</span><span class="o">/</span>
+</pre></div>
+
+
+<h4>项目入口</h4>
+<p>RibbonApplication.java</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.cjh.ribbon</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.boot.SpringApplication</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.cloud.client.discovery.EnableDiscoveryClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.cloud.client.loadbalancer.LoadBalanced</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Bean</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.client.RestTemplate</span><span class="o">;</span>
+
+<span class="nd">@SpringBootApplication</span>
+<span class="nd">@EnableDiscoveryClient</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RibbonApplication</span> 
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="n">String</span><span class="o">[]</span> <span class="n">args</span> <span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">RibbonApplication</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="nd">@LoadBalanced</span>
+    <span class="n">RestTemplate</span> <span class="nf">restTemplate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">RestTemplate</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+
+
+<p>将<code>RestTemplate</code>注入到Ioc容器中，并使用<code>@LoadBalanced</code>注解开启负载均衡模式。
+开启负载均衡模式后，Ribbon将从eureka中获取服务的ip:prot，与服务名对应，然后拦截由RestTemplate发起的请求，实现负载均衡。<br>
+所以再下面的这个service中，可以直接使用<code>http://spring-cloud-producer</code>请求服务。而不是具体的ip:port。</p>
+<h4>使用RestTemplate发起请求</h4>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.cjh.ribbon.service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.client.RestTemplate</span><span class="o">;</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestRibbonService</span> <span class="o">{</span>
+    <span class="nd">@Autowired</span>
+    <span class="n">RestTemplate</span> <span class="n">restTemplate</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">testService</span><span class="o">(</span><span class="n">String</span> <span class="n">para</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForObject</span><span class="o">(</span><span class="s">&quot;http://spring-cloud-producer/test?para=&quot;</span><span class="o">+</span><span class="n">para</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+<span class="n">这里有个细节</span><span class="err">：</span><span class="n">可以看到</span><span class="err">，</span><span class="n">我们使用的请求地址是</span><span class="err">`</span><span class="n">http</span><span class="o">:</span><span class="c1">//spring-cloud-producer/test`,`spring-cloud-producer`其实就是我们的`producer`注册在`eureka`上的服务名(`spring.application.name`)。  </span>
+</pre></div>
+
+
+<h4>使用测试接口发起调用</h4>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.cjh.ribbon.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.cjh.ribbon.service.TestRibbonService</span><span class="o">;</span>
+
+
+<span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestRebbonController</span> <span class="o">{</span>
+    <span class="nd">@Autowired</span>
+    <span class="n">TestRibbonService</span> <span class="n">testService</span><span class="o">;</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/ribbon/test&quot;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">test</span><span class="o">(</span><span class="n">String</span> <span class="n">para</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">para</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">testService</span><span class="o">.</span><span class="na">testService</span><span class="o">(</span><span class="n">para</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h2>启动各个服务</h2>
+<p>我们在启动了eureke、producer的基础上，修改下<code>TestController</code></p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.cjh.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestParam</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="o">;</span>
+
+<span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestController</span> <span class="o">{</span>
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">&quot;${server.port}&quot;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">port</span><span class="o">;</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/test&quot;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">index</span><span class="o">(</span><span class="nd">@RequestParam</span> <span class="n">String</span> <span class="n">para</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&quot;producer port is &quot;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&quot;, para is &quot;</span> <span class="o">+</span> <span class="n">para</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+
+
+<p>再以8081和8083两个端口分别启动producer2个服务。<br>
+此时，我们就提供了两个producer服务，用以模拟一个拥有多个副本的集群服务。<br>
+在<code>http://localhost:8080/</code>中可以看到，我们在eureka上注册了两个<code>SPRING-CLOUD-PRODUCER</code>服务。<br>
+启动我们的Ribbon项目成功后可以看到所有服务的情况如下：
+<img alt="multi-producer-and-ribbon" src="http://blogimg.hot-cool.cn/20190731156456406722564.png">  </p>
+<h2>测试</h2>
+<p>在浏览器地址栏中请求<code>http://localhost:8084/ribbon/test?para=ribbon</code>，
+可以看到请求响应<code>producer port is 8081, para is ribbon</code>和<code>producer port is 8083, para is ribbon</code>交替出现。</p> 			</div>
+			<!-- /.entry-content -->
+
+
+		</article>
+	</section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+	
+</body>
+</html>

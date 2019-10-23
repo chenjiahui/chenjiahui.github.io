@@ -4,24 +4,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
-
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
     <meta property="og:title" content="数据库与分区、分表、分库"/>
-    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/2019/05/01/89741820.html"/>
+    <meta property="og:url" content="http://localhost:8000/2019/05/01/89741820.html"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="article"/>
 
-    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/2019/05/01/89741820.html" />
+    <link rel="canonical" href="http://localhost:8000/2019/05/01/89741820.html" />
 
-    <title>数据库与分区、分表、分库 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <title>数据库与分区、分表、分库
+| BugManager’s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
     <script type="text/javascript">
         stLight.options({
             publisher: "",
@@ -40,7 +43,7 @@
         <div class="span10 offset1">
             <header id="banner" >
                 <h1>
-                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                    <a href="http://localhost:8000/">BugManager’s Blog</a>
                 </h1>
                 <h3>
                      <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
@@ -48,14 +51,14 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
-                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        	<li><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/category/java.html">java</a></li>
+                            <li ><a href="http://localhost:8000/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://localhost:8000/category/other.html">other</a></li>
+                            <li ><a href="http://localhost:8000/category/python.html">python</a></li>
+                            <li ><a href="http://localhost:8000/category/qian-duan.html">前端</a></li>
+                            <li class="active"><a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://localhost:8000/category/yun-wei.html">运维</a></li>
                         </ul>
 
                     </div>
@@ -68,55 +71,65 @@
         <div class="span10 offset1">
             <div class="row-fluid">
 <div class="span10 offset1">
-  <section>
-    <article>
-      <header>
-        <h1 class="entry-title">
-          <a href="http://chenjiahui.hot-cool.cn/2019/05/01/89741820.html" rel="bookmark"
-             title="Permalink to 数据库与分区、分表、分库">数据库与分区、分表、分库</a></h1>
-      </header>
-      <div class="entry-content">
+	<section>
+		<article>
+			<header>
+				<h1 class="entry-title">
+					<a href="http://localhost:8000/2019/05/01/89741820.html" rel="bookmark"
+						title="Permalink to 数据库与分区、分表、分库">数据库与分区、分表、分库</a>
+				</h1>
+			</header>
+			<div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a>
-
-    on 2019-05-01
+    分类 <a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a>
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a>
-
+        标签:         <a href="http://localhost:8000/tag/shu-ju-ku.html">数据库</a>
+        <a href="http://localhost:8000/tag/mysql.html">MySQL</a>
 
 
     
-</footer><!-- /.post-info -->
 
-        <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/89741820 </p>
-<p>分区：（应用层感知不到变化）</p>
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2019-05-01 23时48分10秒 星期三
+</footer>  <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/89741820 </p>
+<h2>分区：（应用层感知不到变化）</h2>
 <p>将把一张表的数据根据分区逻辑均衡分摊到多个存储介质中。在逻辑上看还是只有一张表，但实际被分成了N个物理块。分区类型有（range、list、hash、key）。</p>
 <p>主要解决单表数据量过大，读写数据、修改数据时重建索引效率等问题。</p>
 <p>一般当一张表的查询，在优化后，查询速度仍比较慢时，就需要选择合适的业务字段进行分区。</p>
 <p>相对分表，几乎无工作量。应用端一般无需修改代码。</p>
-<p>分表：mycat、tidb</p>
-<p>把一张表按一定规则，拆分成N张表的过程。分横向拆分和纵向拆分。</p>
-<p>横向拆分：</p>
+<h2>分表：mycat、tidb</h2>
+<p>把一张表按一定规则，拆分成N张表的过程，主要是为了解决单表数据量过大时，单表压力过大的问题。分横向拆分和纵向拆分。</p>
+<h4>横向拆分：</h4>
 <p>将一张表中的不同数据字段，拆分到2张或者多张表中。一般横向拆分的情况有：表字段过多，字段内容过大（如text，blob等），不经常使用等。</p>
-<p>纵向拆分：</p>
+<h4>纵向拆分：</h4>
 <p>将数据打散到多张结构相同的表中存储。</p>
-<p>如流水表，我们选择以用户id取余分表。因为在业务上流水只和用户相关，选择根据用户id取余分表很合适。</p>
+<p>如流水表，我们选择以用户id取余分表(分表规则需要根据业务情况具体情况具体分析，一般是按照hash取模、按范围分片等)。因为在业务上流水只和用户相关，选择根据用户id取余分表很合适。</p>
 <p>需求：查看当天或者某段时间的充值总量，消费总量等：</p>
-<p>运营系统的需求，对查询时效性要求不是很高，我们采用先再每张表中查数据，将查询出的数据放入临时表中，最后在临时表中查询最终数据。（其实，早期我们的做法是单独做了张运营表，各个分表的数据，在运营表中都有汇总。这种方式，在数据量逐渐增大后，查询也越来越慢。）</p>
-<p>分库：</p>
+<p>运营系统的需求，对查询时效性要求不是很高，我们采用先在每张表中查数据，将查询出的数据放入临时表中，最后在临时表中查询最终数据。
+（其实，早期我们的做法是单独做了张运营表，各个分表的数据，在运营表中都有汇总。这种方式，在数据量逐渐增大后，查询也越来越慢。）</p>
+<h2>分库：</h2>
 <p>分库，一般是根据业务耦合性，将关联度低的不同表存储在不同的数据库中。（比如，流水库，视频库）</p>
 <p>分库后，不同库之间不能进行关联查询，可以通过字段冗余进行解决。如果冗余无法满足需求，也可以考虑将小表数据，全表冗余到该分库中。</p>
+<!---
+##数据迁移：
+一般来说，一个刚上的新项目是不会做分表的。因为，业务会不断的试错，调整。数据库的优化也是逐步进行的。  
+当准备做分表时，就要考虑开始烦人的数据迁移了，之所以说它烦人，是因为做分表时，数据量也比较大了，
+分表操作需要较久的时间，而分表操作又要做到尽可能少的影响线上业务。所以在数据迁移时，我们在业务逻辑中通过逻辑控制，去哪里查取数据。做法和mycat的路由规则差不多。  
+mycat里面通过定义路由规则来实现分片表（路由规则里面会定义分片字段，以及分片算法）。
+在mycat里面，会对所有传递的sql语句做路由处理，路由处理的依据就是表是否分片，如果分片，那么需要依据分片字段和对应的分片算法来判断sql应该传递到哪一个、或者哪几个、又或者全部节点去执行
+---> 			</div>
+			<!-- /.entry-content -->
 
-      </div><!-- /.entry-content -->
 
-    </article>
-  </section>
+		</article>
+	</section>
 </div>
             </div>
         </div>
@@ -140,14 +153,14 @@
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
     
-    <!-- <script>
+    <script>
 		(function(){
 		    var bp = document.createElement('script');
 		    bp.src = '//push.zhanzhang.baidu.com/push.js';
 		    var s = document.getElementsByTagName("script")[0];
 		    s.parentNode.insertBefore(bp, s);
 		})();
-	</script> -->
+	</script>
 	
 </body>
 </html>

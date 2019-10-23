@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
+    <meta property="og:title" content="Spring Cloud Feign"/>
+    <meta property="og:url" content="http://localhost:8000/2018/08/18/Spring-Cloud-Feign.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="http://localhost:8000/2018/08/18/Spring-Cloud-Feign.html" />
+
+    <title>Spring Cloud Feign
+| BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/main.css?v=1" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png" alt="Fork me on GitHub" />
+</a>
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="http://localhost:8000/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000">Home</a></li>
+                            <li class="active"><a href="http://localhost:8000/category/java.html">java</a></li>
+                            <li ><a href="http://localhost:8000/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://localhost:8000/category/other.html">other</a></li>
+                            <li ><a href="http://localhost:8000/category/python.html">python</a></li>
+                            <li ><a href="http://localhost:8000/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://localhost:8000/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+	<section>
+		<article>
+			<header>
+				<h1 class="entry-title">
+					<a href="http://localhost:8000/2018/08/18/Spring-Cloud-Feign.html" rel="bookmark"
+						title="Permalink to Spring Cloud Feign">Spring Cloud Feign</a>
+				</h1>
+			</header>
+			<div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/java.html">java</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/java.html">java</a>
+        <a href="http://localhost:8000/tag/spring-cloud.html">spring-cloud</a>
+        <a href="http://localhost:8000/tag/jia-gou.html">架构</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2018-08-18 20时31分38秒 星期六
+</footer>  <h2>Feign</h2>
+<p><a href="https://github.com/OpenFeign/feign">Feign</a>是一种Feign是一种声明式、模板化的HTTP客户端。
+在Spring Cloud中，使用Feign非常简单——创建一个接口，并在接口上添加一些注解，代码就完成了。</p>
+<h2>使用Feign</h2>
+<p>创建一个服务，并使用feign调用eureka中的其他服务接口。  </p>
+<p><code>pom.xml</code></p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;project</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>
+    <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+    <span class="nt">&lt;parent&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>com.cjh<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>cjh-spring-cloud-parent<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/parent&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>cjh-spring-cloud-feign<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;name&gt;</span>cjh-spring-cloud-feign<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url&gt;</span>http://maven.apache.org<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;properties&gt;</span>
+        <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
+    <span class="nt">&lt;/properties&gt;</span>
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-feign<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-eureka<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-test<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</pre></div>
+
+
+<p>项目入口<br>
+<code>FeignApplication.java</code>  </p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">eureka</span><span class="o">.</span><span class="n">feign</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.boot.SpringApplication</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.cloud.client.discovery.EnableDiscoveryClient</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.cloud.netflix.feign.EnableFeignClients</span><span class="p">;</span>
+
+<span class="nd">@SpringBootApplication</span>
+<span class="nd">@EnableDiscoveryClient</span>
+<span class="nd">@EnableFeignClients</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">FeignApplication</span> <span class="p">{</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SpringApplication</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">FeignApplication</span><span class="o">.</span><span class="n">class</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>创建Remote接口，连接之前已经完成的spring-cloud-producer服务。  </p>
+<p><code>TestRemote.java</code>  </p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">eureka</span><span class="o">.</span><span class="n">feign</span><span class="o">.</span><span class="n">remote</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.cloud.netflix.feign.FeignClient</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestParam</span><span class="p">;</span>
+
+
+<span class="nd">@FeignClient</span><span class="p">(</span><span class="n">name</span><span class="o">=</span> <span class="s2">&quot;spring-cloud-producer&quot;</span><span class="p">)</span>
+<span class="n">public</span> <span class="n">interface</span> <span class="n">TestRemote</span> <span class="p">{</span>
+    <span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;/test&quot;</span><span class="p">)</span>
+    <span class="n">public</span> <span class="n">String</span> <span class="n">test</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;para&quot;</span><span class="p">)</span> <span class="n">String</span> <span class="n">para</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>创建Controller，在controller中使用FeignClient调用spring-cloud-producer服务<br>
+<code>TestController.java</code>  </p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">cjh</span><span class="o">.</span><span class="n">eureka</span><span class="o">.</span><span class="n">feign</span><span class="o">.</span><span class="n">controller</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">com.cjh.eureka.feign.remote.TestRemote</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestParam</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="p">;</span>
+
+<span class="nd">@RestController</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">TestController</span> <span class="p">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="n">TestRemote</span> <span class="n">TestRemote</span><span class="p">;</span>
+
+    <span class="nd">@RequestMapping</span><span class="p">(</span><span class="s2">&quot;/test2&quot;</span><span class="p">)</span>
+    <span class="n">public</span> <span class="n">String</span> <span class="n">test</span><span class="p">(</span><span class="nd">@RequestParam</span> <span class="n">String</span> <span class="n">para</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">TestRemote</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">para</span><span class="p">);</span>
+    <span class="p">}</span>   
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>运行</h2>
+<p>结合之前的eureka、rureka-client。依次启动，eureka、producer、和feign。 <br>
+<img alt="image" src="http://blogimg.hot-cool.cn/20190724156396192259726.png">  <br>
+在浏览器打开测试请求<code>http://localhost:8082/test2?para=feign</code>收到“para is feign”的响应。  </p>
+<p>使用Feign调用eureka中的producer服务成功。</p> 			</div>
+			<!-- /.entry-content -->
+
+
+		</article>
+	</section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+	
+</body>
+</html>

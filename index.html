@@ -4,24 +4,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
-
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
     <meta property="og:title" content="BugManager’s Blog"/>
-    <meta property="og:url" content="http://chenjiahui.hot-cool.cn"/>
+    <meta property="og:url" content="http://localhost:8000"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="website"/>
 
-    <link rel="canonical" href="http://chenjiahui.hot-cool.cn" />
+    <link rel="canonical" href="http://localhost:8000" />
 
-    <title>BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <title>BugManager’s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
     <script type="text/javascript">
         stLight.options({
             publisher: "",
@@ -40,7 +42,7 @@
         <div class="span10 offset1">
             <header id="banner" >
                 <h1>
-                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                    <a href="http://localhost:8000/">BugManager’s Blog</a>
                 </h1>
                 <h3>
                      <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
@@ -48,14 +50,14 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        	<li><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/category/java.html">java</a></li>
+                            <li ><a href="http://localhost:8000/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://localhost:8000/category/other.html">other</a></li>
+                            <li ><a href="http://localhost:8000/category/python.html">python</a></li>
+                            <li ><a href="http://localhost:8000/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://localhost:8000/category/yun-wei.html">运维</a></li>
                         </ul>
 
                     </div>
@@ -74,7 +76,115 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2019/06/22/server-check-shell.html" rel="bookmark" title="Permalink to shell脚本检查服务器情况">
+                                    <a href="http://localhost:8000/2019/07/13/rename-linux-servername.html" rel="bookmark" title="Permalink to Linux不重启永久修改主机名">
+                                       Linux不重启永久修改主机名
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/yun-wei.html">运维</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/linux.html">linux</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2019-07-13 21时49分55秒 星期六
+</footer>                                <p>Linux下不重启永久修改hostname   </p>
+<div class="highlight"><pre><span></span><span class="n">hostname</span> <span class="err">主机名</span>
+</pre></div>
+
+
+<p>这条命令，可以修改hostname立即生效。但是重启后，就会失效。<br>
+要想重启后生效，修改<code>vi /etc/sysconfig/network</code>文件中的HOSTNAME项，如果没有该项，则新增即可。   </p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@T-server ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span><span class="n">network</span><span class="w"></span>
+<span class="err">#</span><span class="w"> </span><span class="n">Created</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">anaconda</span><span class="w"></span>
+<span class="n">NETWORKING_IPV6</span><span class="o">=</span><span class="k">no</span><span class="w"></span>
+<span class="n">PEERNTP</span><span class="o">=</span><span class="k">no</span><span class="w"></span>
+<span class="n">HOSTNAME</span><span class="o">=</span><span class="n">T</span><span class="o">-</span><span class="n">server</span><span class="w"></span>
+</pre></div>
+
+
+<p>测试<br>
+使用<code>hostname</code>查看即可：</p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@T-server ~</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">hostname</span><span class="w"></span>
+<span class="n">T</span><span class="o">-</span><span class="n">server</span><span class="w"></span>
+</pre></div>
+
+
+<p>python获取主机名</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="n">sname</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getfqdn</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">())</span>
+<span class="k">print …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2019/07/13/rename-linux-servername.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://localhost:8000/2019/07/07/supervisor.html" rel="bookmark" title="Permalink to 使用Supervisor管理linux服务">
+                                       使用Supervisor管理linux服务
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/jia-gou.html">架构</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/jia-gou.html">架构</a>
+        <a href="http://localhost:8000/tag/linux.html">linux</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2019-07-07 21时50分10秒 星期日
+</footer>                                <h2>为什么使用supervisor</h2>
+<p>服务器上往往会启动着许多的服务，跑着许多脚本。随着服务器上服务的增多，管理起来就变的繁琐，甚至的当有的脚本挂了，我们可能都不能一眼看出少了什么服务。<br>
+向大家推荐 <a href="http://www.supervisord.org/introduction.html">Supervisor</a>。<br>
+<code>Supervisor</code>可以对进程进行管理，当管理的进程在崩溃时，会自动重启该进程。最早也是因为这个功能，接触的<code>Supervisor</code>。当时项目中有个服务时不时的会挂掉，一时间也没有找到原因，后在朋友推荐下，用上了<code>Supervisor</code>，然后慢慢的分析挂掉的原因。 </p>
+<p>有的服务是由一组自服务组成的，它们重启的时候也比较麻烦，万一手抖还可能弄错。supervisor支持对进程组的管理，只需要简单的配置就可以实现。</p>
+<h2>安装</h2>
+<p>安装，以cenOS7为例：</p>
+<p><code>pip install supervisor</code></p>
+<p>安装后会有以下3个文件  </p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">root@chenjiahui home</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">supervisord</span><span class="w"></span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">supervisord</span><span class="w"></span>
+<span class="o">[</span><span class="n">root@chenjiahui home</span><span class="o">]</span><span class="err">#</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">echo_supervisord_conf</span><span class="w"> </span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">echo_supervisord_conf …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2019/07/07/supervisor.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://localhost:8000/2019/06/22/server-check-shell.html" rel="bookmark" title="Permalink to shell脚本检查服务器情况">
                                        shell脚本检查服务器情况
                                     </a>
                                 </h1>
@@ -82,20 +192,22 @@
                             <div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
-
-    on 2019-06-22
+    分类 <a href="http://localhost:8000/category/yun-wei.html">运维</a>
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
-
+        标签:         <a href="http://localhost:8000/tag/yun-wei.html">运维</a>
 
 
     
-</footer><!-- /.post-info -->                                <h2>检查磁盘空间</h2>
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2019-06-22 22时48分23秒 星期六
+</footer>                                <h2>检查磁盘空间</h2>
 <div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="nv">disk_vol</span><span class="o">=</span><span class="sb">`</span>df -h <span class="p">|</span> grep -v <span class="s2">&quot;Filesystem&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $5}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/%//g&#39;</span> <span class="p">|</span> sort -n <span class="p">|</span> tail -n <span class="m">1</span><span class="sb">`</span>
 <span class="c1">#磁盘空间判断</span>
@@ -119,7 +231,7 @@
 <div class="highlight"><pre><span></span><span class="k">for</span> i in <span class="sb">`</span>cat /script/port_list<span class="sb">`</span><span class="p">;</span> 
  <span class="k">do …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2019/06/22/server-check-shell.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2019/06/22/server-check-shell.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -129,7 +241,7 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2019/06/09/redis-rudiments.html" rel="bookmark" title="Permalink to redis基础">
+                                    <a href="http://localhost:8000/2019/06/09/redis-rudiments.html" rel="bookmark" title="Permalink to redis基础">
                                        redis基础
                                     </a>
                                 </h1>
@@ -137,21 +249,23 @@
                             <div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a>
-
-    on 2019-06-09
+    分类 <a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a>
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/redis.html">redis</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a>
-
+        标签:         <a href="http://localhost:8000/tag/redis.html">redis</a>
+        <a href="http://localhost:8000/tag/shu-ju-ku.html">数据库</a>
 
 
     
-</footer><!-- /.post-info -->                                <h2>数据类型及使用方法</h2>
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2019-06-09 23时41分49秒 星期日
+</footer>                                <h2>数据类型及使用方法</h2>
 <p>string、hash、list、set、zset  </p>
 <h2>数据结构</h2>
 <p>涉及到的数据结构有链表、dict、跳跃表、集合、压缩列表等  </p>
@@ -169,7 +283,7 @@ OK
 <span class="m">127</span>.0.0.1:6379&gt; incr a  <span class="c1">#如果是数字，可以使用incr对某个值进行++操作</span>
 <span class="o">(</span>integer …</pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2019/06/09/redis-rudiments.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2019/06/09/redis-rudiments.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -179,7 +293,7 @@ OK
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2019/05/31/google-sheet-api.html" rel="bookmark" title="Permalink to Google Sheet授权">
+                                    <a href="http://localhost:8000/2019/05/31/google-sheet-api.html" rel="bookmark" title="Permalink to Google Sheet授权">
                                        Google Sheet授权
                                     </a>
                                 </h1>
@@ -187,21 +301,23 @@ OK
                             <div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2019-05-31
+    分类 <a href="http://localhost:8000/category/python.html">python</a>
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/googlesheet.html">googlesheet</a>
-
+        标签:         <a href="http://localhost:8000/tag/python.html">python</a>
+        <a href="http://localhost:8000/tag/googlesheet.html">googlesheet</a>
 
 
     
-</footer><!-- /.post-info -->                                <h2>前期准备</h2>
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2019-05-31 15时01分11秒 星期五
+</footer>                                <h2>前期准备</h2>
 <p>1、打开<a href="https://docs.google.com/spreadsheets/">google sheet</a>，国内开发人员，需要自行解决“网络问题”。注册Google账号如过已有账号就直接登录  </p>
 <p>2、新建1份sheet文件，随便写点数据，一会我们就要操作这份文件。<br>
 记住这个URL地址：<code>https://docs.google.com/spreadsheets/d/******************/edit#gid=0</code><br>
@@ -215,7 +331,7 @@ spreadsheetId就是编辑sheet页面时，网址中“/d/”与“/edit”之间
 <img alt="image" src="http://blogimg.hot-cool.cn/20190603224501.png">  </p>
 <p>在弹窗中点击 …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2019/05/31/google-sheet-api.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2019/05/31/google-sheet-api.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -225,7 +341,7 @@ spreadsheetId就是编辑sheet页面时，网址中“/d/”与“/edit”之间
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2019/05/01/89741820.html" rel="bookmark" title="Permalink to 数据库与分区、分表、分库">
+                                    <a href="http://localhost:8000/2019/05/01/89741820.html" rel="bookmark" title="Permalink to 数据库与分区、分表、分库">
                                        数据库与分区、分表、分库
                                     </a>
                                 </h1>
@@ -233,120 +349,36 @@ spreadsheetId就是编辑sheet页面时，网址中“/d/”与“/edit”之间
                             <div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a>
-
-    on 2019-05-01
+    分类 <a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a>
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a>
-
+        标签:         <a href="http://localhost:8000/tag/shu-ju-ku.html">数据库</a>
+        <a href="http://localhost:8000/tag/mysql.html">MySQL</a>
 
 
     
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/89741820 </p>
-<p>分区：（应用层感知不到变化）</p>
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2019-05-01 23时48分10秒 星期三
+</footer>                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/89741820 </p>
+<h2>分区：（应用层感知不到变化）</h2>
 <p>将把一张表的数据根据分区逻辑均衡分摊到多个存储介质中。在逻辑上看还是只有一张表，但实际被分成了N个物理块。分区类型有（range、list、hash、key）。</p>
 <p>主要解决单表数据量过大，读写数据、修改数据时重建索引效率等问题。</p>
 <p>一般当一张表的查询，在优化后，查询速度仍比较慢时，就需要选择合适的业务字段进行分区。</p>
 <p>相对分表，几乎无工作量。应用端一般无需修改代码。</p>
-<p>分表：mycat、tidb</p>
-<p>把一张表按一定规则，拆分成N张表的过程。分横向拆分和纵向拆分。</p>
-<p>横向拆分：</p>
+<h2>分表：mycat、tidb</h2>
+<p>把一张表按一定规则，拆分成N张表的过程，主要是为了解决单表数据量过大时，单表压力过大的问题。分横向拆分和纵向拆分。</p>
+<h4>横向拆分：</h4>
 <p>将一张表中的不同数据字段，拆分到2张或者多张表中。一般横向拆分的情况有：表字段过多，字段内容过大（如text，blob等），不经常使用等。</p>
-<p>纵向拆分：</p>
-<p>将数据打散到多张结构相同的表中存储。</p>
-<p>如流水表，我们选择以用户id取余分表 …</p>
+<h4>纵向拆分：</h4>
+<p>将数据打散到多张结构相同的表中存储 …</p>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2019/05/01/89741820.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2019/04/21/89435093.html" rel="bookmark" title="Permalink to ubuntu安装redis-server报错解决">
-                                       ubuntu安装redis-server报错解决
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
-
-    on 2019-04-21
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/89435093 </p>
-<p>今天在ubuntu上使用apt-get安装redis-server。报如下错误：</p>
-<div class="highlight"><pre><span></span>Do you want to <span class="k">continue</span>? <span class="o">[</span>Y/n<span class="o">]</span> Y
-Setting up redis-server <span class="o">(</span><span class="m">5</span>:4.0.9-1<span class="o">)</span> ...
-Job <span class="k">for</span> redis-server.service failed because a timeout was exceeded.
-See <span class="s2">&quot;systemctl status redis-server.service&quot;</span> and <span class="s2">&quot;journalctl -xe&quot;</span> <span class="k">for</span> details.
-invoke-rc.d …</pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2019/04/21/89435093.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2019/03/23/88760377.html" rel="bookmark" title="Permalink to Homebrew禁用自动更新">
-                                       Homebrew禁用自动更新
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a>
-
-    on 2019-03-23
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/88760377 </p>
-<p>上午，同事在安装新环境，听他吐槽说Homebrew每次使用都要先去更新，很少麻烦。</p>
-<p>其实Homebrew是可以取消自动更新的。</p>
-<p>如果在安装插件时，想跳过自动更新，在使用前，设置一下环境变量即可</p>
-<div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">HOMEBREW_NO_AUTO_UPDATE</span><span class="o">=</span><span class="k">true</span>
-</pre></div>
-
-
-<p>如果不想要每次安装都去设置环境变量，也可以配置在（~/.bash_profile）中，将上面的命令追加在后面即可。</p>
-<p>那下次想要更新brew了怎么办？可以通过命令主动更新：</p>
-<div class="highlight"><pre><span></span><span class="n">brew</span> <span class="k">update</span>
-</pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2019/03/23/88760377.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2019/05/01/89741820.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -354,8 +386,8 @@ invoke-rc.d …</pre></div>
                     </li>
                     </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 15
-        <a href="http://chenjiahui.hot-cool.cn/index2.html">&raquo;</a>
+    Page 1 / 18
+        <a href="http://localhost:8000/index2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
 </div>
@@ -364,9 +396,9 @@ invoke-rc.d …</pre></div>
             <div>
                 <h2>Browse content by</h2>
                 <ul class="fa-ul">
-                <li><a href="http://chenjiahui.hot-cool.cn/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
-                <li><a href="http://chenjiahui.hot-cool.cn/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
-                <li><a href="http://chenjiahui.hot-cool.cn/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
+                <li><a href="http://localhost:8000/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="http://localhost:8000/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="http://localhost:8000/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
                 </ul>
             </div><!-- /.browse -->
@@ -383,39 +415,46 @@ invoke-rc.d …</pre></div>
                 <h2>LINKS</h2>
                 <ul>
                     <li><a href="https://portal.qiniu.com/signup?code=1hjft36l61cuq">七牛云存储(免费10G)</a></li>
+                    <li><a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=vawkc6l6">阿里云红包</a></li>
                 </ul>
             </div><!-- /.Links -->
             <div>
                 <h2>Tags</h2>
                 <ul id="cloud">
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/googlesheet.html">googlesheet</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/ios.html">ios</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a></li>
-                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/redis.html">redis</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/http.html">http</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/javascript.html">javascript</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/jquery-easyui.html">jquery-easyui</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/blog.html">blog</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/android.html">android</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/ji-qun.html">集群</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/maven.html">maven</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/html.html">html</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/windows.html">Windows</a></li>
-                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/ibatis.html">ibatis</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/eclipse.html">eclipse</a></li>
-                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/hadoop.html">hadoop</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/shu-ju-ku.html">数据库</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/jquery-easyui.html">jquery-easyui</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/hadoop.html">hadoop</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/blog.html">blog</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/mysql.html">MySQL</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/windows.html">Windows</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/javascript.html">javascript</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/linux.html">linux</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/ji-he.html">集合</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/redis.html">redis</a></li>
+                     <li class="tag-1"><a href="http://localhost:8000/tag/flex.html">Flex</a></li>
+                     <li class="tag-1"><a href="http://localhost:8000/tag/python.html">python</a></li>
+                     <li class="tag-1"><a href="http://localhost:8000/tag/jia-gou.html">架构</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/ji-qun.html">集群</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/spring-cloud.html">spring-cloud</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/googlesheet.html">googlesheet</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/qian-duan.html">前端</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/android.html">android</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/centos.html">centOS</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/yun-wei.html">运维</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/ibatis.html">ibatis</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/jvm.html">jvm</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/ios.html">ios</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/pil.html">pil</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/http.html">http</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/activiti.html">activiti</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/eclipse.html">eclipse</a></li>
+                     <li class="tag-1"><a href="http://localhost:8000/tag/java.html">java</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/easyui.html">easyui</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/mongodb.html">MongoDB</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/nginx.html">nginx</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/svn.html">svn</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/html.html">html</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/maven.html">maven</a></li>
                 </ul>
              </div>
 <!-- /.Tags -->
@@ -443,14 +482,14 @@ invoke-rc.d …</pre></div>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
     
-    <!-- <script>
+    <script>
 		(function(){
 		    var bp = document.createElement('script');
 		    bp.src = '//push.zhanzhang.baidu.com/push.js';
 		    var s = document.getElementsByTagName("script")[0];
 		    s.parentNode.insertBefore(bp, s);
 		})();
-	</script> -->
+	</script>
 	
 </body>
 </html>

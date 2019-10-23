@@ -4,24 +4,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
-
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
     <meta property="og:title" content="BugManager’s Blog"/>
-    <meta property="og:url" content="http://chenjiahui.hot-cool.cn"/>
+    <meta property="og:url" content="http://localhost:8000"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="website"/>
 
-    <link rel="canonical" href="http://chenjiahui.hot-cool.cn" />
+    <link rel="canonical" href="http://localhost:8000" />
 
-    <title>BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <title>BugManager’s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
     <script type="text/javascript">
         stLight.options({
             publisher: "",
@@ -40,7 +42,7 @@
         <div class="span10 offset1">
             <header id="banner" >
                 <h1>
-                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                    <a href="http://localhost:8000/">BugManager’s Blog</a>
                 </h1>
                 <h3>
                      <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
@@ -48,14 +50,14 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        	<li><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/category/java.html">java</a></li>
+                            <li ><a href="http://localhost:8000/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://localhost:8000/category/other.html">other</a></li>
+                            <li ><a href="http://localhost:8000/category/python.html">python</a></li>
+                            <li ><a href="http://localhost:8000/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://localhost:8000/category/yun-wei.html">运维</a></li>
                         </ul>
 
                     </div>
@@ -74,307 +76,324 @@
                         <article>
                             <header>
                                 <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2018/03/26/java-map.html" rel="bookmark" title="Permalink to Java Map">
-                                       Java Map
+                                    <a href="http://localhost:8000/2018/06/09/redis-Advanced.html" rel="bookmark" title="Permalink to redis概述">
+                                       redis概述
                                     </a>
                                 </h1>
                             </header>
                             <div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2018-03-26
+    分类 <a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a>
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a>
-
+        标签:         <a href="http://localhost:8000/tag/redis.html">redis</a>
+        <a href="http://localhost:8000/tag/shu-ju-ku.html">数据库</a>
 
 
     
-</footer><!-- /.post-info -->                                <h2>前言</h2>
-<p>Map是java.util中的集合类，另一个和它一样常用的是List。<br>
-Map提供了一个方便的数据结构，用来存储键值对。<br>
-Map根据键得到值，因此不允许键重复(重复就覆盖了)，但允许值重复。<br>
-它有四个实现类，分别是HashMap、Hashtable、LinkedHashMap和TreeMap。  </p>
-<h3><strong>Hash算法简述</strong></h3>
-<p>常见的散列函数方法：除留余数法、直接寻址法、数字分析法、平方取中法、折叠法、随机数法<br>
-常见的处理Hash冲突的方法：拉链法、线性探索法等。</p>
-<h3><strong>Hashmap</strong></h3>
-<p>HashMap是最常用的Map，它根据键的HashCode值存储数据，根据键可以直接获取它的值，具有很快的访问速度，遍历时，取得数据的顺序是完全随机的。    <br>
-HashMap最多只允许一条记录的键为null; <br>
-允许多条记录的值为null;<br>
-HashMap不支持线程的同步，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。
-如果需要同步，可以用 Collections的synchronizedMap方法使HashMap具有同步的能力，或者使用ConcurrentHashMap。 <br>
-深入解析：<a href="java-HashMap.html">HashMap</a>  </p>
-<h3><strong>Hashtable</strong></h3>
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2018-06-09 23时41分49秒 星期六
+</footer>                                <h2>持久化</h2>
+<p>持久化机制包括RBD和AOF两种  </p>
+<h3>RDB备份</h3>
+<p>配置方式：</p>
+<div class="highlight"><pre><span></span><span class="n">save</span> <span class="o">&lt;</span><span class="err">指定时间间隔</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="err">执行指定次数更新操作</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p><strong>优点</strong><br>
+适合大规模的数据恢复。<br>
+一致性要求不高，RDB是很好的选择。  <br>
+<strong>缺点</strong><br>
+数据的完整性和一致性不高，因为RDB可能在最后一次备份时宕机了。<br>
+写入到一个临时文件（此时内存中的数据是原来的两倍），最后再将临时文件替换之前的备份文件。  </p>
+<h3>AOF追加日志</h3>
+<p>配置方式  </p>
+<div class="highlight"><pre><span></span><span class="n">appendonly</span>  <span class="n">yes</span>
+<span class="n">appendfilename</span> <span class="ss">&quot;appendonly.aof&quot;</span>
+<span class="n">appendfsync</span> <span class="n">always</span> <span class="err">或</span> <span class="n">everysec</span> <span class="err">或</span> <span class="k">no</span>
+<span class="n">always</span><span class="err">：同步持久化，每次发生数据变化会立刻写入到磁盘中。性能较差当数据完整性比较好（慢，安全）</span>
+<span class="n">everysec</span><span class="err">：出厂默认推荐，每秒异步记录一次（默认值）</span>
+<span class="k">no</span><span class="err">：不同步</span>
+</pre></div>
+
+
+<p>配置重写触发机制</p>
+<div class="highlight"><pre><span></span><span class="n">auto</span><span class="o">-</span><span class="n">aof</span><span class="o">-</span><span class="n">rewrite</span><span class="o">-</span><span class="n">percentage</span> <span class="mi">100</span>
+<span class="n">auto</span><span class="o">-</span><span class="n">aof …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2018/06/09/redis-Advanced.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://localhost:8000/2018/06/04/nginx-securety.html" rel="bookmark" title="Permalink to nginx安全配置">
+                                       nginx安全配置
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/jia-gou.html">架构</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/jia-gou.html">架构</a>
+        <a href="http://localhost:8000/tag/nginx.html">nginx</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2018-06-04 17时07分27秒 星期一
+</footer>                                <p>nginx作为一个高性能的HTTP和反向代理web服务器，许多公司都在使用它。任何软件都存在漏洞bug。 
+一般来说，不同版本的nginx都对应着一些不同的漏洞。所以，隐藏nginx的版本号可以提高nginx的安全性。</p>
+<h2>隐藏版本号</h2>
+<p>配置前，我们访问一个不存在的路径试一下：<code>http://chenjiahui.hot-cool.cn/abcdef</code><br>
+<img alt="配置前" src="http://blogimg.hot-cool.cn/20190612156032948234497.png"><br>
+我们用的是nginx 1.10.3，而且还可以看到，服务器是Ubuntu的。<br>
+现在我们先把nginx版本号隐藏掉。找到nginx配置文件。<br>
+如果是源码安装，配置文件会在<code>/usr/local/nginx/conf/nginx.conf</code>下  </p>
+<div class="highlight"><pre><span></span>    server_tokens off<span class="p">;</span> <span class="c1"># 这个值，默认是on</span>
+</pre></div>
+
+
+<p>配置完成，可以看到，信息被隐藏了：<br>
+<img alt="配置后" src="http://blogimg.hot-cool.cn/20190612156032992216537.png"> </p>
+<p>其实，不隐藏也没关系，我们下面会有个更cool的方法。  </p>
+<h2>给nginx穿一件吉利服</h2>
+<p>中午休息时经常听办公室同事说到吉利服，起初我还以为是蒺藜服，毕竟是伪装成一身的植物嘛😅。<br>
+想知道为什么叫吉利服，自己看下吧：<a href="https://baike.baidu.com/item/%E5%90%89%E5%88%A9%E6%9C%8D">百科-吉利服</a> </p>
+<p>要给nginx穿上吉利服 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2018/06/04/nginx-securety.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://localhost:8000/2018/05/30/nginx-https.html" rel="bookmark" title="Permalink to nginx开启HTTPS">
+                                       nginx开启HTTPS
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/jia-gou.html">架构</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/jia-gou.html">架构</a>
+        <a href="http://localhost:8000/tag/nginx.html">nginx</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2018-05-30 23时07分27秒 星期三
+</footer>                                <h2>https</h2>
+<p>https是以安全为目标的HTTP通道，简单讲是HTTP的安全版。HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。
+https可用于安全的HTTP数据传输。</p>
+<p>HTTPS和HTTP的区别主要为以下四点：
+一、https协议需要使用证书验证身份，，证书可以自行生成(自己生成ca证书，不受到浏览器信任)，也可以ca机构申请。
+二、http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。
+三、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。
+四、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+<h2>配置https</h2>
+<p><strong>ca证书</strong>
+1、通过openssl生成证书签名
+因为自建不受浏览器信任，而且目前阿里云有免费的证书可以购买。关于openssl生成证书的步骤就简单的示范一下，不过多叙述。<br>
+想了解一下的可以看一下，推荐直接去阿里云购买免费的证书。<a href="https://www.aliyun.com/product/cas/">SSL证书-传送门</a>  </p>
+<p><strong>安装openssl</strong>
+使用命令<code>which openssl</code>或者<code>openssl version</code>查看是否安装有openssl。我的已经安装了 …</p>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2018/05/30/nginx-https.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://localhost:8000/2018/05/21/nginx-moudle.html" rel="bookmark" title="Permalink to nginx增减模块">
+                                       nginx增减模块
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/jia-gou.html">架构</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/jia-gou.html">架构</a>
+        <a href="http://localhost:8000/tag/nginx.html">nginx</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2018-05-21 23时15分43秒 星期一
+</footer>                                <p>nginx拥有非常丰富的功能模块,<a href="http://nginx.org/en/docs/">官方文档</a><br>
+但是默认安装的nginx并不是包含所有模块的，而默认安装的模块中也有一些不需要用到的。我们可以选择去掉。  <br>
+呃！那么怎么添加、剔除模块呢？我们可以通过命令<code>./configure --help</code>查看一下:   </p>
+<div class="highlight"><pre><span></span>ubuntu@VM-0-6-ubuntu:~/cjh/nginx-1.14.2$ ./configure --help<span class="p">|</span>grep with
+  ... 
+  ... 
+  --with-http_ssl_module             <span class="nb">enable</span> ngx_http_ssl_module
+  ...
+  --without-http_autoindex_module    disable ngx_http_autoindex_module
+  ...
+  ...
+</pre></div>
+
+
+<p>比如我们打算去掉autoindex模块，增加ssl模块，我们可以在源码目录下输入以下命令（这里我们只是举个例子，大家根据自己的情况添加删除模块）</p>
+<div class="highlight"><pre><span></span>./configure --without-http_autoindex_module --without-http_ssi_module
+</pre></div>
+
+
+<p>编译后最后执行<code>make&amp;&amp;make install</code>安装    </p>
+<p>如果已经安装了nginx查看看nginx增加或减少了哪些模块，可以通过指令查看：</p>
+<div class="highlight"><pre><span></span>ubuntu@VM-0-6-ubuntu:nginx -V
+nginx version: nginx …</pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2018/05/21/nginx-moudle.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://localhost:8000/2018/05/12/nginx.html" rel="bookmark" title="Permalink to nginx的使用">
+                                       nginx的使用
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/jia-gou.html">架构</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/jia-gou.html">架构</a>
+        <a href="http://localhost:8000/tag/nginx.html">nginx</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2018-05-12 21时42分02秒 星期六
+</footer>                                <p>Nginx是一种轻量级，高性能的Web服务器/反向代理和电子邮件（IMAP / POP3）代理。
+它可以在UNIX、Linux、MacOS、Solaris等类Linux服务器和Windows上运行。
+Nginx是为解决C10K问题而编写的少数服务器之一。
+与传统服务器不同，Nginx不依赖线程来处理请求。相反，它使用扩展性更强的事件驱动（异步）架构。
+nginx生态非常丰富，它是一款高度模块化的应用程序，拥有大量的第三方模块。    </p>
+<p>自2015年接触nginx以来，陆陆续续的使用了nginx中的许多功能。一直想对这些功能的使用做一个记录。</p>
+<h2>版本选择</h2>
+<p>开源版：nginx.org 免费，很多公司及个人都在使用。
+商业版：nginx.com 由nginx作者成立商业公司在运营监控，技术支持上有很多优势，但是收费的。
+Tengine：阿里巴巴在nginx主干代码上二次开发的产物，很多功能领先于nginx官方版本，无法对nginx的官方版本同步升级
+没有特殊的需求，我们就下载个开源版的吧，当下载时，选择稳定版。一般<strong>双数</strong>的版本为稳定版。</p>
+<h2>基础命令</h2>
+<div class="highlight"><pre><span></span><span class="c1">#启动或重启前检查配置是否正确，非常重要。修改配置后切记要先测试再重启 …</span></pre></div>
+                                <p class="readmore">
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2018/05/12/nginx.html">Read more...</a>
+                                </p>
+                            </div><!-- /.entry-content -->
+                            <hr/>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <header>
+                                <h1 class="entry-title">
+                                    <a href="http://localhost:8000/2018/04/14/Java-Hashtable.html" rel="bookmark" title="Permalink to Java Hashtable">
+                                       Java Hashtable
+                                    </a>
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/java.html">java</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/java.html">java</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2018-04-14 19时53分17秒 星期六
+</footer>                                <h2>Hashtable简介</h2>
+<p>Hashtable和HashMap类似，同样是基于哈希表实现的。Hashtable是线程安全的（有许多方法用synchronized修饰），key和value都不支持null，没有红黑树的实现。且已不建议使用。      </p>
+<h2>与HashMap比较</h2>
 <p>Hashtable与HashMap类似都实现了Map、Cloneable, Serializable接口:<br>
 Hashtable继承自Dictionary类，HashMap继承自AbstractMap类。  <br>
-Hashtable不允许记录的键或者值为null …</p>
+Hashtable不允许记录的键或者值为null，HashMap允许记录的键和值为null。<br>
+Hashtable初始容量为11，HashMap的初始1容量为16。
+Hashtable的许多方法中使用了synchronized关键字，所以Hashtable是线程安全的，即任一时刻只有一个线程能写Hashtable，这也导致了Hashtable在写入时会比较慢。
+如果在非线程安全的情况下，建议使用HashMap。如果在线程安全的情况下可以使用Hashtable，不过官方还是<strong>建议使用ConcurrentHashMap</strong>。     </p>
+<h2>构造函数</h2>
+<p>大致上和HashMap没有太大区别，主要的有以下两个区别： <br>
+1、无参构造函数，初始的~initialCapacity~是11   </p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="nf">Hashtable</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">(</span><span class="mi">11</span><span class="o">,</span> <span class="mf">0.75f</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>2、threshold计算方式与HashMap不同</p>
+<div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">initialCapacity</span> <span class="o">*</span> <span class="n">loadFactor</span><span class="o">,</span> <span class="n">MAX_ARRAY_SIZE …</span></pre></div>
                                 <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2018/03/26/java-map.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/05/28/20180528212707.html" rel="bookmark" title="Permalink to HTTP请求中GET和POST的区别">
-                                       HTTP请求中GET和POST的区别
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a>
-
-    on 2017-05-28
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/http.html">http</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>1、很显然，报文方法名不同，一个是GET，一个是POST。</p>
-<p>2、请求携带参数的方式不同<br>
-GET参数常规的是跟在请求的url后面，以?开始，参数间以&amp;隔开，数据被直观的展现在URL上。如：https://www.baidu.com/s?ie=UTF-8&amp;wd=test<br>
-POST参数一般是放在请求体entity-body中，传输给目标服务器，数据在URL中不可见。</p>
-<p>3、请求时，携带的参数大小限制不同<br>
-GET请求的URL传参有大小限制<br>
-POST请求理论上是没有大小限制的，但实际情况是，各类应用服务器都对请求大小做了限制。因为过大请求包，会增加服务器解析时间。甚至会被人恶意请求超大的数据包。<br>
-Tomcat：  </p>
-<div class="highlight"><pre><span></span>    <span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">&quot;8080&quot;</span> <span class="na">protocol=</span><span class="s">&quot;HTTP/1.1&quot;</span>
-               <span class="na">connectionTimeout=</span><span class="s">&quot;20000&quot;</span>
-               <span class="na">redirectPort=</span><span class="s">&quot;8443&quot;</span>
-               <span class="na">maxPostSize=</span><span class="s">&quot;-1 …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/05/28/20180528212707.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/04/30/javaVM-GC.html" rel="bookmark" title="Permalink to java虚拟机-垃圾回收GC">
-                                       java虚拟机-垃圾回收GC
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2017-04-30
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <h2>垃圾回收算法</h2>
-<p>￼</p>
-<h3>垃圾检测</h3>
-<p><strong>引用计数法</strong><br>
-给对象添加一个引用计数器，被引用时+1，失效时-1。垃圾回收时，计数为0的对象。此算法最致命的是无法处理循环引用的问题。   <br>
-<strong>可达性检测</strong><br>
-以根对象为起点，进行搜索，如果对象不可达，则认为该对象为垃圾对象。   </p>
-<p><strong>那根节点是怎么确定的呢(GC Root)</strong>    <br>
-虚拟机栈（栈帧中的本地变量表）中引用的对象<br>
-方法区中类静态属性引用的对象<br>
-方法区中常量引用的对象<br>
-本地方法栈中JNI（即一般说的Native方法）引用的对象<br>
-这些信息都使用一组称为OopMap的数据结构来实现  </p>
-<h3>引用类型</h3>
-<p><strong>强引用</strong>  <br>
-只要强引用还存在，垃圾收集器永远不会回收掉被引用的对象  </p>
-<p><strong>软引用</strong> <br>
-描述一些还有用但并非必需的对象。在系统将要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行第二次回收。如果这次回收还没有足够的内存才会抛出内存溢出异常     </p>
-<p><strong>弱引用</strong>  <br>
-用来描述非必需的对象，强度比软引用还要弱，被弱引用关联的对象只能生存到下一次垃圾收集发生之前，当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象 </p>
-<p><strong>虚引用</strong> <br>
-也称为幽灵引用或者幻影引用，是最弱的一种引用关系。一个对象是否有虚引用的存在，完全不会影响其生存时间，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知 …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/04/30/javaVM-GC.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/03/26/javaVM-mem.html" rel="bookmark" title="Permalink to java虚拟机-内存模型">
-                                       java虚拟机-内存模型
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a>
-
-    on 2017-03-26
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <h1>Java内存模型</h1>
-<p><strong>内存区包含</strong>方法区、虚拟机栈、本地方法栈、堆、程序计数器。如下图：<br>
-<img alt="jmm" src="http://blogimg.hot-cool.cn/20190529161453.png"></p>
-<p><strong>方法区</strong><br>
-方法区属于线程共享的内存区域，存放已经被虚拟机加载的类的结构信息、常量池、静态变量、构造函数等信息。    <br>
-<strong>Java堆</strong><br>
-Java Heap属于线程共享的内存区域，存储java实例的地方。是GC管理的主要区域。 <br>
-<strong>虚拟机栈</strong><br>
-java栈总是和线程关联再一起的，每创建一个线程，jvm就会为线程创建一个栈桢，用于存储局部变量、方法返回值、动态链接方法、操作数栈等。<br>
-<strong>本地方法栈</strong><br>
-本地方法栈属于线程私有的数据区域，这部分主要与虚拟机用到的 Native 方法相关，一般情况下，我们无需关心此区域。<br>
-<strong>程序计数器</strong><br>
-它是内存中的一小块空间，是用来标示下一条字节码指令的行号的计数器。<br>
-字节码解释器在工作时，如果线程执行的是Java方法，则程序计数器的记录就是下一条执行的指令的地址。如果线程执行的是本地方法，则程序计数器值为undefined
-如分支、循环、跳转、异常处理、线程恢复等都用到了方法区。 <br>
-<strong>本地方法接口</strong><br>
-主要是为调用c或c++实现的本地方法及放回结果 …</p>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/03/26/javaVM-mem.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/03/24/65627740.html" rel="bookmark" title="Permalink to python使用代码对redis的key进行集中管理">
-                                       python使用代码对redis的key进行集中管理
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2017-03-24
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/65627740 </p>
-<p>平时工作中会经常用到一些全局的常量，如redis的key值命名等。</p>
-<p>可能会出现不同开发人员使用同一个key，导致缓存被覆盖等情况。</p>
-<p>针对这种情况，可以使用如下的方式，实现一个简单的集中管理。</p>
-<div class="highlight"><pre><span></span><span class="c1"># /usr/bin/env python</span>
-<span class="c1"># coding=utf-8</span>
-
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Created on 2017-03-17</span>
-
-<span class="sd">    @Author: Bug管理员</span>
-<span class="sd">    @note: 为了便于管理，将redis涉及到的key统一由该类管理</span>
-<span class="sd">    @demo: 调用示例：RdbKeyUtil.index_media_key(1)</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="k">class</span> <span class="nc">RedisKeyUtil</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-
-    <span class="n">USER_KEY</span> <span class="o">=</span> <span class="s1">&#39;test_key:</span><span class="si">%s</span><span class="s1">&#39;</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/03/24/65627740.html">Read more...</a>
-                                </p>
-                            </div><!-- /.entry-content -->
-                            <hr/>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h1 class="entry-title">
-                                    <a href="http://chenjiahui.hot-cool.cn/2017/02/20/56009091.html" rel="bookmark" title="Permalink to tornado_mysql的pool使用事务的方法。">
-                                       tornado_mysql的pool使用事务的方法。
-                                    </a>
-                                </h1>
-                            </header>
-                            <div class="entry-content">
-<footer class="post-info">
-    <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
-    </address>
-
-    in <a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a>
-
-    on 2017-02-20
-
-        |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a>
-
-
-
-    
-</footer><!-- /.post-info -->                                <p>版权声明：本文为博主原创文章，未经博主允许不得转载。 https://blog.csdn.net/i_chenjiahui/article/details/56009091 </p>
-<div class="highlight"><pre><span></span><span class="c1">#/usr/bin/env python</span>
-<span class="c1">#coding=utf-8</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Created on 2017-02-20</span>
-
-<span class="sd">@Author: Bug管理员</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tornado_mysql</span> <span class="kn">import</span> <span class="n">pools</span>
-
-<span class="n">data_time</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-
-<span class="k">def</span> <span class="nf">create_pool</span><span class="p">():</span>
-    <span class="k">print</span> <span class="n">DB_CONN</span><span class="o">.</span><span class="n">PORT</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_USER</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">BATCH_PASSWORD</span><span class="p">,</span><span class="n">DB_CONN</span><span class="o">.</span><span class="n">DBNAME</span>
-    <span class="n">pool_db</span> <span class="o">=</span> <span class="n">pools</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span>
-        <span class="nb">dict</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">DB_CONN …</span></pre></div>
-                                <p class="readmore">
-                                    <a class="btn btn-small btn-info" href="http://chenjiahui.hot-cool.cn/2017/02/20/56009091.html">Read more...</a>
+                                    <a class="btn btn-small btn-info" href="http://localhost:8000/2018/04/14/Java-Hashtable.html">Read more...</a>
                                 </p>
                             </div><!-- /.entry-content -->
                             <hr/>
@@ -382,9 +401,9 @@ java栈总是和线程关联再一起的，每创建一个线程，jvm就会为�
                     </li>
                     </ol><!-- /#posts-list -->
 <p class="paginator">
-        <a href="http://chenjiahui.hot-cool.cn/index3.html">&laquo;</a>
-    Page 4 / 15
-        <a href="http://chenjiahui.hot-cool.cn/index5.html">&raquo;</a>
+        <a href="http://localhost:8000/index3.html">&laquo;</a>
+    Page 4 / 18
+        <a href="http://localhost:8000/index5.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
 </div>
@@ -393,9 +412,9 @@ java栈总是和线程关联再一起的，每创建一个线程，jvm就会为�
             <div>
                 <h2>Browse content by</h2>
                 <ul class="fa-ul">
-                <li><a href="http://chenjiahui.hot-cool.cn/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
-                <li><a href="http://chenjiahui.hot-cool.cn/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
-                <li><a href="http://chenjiahui.hot-cool.cn/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
+                <li><a href="http://localhost:8000/categories.html"><i class="fa-li fa fa-tags"></i> Categories</a></li>
+                <li><a href="http://localhost:8000/archives.html"><i class="fa-li fa fa-calendar"></i> Dates</a></li>
+                <li><a href="http://localhost:8000/tags.html"><i class="fa-li fa fa-tag"></i> Tags</a></li>
 
                 </ul>
             </div><!-- /.browse -->
@@ -412,39 +431,46 @@ java栈总是和线程关联再一起的，每创建一个线程，jvm就会为�
                 <h2>LINKS</h2>
                 <ul>
                     <li><a href="https://portal.qiniu.com/signup?code=1hjft36l61cuq">七牛云存储(免费10G)</a></li>
+                    <li><a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=vawkc6l6">阿里云红包</a></li>
                 </ul>
             </div><!-- /.Links -->
             <div>
                 <h2>Tags</h2>
                 <ul id="cloud">
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/ji-he.html">集合</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/googlesheet.html">googlesheet</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/ios.html">ios</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/linux.html">linux</a></li>
-                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/python.html">python</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/redis.html">redis</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/easyui.html">easyui</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/http.html">http</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">MySQL</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/javascript.html">javascript</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/jquery-easyui.html">jquery-easyui</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/blog.html">blog</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/shu-ju-ku.html">数据库</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/android.html">android</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/ji-qun.html">集群</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/jvm.html">jvm</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/activiti.html">activiti</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/maven.html">maven</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/html.html">html</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/yun-wei.html">运维</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/windows.html">Windows</a></li>
-                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/flex.html">Flex</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/nginx.html">nginx</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/ibatis.html">ibatis</a></li>
-                     <li class="tag-2"><a href="http://chenjiahui.hot-cool.cn/tag/qian-duan.html">前端</a></li>
-                     <li class="tag-4"><a href="http://chenjiahui.hot-cool.cn/tag/eclipse.html">eclipse</a></li>
-                     <li class="tag-1"><a href="http://chenjiahui.hot-cool.cn/tag/java.html">java</a></li>
-                     <li class="tag-3"><a href="http://chenjiahui.hot-cool.cn/tag/hadoop.html">hadoop</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/shu-ju-ku.html">数据库</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/jquery-easyui.html">jquery-easyui</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/hadoop.html">hadoop</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/blog.html">blog</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/mysql.html">MySQL</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/windows.html">Windows</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/javascript.html">javascript</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/linux.html">linux</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/ji-he.html">集合</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/redis.html">redis</a></li>
+                     <li class="tag-1"><a href="http://localhost:8000/tag/flex.html">Flex</a></li>
+                     <li class="tag-1"><a href="http://localhost:8000/tag/python.html">python</a></li>
+                     <li class="tag-1"><a href="http://localhost:8000/tag/jia-gou.html">架构</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/ji-qun.html">集群</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/spring-cloud.html">spring-cloud</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/googlesheet.html">googlesheet</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/qian-duan.html">前端</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/android.html">android</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/centos.html">centOS</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/yun-wei.html">运维</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/ibatis.html">ibatis</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/jvm.html">jvm</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/ios.html">ios</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/pil.html">pil</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/http.html">http</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/activiti.html">activiti</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/eclipse.html">eclipse</a></li>
+                     <li class="tag-1"><a href="http://localhost:8000/tag/java.html">java</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/easyui.html">easyui</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/mongodb.html">MongoDB</a></li>
+                     <li class="tag-2"><a href="http://localhost:8000/tag/nginx.html">nginx</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/svn.html">svn</a></li>
+                     <li class="tag-3"><a href="http://localhost:8000/tag/html.html">html</a></li>
+                     <li class="tag-4"><a href="http://localhost:8000/tag/maven.html">maven</a></li>
                 </ul>
              </div>
 <!-- /.Tags -->
@@ -472,14 +498,14 @@ java栈总是和线程关联再一起的，每创建一个线程，jvm就会为�
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
     
-    <!-- <script>
+    <script>
 		(function(){
 		    var bp = document.createElement('script');
 		    bp.src = '//push.zhanzhang.baidu.com/push.js';
 		    var s = document.getElementsByTagName("script")[0];
 		    s.parentNode.insertBefore(bp, s);
 		})();
-	</script> -->
+	</script>
 	
 </body>
 </html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
+    <meta property="og:title" content="python图像处理库PIL读取后，保存图片变模糊"/>
+    <meta property="og:url" content="http://localhost:8000/2019/09/27/python-pil-save-blurred.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="http://localhost:8000/2019/09/27/python-pil-save-blurred.html" />
+
+    <title>python图像处理库PIL读取后，保存图片变模糊
+| BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/main.css?v=1" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png" alt="Fork me on GitHub" />
+</a>
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="http://localhost:8000/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/category/java.html">java</a></li>
+                            <li ><a href="http://localhost:8000/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://localhost:8000/category/other.html">other</a></li>
+                            <li class="active"><a href="http://localhost:8000/category/python.html">python</a></li>
+                            <li ><a href="http://localhost:8000/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://localhost:8000/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+	<section>
+		<article>
+			<header>
+				<h1 class="entry-title">
+					<a href="http://localhost:8000/2019/09/27/python-pil-save-blurred.html" rel="bookmark"
+						title="Permalink to python图像处理库PIL读取后，保存图片变模糊">python图像处理库PIL读取后，保存图片变模糊</a>
+				</h1>
+			</header>
+			<div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/python.html">python</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/python.html">python</a>
+        <a href="http://localhost:8000/tag/pil.html">pil</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2019-09-27 11时19分21秒 星期五
+</footer>  <p>最近在给活动图片批量加入二维码的时候，发现图片在使用<code>PIL</code>的<code>paste()</code>方法在指定区域粘贴二维码，保存之后，非处理区域的图像也变模糊了。  </p>
+<p>检查发现，在原先空白处增加二维码之后，图片大小本应该比原图增加的，而结果却是比原图更小。
+显然图片在save的时候，使用了压缩算法对图片进行了压缩处理。  </p>
+<p>查阅资料及源码，发现，图片在保存的时候，可以使用<code>quality</code>参数指定保存图像的质量。  </p>
+<p>quality参数的取值范围从1（最差）到95（最佳）。 默认值为75，使用中应尽量避免高于95的值; </p>
+<p>为什么最佳取值不是100呢？因为100会禁用部分JPEG压缩算法，并导致大文件图像质量几乎没有任何增益。 </p>
+<p>因为代码中未设置quality参数，所以程序使用了默认值75，导致图片变模糊了。</p>
+<div class="highlight"><pre><span></span><span class="n">img</span><span class="p">(</span><span class="n">img_name</span><span class="p">,</span> <span class="n">quality</span><span class="o">=</span><span class="mi">95</span><span class="p">)</span>
+</pre></div>
+
+
+<p>附上给图片添加二维码的代码，大家猜猜为什么这样生成二维码。  </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding: utf-8 -*-</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Created on 2019年9月5日</span>
+
+<span class="sd">@author: jiahui</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageFont</span><span class="p">,</span> <span class="n">ImageDraw</span>
+<span class="kn">import</span> <span class="nn">qrcode</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">add_qrcode</span><span class="p">():</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="s2">&quot;result.jpg&quot;</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">([(</span><span class="n">d</span><span class="p">,</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://a</span><span class="si">%s</span><span class="s2">.domain.com/wbh5p/activity_test_01</span><span class="si">%s</span><span class="s2">?p=1&amp;d=a</span><span class="si">%s</span><span class="s2">&amp;r=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+        <span class="c1"># logging.warn(url)</span>
+        <span class="n">qr</span> <span class="o">=</span> <span class="n">qrcode</span><span class="o">.</span><span class="n">QRCode</span><span class="p">(</span>     
+            <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>     
+            <span class="n">error_correction</span><span class="o">=</span><span class="n">qrcode</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">ERROR_CORRECT_L</span><span class="p">,</span>     
+            <span class="n">border</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+        <span class="p">)</span> 
+        <span class="n">qr</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">qr</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">fit</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  
+        <span class="n">code_image</span> <span class="o">=</span> <span class="n">qr</span><span class="o">.</span><span class="n">make_image</span><span class="p">(</span><span class="n">fill_color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">back_color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span> 
+        <span class="n">code_image</span> <span class="o">=</span> <span class="n">code_image</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">136</span><span class="p">,</span><span class="mi">136</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">ANTIALIAS</span><span class="p">)</span>
+        <span class="c1"># 粘贴二维码的位置</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">code_image</span><span class="p">,</span> <span class="p">(</span><span class="mi">557</span><span class="p">,</span> <span class="mi">1015</span><span class="p">))</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;img/result_</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">.jpg&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">r</span><span class="p">),</span> <span class="n">quality</span><span class="o">=</span><span class="mi">85</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+        <span class="n">add_qrcode</span><span class="p">()</span>    
+</pre></div>
+</td></tr></table> 			</div>
+			<!-- /.entry-content -->
+
+
+		</article>
+	</section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+	
+</body>
+</html>

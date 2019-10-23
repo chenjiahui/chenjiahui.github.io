@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="chenjiahui" />
+    <meta name="robots" content="index, follow"/>
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
+    <meta property="og:title" content="“附近”功能实现"/>
+    <meta property="og:url" content="http://localhost:8000/2017/10/21/near.html"/>
+    <meta property="og:site_name" content="BugManager’s Blog"/>
+    <meta property="og:type" content="article"/>
+
+    <link rel="canonical" href="http://localhost:8000/2017/10/21/near.html" />
+
+    <title>“附近”功能实现
+| BugManager’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/main.css?v=1" />
+
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+</head>
+
+<body id="index">
+<a class="hidden-phone" href="http://github.com/chenjiahui">
+<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png" alt="Fork me on GitHub" />
+</a>
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <header id="banner" >
+                <h1>
+                    <a href="http://localhost:8000/">BugManager’s Blog</a>
+                </h1>
+                <h3>
+                     <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
+                </h3>
+                <nav class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                        	<li><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/category/java.html">java</a></li>
+                            <li class="active"><a href="http://localhost:8000/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://localhost:8000/category/other.html">other</a></li>
+                            <li ><a href="http://localhost:8000/category/python.html">python</a></li>
+                            <li ><a href="http://localhost:8000/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://localhost:8000/category/yun-wei.html">运维</a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header><!-- /#banner -->
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <div class="row-fluid">
+<div class="span10 offset1">
+	<section>
+		<article>
+			<header>
+				<h1 class="entry-title">
+					<a href="http://localhost:8000/2017/10/21/near.html" rel="bookmark"
+						title="Permalink to “附近”功能实现">“附近”功能实现</a>
+				</h1>
+			</header>
+			<div class="entry-content">
+<footer class="post-info">
+    <address class="vcard author">
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
+    </address>
+
+    分类 <a href="http://localhost:8000/category/jia-gou.html">架构</a>
+
+        |
+        标签:         <a href="http://localhost:8000/tag/redis.html">redis</a>
+        <a href="http://localhost:8000/tag/mysql.html">mysql</a>
+        <a href="http://localhost:8000/tag/mongodb.html">MongoDB</a>
+
+
+    
+
+    
+</footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2017-10-21 21时51分24秒 星期六
+</footer>  <h1>附近功能的实现</h1>
+<p>如今社交类APP非常的多。基于LBS的服务也越来越多，大部分APP都包含“附近”功能。<br>
+那么我们简单探索下，附近功能的几种实现方式。<br>
+本文简单的说下，“附近”功能，在MySQL，MongoDB，Redis上的实现。  </p>
+<h2>MySQL</h2>
+<p>目前较多的互联网产品都是使用的MySQL数据库。<br>
+在项目初期，存储层架构比较单一，没有特殊的需求，使用MySQL就可以实现几乎所有功能了。也包括附近功能。  </p>
+<h4>SQL语句实现</h4>
+<p>在MySQL实现附近的人，只要一条SQL就可以搞定了:</p>
+<div class="highlight"><pre><span></span><span class="c1">-- 假设我的位置坐标是(30.2518748578,120.1530291276);</span>
+<span class="c1">-- 假设另一个点的坐标是(30.2398639075, 120.1822757721)，存在表里。</span>
+<span class="c1">-- 地球半径取6378.138</span>
+<span class="k">SELECT</span>
+    <span class="p">(</span>
+        <span class="mi">6378</span><span class="p">.</span><span class="mi">138</span> <span class="o">*</span> <span class="nf">acos</span><span class="p">(</span>
+            <span class="nf">cos</span><span class="p">(</span><span class="nf">radians</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">lat</span><span class="p">))</span> <span class="o">*</span> <span class="nf">cos</span><span class="p">(</span><span class="nf">radians</span><span class="p">(</span><span class="mi">30</span><span class="p">.</span><span class="mi">2518748578</span><span class="p">))</span> <span class="o">*</span> <span class="nf">cos</span><span class="p">(</span>
+                <span class="nf">radians</span><span class="p">(</span><span class="mi">120</span><span class="p">.</span><span class="mi">1530291276</span><span class="p">)</span> <span class="o">-</span> <span class="nf">radians</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">lng</span><span class="p">)</span>
+            <span class="p">)</span> <span class="o">+</span> <span class="nf">sin</span><span class="p">(</span><span class="nf">radians</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">lat</span><span class="p">))</span> <span class="o">*</span> <span class="nf">sin</span><span class="p">(</span><span class="nf">radians</span><span class="p">(</span><span class="mi">30</span><span class="p">.</span><span class="mi">2518748578</span><span class="p">))</span>
+        <span class="p">)</span> 
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">distance</span> <span class="p">,</span>
+    <span class="p">(</span>
+        <span class="mi">6378</span><span class="p">.</span><span class="mi">138</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="nf">asin</span><span class="p">(</span>
+            <span class="nf">sqrt</span><span class="p">(</span>
+                <span class="nf">pow</span><span class="p">(</span>
+                    <span class="nf">sin</span><span class="p">(</span>
+                        <span class="p">(</span>
+                            <span class="n">a</span><span class="p">.</span><span class="n">lat</span> <span class="o">*</span> <span class="nf">pi</span><span class="p">()</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">-</span> <span class="mi">30</span><span class="p">.</span><span class="mi">2518748578</span> <span class="o">*</span> <span class="nf">pi</span><span class="p">()</span> <span class="o">/</span> <span class="mi">180</span>
+                        <span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+                    <span class="p">)</span> <span class="p">,</span>
+                    <span class="mi">2</span>
+                <span class="p">)</span> <span class="o">+</span> <span class="nf">cos</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">lat</span> <span class="o">*</span> <span class="nf">pi</span><span class="p">()</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="nf">cos</span><span class="p">(</span><span class="mi">30</span><span class="p">.</span><span class="mi">2518748578</span> <span class="o">*</span> <span class="nf">pi</span><span class="p">()</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="nf">pow</span><span class="p">(</span>
+                    <span class="nf">sin</span><span class="p">(</span>
+                        <span class="p">(</span>
+                            <span class="n">a</span><span class="p">.</span><span class="n">lng</span> <span class="o">*</span> <span class="nf">pi</span><span class="p">()</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">-</span> <span class="mi">120</span><span class="p">.</span><span class="mi">1530291276</span> <span class="o">*</span> <span class="nf">pi</span><span class="p">()</span> <span class="o">/</span> <span class="mi">180</span>
+                        <span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+                    <span class="p">)</span> <span class="p">,</span>
+                    <span class="mi">2</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span> 
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">distance2</span>
+<span class="k">FROM</span>
+    <span class="p">(</span>   <span class="c1">-- 这里我们SELECT个虚拟一行数据出来进行测试</span>
+        <span class="k">SELECT</span> <span class="mi">30</span><span class="p">.</span><span class="mi">2398639075</span> <span class="k">AS</span> <span class="n">lat</span> <span class="p">,</span> <span class="mi">120</span><span class="p">.</span><span class="mi">1822757721</span> <span class="k">AS</span> <span class="n">lng</span>
+    <span class="p">)</span> <span class="n">a</span>
+<span class="k">HAVING</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="mi">10</span>
+<span class="k">ORDER</span> <span class="k">BY</span>
+    <span class="n">distance</span><span class="p">;</span>
+</pre></div>
+
+
+<h4>查询优化</h4>
+<p>在实际使用过程中，不可能直接查询表中所有的点，然后获取<code>distance &lt; 10</code>的数据。而是需要根据实际情况，找出一个矩形范围。<br>
+如上面我们要查找距离自己半径10KM内的用户。  我们可以在lat和lng上  </p>
+<div class="highlight"><pre><span></span><span class="c1">-- 建表</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="ss">`t_location`</span><span class="p">(</span>
+    <span class="ss">`uid`</span> <span class="kt">BIGINT</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">UNSIGNED</span> <span class="k">NOT</span> <span class="no">NULL</span> <span class="kp">AUTO_INCREMENT</span> <span class="p">,</span>
+    <span class="ss">`lng`</span> <span class="kt">DOUBLE</span><span class="p">(</span><span class="mi">11</span> <span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="no">NULL</span> <span class="p">,</span>
+    <span class="ss">`lat`</span> <span class="kt">DOUBLE</span><span class="p">(</span><span class="mi">11</span> <span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="no">NULL</span> <span class="p">,</span>
+    <span class="ss">`geohash`</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8_unicode_ci</span> <span class="k">DEFAULT</span> <span class="no">NULL</span><span class="p">,</span>
+    <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="ss">`uid`</span><span class="p">)</span>
+<span class="p">)</span> <span class="kp">ENGINE</span> <span class="o">=</span> <span class="n">INNODB</span> <span class="kp">AUTO_INCREMENT</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">DEFAULT</span> <span class="kp">CHARSET</span> <span class="o">=</span> <span class="n">utf8</span> <span class="k">COLLATE</span> <span class="o">=</span> <span class="n">utf8_unicode_ci</span><span class="p">;</span>
+
+<span class="c1">-- 查询</span>
+<span class="k">SELECT</span>
+    <span class="p">(...)</span> <span class="k">AS</span> <span class="n">distance</span>
+<span class="k">FROM</span>
+    <span class="n">t_location</span> <span class="n">a</span>
+<span class="k">WHERE</span>
+    <span class="n">lat</span> <span class="o">&lt;</span><span class="p">(</span><span class="mi">30</span><span class="p">.</span><span class="mi">2518748578</span> <span class="o">+</span> <span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">)</span> <span class="k">AND</span> <span class="n">lat</span> <span class="o">&gt;</span><span class="p">(</span><span class="mi">30</span><span class="p">.</span><span class="mi">2518748578</span> <span class="o">-</span> <span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">)</span>
+<span class="k">AND</span> <span class="n">lng</span> <span class="o">&lt;</span><span class="p">(</span><span class="mi">120</span><span class="p">.</span><span class="mi">1530291276</span> <span class="o">+</span> <span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">)</span> <span class="k">AND</span> <span class="n">lng</span> <span class="o">&gt;</span><span class="p">(</span><span class="mi">120</span><span class="p">.</span><span class="mi">1530291276</span> <span class="o">-</span> <span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">)</span>
+<span class="k">HAVING</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="mi">10</span>
+<span class="k">ORDER</span> <span class="k">BY</span>
+    <span class="n">distance</span><span class="p">;</span>
+</pre></div>
+
+
+<h4>对于精度要求不高的场景，简化查询</h4>
+<p>对于“附近”功能，有些场景是不需要非常精确的。比如：附近10km的用户定义为附近，时间查询时，只查询出矩形区域，虽然精度不高，但是性能提升明显。  </p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span>
+    <span class="o">*</span>
+<span class="k">FROM</span>
+    <span class="n">t_location</span>
+<span class="k">WHERE</span>
+    <span class="n">lat</span> <span class="o">&lt;</span><span class="p">(</span><span class="mi">30</span><span class="p">.</span><span class="mi">2518748578</span> <span class="o">+</span> <span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">)</span> <span class="k">AND</span> <span class="n">lat</span> <span class="o">&gt;</span><span class="p">(</span><span class="mi">30</span><span class="p">.</span><span class="mi">2518748578</span> <span class="o">-</span> <span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">)</span>
+<span class="k">AND</span> <span class="n">lng</span> <span class="o">&lt;</span><span class="p">(</span><span class="mi">120</span><span class="p">.</span><span class="mi">1530291276</span> <span class="o">+</span> <span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">)</span> <span class="k">AND</span> <span class="n">lng</span> <span class="o">&gt;</span><span class="p">(</span><span class="mi">120</span><span class="p">.</span><span class="mi">1530291276</span> <span class="o">-</span> <span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">)</span>
+<span class="k">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+
+
+<p>这样做的缺点是查询没有排序，如果是按照其他条件排序则还好。如果是需要计算实际距离进行排序，则还会产生临时表，如果数据量大也会有性能问题。  </p>
+<h4>GeoHash查询</h4>
+<h5>原理</h5>
+<p>GeoHash就是一种将经纬度转换成字符串的方法。基本原理是将地球理解为一个二维平面，将平面递归分解成两个更小的子块。最终通过算法用一个字符串来表示这个区域。所以说，GeoHash表示的，不是地图上的一个点，而是块区域。</p>
+<h5>算法</h5>
+<p>1、二维平面分割后用0,1区分两个子块。<br>
+比如纬度：首先将范围(-90, 90)平分成两个区间(-90,0)、(0, 90)，如果目标纬度位于前一个区间，则编码为0，否则编码为1。
+经过多次分割后，得到一个0、1组成的编码。同理，经度也做相同的算法得到0、1编码。
+2、将经度和纬度的编码合并，生成一个新的编码，该编码奇数位是纬度，偶数位是经度。<br>
+3、将最终的编码进行base32编码，得到最终的一个字符串。如："wtmkjcn1zmy3"  </p>
+<h5>使用</h5>
+<p>由上面的原理和算法，可以看出来，每个子块，在一定经纬度范围内拥有相同的编码前缀。两个子块，离的越近，前缀相同的位数也就越多（多数情况下是的，准确的说，在边界两边的两个点，需要往前一个子块才相同）。   </p>
+<p>所以有了geohash之后，我们就有了另一种查询方案：  </p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">t_location</span> <span class="k">WHERE</span> <span class="n">geohash</span> <span class="k">LIKE</span> <span class="s1">&#39;wtmkjcn%&#39;</span>
+</pre></div>
+
+
+<h2>MongoDB附近功能实现</h2>
+<p>如果说，不希望丢失太多精度，也不想给mysql数据库太多的压力，那我们就要另寻新路了。<br>
+MongoDB在距离计算方面，有着非常强的能力，下面就使用MongoDB自带的地址位置索引来实现附近的人。  </p>
+<h4>地理位置索引</h4>
+<p>MongoDB地理位置索引常用的有两种：
+2d：平面坐标索引，适用于基于平面的坐标计算。（也支持球面距离计算，官方推荐使用2dsphere索引）
+2dsphere：几何球体索引，适用于球面几何运算</p>
+<p>数据准备：</p>
+<div class="highlight"><pre><span></span>db.testlocation.insertMany<span class="o">([</span>
+ <span class="o">{</span><span class="s1">&#39;name&#39;</span>:<span class="s1">&#39;张三&#39;</span>, <span class="s1">&#39;uid&#39;</span>:<span class="s1">&#39;123&#39;</span>, <span class="s1">&#39;gender&#39;</span>:1, location:<span class="o">[</span><span class="m">30</span>.2518,120.1530<span class="o">]}</span>,
+ <span class="o">{</span><span class="s1">&#39;name&#39;</span>:<span class="s1">&#39;李四&#39;</span>, <span class="s1">&#39;uid&#39;</span>:<span class="s1">&#39;456&#39;</span>, <span class="s1">&#39;gender&#39;</span>:0, location:<span class="o">[</span><span class="m">30</span>.2398,120.1822<span class="o">]}</span>,
+ ...
+<span class="o">])</span>
+</pre></div>
+
+
+<p>建立索引</p>
+<div class="highlight"><pre><span></span>db.testlocation.ensureIndex<span class="o">({</span><span class="s1">&#39;location&#39;</span>:<span class="s1">&#39;2d&#39;</span><span class="o">})</span>
+或者
+db.testlocation.createIndex<span class="o">({</span><span class="s1">&#39;location&#39;</span>:<span class="s2">&quot;2d&quot;</span><span class="o">})</span>
+</pre></div>
+
+
+<p>查询，计算弧度  </p>
+<div class="highlight"><pre><span></span>db.testlocation.find<span class="o">({</span><span class="s1">&#39;location&#39;</span>:<span class="o">{</span><span class="nv">$nearSphere</span>: <span class="o">[</span><span class="m">120</span>.1293,30.2816<span class="o">]}})</span>
+</pre></div>
+
+
+<p>或者使用<code>$near</code>查询，默认不计算弧度，如果要计算弧度可以添加参数<code>spherical: true</code>，如果要计算弧度，官方推荐使用<code>$nearSphere</code>。  </p>
+<div class="highlight"><pre><span></span>db.testlocation.find<span class="o">({</span><span class="s1">&#39;location&#39;</span>:<span class="o">{</span><span class="nv">$near</span>: <span class="o">[</span><span class="m">120</span>.1293,30.2816<span class="o">]</span>,<span class="nv">$spherical</span>: true<span class="o">}})</span>
+</pre></div>
+
+
+<p><code>$near</code>和<code>$nearSphere</code>的区别可以查看<a href="https://docs.mongodb.com/manual/reference/operator/query-geospatial/">官方文档-Geospatial Query Operators</a></p>
+<p>把查询限定在10km内  </p>
+<div class="highlight"><pre><span></span>db.testlocation.find<span class="o">({</span><span class="s1">&#39;location&#39;</span>:<span class="o">{</span><span class="nv">$near</span>: <span class="o">[</span><span class="m">120</span>.1293,30.2816<span class="o">]</span>,<span class="nv">$maxDistance</span>: <span class="m">10</span>/6378<span class="o">}})</span>
+</pre></div>
+
+
+<p>查矩形区域</p>
+<div class="highlight"><pre><span></span>db.testlocation.find<span class="o">({</span> 
+    coordinate : <span class="o">{</span> 
+        <span class="nv">$geoWithin</span> : <span class="o">{</span> 
+            <span class="nv">$box</span> :<span class="o">[</span> <span class="o">[</span> <span class="m">120</span>.0881,30.3149 <span class="o">]</span> , <span class="o">[</span> <span class="m">120</span>.2853,30.1901 <span class="o">]</span> <span class="o">]</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span> 
+<span class="o">})</span>
+</pre></div>
+
+
+<p>也可以增加限制条件，如：</p>
+<div class="highlight"><pre><span></span>db.testlocation.find<span class="o">({</span><span class="s1">&#39;location&#39;</span>:<span class="o">{</span><span class="nv">$near</span>: <span class="o">[</span><span class="m">120</span>.1293,30.2816<span class="o">]</span>, <span class="nv">$maxDistance</span>:2<span class="o">}})</span>.limit<span class="o">(</span><span class="m">2</span><span class="o">)</span>
+</pre></div>
+
+
+<h2>Redis GEO</h2>
+<p>如果团队已经有一套成熟的redis系统，又没有更多的业务需要使用MongoDB，那么使用Redis GEO来实现“附近”功能，也是个选择项。 
+Redis的GEO相关的命令有6个：<a href="http://redisdoc.com/geo/index.html">官方文档地址</a> </p>
+<h2>其他</h2>
+<h3>地球半径</h3>
+<p>上面那些查询，公式所使用的6378.138是地球的半径。一般大家在查询资料的时候会看到6378和6371两种数值。  <br>
+原因是地球的半径有以下三个常用值：<br>
+<strong><em>极半径</em></strong>：从地心到北极或南极的距离,大约6356.公里（两极的差极小,可以忽略）。<br>
+<strong><em>赤道半径</em></strong>：是从地心到赤道的距离,大约6378公里。<br>
+<strong><em>平均半径</em></strong>：大约6371..这个数字是地心到地球表面所有各点距离的平均值。</p> 			</div>
+			<!-- /.entry-content -->
+
+
+		</article>
+	</section>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <address>
+                    <p>
+                        © 2019  <a href="https://chenjiahui.github.io">chenjiahui</a>
+                    </p>
+                    <p>
+                        Special thanks to <a href="http://github.com/jsliang/pelican-fresh/">Fresh</a>.
+                    </p>
+                </address>
+            </div>
+        </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+	
+</body>
+</html>

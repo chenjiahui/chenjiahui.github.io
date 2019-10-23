@@ -4,24 +4,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="author" content="chenjiahui" />
     <meta name="robots" content="index, follow"/>
-
-    <meta property="og:title" content="从私信消息表的升级过程讲一讲不同时期数据库的表架构分析"/>
-    <meta property="og:url" content="http://chenjiahui.hot-cool.cn/drafts/db-architect-design.html"/>
+	<meta name="keywords" content="java,python,nginx,架构,运维,mysql,redis,数据库,linux,flex,supervisor,负载均衡">
+	<meta name="description" content="bug管理员的技术分享博客。">
+	
+    <meta property="og:title" content="从私信消息表的架构升级"/>
+    <meta property="og:url" content="http://localhost:8000/drafts/db-architect-design.html"/>
     <meta property="og:site_name" content="BugManager’s Blog"/>
     <meta property="og:type" content="article"/>
 
-    <link rel="canonical" href="http://chenjiahui.hot-cool.cn/drafts/db-architect-design.html" />
+    <link rel="canonical" href="http://localhost:8000/drafts/db-architect-design.html" />
 
-    <title>从私信消息表的升级过程讲一讲不同时期数据库的表架构分析 | BugManager’s Blog (゜-゜)つロ 干杯</title>
+    <title>从私信消息表的架构升级
+| BugManager’s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="http://chenjiahui.hot-cool.cn/theme/css/main.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/main.css?v=1" />
 
     <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> -->
     <script type="text/javascript">
         stLight.options({
             publisher: "",
@@ -40,7 +43,7 @@
         <div class="span10 offset1">
             <header id="banner" >
                 <h1>
-                    <a href="http://chenjiahui.hot-cool.cn/">BugManager’s Blog</a>
+                    <a href="http://localhost:8000/">BugManager’s Blog</a>
                 </h1>
                 <h3>
                      <strong>&nbsp; &nbsp; &nbsp; &nbsp; 非计算机专业出生，闭关苦学java，踏上了程序猿 - 架构狮 - CT鸥的蜕变之路。从此成为了一名bug maker兼职bug cleaner，故名bug管理员。</strong>
@@ -48,14 +51,14 @@
                 <nav class="navbar">
                     <div class="navbar-inner">
                         <ul class="nav">
-                        	<li><a href="http://chenjiahui.hot-cool.cn">Home</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/java.html">java</a></li>
-                            <li class="active"><a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/other.html">other</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/python.html">python</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/qian-duan.html">前端</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/shu-ju-ku.html">数据库</a></li>
-                            <li ><a href="http://chenjiahui.hot-cool.cn/category/yun-wei.html">运维</a></li>
+                        	<li><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/category/java.html">java</a></li>
+                            <li class="active"><a href="http://localhost:8000/category/jia-gou.html">架构</a></li>
+                            <li ><a href="http://localhost:8000/category/other.html">other</a></li>
+                            <li ><a href="http://localhost:8000/category/python.html">python</a></li>
+                            <li ><a href="http://localhost:8000/category/qian-duan.html">前端</a></li>
+                            <li ><a href="http://localhost:8000/category/shu-ju-ku.html">数据库</a></li>
+                            <li ><a href="http://localhost:8000/category/yun-wei.html">运维</a></li>
                         </ul>
 
                     </div>
@@ -68,38 +71,112 @@
         <div class="span10 offset1">
             <div class="row-fluid">
 <div class="span10 offset1">
-  <section>
-    <article>
-      <header>
-        <h1 class="entry-title">
-          <a href="http://chenjiahui.hot-cool.cn/drafts/db-architect-design.html" rel="bookmark"
-             title="Permalink to 从私信消息表的升级过程讲一讲不同时期数据库的表架构分析">从私信消息表的升级过程讲一讲不同时期数据库的表架构分析</a></h1>
-      </header>
-      <div class="entry-content">
+	<section>
+		<article>
+			<header>
+				<h1 class="entry-title">
+					<a href="http://localhost:8000/drafts/db-architect-design.html" rel="bookmark"
+						title="Permalink to 从私信消息表的架构升级">从私信消息表的架构升级</a>
+				</h1>
+			</header>
+			<div class="entry-content">
 <footer class="post-info">
     <address class="vcard author">
-        by <a class="url fn" href="http://chenjiahui.hot-cool.cn/author/bugguan-li-yuan.html">Bug管理员</a>
+        作者 <a class="url fn" href="http://localhost:8000/author/bugguan-li-yuan.html">Bug管理员</a>
     </address>
 
-    in <a href="http://chenjiahui.hot-cool.cn/category/jia-gou.html">架构</a>
-
-    on 2019-06-12
+    分类 <a href="http://localhost:8000/category/jia-gou.html">架构</a>
 
         |
-        tags:         <a href="http://chenjiahui.hot-cool.cn/tag/jia-gou.html">架构</a>
-        <a href="http://chenjiahui.hot-cool.cn/tag/mysql.html">mysql</a>
-
+        标签:         <a href="http://localhost:8000/tag/jia-gou.html">架构</a>
+        <a href="http://localhost:8000/tag/mysql.html">mysql</a>
 
 
     
+
+    
 </footer><!-- /.post-info -->
+<footer class="post-info">
+    发布于 2017-12-23 21时55分12秒 星期六
+</footer>  <h2>场景</h2>
+<p>APP中需要实现用户与好友用户之间的消息往来。消息入口在好友列表中点击进入。</p>
+<h3>初级版</h3>
+<p>表结构大致如下，消息状态、消息类型等细节字段就省略了。   </p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="ss">`t_msg`</span> <span class="p">(</span>
+  <span class="ss">`id`</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span> <span class="kp">AUTO_INCREMENT</span><span class="p">,</span>
+  <span class="ss">`auid`</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="no">NULL</span> <span class="n">COMMENT</span> <span class="s1">&#39;发送者的用户id&#39;</span><span class="p">,</span>
+  <span class="ss">`buid`</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="no">NULL</span> <span class="n">COMMENT</span> <span class="s1">&#39;接收者的用户id&#39;</span><span class="p">,</span>
+  <span class="ss">`create_time`</span> <span class="kt">datetime</span> <span class="k">DEFAULT</span> <span class="no">NULL</span><span class="p">,</span>
+  <span class="ss">`content`</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="no">NULL</span> <span class="n">COMMENT</span> <span class="s1">&#39;消息文本内容&#39;</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="ss">`id`</span><span class="p">),</span>
+  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="ss">`idx_ab_uid`</span> <span class="p">(</span><span class="ss">`auid`</span><span class="p">,</span><span class="ss">`buid`</span><span class="p">)</span>
+<span class="p">)</span> <span class="kp">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="kp">AUTO_INCREMENT</span><span class="o">=</span><span class="mi">0</span> <span class="k">DEFAULT</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8</span> <span class="n">ROW_FORMAT</span><span class="o">=</span><span class="n">DYNAMIC</span> <span class="n">COMMENT</span><span class="o">=</span><span class="s1">&#39;私信表&#39;</span><span class="p">;</span>
+</pre></div>
 
-        
 
-      </div><!-- /.entry-content -->
+<p>这时，只需要查询auid是自己活着buid是自己的消息就可以查出与某好友的历史消息。即：</p>
+<div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">t_msg</span> <span class="k">where</span> <span class="p">(</span><span class="n">auid</span> <span class="o">=</span> <span class="o">?</span> <span class="k">and</span> <span class="n">buid</span> <span class="o">=</span> <span class="o">?</span><span class="p">)</span> <span class="k">or</span> <span class="p">(</span><span class="n">buid</span> <span class="o">=</span> <span class="o">?</span> <span class="k">and</span> <span class="n">auid</span> <span class="o">=</span> <span class="o">?</span><span class="p">)</span> <span class="k">order</span> <span class="k">by</span> <span class="n">id</span> <span class="k">desc</span> <span class="k">limit</span> <span class="o">?</span><span class="p">,</span><span class="o">?</span> 
+</pre></div>
 
-    </article>
-  </section>
+
+<p>这样虽然实现了查询a、b用户之间的私信消息，但是发现查询似乎不会走索引。
+这里可以改进一下，可以把or语句拆开成两句sql查询再union,或者把auid和buid的的联合索引给拆成两个独立的索引查询。</p>
+<h3>需求升级</h3>
+<p>很快产品发现，随着用户好友的增加，光在好友列表中提示有新消息，然后点击进入聊天详情页，完全不符合用户的使用习惯。<br>
+需求升级，需要添加独立的消息模块，并且在消息列表中展示用户间的最后一条往来消息，就像微信那样。<br>
+在现有的t_msg表的基础上，不做修改也可以写出满足需求的sql。就是加上group by, max再来个自关联。不过那样查询效率就差好多了。</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span>
+    <span class="n">a</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span>
+    <span class="n">tab_private_msg</span> <span class="n">a</span><span class="p">,</span>
+    <span class="p">(</span>
+        <span class="k">SELECT</span>
+            <span class="nf">max</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">msg_id</span>
+        <span class="k">FROM</span>
+            <span class="n">tab_private_msg</span>
+        <span class="k">WHERE</span>
+            <span class="p">(</span><span class="n">auid</span> <span class="o">=</span> <span class="mi">12</span> <span class="k">OR</span> <span class="n">buid</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
+        <span class="k">GROUP</span> <span class="k">BY</span>
+            <span class="nf">abs</span><span class="p">(</span><span class="n">auid</span> <span class="o">-</span> <span class="n">buid</span><span class="p">)</span>
+        <span class="k">ORDER</span> <span class="k">BY</span>
+            <span class="n">msg_id</span> <span class="k">DESC</span>
+        <span class="k">LIMIT</span> <span class="mi">10</span>
+    <span class="p">)</span> <span class="n">b</span>
+<span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">msg_id</span> <span class="k">order</span> <span class="k">by</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="k">desc</span>
+</pre></div>
+
+
+<p>添加一张t_last_msg表</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="ss">`tab_last_msg`</span> <span class="p">(</span>
+  <span class="ss">`auid`</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="no">NULL</span> <span class="n">COMMENT</span> <span class="s1">&#39;用户id&#39;</span><span class="p">,</span>
+  <span class="ss">`buid`</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="no">NULL</span> <span class="n">COMMENT</span> <span class="s1">&#39;对方的用户id&#39;</span><span class="p">,</span>
+  <span class="ss">`create_time`</span> <span class="kt">datetime</span> <span class="k">DEFAULT</span> <span class="no">NULL</span><span class="p">,</span>
+  <span class="ss">`content`</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="no">NULL</span> <span class="n">COMMENT</span> <span class="s1">&#39;消息文本内容&#39;</span><span class="p">,</span>
+  <span class="ss">`msg_id`</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="no">NULL</span><span class="p">,</span>
+  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="ss">`idx_ab_uid`</span> <span class="p">(</span><span class="ss">`auid`</span><span class="p">,</span><span class="ss">`buid`</span><span class="p">)</span>
+<span class="p">)</span> <span class="kp">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="n">ROW_FORMAT</span><span class="o">=</span><span class="n">DYNAMIC</span> <span class="n">COMMENT</span><span class="o">=</span><span class="s1">&#39;私信表-与好友的最后一条消息&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>该表只存与用户的最后一条消息内容，接收方和发送发各存一条。当用户发送私信消息时，会在<code>tab_msg</code>表存一条数据，和<code>tab_last_msg</code>表存两条保存数据。     </p>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="ss">`tab_last_msg`</span> <span class="p">(</span> <span class="ss">`auid`</span><span class="p">,</span> <span class="ss">`buid`</span><span class="p">,</span> <span class="ss">`create_time`</span><span class="p">,</span> <span class="ss">`msg_id`</span><span class="p">)</span> 
+    <span class="k">VALUES</span> <span class="p">(</span> <span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">,</span> <span class="nf">now</span><span class="p">(),</span> <span class="o">?</span><span class="p">)</span>
+<span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="n">content</span><span class="o">=?</span><span class="p">,</span> <span class="n">create_time</span><span class="o">=</span><span class="nf">now</span><span class="p">(),</span> <span class="n">msg_id</span><span class="o">=?</span><span class="p">;</span>
+</pre></div>
+
+
+<p>举例，如1785用户向1367用户发送私信，私信的id是191，<code>tab_last_msg</code>表存的数据如下。  </p>
+<p><img alt="demo" src="http://blogimg.hot-cool.cn/20190704156222745774239.png">  </p>
+<p>这样，列表就专门在<code>tab_last_msg</code>表查询，详情表在<code>tab_msg</code>表查询。用户间的消息详情，根据原优化后的方式查询。  </p>
+<p>随着业务量的变大，数据库数据逐渐增大，单表数据很快达到了几百万。MySQL的查询明显已经开始变慢了。 <br>
+消息表的历史消息可以选择删除，如果删除后，数据库表还是偏大，那么就需要开始做分表分库了。  </p>
+<p>关于分表分库的简单介绍：
+<a href="https://chenjiahui.hot-cool.cn/2019/05/01/89741820.html">数据库与分区、分表、分库</a>   </p> 			</div>
+			<!-- /.entry-content -->
+
+
+		</article>
+	</section>
 </div>
             </div>
         </div>
@@ -123,14 +200,14 @@
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
     
-    <!-- <script>
+    <script>
 		(function(){
 		    var bp = document.createElement('script');
 		    bp.src = '//push.zhanzhang.baidu.com/push.js';
 		    var s = document.getElementsByTagName("script")[0];
 		    s.parentNode.insertBefore(bp, s);
 		})();
-	</script> -->
+	</script>
 	
 </body>
 </html>
